@@ -10,7 +10,8 @@ import {MatButton} from "@angular/material/button";
     MatButton
   ],
   templateUrl: "./login.component.html",
-  styleUrl: "./login.component.scss"
+  styleUrl: "./login.component.scss",
+  encapsulation: ViewEncapsulation.None
 })
 
 export class LoginComponent {
