@@ -1,9 +1,20 @@
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
+input-error {
+  .input-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
 
-.example-full-width {
-  width: 100%;
+  .input-full-width {
+    width: 100%;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent;
+  }
+
+  .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled.mdc-text-field--focused{
+    background-color: transparent;
+  }
+
 }

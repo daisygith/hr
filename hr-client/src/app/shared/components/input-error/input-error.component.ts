@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
 
 /**
@@ -17,7 +17,10 @@ import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/inpu
     MatError,
     MatFormField,
   ],
+  encapsulation: ViewEncapsulation.None
 })
 export class InputError {
     emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
+    passwordFormControl = new FormControl('', [Validators.required]);
 }
