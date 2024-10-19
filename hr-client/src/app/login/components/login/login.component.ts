@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ViewEncapsulation} from "@angular/core";
 import {InputError} from "../../../shared/components/input-error/input-error.component";
 import {MatButton} from "@angular/material/button";
 
