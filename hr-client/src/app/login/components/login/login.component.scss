@@ -1,12 +1,46 @@
-.login-main-part {
-
-  margin: 10px 10px 10px 10px;
-  background-color: green;
-
-  .login-frame {
-    color: var(--main-color);
-    border-color: black;
-    width: 100px;
-    height: 100px;
+app-login {
+  .title-page {
+    padding: 30px 0px 0px 0px;
+    text-align: center;
+    font-size: 20px;
   }
+
+  .login-main-part {
+    //background-color: aquamarine;
+    padding: 10vh 50px 50px 35%;
+
+    .login-frame {
+      margin: 10px;
+      padding: 30px;
+      text-align: center;
+      color: var(--main-color);
+      border: black solid 1px;
+      border-radius: 20px 20px;
+      width: 40%;
+
+      .login-part {
+        margin: 10px;
+
+        .login-button-row {
+          //display: table-cell;
+          width: 100%;
+        }
+
+        //.login-button-row .mat-mdc-button-base {
+        //  margin: 8px 8px 8px 0;
+        //}
+      }
+    }
+  }
+
+  .login-part.top {
+    padding: 0px 0px 20px 10px;
+  }
+
+  .mdc-button {
+
+    width: 100%;
+
+  }
+
 }
