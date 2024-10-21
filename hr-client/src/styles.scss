@@ -4,3 +4,9 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+// color of the page
+:root{
+  --main-color: #000000;
+  --button-color: #0057FF;
+  --button-text: #ffffff;
+}
