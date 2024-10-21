@@ -7,6 +7,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // color of the page
 :root{
   --main-color: #000000;
-  --button-color: #0057FF;
+  --button-color: rgba(0, 87, 255, 0.54);
   --button-text: #ffffff;
+
+  --tolbar-background-element-color: rgba(0, 87, 255, 0.11);
+  --tolbar-element-color: rgb(0, 87, 255);
+  --tolbar-left-border: rgba(0, 0, 0, 0.1);
+}
+
+html, body {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+.active {
+  border: solid 1px var(--button-color);
+  border-radius: 6px;
+  background-color: var(--tolbar-background-element-color);
+}
+
+.active span {
+  color: var(--tolbar-element-color);
+}
+.active div {
+  color: var(--tolbar-element-color);
 }
