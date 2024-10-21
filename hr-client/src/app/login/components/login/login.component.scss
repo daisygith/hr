@@ -6,7 +6,6 @@ app-login {
   }
 
   .login-main-part {
-    //background-color: aquamarine;
     padding: 10vh 50px 50px 35%;
 
     .login-frame {
@@ -22,13 +21,8 @@ app-login {
         margin: 10px;
 
         .login-button-row {
-          //display: table-cell;
           width: 100%;
         }
-
-        //.login-button-row .mat-mdc-button-base {
-        //  margin: 8px 8px 8px 0;
-        //}
       }
     }
   }
@@ -38,9 +32,12 @@ app-login {
   }
 
   .mdc-button {
-
     width: 100%;
+    background-color: var(--button-color);
+  }
 
+  .mat-mdc-outlined-button:not(:disabled) {
+    color: var(--button-text);
   }
 
 }
