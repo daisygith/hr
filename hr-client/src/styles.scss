@@ -10,9 +10,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --button-color: rgba(0, 87, 255, 0.54);
   --button-text: #ffffff;
 
-  --tolbar-background-element-color: rgba(0, 87, 255, 0.11);
-  --tolbar-element-color: rgb(0, 87, 255);
-  --tolbar-left-border: rgba(0, 0, 0, 0.1);
+  --toolbar-background-element-color: rgba(0, 87, 255, 0.11);
+  --toolbar-element-color: rgb(0, 87, 255);
+  --toolbar-left-border: rgba(0, 0, 0, 0.1);
+
+  //toolbar-left width
+  --toolbar-left-width: 350px;
 }
 
 html, body {
@@ -24,12 +27,12 @@ html, body {
 .active {
   border: solid 1px var(--button-color);
   border-radius: 6px;
-  background-color: var(--tolbar-background-element-color);
+  background-color: var(--toolbar-background-element-color);
 }
 
 .active span {
-  color: var(--tolbar-element-color);
+  color: var(--toolbar-element-color);
 }
 .active div {
-  color: var(--tolbar-element-color);
+  color: var(--toolbar-element-color);
 }
