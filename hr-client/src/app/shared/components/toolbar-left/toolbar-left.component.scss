@@ -1,7 +1,10 @@
+:host {
+  display: flex;
+}
 .toolbar-left {
-  width: 18%;
+  width: var(--toolbar-left-width);
   height: 100vh;
-  border-right: 1px solid var(--tolbar-left-border);
+  border-right: 1px solid var(--toolbar-left-border);
   display: grid;
   grid-template-rows: 1fr 6fr 1fr;
 
@@ -39,9 +42,4 @@
 
   }
 }
-
-//.toolbar.top.logo {
-//  padding: 0px 0px 20px 0px;
-//  margin-top: 20px;
-//}
 
