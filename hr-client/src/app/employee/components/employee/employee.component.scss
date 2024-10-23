@@ -1,64 +1,139 @@
-.employee {
-  //display: grid;
-  //grid-template-columns: 1fr 1fr;
-  display: flex;
-  width: 100%;
-  .content {
+app-employee {
+  .employee {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
 
-    .employee-content {
-      //background-color: yellow;
-      margin: 2vh 2vh 0vh 2vh;
-      //padding: 0px 0vh 0px 0vh;
-    }
-
-    .employee-content.title {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .employee-icon{
-      color: var(--toolbar-element-color);
-      //background-color: white;
-      border: 1px solid var(--button-color);
-      border-radius: 6px;
-      margin: 0px 8px 0px 0px;
-    }
-
-    span#emp-icon{
-      font-size: 40px;
-      padding: 4px;
-    }
-
-    .employee-title {
+    .content {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      //align-items: ;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+
+      .employee-content {
+        margin: 2vh 2vh 0vh 2vh;
+        //padding: 0px 2vh 0px 0vh;
+      }
+
+      .employee-content.title {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 0px 10px 0px;
+      }
+
+      .employee-icon {
+        color: var(--toolbar-element-color);
+        //background-color: white;
+        border: 1px solid var(--button-color);
+        border-radius: 6px;
+        margin: 0px 8px 0px 0px;
+      }
+
+      span#emp-icon {
+        font-size: 40px;
+        padding: 4px;
+      }
+
+      .employee-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        //align-items: ;
+      }
+
+      .line1, .list-title {
+        font-size: 20px;
+        font-weight: 600;
+        padding: 0px 0px 10px 0px;
+      }
+
+      .line2 {
+        font-size: 14px;
+      }
+
+      button.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base,
+      button.mdc-button.mdc-button--outlined.mat-mdc-outlined-button.mat-unthemed.mat-mdc-button-base
+      {
+        border-radius: 10px;
+      }
+
+      .employee-content.list {
+        border: 1px solid var(--toolbar-left-border);
+        border-radius: 20px 20px 0% 0%;
+        border-bottom: none;
+        height: 100vh;
+      }
+
+      .list-tabs {
+        padding: 0px 10px 0px 10px;
+      }
+
+      .mat-mdc-tab-group {
+        //width: 350px;
+      }
+
+      .list-toolbar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px 10px 0px;
+      }
+
+      .list-additional-elem {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .button-filter {
+        margin: 0px 0px 0px 14px;
+      }
+
+      .list-title{
+        padding: 0px;
+      }
+
+      .demo-table {
+        width: 100%;
+      }
+
+      .mat-mdc-row .mat-mdc-cell {
+        border-bottom: 1px solid transparent;
+        border-top: 1px solid transparent;
+        cursor: pointer;
+      }
+
+      .mat-mdc-row:hover .mat-mdc-cell {
+        border-color: currentColor;
+      }
+
+      .demo-row-is-clicked {
+        font-weight: bold;
+      }
+
+      button#button-more {
+        padding-block: 0px;
+        padding-inline: 0px;
+        min-width: 28px;
+
+        mat-icon.mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color {
+          margin: 0px 2px 0px 0px;
+        }
+      }
+
+      th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details,
+      td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
+        padding-right: 0px;
+        width: 136px;
+      }
+
+
     }
-
-    .line1 {
-      font-size: 20px;
-      font-weight: 600;
-      padding: 0px 0px 10px 0px;
-    }
-
-    .line2 {
-      font-size: 14px;
-    }
-
-    .button-export {
-      padding: 6px 6px 6px 6px;
-      text-align: center;
-    }
-
-
   }
 }
