@@ -4,7 +4,7 @@ import {ToolbarTopComponent} from "../../../shared/components/toolbar-top/toolba
 import {RouterOutlet} from "@angular/router";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-dashboard',
   standalone: true,
   imports: [
     ToolbarLeftComponent,
