@@ -1,3 +1,17 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+  ),
+));
+
+html {
+  @include mat.all-component-themes($my-theme);
+}
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
@@ -15,7 +29,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --toolbar-left-border: rgba(0, 0, 0, 0.1);
 
   //toolbar-left width
-  --toolbar-left-width: 350px;
+  --toolbar-left-width: 300px;
+  --mat-form-field-container-vertical-padding: 0px;
 }
 
 html, body {
