@@ -58,6 +58,7 @@ app-employee {
       button.mdc-button.mdc-button--outlined.mat-mdc-outlined-button.mat-unthemed.mat-mdc-button-base
       {
         border-radius: 10px;
+        border-color: var(--toolbar-left-border);
       }
 
       .employee-content.list {
@@ -69,10 +70,6 @@ app-employee {
 
       .list-tabs {
         padding: 0px 10px 0px 10px;
-      }
-
-      .mat-mdc-tab-group {
-        //width: 350px;
       }
 
       .list-toolbar {
@@ -99,6 +96,8 @@ app-employee {
         padding: 0px;
       }
 
+
+      //table
       .demo-table {
         width: 100%;
       }
@@ -115,6 +114,12 @@ app-employee {
 
       .demo-row-is-clicked {
         font-weight: bold;
+      }
+
+      //
+
+      button#button-details{
+        width: 124px;
       }
 
       button#button-more {
