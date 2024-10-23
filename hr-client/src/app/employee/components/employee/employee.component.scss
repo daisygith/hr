@@ -118,6 +118,10 @@ app-employee {
 
       //
 
+      button#button-filter1, button#button-filter2, button#button-details, button#button-more, button#button-edit {
+        color: var(--main-color);
+      }
+
       button#button-details{
         width: 124px;
       }
