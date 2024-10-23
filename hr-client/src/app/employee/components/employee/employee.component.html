@@ -1,0 +1,26 @@
+<div class="employee">
+  <app-toolbar-left></app-toolbar-left>
+  <div class="content">
+    <app-toolbar-top></app-toolbar-top>
+    <router-outlet/>
+    <div class="employee-content title">
+      <div class="employee-content title left">
+        <div class="employee-icon">
+          <span class="material-symbols-outlined" id="emp-icon">person_apron</span>
+        </div>
+        <div class="employee-title">
+          <div class="line1">Employee</div>
+          <div class="line2">Mange your employee</div>
+        </div>
+      </div>
+      <div class="employee-content title right">
+        <div class="button-add">
+          <button mat-flat-button>
+            <mat-icon>add</mat-icon>
+            Add Employee</button>
+        </div>
+      </div>
+    </div>
+    <div class="employee-content list"></div>
+  </div>
+</div>
