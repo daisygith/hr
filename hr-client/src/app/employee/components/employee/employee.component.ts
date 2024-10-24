@@ -1,7 +1,7 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 import {ToolbarLeftComponent} from "../../../shared/components/toolbar-left/toolbar-left.component";
 import {ToolbarTopComponent} from "../../../shared/components/toolbar-top/toolbar-top.component";
-import {RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatTab, MatTabGroup} from "@angular/material/tabs";
@@ -24,7 +24,9 @@ import {RequestTimeOffComponent} from "../requestTimeOff/requestTimeOff.componen
     InputComponent,
     MatTableModule,
     ManageEmployeeComponent,
-    RequestTimeOffComponent
+    RequestTimeOffComponent,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: "./employee.component.html",
   styleUrl: "./employee.component.scss",
