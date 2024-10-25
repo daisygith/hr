@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, signal, ViewEncapsulation} from "@angular/core";
 import {RouterOutlet} from "@angular/router";
 import {ToolbarLeftComponent} from "../../../shared/components/toolbar-left/toolbar-left.component";
 import {ToolbarTopComponent} from "../../../shared/components/toolbar-top/toolbar-top.component";
