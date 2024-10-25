@@ -27,7 +27,8 @@ import {MatOption, MatSelect} from "@angular/material/select";
     MatIconButton
   ],
   templateUrl: "./add-employee.component.html",
-  styleUrl: "./add-employee.component.scss"
+  styleUrl: "./add-employee.component.scss",
+  encapsulation: ViewEncapsulation.None
 })
 
 export class AddEmployeeComponent {
