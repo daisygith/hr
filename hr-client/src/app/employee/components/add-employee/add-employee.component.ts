@@ -33,4 +33,16 @@ import {MatOption, MatSelect} from "@angular/material/select";
 
 export class AddEmployeeComponent {
 
+  hidePassword = signal(true);
+  clickEventHidePassword(event: MouseEvent) {
+    this.hidePassword.set(!this.hidePassword());
+    event.stopPropagation();
+  }
+
+  hideConfirmPassword = signal(true);
+  clickEventHideConfirmPassword(event: MouseEvent) {
+    this.hideConfirmPassword.set(!this.hideConfirmPassword());
+    event.stopPropagation();
+  }
+
 }
