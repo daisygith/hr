@@ -19,27 +19,31 @@ app-requestTimeOff {
 
   //
 
-  button#button-filter1, button#button-filter2, button#button-details, button#button-more, button#button-edit {
+  button#button-filter1,
+  button#button-filter2,
+  button#button-details,
+  button#button-more,
+  button#button-edit {
     color: var(--main-color);
   }
 
-  button#button-details{
+  button#button-details {
     width: 124px;
   }
 
   button#button-more {
-    padding-block: 0px;
-    padding-inline: 0px;
+    padding-block: 0;
+    padding-inline: 0;
     min-width: 28px;
 
     mat-icon.mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color {
-      margin: 0px 2px 0px 0px;
+      margin: 0 2px 0 0;
     }
   }
 
   th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details,
   td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
-    padding-right: 0px;
+    padding-right: 0;
     width: 136px;
   }
 }
