@@ -1,3 +1,4 @@
+// TODO: usunąć niepotrzebne klasy
 app-manageEmployee {
   .demo-table {
     width: 100%;
@@ -19,11 +20,15 @@ app-manageEmployee {
 
   //
 
-  button#button-filter1, button#button-filter2, button#button-details, button#button-more, button#button-edit {
+  button#button-filter1,
+  button#button-filter2,
+  button#button-details,
+  button#button-more,
+  button#button-edit {
     color: var(--main-color);
   }
 
-  button#button-details{
+  button#button-details {
     width: 124px;
   }
 
