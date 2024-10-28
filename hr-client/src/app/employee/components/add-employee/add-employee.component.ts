@@ -1,21 +1,18 @@
 import {Component, signal, ViewEncapsulation} from "@angular/core";
 import {RouterOutlet} from "@angular/router";
-import {ToolbarLeftComponent} from "../../../shared/components/toolbar-left/toolbar-left.component";
-import {ToolbarTopComponent} from "../../../shared/components/toolbar-top/toolbar-top.component";
 import {NgOptimizedImage} from "@angular/common";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {ShellComponent} from "../../../shell/components/shell/shell.component";
 
 @Component({
   selector: 'app-add-employee',
   standalone: true,
   imports: [
     RouterOutlet,
-    ToolbarLeftComponent,
-    ToolbarTopComponent,
     NgOptimizedImage,
     MatButton,
     MatIcon,
@@ -24,7 +21,8 @@ import {MatOption, MatSelect} from "@angular/material/select";
     MatInputModule,
     MatSelect,
     MatOption,
-    MatIconButton
+    MatIconButton,
+    ShellComponent
   ],
   templateUrl: "./add-employee.component.html",
   styleUrl: "./add-employee.component.scss",
