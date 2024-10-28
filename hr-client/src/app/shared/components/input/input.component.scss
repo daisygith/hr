@@ -14,10 +14,6 @@ app-input {
     width: 80%;
   }
 
-  //.material-symbols-outlined span{
-  //  padding: 6px 0px 0px 0px;
-  //}
-
   .mat-mdc-form-field-bottom-align::before {
     content: none;
   }
@@ -32,7 +28,8 @@ app-input {
     background-color: transparent;
   }
 
-  .mdc-line-ripple::before, .mdc-line-ripple::after {
+  .mdc-line-ripple::before,
+  .mdc-line-ripple::after {
     content: none;
   }
 
@@ -41,13 +38,11 @@ app-input {
   }
 
   input#search-input {
-    padding: 8px 0px 0px 0px;
+    padding: 8px 0 0 0;
   }
 
   mat-icon#search-icon {
     position: absolute;
-    padding: 7px 0px 0px 16px;
+    padding: 7px 0 0 16px;
   }
-
-
 }
