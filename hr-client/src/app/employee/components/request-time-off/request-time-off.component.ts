@@ -32,7 +32,7 @@ const ELEMENT_DATA2: {
 ];
 
 @Component({
-  selector: 'app-request-time-off', // TODO: nazwa
+  selector: 'app-request-time-off',
   standalone: true,
   imports: [
     MatTable,

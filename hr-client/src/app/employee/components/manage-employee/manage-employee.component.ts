@@ -47,7 +47,7 @@ const ELEMENT_DATA: ManageEmployee[] = [
 ];
 
 @Component({
-  selector: 'app-manage-employee', // TODO: zmienić nazwę
+  selector: 'app-manage-employee',
   standalone: true,
   imports: [
     MatTable,
