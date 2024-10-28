@@ -1,65 +1,69 @@
 <div class="employee">
-  <app-toolbar-left></app-toolbar-left>
-  <div class="content">
-    <app-toolbar-top></app-toolbar-top>
-    <router-outlet/>
-    <div class="employee-content title">
-      <div class="employee-content title left">
-        <div class="employee-icon">
-          <span class="material-symbols-outlined" id="emp-icon">person_apron</span>
-        </div>
-        <div class="employee-title">
-          <div class="line1">Employee</div>
-          <div class="line2">Mange your employee</div>
-        </div>
+  <div class="employee-content title">
+    <div class="employee-content title left">
+      <div class="employee-icon">
+        <mat-icon class="material-symbols-outlined" id="emp-icon"
+          >person_apron</mat-icon
+        >
       </div>
-      <div class="employee-content title right">
-        <div class="button-add">
-          <button mat-flat-button
-                  routerLink="/employee/new" routerLinkActive="active" ariaCurrentWhenActive="page">
-            <mat-icon>add</mat-icon>
-            Add Employee</button>
-        </div>
+      <div class="employee-title">
+        <div class="line1">Employee</div>
+        <div class="line2">Mange your employee</div>
       </div>
     </div>
-    <div class="employee-content list">
-      <div class="list-tabs">
-        <mat-tab-group mat-stretch-tabs="false">
-          <mat-tab label="Manage Employee">
-            <div class="list-toolbar">
-              <div class="list-title">Manage Employee</div>
-              <div class="list-additional-elem">
-                <app-input></app-input>
-                <div class="button-filter">
-                  <button mat-stroked-button id="button-filter1">
-                    <mat-icon>filter_alt</mat-icon>
-                    Filter</button>
-                </div>
-              </div>
-            </div>
-            <div class="list-content">
-              <app-manageEmployee></app-manageEmployee>
-            </div>
-          </mat-tab>
-
-          <mat-tab label="Request Time Off">
-            <div class="list-toolbar">
-              <div class="list-title">Request Time Off</div>
-              <div class="list-additional-elem">
-                <app-input></app-input>
-                <div class="button-filter">
-                  <button mat-stroked-button id="button-filter2">
-                    <mat-icon>filter_alt</mat-icon>
-                    Filter</button>
-                </div>
-              </div>
-            </div>
-            <div class="list-content">
-              <app-requestTimeOff></app-requestTimeOff>
-            </div>
-          </mat-tab>
-        </mat-tab-group>
+    <div class="employee-content title right">
+      <div class="button-add">
+        <button
+          mat-flat-button
+          routerLink="/employee/new"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon>add</mat-icon>
+          Add Employee
+        </button>
       </div>
+    </div>
+  </div>
+  <div class="employee-content list">
+    <div class="list-tabs">
+      <mat-tab-group mat-stretch-tabs="false">
+        <mat-tab label="Manage Employee">
+          <div class="list-toolbar">
+            <div class="list-title">Manage Employee</div>
+            <div class="list-additional-elem">
+              <app-input></app-input>
+              <div class="button-filter">
+                <button mat-stroked-button id="button-filter1">
+                  <mat-icon>filter_alt</mat-icon>
+                  Filter
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="list-content">
+            <app-manage-employee></app-manage-employee>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Request Time Off">
+          <div class="list-toolbar">
+            <div class="list-title">Request Time Off</div>
+            <div class="list-additional-elem">
+              <app-input></app-input>
+              <div class="button-filter">
+                <button mat-stroked-button id="button-filter2">
+                  <mat-icon>filter_alt</mat-icon>
+                  Filter
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="list-content">
+            <app-request-time-off></app-request-time-off>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>
