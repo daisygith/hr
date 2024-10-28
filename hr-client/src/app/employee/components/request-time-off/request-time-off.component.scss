@@ -1,9 +1,4 @@
-// TODO: usunąć niepotrzebne klasy
-app-manageEmployee {
-  .demo-table {
-    width: 100%;
-  }
-
+app-request-time-off {
   .mat-mdc-row .mat-mdc-cell {
     border-bottom: 1px solid transparent;
     border-top: 1px solid transparent;
@@ -33,18 +28,18 @@ app-manageEmployee {
   }
 
   button#button-more {
-    padding-block: 0px;
-    padding-inline: 0px;
+    padding-block: 0;
+    padding-inline: 0;
     min-width: 28px;
 
     mat-icon.mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color {
-      margin: 0px 2px 0px 0px;
+      margin: 0 2px 0 0;
     }
   }
 
   th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details,
   td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
-    padding-right: 0px;
+    padding-right: 0;
     width: 136px;
   }
 }
