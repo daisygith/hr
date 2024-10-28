@@ -1,6 +1,4 @@
 import {Component, ViewEncapsulation} from "@angular/core";
-import {ToolbarLeftComponent} from "../../../shared/components/toolbar-left/toolbar-left.component";
-import {ToolbarTopComponent} from "../../../shared/components/toolbar-top/toolbar-top.component";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
@@ -9,13 +7,12 @@ import {InputComponent} from "../../../shared/components/input/input.component";
 import {MatTableModule} from "@angular/material/table";
 import {ManageEmployeeComponent} from "../manageEmployee/manageEmployee.component";
 import {RequestTimeOffComponent} from "../requestTimeOff/requestTimeOff.component";
+import {ShellComponent} from "../../../shell/components/shell/shell.component";
 
 @Component({
   selector: 'app-employee',
   standalone: true,
   imports: [
-    ToolbarLeftComponent,
-    ToolbarTopComponent,
     RouterOutlet,
     MatButton,
     MatIcon,
@@ -26,7 +23,8 @@ import {RequestTimeOffComponent} from "../requestTimeOff/requestTimeOff.componen
     ManageEmployeeComponent,
     RequestTimeOffComponent,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    ShellComponent
   ],
   templateUrl: "./employee.component.html",
   styleUrl: "./employee.component.scss",
