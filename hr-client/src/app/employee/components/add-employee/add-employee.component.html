@@ -1,143 +1,163 @@
 <div class="add-employee">
-  <app-toolbar-left></app-toolbar-left>
-  <div class="content">
-    <app-toolbar-top></app-toolbar-top>
-    <router-outlet/>
-    <div class="add-employee-content title">
-      <div class="add-employee-content title left">
-        <div class="add-employee-icon">
-          <span class="material-symbols-outlined" id="emp-icon">person_apron</span>
+  <div class="add-employee-content title">
+    <div class="add-employee-content title left">
+      <div class="add-employee-icon">
+        <span class="material-symbols-outlined" id="emp-icon"
+          >person_apron</span
+        >
+      </div>
+      <div class="add-employee-title">
+        <div class="line1">Edit Staff User Profile</div>
+      </div>
+    </div>
+  </div>
+  <div class="add-employee-content elements">
+    <div class="add-employee-content elements top">
+      <div class="elements top left">
+        <div class="elements-title">
+          <div class="title-line1">Change Profile</div>
+          <div class="title-line2">Change Profile picture from here</div>
         </div>
-        <div class="add-employee-title">
-          <div class="line1">Edit Staff User Profile</div>
+        <div class="elements-content">
+          <div class="picture">
+            <img
+              ngSrc="assets/image/default-avatar.png"
+              alt="default avatar"
+              height="100"
+              width="100"
+              id="picture-avatar"
+            />
+          </div>
+          <div class="button">
+            <div class="button-update">
+              <button mat-stroked-button id="button-update">Update</button>
+            </div>
+            <div class="button-remove">
+              <button mat-stroked-button id="button-remove">Remove</button>
+            </div>
+          </div>
+          <div class="info">Allowed JPG, GIF or PNG. Max size of 800K.</div>
+        </div>
+      </div>
+      <div class="elements top right">
+        <div class="elements-title">
+          <div class="title-line1">Change Password</div>
+          <div class="title-line2">To change password please confirm here</div>
+        </div>
+        <div class="elements-content">
+          <div class="input-newPassword">
+            <div class="input-title">New Password</div>
+            <mat-form-field class="input-full-width">
+              <input
+                matInput
+                [type]="hidePassword() ? 'password' : 'text'"
+                id="input-newPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEventHidePassword($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hidePassword()"
+              >
+                <mat-icon id="newPassword-icon">{{
+                  hidePassword() ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="input-confirmPassword">
+            <div class="input-title">Confirm Password</div>
+            <!--                <input matInput placeholder="" value="Sushi" id="input-confirmPassword">-->
+            <mat-form-field class="input-full-width">
+              <input
+                matInput
+                [type]="hideConfirmPassword() ? 'password' : 'text'"
+                id="input-confirmPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEventHideConfirmPassword($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hideConfirmPassword()"
+              >
+                <mat-icon id="confirmPassword-icon">{{
+                  hideConfirmPassword() ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
         </div>
       </div>
     </div>
-    <div class="add-employee-content elements">
-      <div class="add-employee-content elements top">
-        <div class="elements top left">
-          <div class="elements-title">
-            <div class="title-line1">Change Profile</div>
-            <div class="title-line2">Change Profile picture from here</div>
-          </div>
-          <div class="elements-content">
-            <div class="picture">
-              <img ngSrc="assets/image/default-avatar.png" alt="default avatar" height="100" width="100" id="picture-avatar">
-            </div>
-            <div class="button">
-              <div class="button-update">
-                <button mat-stroked-button id="button-update">
-                  Update</button>
-              </div>
-              <div class="button-remove">
-                <button mat-stroked-button id="button-remove">
-                  Remove</button>
-              </div>
-            </div>
-            <div class="info">
-              Allowed JPG, GIF or PNG. Max size of 800K.
-            </div>
-          </div>
-        </div>
-        <div class="elements top right">
-          <div class="elements-title">
-            <div class="title-line1">Change Password</div>
-            <div class="title-line2">To change password please confirm here</div>
-          </div>
-          <div class="elements-content">
-            <div class="input-newPassword">
-              <div class="input-title">New Password</div>
-              <mat-form-field class="input-full-width">
-                <input matInput [type]="hidePassword() ? 'password' : 'text'" id="input-newPassword"/>
-                <button
-                  mat-icon-button
-                  matSuffix
-                  (click)="clickEventHidePassword($event)"
-                  [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hidePassword()"
-                >
-                  <mat-icon id="newPassword-icon">{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
-            </div>
-            <div class="input-confirmPassword">
-              <div class="input-title">Confirm Password</div>
-<!--                <input matInput placeholder="" value="Sushi" id="input-confirmPassword">-->
-                <mat-form-field class="input-full-width">
-                  <input matInput [type]="hideConfirmPassword() ? 'password' : 'text'" id="input-confirmPassword"/>
-                  <button
-                    mat-icon-button
-                    matSuffix
-                    (click)="clickEventHideConfirmPassword($event)"
-                    [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hideConfirmPassword()"
-                  >
-                    <mat-icon id="confirmPassword-icon">{{hideConfirmPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-              </mat-form-field>
-            </div>
-          </div>
+    <div class="add-employee-content elements bottom">
+      <div class="elements-title">
+        <div class="title-line1">Personal Details</div>
+        <div class="title-line2">
+          To change User's personal detail, edit and save from here
         </div>
       </div>
-      <div class="add-employee-content elements bottom">
-        <div class="elements-title">
-          <div class="title-line1">Personal Details</div>
-          <div class="title-line2">To change User's personal detail, edit and save from here</div>
-        </div>
-        <div class="elements-content info-personal">
-          <div class="info-personal-left">
-            <div class="input-title">First name and Last name</div>
-            <mat-form-field class="input-full-width">
-              <input matInput placeholder="First Name and Last name" id="input-name-personal">
-            </mat-form-field>
-            <div class="input-title">Staff ID</div>
-            <mat-form-field class="input-full-width">
-              <input matInput placeholder="Staff ID" id="input-staffId-personal">
-            </mat-form-field>
+      <div class="elements-content info-personal">
+        <div class="info-personal-left">
+          <div class="input-title">First name and Last name</div>
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              placeholder="First Name and Last name"
+              id="input-name-personal"
+            />
+          </mat-form-field>
+          <div class="input-title">Staff ID</div>
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              placeholder="Staff ID"
+              id="input-staffId-personal"
+            />
+          </mat-form-field>
           <div class="input-title">Email</div>
           <mat-form-field class="input-full-width">
-            <input matInput placeholder="Email" id="input-email-personal">
+            <input matInput placeholder="Email" id="input-email-personal" />
           </mat-form-field>
         </div>
-          <div class="info-personal-right">
-            <div class="input-title">Gender</div>
-<!--            <mat-form-field class="input-full-width">-->
-<!--              <input matInput placeholder="" value="do list" id="input-gender-personal">-->
-<!--            </mat-form-field>-->
-            <mat-form-field class="input-full-width">
-              <mat-select>
-                <mat-option value="male">Male</mat-option>
-                <mat-option value="female">Female</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div class="input-title">Destination</div>
-            <mat-form-field class="input-full-width">
-<!--              <input matInput placeholder="" value="Sushi" id="input-destination-personal">-->
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div class="input-title">Phone</div>
-            <mat-form-field class="input-full-width">
-              <input matInput placeholder="Phone" id="input-phone-personal">
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="elements-content address-personal">
-          <div class="input-title">Address</div>
+        <div class="info-personal-right">
+          <div class="input-title">Gender</div>
           <mat-form-field class="input-full-width">
-            <input matInput placeholder="" value="Sushi" id="input-address-personal">
+            <mat-select>
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="input-title">Destination</div>
+          <mat-form-field class="input-full-width">
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="input-title">Phone</div>
+          <mat-form-field class="input-full-width">
+            <input matInput placeholder="Phone" id="input-phone-personal" />
           </mat-form-field>
         </div>
-        <div class="save-changes">
-          <div class="button-save">
-            <button mat-stroked-button id="button-save">
-              Save changes</button>
-          </div>
+      </div>
+      <div class="elements-content address-personal">
+        <div class="input-title">Address</div>
+        <mat-form-field class="input-full-width">
+          <input
+            matInput
+            placeholder=""
+            value="Sushi"
+            id="input-address-personal"
+          />
+        </mat-form-field>
+      </div>
+      <div class="save-changes">
+        <div class="button-save">
+          <button mat-stroked-button id="button-save">Save changes</button>
         </div>
       </div>
     </div>
   </div>
-
 </div>
