@@ -6,35 +6,35 @@
   <div class="sidebar middle">
     <div class="menu-element">
       <a routerLink="/dashboard" routerLinkActive="active">
+        <!--        TODO mat-icon zaamiast span-->
         <span class="material-symbols-outlined">dashboard</span>
-        <div class="element-title">Dashboard</div>
+        <div class="element-title">{{ "SIDEBAR.DASHBOARD" | translate }}</div>
       </a>
     </div>
     <div class="menu-element">
       <a routerLink="/staffList" routerLinkActive="active">
         <span class="material-symbols-outlined">list_alt</span>
-        <div class="element-title">Staff List</div>
+        <div class="element-title">{{ "SIDEBAR.STAFF_LIST" | translate }}</div>
       </a>
     </div>
     <div class="menu-element">
       <a routerLink="/employee" routerLinkActive="active">
         <span class="material-symbols-outlined">groups</span>
-        <div class="element-title">Employee</div>
+        <div class="element-title">{{ "SIDEBAR.EMPLOYEE" | translate }}</div>
       </a>
     </div>
-
   </div>
   <div class="sidebar bottom">
     <div class="menu-element">
       <a routerLink="/setting" routerLinkActive="active">
         <span class="material-symbols-outlined">settings</span>
-        <div class="element-title">Setting</div>
+        <div class="element-title">{{ "SIDEBAR.SETTINGS" | translate }}</div>
       </a>
     </div>
     <div class="menu-element">
       <a routerLink="/login" routerLinkActive="active">
         <span class="material-symbols-outlined">logout</span>
-        <div class="element-title">Logout</div>
+        <div class="element-title">{{ "SIDEBAR.LOGOUT" | translate }}</div>
       </a>
     </div>
   </div>

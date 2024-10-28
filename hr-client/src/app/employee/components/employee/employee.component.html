@@ -7,12 +7,13 @@
         >
       </div>
       <div class="employee-title">
-        <div class="line1">Employee</div>
-        <div class="line2">Mange your employee</div>
+        <div class="line1">{{ "EMPLOYEE.TITLE" | translate }}</div>
+        <div class="line2">{{ "EMPLOYEE.SUBTITLE" | translate }}</div>
       </div>
     </div>
     <div class="employee-content title right">
       <div class="button-add">
+        <!--        TODO dodać wielkośc- szerokosc przycisku pod polski tytuł-->
         <button
           mat-flat-button
           routerLink="/employee/new"
@@ -20,7 +21,7 @@
           ariaCurrentWhenActive="page"
         >
           <mat-icon>add</mat-icon>
-          Add Employee
+          {{ "EMPLOYEE.ADD_EMPLOYEE" | translate }}
         </button>
       </div>
     </div>
@@ -30,13 +31,16 @@
       <mat-tab-group mat-stretch-tabs="false">
         <mat-tab label="Manage Employee">
           <div class="list-toolbar">
-            <div class="list-title">Manage Employee</div>
+            <div class="list-title">
+              {{ "EMPLOYEE.MANAGE_EMPLOYEE" | translate }}
+            </div>
             <div class="list-additional-elem">
               <app-input></app-input>
               <div class="button-filter">
+                <!--                TODO  dodać wielkośc- szerokosc przycisku pod polski tytuł-->
                 <button mat-stroked-button id="button-filter1">
                   <mat-icon>filter_alt</mat-icon>
-                  Filter
+                  {{ "EMPLOYEE.FILTER" | translate }}
                 </button>
               </div>
             </div>
@@ -48,13 +52,16 @@
 
         <mat-tab label="Request Time Off">
           <div class="list-toolbar">
-            <div class="list-title">Request Time Off</div>
+            <div class="list-title">
+              {{ "EMPLOYEE.REQUEST_TIME_OFF" | translate }}
+            </div>
             <div class="list-additional-elem">
               <app-input></app-input>
               <div class="button-filter">
+                <!--                TODO  dodać wielkośc- szerokosc przycisku pod polski tytuł-->
                 <button mat-stroked-button id="button-filter2">
                   <mat-icon>filter_alt</mat-icon>
-                  Filter
+                  {{ "EMPLOYEE.FILTER" | translate }}
                 </button>
               </div>
             </div>
