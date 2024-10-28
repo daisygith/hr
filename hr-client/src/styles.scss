@@ -67,3 +67,10 @@ body {
 .active div {
   color: var(--toolbar-element-color);
 }
+
+mat-icon#emp-icon {
+  font-size: 40px;
+  padding: 4px;
+  height: 36px;
+  width: 40px;
+}
