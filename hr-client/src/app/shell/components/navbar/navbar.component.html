@@ -6,7 +6,6 @@
     <!--    TODO zamienić span na mat-icon-->
     <span class="material-symbols-outlined"> notifications_active </span>
     <label>
-      <!--      {{ "HOME.SELECT" | translate }}-->
       <select #langSelect (change)="translate.use(langSelect.value)">
         <option
           *ngFor="let lang of translate.getLangs()"
