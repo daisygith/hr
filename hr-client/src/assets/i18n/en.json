@@ -1,0 +1,31 @@
+{
+  "ADD_EMPLOYEE": {
+    "TITLE": "Employee"
+  },
+  "EMPLOYEE": {
+    "ADD_EMPLOYEE": "Add Employee",
+    "FILTER": "Filter",
+    "MANAGE_EMPLOYEE": "Manage Employee",
+    "REQUEST_TIME_OFF": "Request Time Off",
+    "SUBTITLE": "Manage your employee",
+    "TITLE": "Employee"
+  },
+  "MANAGE_EMPLOYEE": {
+    "ATTENDANCE": "Attendance",
+    "CONTACT_TYPE": "Contact Type",
+    "EMPLOYEE_NAME": "Employee name",
+    "DEPARTMENT": "Department",
+    "JOB_TITLE": "Job Title",
+    "PHONE_NUMBER": "Phone Number"
+  },
+  "NAVBAR": {
+    "SEARCH_HERE": "Search"
+  },
+  "SIDEBAR": {
+    "EMPLOYEE": "Employee",
+    "DASHBOARD": "Dashboard",
+    "LOGOUT": "Logout",
+    "SETTINGS": "Settings",
+    "STAFF_LIST": "Staff List"
+  }
+}

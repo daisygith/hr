@@ -1,0 +1,31 @@
+{
+  "ADD_EMPLOYEE": {
+    "TITLE": "Pracownik"
+  },
+  "EMPLOYEE": {
+    "ADD_EMPLOYEE": "Dodaj pracownika",
+    "FILTER": "Filtruj",
+    "MANAGE_EMPLOYEE": "Zarządzaj pracownikami",
+    "REQUEST_TIME_OFF": "Wniosek o czas wolny",
+    "SUBTITLE": "Zarządzaj swoimi pracownikami",
+    "TITLE": "Pracownicy"
+  },
+  "MANAGE_EMPLOYEE": {
+    "ATTENDANCE": "Frekwencja",
+    "CONTACT_TYPE": "Typ kontaktu",
+    "EMPLOYEE_NAME": "Imię i Nazwisko pracownika",
+    "DEPARTMENT": "Dział",
+    "JOB_TITLE": "Tytuł służbowy",
+    "PHONE_NUMBER": "Numer Telefonu"
+  },
+  "NAVBAR": {
+    "SEARCH_HERE": "Szukaj"
+  },
+  "SIDEBAR": {
+    "EMPLOYEE": "Pracownicy",
+    "DASHBOARD": "Tablica",
+    "LOGOUT": "Wyloguj",
+    "SETTINGS": "Ustawienia",
+    "STAFF_LIST": "Lista rzeczy"
+  }
+}
