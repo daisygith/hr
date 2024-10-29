@@ -55,7 +55,9 @@
   <ng-container matColumnDef="details">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-stroked-button id="button-details">See details</button>
+      <button mat-stroked-button id="button-details">
+        {{ "MANAGE_EMPLOYEE.BUTTON.SEE_DETAILS" | translate }}
+      </button>
     </td>
   </ng-container>
 
