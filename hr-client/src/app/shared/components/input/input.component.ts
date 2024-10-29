@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 import {MatFormField, MatInput} from '@angular/material/input';
 import {MatIcon} from "@angular/material/icon";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @Component({
@@ -8,13 +9,7 @@ import {MatIcon} from "@angular/material/icon";
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   standalone: true,
-    imports: [
-        MatFormField,
-        MatInput,
-        MatIcon
-    ],
-  encapsulation: ViewEncapsulation.None
+  imports: [MatFormField, MatInput, MatIcon, TranslateModule],
+  encapsulation: ViewEncapsulation.None,
 })
-export class InputComponent {
-
-}
+export class InputComponent {}
