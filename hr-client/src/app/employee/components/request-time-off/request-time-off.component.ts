@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -14,23 +14,8 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-
-// TODO: services/employees.service.ts a w nim metodę getTimeOffRequests(), która zwróci tą listę
-const ELEMENT_DATA2: {
-  employeeName: string;
-  leaveType: string;
-  days: number;
-  statusEmployee: string;
-  leaveFrom: string;
-}[] = [
-  {
-    employeeName: 'Test1 Test1',
-    leaveType: 'annual leave',
-    leaveFrom: '2024-03-03',
-    days: 1,
-    statusEmployee: 'pending',
-  },
-];
+import { EmployeeService } from '../../services/employee.service';
+import { RequestTimeOff } from '../../models/requestTimeOff';
 
 @Component({
   selector: 'app-request-time-off',
@@ -54,9 +39,20 @@ const ELEMENT_DATA2: {
   styleUrl: './request-time-off.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class RequestTimeOffComponent {
-  // TODO: usunąć "2"
-  displayedColumns2: string[] = [
+export class RequestTimeOffComponent implements OnInit {
+  dataSource: RequestTimeOff[] = [];
+
+  constructor(private employeeService: EmployeeService) {}
+
+  getRequestTImeOff(): void {
+    this.dataSource = this.employeeService.getRequestTimeOff();
+  }
+
+  ngOnInit(): void {
+    this.getRequestTImeOff();
+  }
+
+  displayedColumns = [
     'employeeName',
     'leaveType',
     'leaveFrom',
@@ -64,5 +60,4 @@ export class RequestTimeOffComponent {
     'statusEmployee',
     'edit',
   ];
-  dataSource2 = ELEMENT_DATA2;
 }
