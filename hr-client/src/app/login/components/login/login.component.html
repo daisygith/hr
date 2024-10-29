@@ -1,9 +1,22 @@
-<div class="title-page">Welcome to HR!</div>
+<div class="title-page">{{ "LOGIN.TITLE" | translate }}</div>
+<div class="change-language">
+  <label>
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option
+        *ngFor="let lang of translate.getLangs()"
+        [value]="lang"
+        [selected]="lang === translate.currentLang"
+      >
+        {{ lang }}
+      </option>
+    </select>
+  </label>
+</div>
 
 <div class="login-main-part">
   <div class="login-frame">
     <div class="login-part top">
-      <div class="title">Login</div>
+      <div class="title">{{ "LOGIN.TITLE_LOGIN" | translate }}</div>
     </div>
     <div class="login-part middle">
       <!--      TODO : change input to input password - jest w dodawaniu pracownika-->
@@ -11,7 +24,9 @@
     </div>
     <div class="login-part bottom">
       <div class="login-button-row">
-        <button mat-stroked-button>Log in</button>
+        <button mat-stroked-button>
+          {{ "LOGIN.BUTTON.LOGIN" | translate }}
+        </button>
       </div>
     </div>
   </div>
