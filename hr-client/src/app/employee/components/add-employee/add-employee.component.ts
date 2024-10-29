@@ -7,6 +7,7 @@ import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {ShellComponent} from "../../../shell/components/shell/shell.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-add-employee',
@@ -22,15 +23,14 @@ import {ShellComponent} from "../../../shell/components/shell/shell.component";
     MatSelect,
     MatOption,
     MatIconButton,
-    ShellComponent
+    ShellComponent,
+    TranslateModule,
   ],
-  templateUrl: "./add-employee.component.html",
-  styleUrl: "./add-employee.component.scss",
-  encapsulation: ViewEncapsulation.None
+  templateUrl: './add-employee.component.html',
+  styleUrl: './add-employee.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-
 export class AddEmployeeComponent {
-
   hidePassword = signal(true);
   clickEventHidePassword(event: MouseEvent) {
     this.hidePassword.set(!this.hidePassword());
@@ -42,5 +42,4 @@ export class AddEmployeeComponent {
     this.hideConfirmPassword.set(!this.hideConfirmPassword());
     event.stopPropagation();
   }
-
 }
