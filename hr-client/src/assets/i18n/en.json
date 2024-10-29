@@ -1,6 +1,44 @@
 {
   "ADD_EMPLOYEE": {
-    "TITLE": "Employee"
+    "TITLE": "Edit Staff User Profile",
+    "CHANGE_PASSWORD": {
+      "SUBTITLE": "To change password please confirm here",
+      "TITLE": "Change Password",
+      "NEW_PASSWORD": "New Password",
+      "CONFIRM_PASSWORD": "Confirm Password"
+    },
+    "CHANGE_PROFILE": {
+      "BUTTON": {
+        "UPDATE": "Update",
+        "REMOVE": "Remove"
+      },
+      "INFO_PICTURE": "Allowed JPG, GIF or PNG. Max size of 800K.",
+      "SUBTITLE": "Change Profile picture form here",
+      "TITLE": "Change Profile"
+    },
+    "PERSONAL_DETAILS": {
+      "ADDRESS": "Address",
+      "BUTTON": {
+        "SAVE_CHANGES": "Save"
+      },
+      "DESTINATION": {
+        "TITLE": "Destination",
+        "OPTION_1": "Option_1",
+        "OPTION_2": "Option_2"
+      },
+      "EMAIL": "Email",
+      "GENDER": {
+        "FEMALE": "FEMALE",
+        "OTHER": "OTHER",
+        "MALE": "MALE",
+        "TITLE": "Gender"
+      },
+      "NAME": "First name and Last name",
+      "PHONE": "Phone",
+      "SUBTITLE": "To change User's personal detail, edit and save from here",
+      "STAFF_ID": "Staff ID",
+      "TITLE": "Personal Details"
+    }
   },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Add Employee",
@@ -12,6 +50,9 @@
   },
   "MANAGE_EMPLOYEE": {
     "ATTENDANCE": "Attendance",
+    "BUTTON": {
+      "SEE_DETAILS": "See details"
+    },
     "CONTACT_TYPE": "Contact Type",
     "EMPLOYEE_NAME": "Employee name",
     "DEPARTMENT": "Department",
@@ -20,6 +61,16 @@
   },
   "NAVBAR": {
     "SEARCH_HERE": "Search"
+  },
+  "REQUEST_TIME_OFF": {
+    "BUTTON": {
+      "EDIT": "Edit"
+    },
+    "DAYS": "Days",
+    "EMPLOYEE_NAME": "Employee name",
+    "LEAVE_FROM": "Leave from",
+    "LEAVE_TYPE": "Leave Type",
+    "STATUS": "Status"
   },
   "SIDEBAR": {
     "EMPLOYEE": "Employee",

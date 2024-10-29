@@ -1,17 +1,58 @@
 {
   "ADD_EMPLOYEE": {
-    "TITLE": "Pracownik"
+    "TITLE": "Edycja profilu użytkownika",
+    "CHANGE_PASSWORD": {
+      "SUBTITLE": "Potwierdź zmianę hasła",
+      "TITLE": "Zmiana hasła",
+      "NEW_PASSWORD": "Nowe hasło",
+      "CONFIRM_PASSWORD": "Potwierdź hasło"
+    },
+    "CHANGE_PROFILE": {
+      "BUTTON": {
+        "UPDATE": "Aktualizacja",
+        "REMOVE": "Usuń"
+      },
+      "INFO_PICTURE": "Dozwolony format plików JPG, GIF or PNG. Max. rozmiar 800K.",
+      "SUBTITLE": "Zmień zdjęcie profilowe",
+      "TITLE": "Zmień Profil"
+    },
+    "PERSONAL_DETAILS": {
+      "ADDRESS": "Adres",
+      "BUTTON": {
+        "SAVE_CHANGES": "Zapisz"
+      },
+      "DESTINATION": {
+        "TITLE": "Miejsce docelowe",
+        "OPTION_1": "Opcja_1",
+        "OPTION_2": "Opcja_2"
+      },
+      "EMAIL": "Email",
+      "GENDER": {
+        "FEMALE": "Kobieta",
+        "OTHER": "Inne",
+        "MALE": "Mężczyzna",
+        "TITLE": "Płeć"
+      },
+      "NAME": "Imię i Nazwisko",
+      "PHONE": "Telefon",
+      "SUBTITLE": "Aby zmienić dane osobowe użytkownika, edytuj i zapisz je tutaj",
+      "STAFF_ID": "Identyfikator Pracownika",
+      "TITLE": "Dane Osobowe"
+    }
   },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Dodaj pracownika",
     "FILTER": "Filtruj",
     "MANAGE_EMPLOYEE": "Zarządzaj pracownikami",
-    "REQUEST_TIME_OFF": "Wniosek o czas wolny",
+    "REQUEST_TIME_OFF": "Wniosek urlopowy",
     "SUBTITLE": "Zarządzaj swoimi pracownikami",
     "TITLE": "Pracownicy"
   },
   "MANAGE_EMPLOYEE": {
     "ATTENDANCE": "Frekwencja",
+    "BUTTON": {
+      "SEE_DETAILS": "Więcej"
+    },
     "CONTACT_TYPE": "Typ kontaktu",
     "EMPLOYEE_NAME": "Imię i Nazwisko pracownika",
     "DEPARTMENT": "Dział",
@@ -20,6 +61,16 @@
   },
   "NAVBAR": {
     "SEARCH_HERE": "Szukaj"
+  },
+  "REQUEST_TIME_OFF": {
+    "BUTTON": {
+      "EDIT": "Edycja"
+    },
+    "DAYS": "Dni",
+    "EMPLOYEE_NAME": "Imię i Nazwisko pracownika",
+    "LEAVE_FROM": "Urlop od",
+    "LEAVE_TYPE": "Rodzaj urlopu",
+    "STATUS": "Status"
   },
   "SIDEBAR": {
     "EMPLOYEE": "Pracownicy",
