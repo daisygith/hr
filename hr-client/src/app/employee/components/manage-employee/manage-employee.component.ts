@@ -13,6 +13,7 @@ import {
 } from '@angular/material/table';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 // TODO: dodać models/employees.ts i w nim dodać ten model
 export interface ManageEmployee {
@@ -62,6 +63,7 @@ const ELEMENT_DATA: ManageEmployee[] = [
     MatHeaderCellDef,
     MatCellDef,
     MatIcon,
+    TranslateModule,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',

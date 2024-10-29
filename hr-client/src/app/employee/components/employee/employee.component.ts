@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ManageEmployeeComponent } from '../manage-employee/manage-employee.component';
 import { ShellComponent } from '../../../shell/components/shell/shell.component';
 import { RequestTimeOffComponent } from '../request-time-off/request-time-off.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-employee',
@@ -26,6 +27,7 @@ import { RequestTimeOffComponent } from '../request-time-off/request-time-off.co
     RouterLinkActive,
     ShellComponent,
     RequestTimeOffComponent,
+    TranslateModule,
   ],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss',
