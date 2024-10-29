@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,14 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'hr-client';
+
+  constructor(public translate: TranslateService) {
+    translate.addLangs(['en', 'pl']);
+    translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang();
+    if (browserLang != null) {
+      translate.use(browserLang.match(/pl|en/) ? browserLang : 'en');
+    }
+  }
 }
