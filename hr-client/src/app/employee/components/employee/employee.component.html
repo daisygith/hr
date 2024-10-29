@@ -29,7 +29,8 @@
   <div class="employee-content list">
     <div class="list-tabs">
       <mat-tab-group mat-stretch-tabs="false">
-        <mat-tab label="Manage Employee">
+        <!--TODO: dostosowac szerokosc label dla polskich nazw-->
+        <mat-tab [label]="'EMPLOYEE.MANAGE_EMPLOYEE' | translate">
           <div class="list-toolbar">
             <div class="list-title">
               {{ "EMPLOYEE.MANAGE_EMPLOYEE" | translate }}
@@ -49,8 +50,8 @@
             <app-manage-employee></app-manage-employee>
           </div>
         </mat-tab>
-
-        <mat-tab label="Request Time Off">
+        <!--TODO: dostosowac szerokosc label dla polskich nazw-->
+        <mat-tab [label]="'EMPLOYEE.REQUEST_TIME_OFF' | translate">
           <div class="list-toolbar">
             <div class="list-title">
               {{ "EMPLOYEE.REQUEST_TIME_OFF" | translate }}
