@@ -1,31 +1,41 @@
 <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
   <!-- Employee Name Column -->
   <ng-container matColumnDef="employeeName">
-    <th mat-header-cell *matHeaderCellDef>Employee Name</th>
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "REQUEST_TIME_OFF.EMPLOYEE_NAME" | translate }}
+    </th>
     <td mat-cell *matCellDef="let element">{{ element.employeeName }}</td>
   </ng-container>
 
   <!-- Leave Type Column -->
   <ng-container matColumnDef="leaveType">
-    <th mat-header-cell *matHeaderCellDef>Leave Type</th>
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "REQUEST_TIME_OFF.LEAVE_TYPE" | translate }}
+    </th>
     <td mat-cell *matCellDef="let element">{{ element.leaveType }}</td>
   </ng-container>
 
   <!-- Leave From Column -->
   <ng-container matColumnDef="leaveFrom">
-    <th mat-header-cell *matHeaderCellDef>Leave From</th>
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "REQUEST_TIME_OFF.LEAVE_FROM" | translate }}
+    </th>
     <td mat-cell *matCellDef="let element">{{ element.leaveFrom }}</td>
   </ng-container>
 
   <!-- Days Type Column -->
   <ng-container matColumnDef="days">
-    <th mat-header-cell *matHeaderCellDef>Days</th>
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "REQUEST_TIME_OFF.DAYS" | translate }}
+    </th>
     <td mat-cell *matCellDef="let element">{{ element.days }}</td>
   </ng-container>
 
   <!-- Status Type Column -->
   <ng-container matColumnDef="statusEmployee">
-    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "REQUEST_TIME_OFF.STATUS" | translate }}
+    </th>
     <td mat-cell *matCellDef="let element">{{ element.statusEmployee }}</td>
   </ng-container>
 
@@ -33,7 +43,10 @@
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-stroked-button id="button-edit">Edit</button>
+      <!--      TODO: dostosowac szerokosc pod polską nazwę-->
+      <button mat-stroked-button id="button-edit">
+        {{ "REQUEST_TIME_OFF.BUTTON.EDIT" | translate }}
+      </button>
     </td>
   </ng-container>
 

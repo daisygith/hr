@@ -13,6 +13,7 @@ import {
 } from '@angular/material/table';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 // TODO: services/employees.service.ts a w nim metodę getTimeOffRequests(), która zwróci tą listę
 const ELEMENT_DATA2: {
@@ -47,6 +48,7 @@ const ELEMENT_DATA2: {
     MatHeaderCellDef,
     MatCellDef,
     MatIcon,
+    TranslateModule,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
