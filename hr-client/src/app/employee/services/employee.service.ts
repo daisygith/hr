@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { RequestTimeOff } from '../models/requestTimeOff';
 import { ManageEmployee } from '../models/manageEmmployee';
+import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
-  public getManageEmployee(): ManageEmployee[] {
-    return [
+  public getManageEmployee(): Observable<ManageEmployee[]> {
+    return of([
       {
         employeeName: 'Test1 Test1',
         phoneNumber: '(+62) 928 7273 7262',
@@ -14,11 +15,11 @@ export class EmployeeService {
         contactType: 'Onsite - Full time',
         attendance: '120h 32m',
       },
-    ];
+    ]);
   }
 
-  public getRequestTimeOff(): RequestTimeOff[] {
-    return [
+  public getRequestTimeOff(): Observable<RequestTimeOff[]> {
+    return of([
       {
         employeeName: 'Test1 Test1',
         leaveType: 'annual leave',
@@ -26,6 +27,6 @@ export class EmployeeService {
         days: 1,
         statusEmployee: 'pending',
       },
-    ];
+    ]);
   }
 }

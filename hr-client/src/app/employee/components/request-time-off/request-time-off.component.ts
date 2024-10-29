@@ -16,6 +16,7 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-request-time-off',
@@ -34,6 +35,7 @@ import { RequestTimeOff } from '../../models/requestTimeOff';
     MatCellDef,
     MatIcon,
     TranslateModule,
+    AsyncPipe,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
@@ -41,16 +43,6 @@ import { RequestTimeOff } from '../../models/requestTimeOff';
 })
 export class RequestTimeOffComponent implements OnInit {
   dataSource: RequestTimeOff[] = [];
-
-  constructor(private employeeService: EmployeeService) {}
-
-  getRequestTImeOff(): void {
-    this.dataSource = this.employeeService.getRequestTimeOff();
-  }
-
-  ngOnInit(): void {
-    this.getRequestTImeOff();
-  }
 
   displayedColumns = [
     'employeeName',
@@ -60,4 +52,16 @@ export class RequestTimeOffComponent implements OnInit {
     'statusEmployee',
     'edit',
   ];
+
+  constructor(private employeeService: EmployeeService) {}
+
+  ngOnInit(): void {
+    this.getRequestTImeOff();
+  }
+
+  getRequestTImeOff(): void {
+    this.employeeService
+      .getRequestTimeOff()
+      .subscribe({ next: (value) => (this.dataSource = value) });
+  }
 }

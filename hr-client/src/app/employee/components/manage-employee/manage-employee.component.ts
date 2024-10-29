@@ -16,6 +16,7 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-manage-employee',
@@ -34,6 +35,7 @@ import { ManageEmployee } from '../../models/manageEmmployee';
     MatCellDef,
     MatIcon,
     TranslateModule,
+    AsyncPipe,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',
@@ -41,17 +43,6 @@ import { ManageEmployee } from '../../models/manageEmmployee';
 })
 export class ManageEmployeeComponent implements OnInit {
   dataSource: ManageEmployee[] = [];
-
-  constructor(private employeeService: EmployeeService) {}
-
-  getManageEmployee(): void {
-    this.dataSource = this.employeeService.getManageEmployee();
-  }
-
-  ngOnInit(): void {
-    this.getManageEmployee();
-  }
-
   displayedColumns = [
     'employeeName',
     'phoneNumber',
@@ -62,4 +53,16 @@ export class ManageEmployeeComponent implements OnInit {
     'details',
     'more',
   ];
+
+  constructor(private employeeService: EmployeeService) {}
+
+  ngOnInit(): void {
+    this.getManageEmployee();
+  }
+
+  getManageEmployee(): void {
+    this.employeeService
+      .getManageEmployee()
+      .subscribe({ next: (value) => (this.dataSource = value) });
+  }
 }
