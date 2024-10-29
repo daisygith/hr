@@ -48,6 +48,19 @@
     "SUBTITLE": "Zarządzaj swoimi pracownikami",
     "TITLE": "Pracownicy"
   },
+  "LOGIN": {
+    "BUTTON": {
+      "LOGIN": "Zaloguj"
+    },
+    "EMAIL": "Email",
+    "EMAIL_REQUIRED": "Email jest wymagany",
+    "EMAIL_VALID": "Proszę wpisać prawidłowy adres email",
+    "PASSWORD": "Hasło",
+    "PASSWORD_REQUIRED": "Hasło jest wymagane",
+    "PASSWORD_VALID": "Proszę wpisać prawidłowe hasło",
+    "TITLE": "Witaj w HR!",
+    "TITLE_LOGIN": "Logowanie"
+  },
   "MANAGE_EMPLOYEE": {
     "ATTENDANCE": "Frekwencja",
     "BUTTON": {

@@ -48,6 +48,19 @@
     "SUBTITLE": "Manage your employee",
     "TITLE": "Employee"
   },
+  "LOGIN": {
+    "BUTTON": {
+      "LOGIN": "Login"
+    },
+    "EMAIL": "Email",
+    "EMAIL_REQUIRED": "Email is required",
+    "EMAIL_VALID": "Please enter a valid email address",
+    "PASSWORD": "Password",
+    "PASSWORD_REQUIRED": "Password is required",
+    "PASSWORD_VALID": "Please enter a valid email address",
+    "TITLE": "Welcome to HR!",
+    "TITLE_LOGIN": "Login"
+  },
   "MANAGE_EMPLOYEE": {
     "ATTENDANCE": "Attendance",
     "BUTTON": {
