@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -14,38 +14,8 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-
-// TODO: dodać models/employees.ts i w nim dodać ten model
-export interface ManageEmployee {
-  employeeName: string;
-  phoneNumber: string;
-  department: string;
-  jobTitle: string;
-  contactType: string;
-  attendance: string;
-}
-
-/**
- * TODO: dodać services/employees.service.ts a w nim metodę getEmployees, która zwróci tą listę
- */
-const ELEMENT_DATA: ManageEmployee[] = [
-  {
-    employeeName: 'Test1 Test1',
-    phoneNumber: '(+62) 928 7273 7262',
-    department: 'Design',
-    jobTitle: 'Creative Direction',
-    contactType: 'Onsite - Full time',
-    attendance: '120h 32m',
-  },
-  {
-    employeeName: 'Test1 Test1',
-    phoneNumber: '(+62) 928 7273 7262',
-    department: 'Design',
-    jobTitle: 'Creative Direction',
-    contactType: 'Onsite - Full time',
-    attendance: '120h 32m',
-  },
-];
+import { EmployeeService } from '../../services/employee.service';
+import { ManageEmployee } from '../../models/manageEmmployee';
 
 @Component({
   selector: 'app-manage-employee',
@@ -69,8 +39,20 @@ const ELEMENT_DATA: ManageEmployee[] = [
   styleUrl: './manage-employee.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class ManageEmployeeComponent {
-  displayedColumns: string[] = [
+export class ManageEmployeeComponent implements OnInit {
+  dataSource: ManageEmployee[] = [];
+
+  constructor(private employeeService: EmployeeService) {}
+
+  getManageEmployee(): void {
+    this.dataSource = this.employeeService.getManageEmployee();
+  }
+
+  ngOnInit(): void {
+    this.getManageEmployee();
+  }
+
+  displayedColumns = [
     'employeeName',
     'phoneNumber',
     'department',
@@ -80,5 +62,4 @@ export class ManageEmployeeComponent {
     'details',
     'more',
   ];
-  dataSource = ELEMENT_DATA;
 }
