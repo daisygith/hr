@@ -1,24 +1,40 @@
 <form class="input-form">
-    <mat-form-field class="input-full-width">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-            <mat-error>Please enter a valid email address</mat-error>
-        }
-        @if (emailFormControl.hasError('required')) {
-            <mat-error>Email is <strong>required</strong></mat-error>
-        }
-    </mat-form-field>
+  <mat-form-field class="input-full-width">
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      matInput
+      [formControl]="emailFormControl"
+      [placeholder]="'LOGIN.EMAIL' | translate"
+    />
+    @if (
+      emailFormControl.hasError("email") &&
+      !emailFormControl.hasError("required")
+    ) {
+      <mat-error>{{ "LOGIN.EMAIL_VALID" | translate }}</mat-error>
+    }
+    @if (emailFormControl.hasError("required")) {
+      <mat-error>{{ "LOGIN.EMAIL_REQUIRED" | translate }}</mat-error>
+    }
+  </mat-form-field>
 </form>
 <form class="input-form">
-    <mat-form-field class="input-full-width">
-        <mat-label>Password</mat-label>
-        <input type="new-password" matInput [formControl]="passwordFormControl" placeholder="Ex. password">
-        @if (passwordFormControl.hasError('email') && !passwordFormControl.hasError('required')) {
-            <mat-error>Please enter a valid email address</mat-error>
-        }
-        @if (passwordFormControl.hasError('required')) {
-            <mat-error>Password is <strong>required</strong></mat-error>
-        }
-    </mat-form-field>
+  <mat-form-field class="input-full-width">
+    <mat-label>Password</mat-label>
+    <input
+      type="new-password"
+      matInput
+      [formControl]="passwordFormControl"
+      [placeholder]="'LOGIN.PASSWORD' | translate"
+    />
+    @if (
+      passwordFormControl.hasError("email") &&
+      !passwordFormControl.hasError("required")
+    ) {
+      <mat-error>{{ "LOGIN.PASSWORD_VALID" | translate }}</mat-error>
+    }
+    @if (passwordFormControl.hasError("required")) {
+      <mat-error>{{ "LOGIN.PASSWORD_REQUIRED" | translate }}</mat-error>
+    }
+  </mat-form-field>
 </form>
