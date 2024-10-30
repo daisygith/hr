@@ -89,6 +89,8 @@
     "EMPLOYEE": "Pracownicy",
     "DASHBOARD": "Tablica",
     "LOGOUT": "Wyloguj",
+    "MAIN_MENU": "MENU GŁÓWNE",
+    "OTHER": "INNE",
     "SETTINGS": "Ustawienia",
     "STAFF_LIST": "Lista rzeczy"
   }

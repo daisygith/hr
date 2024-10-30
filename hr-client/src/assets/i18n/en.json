@@ -83,12 +83,17 @@
     "EMPLOYEE_NAME": "Employee name",
     "LEAVE_FROM": "Leave from",
     "LEAVE_TYPE": "Leave Type",
+    "LEAVE_TYPES": {
+      "ANNUAL_LEAVE": "Annual leave"
+    },
     "STATUS": "Status"
   },
   "SIDEBAR": {
     "EMPLOYEE": "Employee",
     "DASHBOARD": "Dashboard",
     "LOGOUT": "Logout",
+    "MAIN_MENU": "MAIN MENU",
+    "OTHER": "OTHER",
     "SETTINGS": "Settings",
     "STAFF_LIST": "Staff List"
   }
