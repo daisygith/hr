@@ -5,6 +5,7 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgForOf } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,7 @@ import { NgForOf } from '@angular/common';
     ReactiveFormsModule,
     TranslateModule,
     NgForOf,
+    MatIcon,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

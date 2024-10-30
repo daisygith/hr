@@ -1,24 +1,15 @@
 app-manage-employee {
   .mat-mdc-row .mat-mdc-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
+    //border-bottom: 1px solid transparent;
+    //border-top: 1px solid transparent;
     cursor: pointer;
   }
 
-  .mat-mdc-row:hover .mat-mdc-cell {
-    border-color: currentColor;
-  }
-
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-
-  button#button-filter1,
-  button#button-filter2,
   button#button-details,
-  button#button-more,
-  button#button-edit {
+  button#button-more {
     color: var(--main-color);
+    border: 1px solid var(--color-9);
+    border-radius: 10px;
   }
 
   button#button-details {
@@ -39,5 +30,10 @@ app-manage-employee {
   td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
     padding-right: 0;
     width: 136px;
+  }
+
+  tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
+    background-color: var(--color-9) !important;
+    height: 36px;
   }
 }

@@ -4,36 +4,47 @@
     <div class="avatar">Avatar</div>
   </div>
   <div class="sidebar middle">
+    <div class="title-menu">{{ "SIDEBAR.MAIN_MENU" | translate }}</div>
     <div class="menu-element">
       <a routerLink="/dashboard" routerLinkActive="active">
-        <!--        TODO mat-icon zaamiast span-->
-        <span class="material-symbols-outlined">dashboard</span>
+        <mat-icon class="material-symbols-outlined" id="dashboard-icon"
+          >dashboard</mat-icon
+        >
         <div class="element-title">{{ "SIDEBAR.DASHBOARD" | translate }}</div>
       </a>
     </div>
     <div class="menu-element">
       <a routerLink="/staffList" routerLinkActive="active">
-        <span class="material-symbols-outlined">list_alt</span>
+        <mat-icon class="material-symbols-outlined" id="staff_list-icon"
+          >list_alt</mat-icon
+        >
         <div class="element-title">{{ "SIDEBAR.STAFF_LIST" | translate }}</div>
       </a>
     </div>
     <div class="menu-element">
       <a routerLink="/employee" routerLinkActive="active">
-        <span class="material-symbols-outlined">groups</span>
+        <mat-icon class="material-symbols-outlined" id="groups-icon"
+          >groups</mat-icon
+        >
         <div class="element-title">{{ "SIDEBAR.EMPLOYEE" | translate }}</div>
       </a>
     </div>
   </div>
   <div class="sidebar bottom">
+    <div class="title-menu">{{ "SIDEBAR.OTHER" | translate }}</div>
     <div class="menu-element">
       <a routerLink="/setting" routerLinkActive="active">
-        <span class="material-symbols-outlined">settings</span>
+        <mat-icon class="material-symbols-outlined" id="settings-icon"
+          >settings</mat-icon
+        >
         <div class="element-title">{{ "SIDEBAR.SETTINGS" | translate }}</div>
       </a>
     </div>
     <div class="menu-element">
       <a routerLink="/login" routerLinkActive="active">
-        <span class="material-symbols-outlined">logout</span>
+        <mat-icon class="material-symbols-outlined" id="logout-icon"
+          >logout</mat-icon
+        >
         <div class="element-title">{{ "SIDEBAR.LOGOUT" | translate }}</div>
       </a>
     </div>

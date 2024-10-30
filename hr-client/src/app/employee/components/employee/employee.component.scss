@@ -19,9 +19,10 @@ app-employee {
     }
 
     .employee-icon {
-      color: var(--toolbar-element-color);
-      border: 1px solid var(--button-color);
-      border-radius: 6px;
+      color: var(--color-1);
+      border: 1px solid var(--color-6);
+      background-color: var(--color-8);
+      border-radius: 14px;
       margin: 0 8px 0 0;
     }
 
@@ -35,28 +36,47 @@ app-employee {
     .list-title {
       font-size: 20px;
       font-weight: 600;
-      padding: 0 0 10px 0;
+      padding: 0 0 6px 0;
     }
 
     .line2 {
       font-size: 14px;
     }
 
-    button.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base,
-    button.mdc-button.mdc-button--outlined.mat-mdc-outlined-button.mat-unthemed.mat-mdc-button-base {
+    //button.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base,
+    //button.mdc-button.mdc-button--outlined.mat-mdc-outlined-button.mat-unthemed.mat-mdc-button-base {
+    //  border-radius: 10px;
+    //  border-color: var(--color-9);
+    //  color: vaR(--main-color);
+    //}
+    button#add-employee-button,
+    button#filter1-button,
+    button#filter2-button {
       border-radius: 10px;
-      border-color: var(--toolbar-left-border);
+    }
+
+    button#add-employee-button {
+      background-color: var(--color-1);
+      width: 180px;
+    }
+
+    button#filter1-button,
+    button#filter2-button {
+      border-color: var(--color-9);
+      color: var(--main-color);
+      width: 105px;
     }
 
     .employee-content.list {
-      border: 1px solid var(--toolbar-left-border);
+      border: 1px solid var(--color-9);
       border-radius: 20px 20px 0 0;
       border-bottom: none;
       height: 100vh;
+      background-color: var(--color-8);
     }
 
     .list-tabs {
-      padding: 0 10px 0 10px;
+      padding: 0 20px 0 20px;
     }
 
     .list-toolbar {

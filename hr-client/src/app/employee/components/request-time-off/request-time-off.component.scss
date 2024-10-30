@@ -5,22 +5,10 @@ app-request-time-off {
     cursor: pointer;
   }
 
-  .mat-mdc-row:hover .mat-mdc-cell {
-    border-color: currentColor;
-  }
-
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-
-  //
-
-  button#button-filter1,
-  button#button-filter2,
-  button#button-details,
-  button#button-more,
   button#button-edit {
     color: var(--main-color);
+    border: 1px solid var(--color-9);
+    border-radius: 10px;
   }
 
   button#button-details {
@@ -41,5 +29,10 @@ app-request-time-off {
   td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
     padding-right: 0;
     width: 136px;
+  }
+
+  tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
+    background-color: var(--color-9) !important;
+    height: 36px;
   }
 }

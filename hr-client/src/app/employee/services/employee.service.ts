@@ -22,7 +22,7 @@ export class EmployeeService {
     return of([
       {
         employeeName: 'Test1 Test1',
-        leaveType: 'annual leave',
+        leaveType: 'ANNUAL_LEAVE',
         leaveFrom: '2024-03-03',
         days: 1,
         statusEmployee: 'pending',

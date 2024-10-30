@@ -3,18 +3,28 @@
     <app-input></app-input>
   </div>
   <div class="navbar right">
-    <!--    TODO zamienić span na mat-icon-->
-    <span class="material-symbols-outlined"> notifications_active </span>
-    <label>
-      <select #langSelect (change)="translate.use(langSelect.value)">
-        <option
-          *ngFor="let lang of translate.getLangs()"
-          [value]="lang"
-          [selected]="lang === translate.currentLang"
+    <div class="right-icon">
+      <!--      TODO: przerobić na mat-icon-button-->
+      <mat-icon class="material-symbols-outlined" id="notification_active-icon">
+        notifications_active
+      </mat-icon>
+    </div>
+    <div class="right-label">
+      <label>
+        <select
+          #langSelect
+          (change)="translate.use(langSelect.value)"
+          id="language-select"
         >
-          {{ lang }}
-        </option>
-      </select>
-    </label>
+          <option
+            *ngFor="let lang of translate.getLangs()"
+            [value]="lang"
+            [selected]="lang === translate.currentLang"
+          >
+            {{ lang }}
+          </option>
+        </select>
+      </label>
+    </div>
   </div>
 </div>

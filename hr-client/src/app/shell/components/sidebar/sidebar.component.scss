@@ -4,12 +4,13 @@
 .sidebar-left {
   width: var(--toolbar-left-width);
   height: auto;
-  border-right: 1px solid var(--toolbar-left-border);
+  border-right: 1px solid var(--color-9);
   display: grid;
-  grid-template-rows: 120px auto 120px;
+  grid-template-rows: 150px auto 150px;
+  background-color: var(--color-8);
 
   .sidebar {
-    margin: 10px 0 0 10px;
+    margin: 10px 10px 0 10px;
 
     .logo {
       font-size: 40px;
@@ -19,6 +20,16 @@
 
   .logo {
     padding: 0 0 10px 0;
+    border-bottom: solid 1px var(--color-9);
+  }
+
+  .avatar {
+    padding: 26px 6px 26px 6px;
+  }
+
+  .title-menu {
+    font-size: 12px;
+    padding: 0 0 10px 16px;
   }
 
   .menu-element {
@@ -27,7 +38,7 @@
   }
 
   .menu-element a {
-    padding: 6px;
+    padding: 10px 6px 10px 6px;
     display: grid;
     grid-template-columns: 50px auto;
     text-decoration: none;

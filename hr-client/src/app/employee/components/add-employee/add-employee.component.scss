@@ -25,9 +25,10 @@ app-add-employee {
     }
 
     .add-employee-icon {
-      color: var(--toolbar-element-color);
-      border: 1px solid var(--button-color);
-      border-radius: 6px;
+      color: var(--color-1);
+      border: 1px solid var(--color-6);
+      background-color: var(--color-8);
+      border-radius: 14px;
       margin: 0 8px 0 0;
     }
 
@@ -49,6 +50,7 @@ app-add-employee {
 
     .add-employee-content.elements {
       display: grid;
+      //background-color: var(--color-8);
     }
 
     .add-employee-content.elements.top {
@@ -59,6 +61,7 @@ app-add-employee {
     .elements.top.right {
       display: grid;
       grid-template-rows: 1fr 2fr;
+      background-color: var(--color-8);
     }
 
     .left {
@@ -71,13 +74,14 @@ app-add-employee {
 
     .bottom {
       margin: 0;
+      background-color: var(--color-8);
     }
 
     .elements.top.left,
     .elements.top.right,
     .elements.bottom {
-      border-radius: 6px;
-      border: 1px solid var(--toolbar-left-border);
+      border-radius: 10px;
+      border: 1px solid var(--color-9);
       padding: 20px 20px 20px 20px;
     }
 
@@ -127,14 +131,16 @@ app-add-employee {
     }
 
     button#button-update {
-      border-color: var(--button-save-background-border);
+      border-color: var(--color-2);
       color: var(--main-color);
+      width: 126px;
     }
 
     button#button-remove {
-      border-color: var(--button-remove-border);
-      color: var(--button-remove-border);
-      background-color: var(--button-remove-background);
+      border-color: var(--color-11);
+      color: var(--color-11);
+      background-color: var(--color-12);
+      width: 126px;
     }
 
     .button-update {
@@ -185,7 +191,7 @@ app-add-employee {
 
     .mdc-text-field--filled:not(.mdc-text-field--disabled) {
       background-color: transparent;
-      border: 1px solid var(--toolbar-left-border);
+      border: 1px solid var(--color-9);
       border-radius: 10px;
     }
 
@@ -244,8 +250,8 @@ app-add-employee {
     }
 
     button#button-save {
-      background-color: var(--button-save-background-border);
-      color: var(--button-text);
+      background-color: var(--color-2);
+      color: var(--color-8);
       border-radius: 10px;
     }
   }
