@@ -118,3 +118,110 @@ mat-icon#manage-icon,
 mat-icon#request-icon {
   margin: 6px !important;
 }
+
+//add-employee, edit-user
+
+.bottom {
+  margin: 0;
+  background-color: var(--color-8);
+}
+
+.elements.top.left,
+.elements.top.right,
+.elements.bottom {
+  border-radius: 10px;
+  border: 1px solid var(--color-9);
+  padding: 20px 20px 20px 20px;
+}
+
+.elements-title {
+  width: auto;
+}
+
+.title-line1,
+.title-line2 {
+  margin: 0 0 10px 0;
+}
+
+.title-line1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.title-line2 {
+  font-size: 14px;
+}
+
+.elements-content {
+  align-self: center;
+  align-content: space-around;
+  justify-items: stretch;
+}
+
+.picture,
+.button,
+.info {
+  text-align: center;
+}
+
+img#picture-avatar {
+  border-radius: 50%;
+}
+
+.button {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 0 10px 0;
+}
+
+button#button-update,
+button#button-remove {
+  border-radius: 10px;
+}
+
+button#button-update {
+  border-color: var(--color-2);
+  color: var(--main-color);
+  width: 126px;
+}
+
+button#button-remove {
+  border-color: var(--color-11);
+  color: var(--color-11);
+  background-color: var(--color-12);
+  width: 126px;
+}
+
+.button-update {
+  padding: 0 10px 0 0;
+  text-align: right;
+}
+
+.button-remove {
+  padding: 0 0 0 10px;
+  text-align: left;
+}
+
+.info {
+  font-size: 12px;
+}
+.mat-mdc-form-field-bottom-align::before {
+  content: none;
+}
+
+.input-full-width {
+  width: 100%;
+}
+
+.info-personal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.info-personal-left {
+  margin: 0 10px 0 0;
+}
+
+.info-personal-right {
+  margin: 0 0 0 10px;
+}
