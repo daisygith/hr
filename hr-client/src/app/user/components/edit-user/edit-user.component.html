@@ -1,0 +1,218 @@
+<div class="edit-user">
+  <div class="edit-user-content title">
+    <div class="edit-user-content title left">
+      <div class="edit-user-icon">
+        <mat-icon class="material-symbols-outlined" id="emp-icon"
+          >person_apron</mat-icon
+        >
+      </div>
+      <div class="edit-user-title">
+        <div class="line1">{{ "USER.TITLE" | translate }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="edit-user-content elements">
+    <div class="edit-user-content elements top">
+      <div class="elements top left">
+        <div class="elements-title">
+          <div class="title-line1">
+            {{ "USER.CHANGE_PROFILE.TITLE" | translate }}
+          </div>
+          <div class="title-line2">
+            {{ "USER.CHANGE_PROFILE.SUBTITLE" | translate }}
+          </div>
+        </div>
+        <div class="elements-content">
+          <div class="picture">
+            <img
+              ngSrc="assets/image/default-avatar.png"
+              alt="default avatar"
+              height="100"
+              width="100"
+              id="picture-avatar"
+            />
+          </div>
+          <div class="button">
+            <div class="button-update">
+              <button mat-stroked-button id="button-update">
+                {{ "USER.CHANGE_PROFILE.BUTTON.UPDATE" | translate }}
+              </button>
+            </div>
+            <div class="button-remove">
+              <button mat-stroked-button id="button-remove">
+                {{ "USER.CHANGE_PROFILE.BUTTON.REMOVE" | translate }}
+              </button>
+            </div>
+          </div>
+          <div class="info">
+            {{ "USER.CHANGE_PROFILE.INFO_PICTURE" | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="elements top right">
+        <div class="elements-title">
+          <div class="title-line1">
+            {{ "USER.CHANGE_PASSWORD.TITLE" | translate }}
+          </div>
+          <div class="title-line2">
+            {{ "USER.CHANGE_PASSWORD.SUBTITLE" | translate }}
+          </div>
+        </div>
+        <div class="elements-content">
+          <div class="input-newPassword">
+            <div class="input-title">
+              {{ "USER.CHANGE_PASSWORD.NEW_PASSWORD" | translate }}
+            </div>
+            <mat-form-field class="input-full-width">
+              <input
+                matInput
+                [type]="hidePassword() ? 'password' : 'text'"
+                id="input-newPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEventHidePassword($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hidePassword()"
+              >
+                <mat-icon id="newPassword-icon">{{
+                  hidePassword() ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="input-confirmPassword">
+            <div class="input-title">
+              {{ "USER.CHANGE_PASSWORD.CONFIRM_PASSWORD" | translate }}
+            </div>
+            <mat-form-field class="input-full-width">
+              <input
+                matInput
+                [type]="hideConfirmPassword() ? 'password' : 'text'"
+                id="input-confirmPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEventHideConfirmPassword($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hideConfirmPassword()"
+              >
+                <mat-icon id="confirmPassword-icon">{{
+                  hideConfirmPassword() ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="edit-user-content elements bottom">
+      <div class="elements-title">
+        <div class="title-line1">
+          {{ "USER.PERSONAL_DETAILS.TITLE" | translate }}
+        </div>
+        <div class="title-line2">
+          {{ "USER.PERSONAL_DETAILS.SUBTITLE" | translate }}
+        </div>
+      </div>
+      <div class="elements-content info-personal">
+        <div class="info-personal-left">
+          <div class="input-title">
+            {{ "USER.PERSONAL_DETAILS.NAME" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              [placeholder]="'USER.PERSONAL_DETAILS.NAME' | translate"
+              id="input-name-personal"
+            />
+          </mat-form-field>
+          <div class="input-title">
+            {{ "USER.PERSONAL_DETAILS.STAFF_ID" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <!--              TODO number pracownika przekazać któego nie bedzie mozna zmienicac-->
+            <input
+              matInput
+              disabled
+              [placeholder]="'USER.PERSONAL_DETAILS.STAFF_ID' | translate"
+              id="input-staffId-personal"
+            />
+          </mat-form-field>
+          <div class="input-title">
+            {{ "USER.PERSONAL_DETAILS.EMAIL" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              [placeholder]="'USER.PERSONAL_DETAILS.EMAIL' | translate"
+              id="input-email-personal"
+            />
+          </mat-form-field>
+        </div>
+        <div class="info-personal-right">
+          <div class="input-title">
+            {{ "USER.PERSONAL_DETAILS.GENDER.TITLE" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <mat-select>
+              <mat-option value="male">
+                {{ "USER.PERSONAL_DETAILS.GENDER.MALE" | translate }}
+              </mat-option>
+              <mat-option value="female">{{
+                "USER.PERSONAL_DETAILS.GENDER.FEMALE" | translate
+              }}</mat-option>
+              <mat-option value="other">{{
+                "USER.PERSONAL_DETAILS.GENDER.OTHER" | translate
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="input-title">
+            {{ "USER.PERSONAL_DETAILS.DESTINATION.TITLE" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <mat-select>
+              <mat-option value="one">
+                {{ "USER.PERSONAL_DETAILS.DESTINATION.OPTION_1" | translate }}
+              </mat-option>
+              <mat-option value="two">
+                {{ "USER.PERSONAL_DETAILS.DESTINATION.OPTION_2" | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="input-title">
+            {{ "USER.PERSONAL_DETAILS.PHONE" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              [placeholder]="'USER.PERSONAL_DETAILS.PHONE' | translate"
+              id="input-phone-personal"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="elements-content address-personal">
+        <div class="input-title">
+          {{ "USER.PERSONAL_DETAILS.ADDRESS" | translate }}
+        </div>
+        <mat-form-field class="input-full-width">
+          <input
+            matInput
+            [placeholder]="'USER.PERSONAL_DETAILS.ADDRESS' | translate"
+            id="input-address-personal"
+          />
+        </mat-form-field>
+      </div>
+      <div class="save-changes">
+        <div class="button-save">
+          <button mat-stroked-button id="button-save">
+            {{ "USER.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
