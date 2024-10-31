@@ -1,15 +1,9 @@
 {
   "ADD_EMPLOYEE": {
-    "TITLE": "Edit Staff User Profile",
-    "CHANGE_PASSWORD": {
-      "SUBTITLE": "To change password please confirm here",
-      "TITLE": "Change Password",
-      "NEW_PASSWORD": "New Password",
-      "CONFIRM_PASSWORD": "Confirm Password"
-    },
+    "TITLE": "Add New User Profile",
     "CHANGE_PROFILE": {
       "BUTTON": {
-        "UPDATE": "Update",
+        "ADD": "Add",
         "REMOVE": "Remove"
       },
       "INFO_PICTURE": "Allowed JPG, GIF or PNG. Max size of 800K.",
@@ -21,23 +15,30 @@
       "BUTTON": {
         "SAVE_CHANGES": "Save"
       },
-      "DESTINATION": {
-        "TITLE": "Destination",
-        "OPTION_1": "Option_1",
-        "OPTION_2": "Option_2"
-      },
-      "EMAIL": "Email",
-      "GENDER": {
-        "FEMALE": "FEMALE",
-        "OTHER": "OTHER",
-        "MALE": "MALE",
-        "TITLE": "Gender"
+      "DEPARTMENT": {
+        "TITLE": "Department",
+        "HR": "HR",
+        "IT": "IT",
+        "DESIGN": "DESIGN"
       },
       "NAME": "First name and Last name",
       "PHONE": "Phone",
+      "POSITION": {
+        "TITLE": "Work station",
+        "JUNIOR": "Junior",
+        "MID": "Mid",
+        "SENIOR": "Senior"
+      },
       "SUBTITLE": "To change User's personal detail, edit and save from here",
       "STAFF_ID": "Staff ID",
-      "TITLE": "Personal Details"
+      "TITLE": "Personal Details",
+      "TYPE_OF_CONTRACT": {
+        "TITLE": "Type of contract",
+        "B2B": "B2B",
+        "FULL_TIME_CONTRACT": "Full time contract",
+        "CONTRACT_FOR_SPECIFIC_WORK": "Contract for specific work",
+        "FEE_FOR_TASK_AGREEMENT": "Fee-for-task agreement"
+      }
     }
   },
   "EMPLOYEE": {
@@ -96,5 +97,46 @@
     "OTHER": "OTHER",
     "SETTINGS": "Settings",
     "STAFF_LIST": "Staff List"
+  },
+  "USER": {
+    "TITLE": "Edit User Profile",
+    "CHANGE_PASSWORD": {
+      "SUBTITLE": "To change password please confirm here",
+      "TITLE": "Change Password",
+      "NEW_PASSWORD": "New Password",
+      "CONFIRM_PASSWORD": "Confirm Password"
+    },
+    "CHANGE_PROFILE": {
+      "BUTTON": {
+        "UPDATE": "Update",
+        "REMOVE": "Remove"
+      },
+      "INFO_PICTURE": "Allowed JPG, GIF or PNG. Max size of 800K.",
+      "SUBTITLE": "Change Profile picture form here",
+      "TITLE": "Change Profile"
+    },
+    "PERSONAL_DETAILS": {
+      "ADDRESS": "Address",
+      "BUTTON": {
+        "SAVE_CHANGES": "Save"
+      },
+      "DESTINATION": {
+        "TITLE": "Destination",
+        "OPTION_1": "Option_1",
+        "OPTION_2": "Option_2"
+      },
+      "EMAIL": "Email",
+      "GENDER": {
+        "FEMALE": "FEMALE",
+        "OTHER": "OTHER",
+        "MALE": "MALE",
+        "TITLE": "Gender"
+      },
+      "NAME": "First name and Last name",
+      "PHONE": "Phone",
+      "SUBTITLE": "To change User's personal detail, edit and save from here",
+      "STAFF_ID": "Staff ID",
+      "TITLE": "Personal Details"
+    }
   }
 }

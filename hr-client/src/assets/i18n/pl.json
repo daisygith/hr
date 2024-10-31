@@ -1,43 +1,43 @@
 {
   "ADD_EMPLOYEE": {
-    "TITLE": "Edycja profilu użytkownika",
-    "CHANGE_PASSWORD": {
-      "SUBTITLE": "Potwierdź zmianę hasła",
-      "TITLE": "Zmiana hasła",
-      "NEW_PASSWORD": "Nowe hasło",
-      "CONFIRM_PASSWORD": "Potwierdź hasło"
-    },
+    "TITLE": "Utwórz nowy profil użytkownika",
     "CHANGE_PROFILE": {
       "BUTTON": {
-        "UPDATE": "Aktualizacja",
+        "ADD": "Dodaj",
         "REMOVE": "Usuń"
       },
       "INFO_PICTURE": "Dozwolony format plików JPG, GIF or PNG. Max. rozmiar 800K.",
-      "SUBTITLE": "Zmień zdjęcie profilowe",
-      "TITLE": "Zmień Profil"
+      "SUBTITLE": "Dodaj zdjęcie profilowe",
+      "TITLE": "Dodaj Profil"
     },
     "PERSONAL_DETAILS": {
       "ADDRESS": "Adres",
       "BUTTON": {
         "SAVE_CHANGES": "Zapisz"
       },
-      "DESTINATION": {
-        "TITLE": "Miejsce docelowe",
-        "OPTION_1": "Opcja_1",
-        "OPTION_2": "Opcja_2"
-      },
-      "EMAIL": "Email",
-      "GENDER": {
-        "FEMALE": "Kobieta",
-        "OTHER": "Inne",
-        "MALE": "Mężczyzna",
-        "TITLE": "Płeć"
+      "DEPARTMENT": {
+        "TITLE": "Dział",
+        "HR": "HR",
+        "IT": "IT",
+        "DESIGN": "DESIGN"
       },
       "NAME": "Imię i Nazwisko",
       "PHONE": "Telefon",
+      "POSITION": {
+        "TITLE": "Stanowisko pracy",
+        "JUNIOR": "Junior",
+        "MID": "Mid",
+        "SENIOR": "Senior"
+      },
       "SUBTITLE": "Aby zmienić dane osobowe użytkownika, edytuj i zapisz je tutaj",
       "STAFF_ID": "Identyfikator Pracownika",
-      "TITLE": "Dane Osobowe"
+      "TITLE": "Dane Osobowe",
+      "TYPE_OF_CONTRACT": {
+        "TITLE": "Rodzaj umowy",
+        "FULL_TIME_CONTRACT": "Umowa o pracę na pełny etat",
+        "CONTRACT_FOR_SPECIFIC_WORK": "Umowa o dzieło",
+        "FEE_FOR_TASK_AGREEMENT": "Umowa zlecenie"
+      }
     }
   },
   "EMPLOYEE": {
@@ -93,5 +93,46 @@
     "OTHER": "INNE",
     "SETTINGS": "Ustawienia",
     "STAFF_LIST": "Lista rzeczy"
+  },
+  "USER": {
+    "TITLE": "Edycja profilu użytkownika",
+    "CHANGE_PASSWORD": {
+      "SUBTITLE": "Potwierdź zmianę hasła",
+      "TITLE": "Zmiana hasła",
+      "NEW_PASSWORD": "Nowe hasło",
+      "CONFIRM_PASSWORD": "Potwierdź hasło"
+    },
+    "CHANGE_PROFILE": {
+      "BUTTON": {
+        "UPDATE": "Aktualizacja",
+        "REMOVE": "Usuń"
+      },
+      "INFO_PICTURE": "Dozwolony format plików JPG, GIF or PNG. Max. rozmiar 800K.",
+      "SUBTITLE": "Zmień zdjęcie profilowe",
+      "TITLE": "Zmień Profil"
+    },
+    "PERSONAL_DETAILS": {
+      "ADDRESS": "Adres",
+      "BUTTON": {
+        "SAVE_CHANGES": "Zapisz"
+      },
+      "DESTINATION": {
+        "TITLE": "Miejsce docelowe",
+        "OPTION_1": "Opcja_1",
+        "OPTION_2": "Opcja_2"
+      },
+      "EMAIL": "Email",
+      "GENDER": {
+        "FEMALE": "Kobieta",
+        "OTHER": "Inne",
+        "MALE": "Mężczyzna",
+        "TITLE": "Płeć"
+      },
+      "NAME": "Imię i Nazwisko",
+      "PHONE": "Telefon",
+      "SUBTITLE": "Aby zmienić dane osobowe użytkownika, edytuj i zapisz je tutaj",
+      "STAFF_ID": "Identyfikator Pracownika",
+      "TITLE": "Dane Osobowe"
+    }
   }
 }
