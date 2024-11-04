@@ -1,32 +1,74 @@
-<div class="title-page">{{ "LOGIN.TITLE" | translate }}</div>
-<div class="change-language">
-  <label>
-    <select #langSelect (change)="translate.use(langSelect.value)">
-      <option
-        *ngFor="let lang of translate.getLangs()"
-        [value]="lang"
-        [selected]="lang === translate.currentLang"
-      >
-        {{ lang }}
-      </option>
-    </select>
-  </label>
-</div>
+<div class="login">
+  <div class="top-part">
+    <div class="logo-left">HR</div>
+    <div class="change-language">
+      <label>
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option
+            *ngFor="let lang of translate.getLangs()"
+            [value]="lang"
+            [selected]="lang === translate.currentLang"
+          >
+            {{ lang }}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
 
-<div class="login-main-part">
-  <div class="login-frame">
-    <div class="login-part top">
-      <div class="title">{{ "LOGIN.TITLE_LOGIN" | translate }}</div>
-    </div>
-    <div class="login-part middle">
-      <!--      TODO : change input to input password - jest w dodawaniu pracownika-->
-      <input-error />
-    </div>
-    <div class="login-part bottom">
-      <div class="login-button-row">
-        <button mat-stroked-button>
-          {{ "LOGIN.BUTTON.LOGIN" | translate }}
-        </button>
+  <div class="title-page">{{ "LOGIN.TITLE" | translate }}</div>
+  <div class="login-main-part">
+    <div class="login-frame">
+      <div class="login-part top">
+        <div class="title">{{ "LOGIN.TITLE_LOGIN" | translate }}</div>
+      </div>
+      <div class="login-part middle">
+        <div class="input-email">
+          <div class="input-title">
+            {{ "LOGIN.EMAIL" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <input matInput id="input-email-personal" />
+          </mat-form-field>
+        </div>
+        <div class="elements-content">
+          <div class="input-newPassword">
+            <div class="input-title">
+              {{ "LOGIN.PASSWORD" | translate }}
+            </div>
+            <mat-form-field class="input-full-width">
+              <input
+                matInput
+                [type]="hide() ? 'password' : 'text'"
+                id="input-newPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEvent($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()"
+              >
+                <mat-icon id="newPassword-icon">{{
+                  hide() ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="login-part bottom">
+        <div class="login-button-row">
+          <button
+            mat-flat-button
+            routerLink="/employee"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            id="login-button"
+          >
+            {{ "LOGIN.BUTTON.LOGIN" | translate }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
