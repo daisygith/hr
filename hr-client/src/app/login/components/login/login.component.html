@@ -68,5 +68,21 @@
         </div>
       </div>
     </div>
+    <div class="registration-link">
+      <div class="registration-title">
+        {{ "LOGIN.REGISTRATION.TITLE" | translate }}
+      </div>
+      <div class="registration-button">
+        <button
+          mat-flat-button
+          routerLink="/registration"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          id="registration-button"
+        >
+          {{ "LOGIN.REGISTRATION.BUTTON" | translate }}
+        </button>
+      </div>
+    </div>
   </div>
 </div>
