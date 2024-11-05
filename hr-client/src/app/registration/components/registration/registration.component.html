@@ -1,0 +1,95 @@
+<div class="registration">
+  <div class="title-page">{{ "REGISTRATION.TITLE" | translate }}</div>
+  <div class="registration-main-part">
+    <div class="registration-frame">
+      <div class="registration-part top">
+        <div class="title">{{ "REGISTRATION.TITLE_LOGIN" | translate }}</div>
+      </div>
+      <div class="registration-part middle">
+        <div class="input-email">
+          <div class="input-title">
+            {{ "REGISTRATION.EMAIL" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <input matInput id="input-email-personal" />
+          </mat-form-field>
+        </div>
+        <div class="elements-content">
+          <div class="input-newPassword">
+            <div class="input-title">
+              {{ "REGISTRATION.PASSWORD" | translate }}
+            </div>
+            <mat-form-field class="input-full-width">
+              <input
+                matInput
+                [type]="hide() ? 'password' : 'text'"
+                id="input-newPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEvent($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()"
+              >
+                <mat-icon id="newPassword-icon">{{
+                  hide() ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="input-newPassword">
+            <div class="input-title">
+              {{ "REGISTRATION.CONFIRM_PASSWORD" | translate }}
+            </div>
+            <mat-form-field class="input-full-width">
+              <input
+                matInput
+                [type]="hideConfirm() ? 'password' : 'text'"
+                id="input-confirmPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEventConfirm($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hideConfirm()"
+              >
+                <mat-icon id="confirmPassword-icon">{{
+                  hideConfirm() ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="registration-part bottom">
+        <div class="registration-button-row">
+          <button
+            mat-flat-button
+            routerLink="/employee"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            id="login-button"
+          >
+            {{ "REGISTRATION.BUTTON.SING_UP" | translate }}
+          </button>
+        </div>
+        <div class="language-select">
+          <button mat-button [matMenuTriggerFor]="menu" id="language-button">
+            {{ translate.currentLang }}
+          </button>
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              *ngFor="let lang of translate.getLangs()"
+              (click)="translate.use(lang)"
+            >
+              {{ lang }}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
