@@ -54,11 +54,11 @@
       "LOGIN": "Login"
     },
     "EMAIL": "Email",
-    "EMAIL_REQUIRED": "Email is required",
-    "EMAIL_VALID": "Please enter a valid email address",
     "PASSWORD": "Password",
-    "PASSWORD_REQUIRED": "Password is required",
-    "PASSWORD_VALID": "Please enter a valid email address",
+    "REGISTRATION": {
+      "BUTTON": "Create an account",
+      "TITLE": "You don't already have an account? Sign up!"
+    },
     "TITLE": "Welcome to HR!",
     "TITLE_LOGIN": "Login"
   },
@@ -75,6 +75,16 @@
   },
   "NAVBAR": {
     "SEARCH_HERE": "Search"
+  },
+  "REGISTRATION": {
+    "BUTTON": {
+      "SING_UP": "Sing up"
+    },
+    "CONFIRM_PASSWORD": "Confirm password",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "TITLE": "Create an account to HR!",
+    "TITLE_LOGIN": "Create an account"
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {

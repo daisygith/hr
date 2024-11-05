@@ -53,11 +53,11 @@
       "LOGIN": "Zaloguj"
     },
     "EMAIL": "Email",
-    "EMAIL_REQUIRED": "Email jest wymagany",
-    "EMAIL_VALID": "Proszę wpisać prawidłowy adres email",
     "PASSWORD": "Hasło",
-    "PASSWORD_REQUIRED": "Hasło jest wymagane",
-    "PASSWORD_VALID": "Proszę wpisać prawidłowe hasło",
+    "REGISTRATION": {
+      "BUTTON": "Załóż konto",
+      "TITLE": "Nie masz konta? Zarejestruj się!"
+    },
     "TITLE": "Witaj w HR!",
     "TITLE_LOGIN": "Logowanie"
   },
@@ -74,6 +74,16 @@
   },
   "NAVBAR": {
     "SEARCH_HERE": "Szukaj"
+  },
+  "REGISTRATION": {
+    "BUTTON": {
+      "SING_UP": "Zarejestruj się"
+    },
+    "CONFIRM_PASSWORD": "Potwierdź hasło",
+    "EMAIL": "Email",
+    "PASSWORD": "Hasło",
+    "TITLE": "Załóż konto w HR!",
+    "TITLE_LOGIN": "Założ konto"
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {
