@@ -2,50 +2,58 @@
   display: flex;
   width: 100%;
 }
-.navbar-top {
-  height: 70px;
-  width: 100%;
-  //margin: 0 16px 0 16px;
-  //border-radius: 0 0 20px 20px;
-  border: solid 1px var(--color-9);
-  background-color: var(--color-8);
-  border-top: none;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
+app-navbar {
+  .navbar-top {
+    height: 70px;
+    //width: 100%;
+    //margin: 0 16px 0 16px;
+    //border-radius: 0 0 20px 20px;
+    border: solid 1px var(--color-9);
+    background-color: var(--color-8);
+    border-top: none;
 
-  padding: 0 16px 0 16px;
-
-  .right {
     display: flex;
-    justify-items: center;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
-  }
+    justify-content: space-between;
 
-  .right-icon {
-    margin: 0 10px 0 0;
-    height: 40px;
-  }
+    padding: 0 16px 0 16px;
 
-  .right-label {
-    height: 24px;
-    padding: 6px 6px 6px 6px;
-    border-radius: 10px 10px 10px 10px;
-    border: solid 1px var(--color-9);
-  }
+    .right {
+      display: flex;
+      justify-items: center;
+      justify-content: center;
+      align-items: center;
+    }
 
-  mat-icon#notification_active-icon {
-    //font-size: 20px;
-    padding: 6px 6px 6px 6px;
-    border-radius: 10px 10px 10px 10px;
-    border: solid 1px var(--color-9);
-  }
+    .right-icon {
+      margin: 0 10px 0 0;
+      height: 40px;
+    }
 
-  select#language-select {
-    border-color: transparent;
+    .right-label {
+      height: 24px;
+      padding: 6px 6px 6px 6px;
+      border-radius: 10px 10px 10px 10px;
+      border: solid 1px var(--color-9);
+    }
+
+    mat-icon#notification_active-icon {
+      //font-size: 20px;
+      padding: 6px 6px 6px 6px;
+      border-radius: 10px 10px 10px 10px;
+      border: solid 1px var(--color-9);
+    }
+
+    select#language-select {
+      border-color: transparent;
+    }
+
+    button.mdc-fab.mat-mdc-fab-base.mdc-fab--mini.mat-mdc-mini-fab.mat-accent.mat-mdc-button-base {
+      background-color: transparent;
+      box-shadow: none;
+    }
   }
 }

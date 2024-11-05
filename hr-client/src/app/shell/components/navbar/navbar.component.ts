@@ -1,11 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { InputComponent } from '../../../shared/components/input/input.component';
 import { MatFormField } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgForOf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-navbar',
@@ -20,9 +22,16 @@ import { MatIcon } from '@angular/material/icon';
     TranslateModule,
     NgForOf,
     MatIcon,
+    MatMiniFabButton,
+    MatButton,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    FormsModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class NavbarComponent {
   public translate: TranslateService = inject(TranslateService);

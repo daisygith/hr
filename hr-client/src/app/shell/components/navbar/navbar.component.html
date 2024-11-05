@@ -5,26 +5,27 @@
   <div class="navbar right">
     <div class="right-icon">
       <!--      TODO: przerobić na mat-icon-button-->
-      <mat-icon class="material-symbols-outlined" id="notification_active-icon">
-        notifications_active
-      </mat-icon>
-    </div>
-    <div class="right-label">
-      <label>
-        <select
-          #langSelect
-          (change)="translate.use(langSelect.value)"
-          id="language-select"
+      <button mat-mini-fab>
+        <mat-icon
+          class="material-symbols-outlined"
+          id="notification_active-icon"
         >
-          <option
-            *ngFor="let lang of translate.getLangs()"
-            [value]="lang"
-            [selected]="lang === translate.currentLang"
-          >
-            {{ lang }}
-          </option>
-        </select>
-      </label>
+          notifications_active
+        </mat-icon>
+      </button>
     </div>
+
+    <button mat-button [matMenuTriggerFor]="menu" id="language-button">
+      {{ translate.currentLang }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        mat-menu-item
+        *ngFor="let lang of translate.getLangs()"
+        (click)="translate.use(lang)"
+      >
+        {{ lang }}
+      </button>
+    </mat-menu>
   </div>
 </div>
