@@ -6,6 +6,13 @@ export const routes: Routes = [
     loadChildren: () => import('./login/login.routes').then((m) => m.routes),
   },
   {
+    path: 'registration',
+    loadChildren: () =>
+      import('./registration/registration.routes').then(
+        (m) => m.routesRegistration,
+      ),
+  },
+  {
     path: '',
     loadComponent: () =>
       import('./shell/components/shell/shell.component').then(
