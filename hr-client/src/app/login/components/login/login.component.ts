@@ -8,6 +8,7 @@ import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput, MatLabel } from '@angular/material/input';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     MatSuffix,
     RouterLink,
     RouterLinkActive,
+    MatMenu,
+    MatMenuItem,
+    MatMenuTrigger,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

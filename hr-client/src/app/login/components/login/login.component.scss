@@ -116,5 +116,14 @@ app-login {
   button#login-button {
     background-color: var(--color-1);
     border-radius: 10px;
+    margin: 0 0 16px 0;
+  }
+
+  .language-select {
+    text-align: right;
+  }
+
+  button#language-button {
+    width: 62px;
   }
 }

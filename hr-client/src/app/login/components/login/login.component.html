@@ -1,21 +1,4 @@
 <div class="login">
-  <div class="top-part">
-    <div class="logo-left">HR</div>
-    <div class="change-language">
-      <label>
-        <select #langSelect (change)="translate.use(langSelect.value)">
-          <option
-            *ngFor="let lang of translate.getLangs()"
-            [value]="lang"
-            [selected]="lang === translate.currentLang"
-          >
-            {{ lang }}
-          </option>
-        </select>
-      </label>
-    </div>
-  </div>
-
   <div class="title-page">{{ "LOGIN.TITLE" | translate }}</div>
   <div class="login-main-part">
     <div class="login-frame">
@@ -68,6 +51,20 @@
           >
             {{ "LOGIN.BUTTON.LOGIN" | translate }}
           </button>
+        </div>
+        <div class="language-select">
+          <button mat-button [matMenuTriggerFor]="menu" id="language-button">
+            {{ translate.currentLang }}
+          </button>
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              *ngFor="let lang of translate.getLangs()"
+              (click)="translate.use(lang)"
+            >
+              {{ lang }}
+            </button>
+          </mat-menu>
         </div>
       </div>
     </div>
