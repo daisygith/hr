@@ -1,5 +1,4 @@
 import { Component, inject, signal, ViewEncapsulation } from '@angular/core';
-import { InputError } from '../../../shared/components/input-error/input-error.component';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { NgForOf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +13,6 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
   selector: 'app-registration',
   standalone: true,
   imports: [
-    InputError,
     MatButton,
     NgForOf,
     ReactiveFormsModule,

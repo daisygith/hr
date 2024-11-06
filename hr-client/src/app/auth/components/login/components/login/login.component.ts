@@ -1,20 +1,18 @@
 import { Component, inject, signal, ViewEncapsulation } from '@angular/core';
-import { InputError } from '../../../shared/components/input-error/input-error.component';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { NgForOf } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput, MatLabel } from '@angular/material/input';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    InputError,
     MatButton,
     NgForOf,
     ReactiveFormsModule,
@@ -37,6 +35,12 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 })
 export class LoginComponent {
   public translate: TranslateService = inject(TranslateService);
+
+  public router: Router = inject(Router);
+
+  public loginGroup!: FormGroup;
+
+  //formGroup
 
   hide = signal(true);
   clickEvent(event: MouseEvent) {
