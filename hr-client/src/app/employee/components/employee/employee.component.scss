@@ -19,9 +19,9 @@ app-employee {
     }
 
     .employee-icon {
-      color: var(--color-1);
-      border: 1px solid var(--color-6);
-      background-color: var(--color-8);
+      color: var(--button-app-color);
+      border: 1px solid var(--background-element);
+      background-color: var(--main-color-text);
       border-radius: 14px;
       margin: 0 8px 0 0;
     }
@@ -56,23 +56,23 @@ app-employee {
     }
 
     button#add-employee-button {
-      background-color: var(--color-1);
+      background-color: var(--button-app-color);
       width: 180px;
     }
 
     button#filter1-button,
     button#filter2-button {
-      border-color: var(--color-9);
+      border-color: var(--border-app-element);
       color: var(--main-color);
       width: 105px;
     }
 
     .employee-content.list {
-      border: 1px solid var(--color-9);
+      border: 1px solid var(--border-app-element);
       border-radius: 20px 20px 0 0;
       border-bottom: none;
       height: 100vh;
-      background-color: var(--color-8);
+      background-color: var(--main-color-text);
     }
 
     .list-tabs {

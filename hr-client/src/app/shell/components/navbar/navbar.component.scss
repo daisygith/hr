@@ -9,8 +9,8 @@ app-navbar {
     //width: 100%;
     //margin: 0 16px 0 16px;
     //border-radius: 0 0 20px 20px;
-    border: solid 1px var(--color-9);
-    background-color: var(--color-8);
+    border: solid 1px var(--border-app-element);
+    background-color: var(--main-color-text);
     border-top: none;
 
     display: flex;
@@ -37,14 +37,14 @@ app-navbar {
       height: 24px;
       padding: 6px 6px 6px 6px;
       border-radius: 10px 10px 10px 10px;
-      border: solid 1px var(--color-9);
+      border: solid 1px var(--border-app-element);
     }
 
     mat-icon#notification_active-icon {
       //font-size: 20px;
       padding: 6px 6px 6px 6px;
       border-radius: 10px 10px 10px 10px;
-      border: solid 1px var(--color-9);
+      border: solid 1px var(--border-app-element);
     }
 
     select#language-select {
