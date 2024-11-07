@@ -4,10 +4,10 @@
 .sidebar-left {
   width: var(--toolbar-left-width);
   height: auto;
-  border-right: 1px solid var(--color-9);
+  border-right: 1px solid var(--border-app-element);
   display: grid;
   grid-template-rows: 150px auto 150px;
-  background-color: var(--color-8);
+  background-color: var(--main-color-text);
 
   .sidebar {
     margin: 10px 10px 0 10px;
@@ -20,7 +20,7 @@
 
   .logo {
     padding: 0 0 10px 0;
-    border-bottom: solid 1px var(--color-9);
+    border-bottom: solid 1px var(--border-app-element);
   }
 
   .avatar {
@@ -43,6 +43,7 @@
     grid-template-columns: 50px auto;
     text-decoration: none;
     color: var(--main-color);
+    cursor: pointer;
 
     .element-title {
       padding-top: 3.5px;
