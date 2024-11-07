@@ -27,11 +27,11 @@ app-registration {
       padding: 30px;
       text-align: left;
       color: var(--main-color);
-      background-color: var(--color-8);
-      border: var(--color-9) solid 1px;
+      background-color: var(--main-color-text);
+      border: var(--border-app-element) solid 1px;
       border-radius: 20px 20px;
       width: 40%;
-      box-shadow: 0 0 10px 0 var(--color-1);
+      box-shadow: 0 0 10px 0 var(--button-app-color);
 
       .registration-part {
         margin: 10px;
@@ -48,9 +48,9 @@ app-registration {
     text-align: center;
   }
 
-  .input-email {
-    margin: 0 0 14px 0;
-  }
+  //.input-email {
+  //  margin: 0 0 14px 0;
+  //}
 
   .input-title {
     margin: 0 0 6px 0;
@@ -75,7 +75,7 @@ app-registration {
 
   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: transparent;
-    border: 1px solid var(--color-9);
+    border: 1px solid var(--border-app-element);
     border-radius: 10px;
   }
 
@@ -108,16 +108,15 @@ app-registration {
     top: 0;
   }
 
-  input#input-newPassword,
-  input#input-confirmPassword,
-  input#input-email-personal {
+  input#password,
+  input#confirmPassword,
+  input#email,
+  input#username {
     padding: 8px 0 0 0;
   }
 
-  //login button
-  button#login-button,
+  //registration button
   button#registration-button {
-    background-color: var(--color-1);
     border-radius: 10px;
     margin: 0 0 16px 0;
   }
@@ -130,7 +129,9 @@ app-registration {
     width: 62px;
   }
 
-  .input-newPassword {
+  .input-newPassword,
+  .input-username,
+  .input-email {
     margin: 0 0 14px 0;
   }
 }
