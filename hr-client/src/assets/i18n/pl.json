@@ -58,8 +58,14 @@
       "BUTTON": "Załóż konto",
       "TITLE": "Nie masz konta? Zarejestruj się!"
     },
+    "REQUIRED": {
+      "USERNAME": "Nazwa użytkownika jest wymagana",
+      "PASSWORD_REQUIRED": "Hasło jest wymagane",
+      "PASSWORD_INVALID": "Hasło jest błędne"
+    },
     "TITLE": "Witaj w HR!",
-    "TITLE_LOGIN": "Logowanie"
+    "TITLE_LOGIN": "Logowanie",
+    "USERNAME": "Nazwa użytkownika"
   },
   "MANAGE_EMPLOYEE": {
     "ATTENDANCE": "Frekwencja",
@@ -82,8 +88,18 @@
     "CONFIRM_PASSWORD": "Potwierdź hasło",
     "EMAIL": "Email",
     "PASSWORD": "Hasło",
+    "REQUIRED": {
+      "CONFIRM_PASSWORD_REQUIRED": "Wymagane powtórzenie hasła",
+      "EMAIL_REQUIRED": "Email jest wymagany",
+      "EMAIL_INVALID": "Email jest niepoprawny",
+      "USERNAME": "Nazwa użytkownika jest wymagana",
+      "PASSWORD_MISMATCH": "Niezgodność haseł",
+      "PASSWORD_REQUIRED": "Hasło jest wymagane",
+      "PASSWORD_INVALID": "Hasło jest błędne"
+    },
     "TITLE": "Załóż konto w HR!",
-    "TITLE_LOGIN": "Założ konto"
+    "TITLE_LOGIN": "Założ konto",
+    "USERNAME": "Nazwa użytkownika"
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {

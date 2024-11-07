@@ -59,8 +59,14 @@
       "BUTTON": "Create an account",
       "TITLE": "You don't already have an account? Sign up!"
     },
+    "REQUIRED": {
+      "USERNAME": "Username is required",
+      "PASSWORD_REQUIRED": "Password is required",
+      "PASSWORD_INVALID": "Password is invalid"
+    },
     "TITLE": "Welcome to HR!",
-    "TITLE_LOGIN": "Login"
+    "TITLE_LOGIN": "Login",
+    "USERNAME": "User name"
   },
   "MANAGE_EMPLOYEE": {
     "ATTENDANCE": "Attendance",
@@ -83,8 +89,18 @@
     "CONFIRM_PASSWORD": "Confirm password",
     "EMAIL": "Email",
     "PASSWORD": "Password",
+    "REQUIRED": {
+      "CONFIRM_PASSWORD_REQUIRED": "Confirm password is required",
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Email is required",
+      "USERNAME": "Username is required",
+      "PASSWORD_MISMATCH": "Password mismatch",
+      "PASSWORD_REQUIRED": "Password is required",
+      "PASSWORD_INVALID": "Password is invalid"
+    },
     "TITLE": "Create an account to HR!",
-    "TITLE_LOGIN": "Create an account"
+    "TITLE_LOGIN": "Create an account",
+    "USERNAME": "User name"
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {
