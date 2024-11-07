@@ -11,7 +11,7 @@ export class AuthService {
   isLoggedIn: boolean = false;
 
   login(userDetails: {
-    email: string;
+    username: string;
     password: string;
   }): Observable<LoginResponse | null> {
     return this.http.post<any>(`${this._apiUrl}/signin`, userDetails).pipe(
@@ -29,6 +29,7 @@ export class AuthService {
   }
 
   registration(userDetails: {
+    username: string;
     email: string;
     password: string;
   }): Observable<any> {
