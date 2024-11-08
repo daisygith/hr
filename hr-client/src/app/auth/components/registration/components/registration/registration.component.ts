@@ -98,19 +98,27 @@ export class RegistrationComponent implements OnInit {
 
     this.authService.registration(userDetails).subscribe({
       next: (response) => {
-        this._snackBar.open('Registered successfully', 'OK', {
-          duration: 3000,
-          panelClass: ['green-snackbar'],
-        });
+        this._snackBar.open(
+          this.translate.instant('REGISTRATION.INFO.OK'),
+          'OK',
+          {
+            duration: 3000,
+            panelClass: ['green-snackbar'],
+          },
+        );
         console.log(response);
         this.router.navigate(['login']);
       },
       error: (err) => {
         console.log(err);
-        this._snackBar.open('Something went wrong', 'X', {
-          duration: 3000,
-          panelClass: ['red-snackbar'],
-        });
+        this._snackBar.open(
+          this.translate.instant('REGISTRATION.INFO.INVALID'),
+          'X',
+          {
+            duration: 3000,
+            panelClass: ['red-snackbar'],
+          },
+        );
       },
     });
   }
@@ -127,10 +135,6 @@ export class RegistrationComponent implements OnInit {
   get confirmPassword() {
     return this.registrationForm.controls['confirmPassword'];
   }
-
-  // openSnackBar(message: string, type: string) {
-  //   this._snackBar.open('There was an error', 'X');
-  // }
 
   hide = signal(true);
   clickEvent(event: MouseEvent) {
