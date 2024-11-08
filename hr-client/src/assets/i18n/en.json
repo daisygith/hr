@@ -6,6 +6,10 @@
         "ADD": "Add",
         "REMOVE": "Remove"
       },
+      "INFO": {
+        "OK": "Save successfully",
+        "INVALID": "Something went wrong"
+      },
       "INFO_PICTURE": "Allowed JPG, GIF or PNG. Max size of 800K.",
       "SUBTITLE": "Change Profile picture form here",
       "TITLE": "Change Profile"
@@ -54,6 +58,10 @@
       "LOGIN": "Login"
     },
     "EMAIL": "Email",
+    "INFO": {
+      "OK": "Login successfully",
+      "INVALID": "Something went wrong"
+    },
     "PASSWORD": "Password",
     "REGISTRATION": {
       "BUTTON": "Create an account",
@@ -88,6 +96,10 @@
     },
     "CONFIRM_PASSWORD": "Confirm password",
     "EMAIL": "Email",
+    "INFO": {
+      "OK": "Registered successfully",
+      "INVALID": "Something went wrong"
+    },
     "PASSWORD": "Password",
     "REQUIRED": {
       "CONFIRM_PASSWORD_REQUIRED": "Confirm password is required",
@@ -125,6 +137,10 @@
     "STAFF_LIST": "Staff List"
   },
   "USER": {
+    "INFO": {
+      "OK": "Save successfully",
+      "INVALID": "Something went wrong"
+    },
     "TITLE": "Edit User Profile",
     "CHANGE_PASSWORD": {
       "SUBTITLE": "To change password please confirm here",

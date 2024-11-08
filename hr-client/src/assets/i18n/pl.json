@@ -6,6 +6,10 @@
         "ADD": "Dodaj",
         "REMOVE": "Usuń"
       },
+      "INFO": {
+        "OK": "Zalogowano pomyślnie",
+        "INVALID": "Coś poszło nie tak"
+      },
       "INFO_PICTURE": "Dozwolony format plików JPG, GIF or PNG. Max. rozmiar 800K.",
       "SUBTITLE": "Dodaj zdjęcie profilowe",
       "TITLE": "Dodaj Profil"
@@ -53,6 +57,10 @@
       "LOGIN": "Zaloguj"
     },
     "EMAIL": "Email",
+    "INFO": {
+      "OK": "Zalogowano pomyślnie",
+      "INVALID": "Coś poszło nie tak"
+    },
     "PASSWORD": "Hasło",
     "REGISTRATION": {
       "BUTTON": "Załóż konto",
@@ -87,6 +95,10 @@
     },
     "CONFIRM_PASSWORD": "Potwierdź hasło",
     "EMAIL": "Email",
+    "INFO": {
+      "OK": "Zarejestrowano pomyślnie",
+      "INVALID": "Coś poszło nie tak"
+    },
     "PASSWORD": "Hasło",
     "REQUIRED": {
       "CONFIRM_PASSWORD_REQUIRED": "Wymagane powtórzenie hasła",
@@ -121,6 +133,10 @@
     "STAFF_LIST": "Lista rzeczy"
   },
   "USER": {
+    "INFO": {
+      "OK": "Zalogowano pomyślnie",
+      "INVALID": "Coś poszło nie tak"
+    },
     "TITLE": "Edycja profilu użytkownika",
     "CHANGE_PASSWORD": {
       "SUBTITLE": "Potwierdź zmianę hasła",
