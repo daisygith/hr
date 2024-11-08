@@ -1,10 +1,22 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { RequestTimeOff } from '../models/requestTimeOff';
 import { ManageEmployee } from '../models/manageEmmployee';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Employee } from '../models/Employee';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
+  private http: HttpClient = inject(HttpClient);
+  private _apiUrl = `${environment.apiUrl}/employees`;
+  // private _apiUrl = environment.apiUrl;
+
+  addEmployee(addEmployee: Employee): Observable<Employee> {
+    console.log(addEmployee);
+    return this.http.post<Employee>(`${this._apiUrl}`, addEmployee);
+  }
+
   public getManageEmployee(): Observable<ManageEmployee[]> {
     return of([
       {

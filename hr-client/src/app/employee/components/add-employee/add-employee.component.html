@@ -11,6 +11,7 @@
       </div>
     </div>
   </div>
+
   <div class="add-employee-content elements">
     <div class="add-employee-content elements top">
       <div class="elements top left">
@@ -50,7 +51,11 @@
         </div>
       </div>
     </div>
-    <div class="add-employee-content elements bottom">
+    <!--    <form [formGroup]="addEmployeeForm">-->
+    <div
+      class="add-employee-content elements bottom"
+      [formGroup]="addEmployeeForm"
+    >
       <div class="elements-title">
         <div class="title-line1">
           {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.TITLE" | translate }}
@@ -67,6 +72,9 @@
           <mat-form-field class="input-full-width">
             <input
               matInput
+              type="text"
+              is="name"
+              formControlName="name"
               [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"
               id="input-name-personal"
             />
@@ -77,6 +85,9 @@
           <mat-form-field class="input-full-width">
             <input
               matInput
+              type="text"
+              is="staffId"
+              formControlName="staffId"
               [placeholder]="
                 'ADD_EMPLOYEE.PERSONAL_DETAILS.STAFF_ID' | translate
               "
@@ -89,6 +100,9 @@
           <mat-form-field class="input-full-width">
             <input
               matInput
+              type="text"
+              is="phone"
+              formControlName="phone"
               [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.PHONE' | translate"
               id="input-email-personal"
             />
@@ -99,35 +113,29 @@
             {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.POSITION.TITLE" | translate }}
           </div>
           <mat-form-field class="input-full-width">
-            <mat-select>
-              <mat-option value="male">
-                {{
-                  "ADD_EMPLOYEE.PERSONAL_DETAILS.POSITION.JUNIOR" | translate
-                }}
+            <mat-select type="text" is="position" formControlName="position">
+              <mat-option
+                *ngFor="let position of positionOptions"
+                [value]="position"
+              >
+                {{ position }}
               </mat-option>
-              <mat-option value="female">{{
-                "ADD_EMPLOYEE.PERSONAL_DETAILS.POSITION.MID" | translate
-              }}</mat-option>
-              <mat-option value="other">{{
-                "ADD_EMPLOYEE.PERSONAL_DETAILS.POSITION.SENIOR" | translate
-              }}</mat-option>
             </mat-select>
           </mat-form-field>
           <div class="input-title">
             {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.DEPARTMENT.TITLE" | translate }}
           </div>
           <mat-form-field class="input-full-width">
-            <mat-select>
-              <mat-option value="one">
-                {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.DEPARTMENT.HR" | translate }}
-              </mat-option>
-              <mat-option value="two">
-                {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.DEPARTMENT.IT" | translate }}
-              </mat-option>
-              <mat-option value="two">
-                {{
-                  "ADD_EMPLOYEE.PERSONAL_DETAILS.DEPARTMENT.DESIGN" | translate
-                }}
+            <mat-select
+              type="text"
+              is="department"
+              formControlName="department"
+            >
+              <mat-option
+                *ngFor="let department of departmentOptions"
+                [value]="department"
+              >
+                {{ department }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -137,24 +145,16 @@
             }}
           </div>
           <mat-form-field class="input-full-width">
-            <mat-select>
-              <mat-option value="one">
-                {{
-                  "ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT.FULL_TIME_CONTRACT"
-                    | translate
-                }}
-              </mat-option>
-              <mat-option value="two">
-                {{
-                  "ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT.CONTRACT_FOR_SPECIFIC_WORK"
-                    | translate
-                }}
-              </mat-option>
-              <mat-option value="two">
-                {{
-                  "ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT.FEE_FOR_TASK_AGREEMENT"
-                    | translate
-                }}
+            <mat-select
+              type="text"
+              is="typeOfContract"
+              formControlName="typeOfContract"
+            >
+              <mat-option
+                *ngFor="let typeOfContract of typeOfContractOptions"
+                [value]="typeOfContract"
+              >
+                {{ typeOfContract }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -167,6 +167,9 @@
         <mat-form-field class="input-full-width">
           <input
             matInput
+            type="text"
+            is="address"
+            formControlName="address"
             [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.ADDRESS' | translate"
             id="input-address-personal"
           />
@@ -174,7 +177,7 @@
       </div>
       <div class="save-changes">
         <div class="button-save">
-          <button mat-stroked-button id="button-save">
+          <button mat-stroked-button id="button-save" (click)="saveData()">
             {{
               "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate
             }}
