@@ -89,16 +89,20 @@ export class LoginComponent implements OnInit {
       console.log(this.loginForm.value);
       this.authService.login(userDetails).subscribe((data) => {
         if (this.authService.isLoggedIn) {
-          this._snackBar.open('Login successfully', 'OK', {
+          this._snackBar.open(this.translate.instant('LOGIN.INFO.OK'), 'OK', {
             duration: 3000,
             panelClass: ['green-snackbar'],
           });
           this.router.navigate(['dashboard']);
         } else {
-          this._snackBar.open('Something went wrong', 'X', {
-            duration: 3000,
-            panelClass: ['red-snackbar'],
-          });
+          this._snackBar.open(
+            this.translate.instant('LOGIN.INFO.INVALID'),
+            'X',
+            {
+              duration: 3000,
+              panelClass: ['red-snackbar'],
+            },
+          );
         }
         console.log(data);
       });
