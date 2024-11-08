@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../models/login-response';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private _apiUrl = 'http://localhost:8080/api/auth';
+  private _apiUrl = `${environment.apiUrl}/auth`;
   constructor(private http: HttpClient) {}
 
   isLoggedIn: boolean = false;
