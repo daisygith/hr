@@ -70,23 +70,21 @@ export class EditUserComponent implements OnInit {
   public buildForm() {
     this.editUserForm = this._fb.group(
       {
-        id: [new FormControl('', [Validators.required])],
-        name: [new FormControl('', [Validators.required])],
-        staffId: [new FormControl('', [Validators.required])],
-        email: [new FormControl('', [Validators.required])],
-        gender: [new FormControl('', [Validators.required])],
-        destination: [new FormControl('', [Validators.required])],
-        phone: [new FormControl('', [Validators.required])],
-        address: [new FormControl('', [Validators.required])],
-        password: [
-          new FormControl('', [
-            Validators.required,
-            Validators.pattern(
-              /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{6,40}$/,
-            ),
-          ]),
-        ],
-        confirmPassword: [new FormControl('', [Validators.required])],
+        id: new FormControl('', [Validators.required]),
+        name: new FormControl('', [Validators.required]),
+        staffId: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required]),
+        gender: new FormControl('', [Validators.required]),
+        destination: new FormControl('', [Validators.required]),
+        phone: new FormControl('', [Validators.required]),
+        address: new FormControl('', [Validators.required]),
+        password: new FormControl('', [
+          Validators.required,
+          Validators.pattern(
+            /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{6,40}$/,
+          ),
+        ]),
+        confirmPassword: new FormControl('', [Validators.required]),
       },
       {
         validators: passwordMismatchDirective,
