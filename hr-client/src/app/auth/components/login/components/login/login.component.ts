@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private _fb: FormBuilder,
     private _snackBar: MatSnackBar,
   ) {}
 
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
   }
 
   public buildForm() {
-    this.loginForm = this.fb.group({
+    this.loginForm = this._fb.group({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,

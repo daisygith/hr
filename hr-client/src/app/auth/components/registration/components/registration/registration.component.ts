@@ -61,7 +61,7 @@ export class RegistrationComponent implements OnInit {
   public registrationForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private _fb: FormBuilder,
     private _snackBar: MatSnackBar,
   ) {}
 
@@ -70,7 +70,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   public buildForm() {
-    this.registrationForm = this.fb.group(
+    this.registrationForm = this._fb.group(
       {
         username: new FormControl('', Validators.required),
         email: new FormControl('', [

@@ -53,14 +53,14 @@ export class RequestTimeOffComponent implements OnInit {
     'edit',
   ];
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private _employeeService: EmployeeService) {}
 
   ngOnInit(): void {
     this.getRequestTImeOff();
   }
 
   getRequestTImeOff(): void {
-    this.employeeService
+    this._employeeService
       .getRequestTimeOff()
       .subscribe({ next: (value) => (this.dataSource = value) });
   }

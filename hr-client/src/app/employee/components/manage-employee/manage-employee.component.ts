@@ -54,14 +54,14 @@ export class ManageEmployeeComponent implements OnInit {
     'more',
   ];
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private _employeeService: EmployeeService) {}
 
   ngOnInit(): void {
     this.getManageEmployee();
   }
 
   getManageEmployee(): void {
-    this.employeeService
+    this._employeeService
       .getManageEmployee()
       .subscribe({ next: (value) => (this.dataSource = value) });
   }
