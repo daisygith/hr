@@ -45,12 +45,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class EditUserComponent implements OnInit {
   public translate: TranslateService = inject(TranslateService);
 
-  // disabled: boolean = true;
   public editUserForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private userService: UserService,
+    private _fb: FormBuilder,
+    private _userService: UserService,
     private _snackBar: MatSnackBar,
   ) {}
 
@@ -58,19 +57,13 @@ export class EditUserComponent implements OnInit {
     this.buildForm();
   }
 
-  public genderOption: string[] = [
-    this.translate.instant('USER.PERSONAL_DETAILS.GENDER.MALE'),
-    this.translate.instant('USER.PERSONAL_DETAILS.GENDER.FEMALE'),
-    this.translate.instant('USER.PERSONAL_DETAILS.GENDER.OTHER'),
-  ];
+  public genderOption: string[] = ['MALE', 'FEMALE', 'OTHER'];
 
-  public destinationOption: string[] = [
-    this.translate.instant('USER.PERSONAL_DETAILS.DESTINATION.OPTION_1'),
-    this.translate.instant('USER.PERSONAL_DETAILS.DESTINATION.OPTION_2'),
-  ];
+  public destinationOption: string[] = ['OPTION_1', 'OPTION_2'];
 
   public buildForm() {
-    this.editUserForm = this.fb.group(
+    // todo walidacje
+    this.editUserForm = this._fb.group(
       {
         id: [null],
         name: [null],
@@ -90,10 +83,14 @@ export class EditUserComponent implements OnInit {
   }
 
   saveData() {
+    if (this.editUserForm.invalid) {
+      return;
+    }
+
     const userDetails = this.editUserForm.getRawValue();
     delete userDetails.confirmPassword;
 
-    this.userService.updateUser(userDetails).subscribe({
+    this._userService.updateUser(userDetails).subscribe({
       next: (data) => {
         this._snackBar.open(this.translate.instant('USER.INFO.OK'), 'OK', {
           duration: 3000,

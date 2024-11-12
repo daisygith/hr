@@ -154,7 +154,10 @@
                 *ngFor="let typeOfContract of typeOfContractOptions"
                 [value]="typeOfContract"
               >
-                {{ typeOfContract }}
+                {{
+                  "ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT." +
+                    typeOfContract | translate
+                }}
               </mat-option>
             </mat-select>
           </mat-form-field>

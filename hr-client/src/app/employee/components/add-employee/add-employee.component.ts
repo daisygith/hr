@@ -40,8 +40,8 @@ export class AddEmployeeComponent implements OnInit {
   public addEmployeeForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private employeeService: EmployeeService,
+    private _fb: FormBuilder,
+    private _employeeService: EmployeeService,
     private _snackBar: MatSnackBar,
   ) {}
 
@@ -51,22 +51,15 @@ export class AddEmployeeComponent implements OnInit {
 
   public positionOptions: string[] = ['Junior', 'Mid', 'Senior'];
   public departmentOptions: string[] = ['HR', 'IT', 'DESIGNER'];
-  // TODO problem ze zmianą jezyka jak juz jest formularz załadowany
   public typeOfContractOptions: string[] = [
     'B2B',
-    this.translate.instant(
-      'ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT.FULL_TIME_CONTRACT',
-    ),
-    this.translate.instant(
-      'ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT.CONTRACT_FOR_SPECIFIC_WORK',
-    ),
-    this.translate.instant(
-      'ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT.FEE_FOR_TASK_AGREEMENT',
-    ),
+    'FULL_TIME_CONTRACT',
+    'CONTRACT_FOR_SPECIFIC_WORK',
+    'FEE_FOR_TASK_AGREEMENT',
   ];
 
   public buildForm() {
-    this.addEmployeeForm = this.fb.group({
+    this.addEmployeeForm = this._fb.group({
       id: [null],
       name: [null],
       staffId: [null],
@@ -79,7 +72,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   saveData() {
-    this.employeeService
+    this._employeeService
       .addEmployee(this.addEmployeeForm.getRawValue())
       .subscribe({
         next: (data) => {

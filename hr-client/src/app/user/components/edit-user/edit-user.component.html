@@ -197,7 +197,7 @@
                   *ngFor="let gender of genderOption"
                   [value]="gender"
                 >
-                  {{ gender }}
+                  {{ "USER.PERSONAL_DETAILS.GENDER." + gender | translate }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -214,7 +214,10 @@
                   *ngFor="let destination of destinationOption"
                   [value]="destination"
                 >
-                  {{ destination }}
+                  {{
+                    "USER.PERSONAL_DETAILS.DESTINATION." + destination
+                      | translate
+                  }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
