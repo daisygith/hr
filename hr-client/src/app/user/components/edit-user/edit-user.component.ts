@@ -14,7 +14,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ShellComponent } from '../../../shell/components/shell/shell.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { passwordMismatchDirective } from '../../../shared/password-mismatch.directive';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -62,19 +68,25 @@ export class EditUserComponent implements OnInit {
   public destinationOption: string[] = ['OPTION_1', 'OPTION_2'];
 
   public buildForm() {
-    // todo walidacje
     this.editUserForm = this._fb.group(
       {
-        id: [null],
-        name: [null],
-        staffId: [null],
-        email: [null],
-        gender: [null],
-        destination: [null],
-        phone: [null],
-        address: [null],
-        password: [null],
-        confirmPassword: [null],
+        id: [new FormControl('', [Validators.required])],
+        name: [new FormControl('', [Validators.required])],
+        staffId: [new FormControl('', [Validators.required])],
+        email: [new FormControl('', [Validators.required])],
+        gender: [new FormControl('', [Validators.required])],
+        destination: [new FormControl('', [Validators.required])],
+        phone: [new FormControl('', [Validators.required])],
+        address: [new FormControl('', [Validators.required])],
+        password: [
+          new FormControl('', [
+            Validators.required,
+            Validators.pattern(
+              /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{6,40}$/,
+            ),
+          ]),
+        ],
+        confirmPassword: [new FormControl('', [Validators.required])],
       },
       {
         validators: passwordMismatchDirective,
