@@ -37,11 +37,11 @@
       "STAFF_ID": "Staff ID",
       "TITLE": "Personal Details",
       "TYPE_OF_CONTRACT": {
-        "TITLE": "Type of contract",
         "B2B": "B2B",
-        "FULL_TIME_CONTRACT": "Full time contract",
         "CONTRACT_FOR_SPECIFIC_WORK": "Contract for specific work",
-        "FEE_FOR_TASK_AGREEMENT": "Fee-for-task agreement"
+        "FEE_FOR_TASK_AGREEMENT": "Fee-for-task agreement",
+        "FULL_TIME_CONTRACT": "Full time contract",
+        "TITLE": "Type of contract"
       }
     }
   },

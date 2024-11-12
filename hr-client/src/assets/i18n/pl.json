@@ -37,10 +37,11 @@
       "STAFF_ID": "Identyfikator Pracownika",
       "TITLE": "Dane Osobowe",
       "TYPE_OF_CONTRACT": {
-        "TITLE": "Rodzaj umowy",
-        "FULL_TIME_CONTRACT": "Umowa o pracę na pełny etat",
+        "B2B": "B2B",
         "CONTRACT_FOR_SPECIFIC_WORK": "Umowa o dzieło",
-        "FEE_FOR_TASK_AGREEMENT": "Umowa zlecenie"
+        "FULL_TIME_CONTRACT": "Umowa o pracę na pełny etat",
+        "FEE_FOR_TASK_AGREEMENT": "Umowa zlecenie",
+        "TITLE": "Rodzaj umowy"
       }
     }
   },
