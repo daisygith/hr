@@ -134,11 +134,6 @@
     "STAFF_LIST": "Lista rzeczy"
   },
   "USER": {
-    "INFO": {
-      "OK": "Zalogowano pomyślnie",
-      "INVALID": "Coś poszło nie tak"
-    },
-    "TITLE": "Edycja profilu użytkownika",
     "CHANGE_PASSWORD": {
       "SUBTITLE": "Potwierdź zmianę hasła",
       "TITLE": "Zmiana hasła",
@@ -154,6 +149,12 @@
       "SUBTITLE": "Zmień zdjęcie profilowe",
       "TITLE": "Zmień Profil"
     },
+    "CURRENT_PASSWORD": "Aktualne hasło",
+    "INFO": {
+      "OK": "Zalogowano pomyślnie",
+      "INVALID": "Coś poszło nie tak"
+    },
+    "TITLE": "Edycja profilu użytkownika",
     "PERSONAL_DETAILS": {
       "ADDRESS": "Adres",
       "BUTTON": {

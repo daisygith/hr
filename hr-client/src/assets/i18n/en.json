@@ -137,11 +137,6 @@
     "STAFF_LIST": "Staff List"
   },
   "USER": {
-    "INFO": {
-      "OK": "Save successfully",
-      "INVALID": "Something went wrong"
-    },
-    "TITLE": "Edit User Profile",
     "CHANGE_PASSWORD": {
       "SUBTITLE": "To change password please confirm here",
       "TITLE": "Change Password",
@@ -156,6 +151,11 @@
       "INFO_PICTURE": "Allowed JPG, GIF or PNG. Max size of 800K.",
       "SUBTITLE": "Change Profile picture form here",
       "TITLE": "Change Profile"
+    },
+    "CURRENT_PASSWORD": "Current password",
+    "INFO": {
+      "OK": "Save successfully",
+      "INVALID": "Something went wrong"
     },
     "PERSONAL_DETAILS": {
       "ADDRESS": "Address",
@@ -179,6 +179,7 @@
       "SUBTITLE": "To change User's personal detail, edit and save from here",
       "STAFF_ID": "Staff ID",
       "TITLE": "Personal Details"
-    }
+    },
+    "TITLE": "Edit User Profile"
   }
 }
