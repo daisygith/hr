@@ -2,6 +2,7 @@ package pl.sdu.hr.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,13 +25,12 @@ public class Employee {
     @Size(max = 50)
     private String name;
 
-    @NotBlank
-    @Size(max = 20)
+    @NotNull
     private Long staffId;
 
-    @NotBlank
+    @NotNull
     @Size(max = 9)
-    private Number phone;
+    private String phone;
 
     @NotBlank
     @Size(max = 20)

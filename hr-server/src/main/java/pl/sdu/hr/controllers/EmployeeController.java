@@ -7,7 +7,6 @@ import pl.sdu.hr.services.EmployeeService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -21,8 +20,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/{employeeId}")
-    public EmployeeDto getEmployee(@PathVariable Long emmployeeId) throws Exception {
-        EmployeeDto employeeDto = employeeService.findById(emmployeeId);
+    public EmployeeDto getEmployee(@PathVariable Long employeeId) throws Exception {
+        EmployeeDto employeeDto = employeeService.findById(employeeId);
 
         return employeeDto;
     }

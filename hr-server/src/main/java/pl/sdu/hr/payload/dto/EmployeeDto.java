@@ -17,7 +17,7 @@ public class EmployeeDto {
 
     private Long staffId;
 
-    private Number phone;
+    private String phone;
 
     private String position;
 

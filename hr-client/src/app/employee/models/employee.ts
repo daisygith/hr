@@ -2,7 +2,7 @@ export interface Employee {
   id: number;
   name: string;
   staffId: number;
-  phone: number;
+  phone: string;
   position: string;
   department: string;
   typeOfContract: string;
