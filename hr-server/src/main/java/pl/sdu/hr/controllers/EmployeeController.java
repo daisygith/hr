@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/employess")
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
-    @GetMapping("/{emmployeeId}")
+    @GetMapping("/{employeeId}")
     public EmployeeDto getEmployee(@PathVariable Long emmployeeId) throws Exception {
         EmployeeDto employeeDto = employeeService.findById(emmployeeId);
 
