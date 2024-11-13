@@ -50,90 +50,91 @@
             </div>
           </div>
         </div>
-        <div class="elements top right">
-          <div class="elements-title">
-            <div class="title-line1">
-              {{ "USER.CHANGE_PASSWORD.TITLE" | translate }}
-            </div>
-            <div class="title-line2">
-              {{ "USER.CHANGE_PASSWORD.SUBTITLE" | translate }}
-            </div>
-          </div>
-          <div class="elements-content">
-            <div class="input-newPassword">
-              <div class="input-title">
-                {{ "USER.CHANGE_PASSWORD.NEW_PASSWORD" | translate }}
-              </div>
-              <mat-form-field class="input-full-width">
-                <input
-                  matInput
-                  [type]="hidePassword() ? 'password' : 'text'"
-                  id="input-newPassword"
-                  type="text"
-                  is="password"
-                  formControlName="password"
-                />
-                <button
-                  mat-icon-button
-                  matSuffix
-                  (click)="clickEventHidePassword($event)"
-                  [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hidePassword()"
-                >
-                  <mat-icon id="newPassword-icon">{{
-                    hidePassword() ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-                </button>
-              </mat-form-field>
-              @if (password.hasError("pattern")) {
-                <mat-error>{{
-                  "REGISTRATION.REQUIRED.PASSWORD_INVALID" | translate
-                }}</mat-error>
-              }
-            </div>
-            <div class="input-confirmPassword">
-              <div class="input-title">
-                {{ "USER.CHANGE_PASSWORD.CONFIRM_PASSWORD" | translate }}
-              </div>
-              <mat-form-field class="input-full-width">
-                <input
-                  matInput
-                  [type]="hideConfirmPassword() ? 'password' : 'text'"
-                  id="input-confirmPassword"
-                  type="text"
-                  is="confirmPassword"
-                  formControlName="confirmPassword"
-                />
-                <button
-                  mat-icon-button
-                  matSuffix
-                  (click)="clickEventHideConfirmPassword($event)"
-                  [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hideConfirmPassword()"
-                >
-                  <mat-icon id="confirmPassword-icon">{{
-                    hideConfirmPassword() ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-                </button>
-              </mat-form-field>
-              @if (confirmPassword.invalid && confirmPassword.dirty) {
-                <mat-error>{{
-                  "REGISTRATION.REQUIRED.CONFIRM_PASSWORD_REQUIRED" | translate
-                }}</mat-error>
-              }
+        <app-change-password></app-change-password>
+        <!--        <div class="elements top right">-->
+        <!--          <div class="elements-title">-->
+        <!--            <div class="title-line1">-->
+        <!--              {{ "USER.CHANGE_PASSWORD.TITLE" | translate }}-->
+        <!--            </div>-->
+        <!--            <div class="title-line2">-->
+        <!--              {{ "USER.CHANGE_PASSWORD.SUBTITLE" | translate }}-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <div class="elements-content">-->
+        <!--            <div class="input-newPassword">-->
+        <!--              <div class="input-title">-->
+        <!--                {{ "USER.CHANGE_PASSWORD.NEW_PASSWORD" | translate }}-->
+        <!--              </div>-->
+        <!--              <mat-form-field class="input-full-width">-->
+        <!--                <input-->
+        <!--                  matInput-->
+        <!--                  [type]="hidePassword() ? 'password' : 'text'"-->
+        <!--                  id="input-newPassword"-->
+        <!--                  type="text"-->
+        <!--                  is="password"-->
+        <!--                  formControlName="password"-->
+        <!--                />-->
+        <!--                <button-->
+        <!--                  mat-icon-button-->
+        <!--                  matSuffix-->
+        <!--                  (click)="clickEventHidePassword($event)"-->
+        <!--                  [attr.aria-label]="'Hide password'"-->
+        <!--                  [attr.aria-pressed]="hidePassword()"-->
+        <!--                >-->
+        <!--                  <mat-icon id="newPassword-icon">{{-->
+        <!--                    hidePassword() ? "visibility_off" : "visibility"-->
+        <!--                  }}</mat-icon>-->
+        <!--                </button>-->
+        <!--              </mat-form-field>-->
+        <!--              @if (password.hasError("pattern")) {-->
+        <!--                <mat-error>{{-->
+        <!--                  "REGISTRATION.REQUIRED.PASSWORD_INVALID" | translate-->
+        <!--                }}</mat-error>-->
+        <!--              }-->
+        <!--            </div>-->
+        <!--            <div class="input-confirmPassword">-->
+        <!--              <div class="input-title">-->
+        <!--                {{ "USER.CHANGE_PASSWORD.CONFIRM_PASSWORD" | translate }}-->
+        <!--              </div>-->
+        <!--              <mat-form-field class="input-full-width">-->
+        <!--                <input-->
+        <!--                  matInput-->
+        <!--                  [type]="hideConfirmPassword() ? 'password' : 'text'"-->
+        <!--                  id="input-confirmPassword"-->
+        <!--                  type="text"-->
+        <!--                  is="confirmPassword"-->
+        <!--                  formControlName="confirmPassword"-->
+        <!--                />-->
+        <!--                <button-->
+        <!--                  mat-icon-button-->
+        <!--                  matSuffix-->
+        <!--                  (click)="clickEventHideConfirmPassword($event)"-->
+        <!--                  [attr.aria-label]="'Hide password'"-->
+        <!--                  [attr.aria-pressed]="hideConfirmPassword()"-->
+        <!--                >-->
+        <!--                  <mat-icon id="confirmPassword-icon">{{-->
+        <!--                    hideConfirmPassword() ? "visibility_off" : "visibility"-->
+        <!--                  }}</mat-icon>-->
+        <!--                </button>-->
+        <!--              </mat-form-field>-->
+        <!--              @if (confirmPassword.invalid && confirmPassword.dirty) {-->
+        <!--                <mat-error>{{-->
+        <!--                  "REGISTRATION.REQUIRED.CONFIRM_PASSWORD_REQUIRED" | translate-->
+        <!--                }}</mat-error>-->
+        <!--              }-->
 
-              @if (
-                editUserForm.hasError("passwordMismatch") &&
-                password.valid &&
-                confirmPassword.valid
-              ) {
-                <mat-error>{{
-                  "REGISTRATION.REQUIRED.PASSWORD_MISMATCH" | translate
-                }}</mat-error>
-              }
-            </div>
-          </div>
-        </div>
+        <!--              @if (-->
+        <!--                editUserForm.hasError("passwordMismatch") &&-->
+        <!--                password.valid &&-->
+        <!--                confirmPassword.valid-->
+        <!--              ) {-->
+        <!--                <mat-error>{{-->
+        <!--                  "REGISTRATION.REQUIRED.PASSWORD_MISMATCH" | translate-->
+        <!--                }}</mat-error>-->
+        <!--              }-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
       </div>
       <div class="edit-user-content elements bottom">
         <div class="elements-title">

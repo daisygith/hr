@@ -60,7 +60,7 @@ app-edit-user {
     .elements.top.left,
     .elements.top.right {
       display: grid;
-      grid-template-rows: 1fr 2fr;
+      grid-template-rows: 80px 1fr;
       background-color: var(--main-color-text);
     }
 
@@ -113,6 +113,7 @@ app-edit-user {
       top: 0;
     }
 
+    input#input-currentPassword,
     input#input-newPassword,
     input#input-confirmPassword,
     input#input-name-personal,

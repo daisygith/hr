@@ -1,10 +1,4 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  signal,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgForOf, NgOptimizedImage } from '@angular/common';
 import { MatButton, MatIconButton } from '@angular/material/button';
@@ -22,8 +16,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { passwordMismatchDirective } from '../../../shared/password-mismatch.directive';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-edit-user',
@@ -43,6 +37,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     TranslateModule,
     ReactiveFormsModule,
     NgForOf,
+    ChangePasswordComponent,
   ],
   templateUrl: './edit-user.component.html',
   styleUrl: './edit-user.component.scss',
@@ -68,28 +63,16 @@ export class EditUserComponent implements OnInit {
   public destinationOption: string[] = ['OPTION_1', 'OPTION_2'];
 
   public buildForm() {
-    this.editUserForm = this._fb.group(
-      {
-        id: new FormControl('', [Validators.required]),
-        name: new FormControl('', [Validators.required]),
-        staffId: new FormControl('', [Validators.required]),
-        email: new FormControl('', [Validators.required]),
-        gender: new FormControl('', [Validators.required]),
-        destination: new FormControl('', [Validators.required]),
-        phone: new FormControl('', [Validators.required]),
-        address: new FormControl('', [Validators.required]),
-        password: new FormControl('', [
-          Validators.required,
-          Validators.pattern(
-            /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{6,40}$/,
-          ),
-        ]),
-        confirmPassword: new FormControl('', [Validators.required]),
-      },
-      {
-        validators: passwordMismatchDirective,
-      },
-    );
+    this.editUserForm = this._fb.group({
+      id: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      staffId: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      gender: new FormControl('', [Validators.required]),
+      destination: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+    });
   }
 
   saveData() {
@@ -97,10 +80,7 @@ export class EditUserComponent implements OnInit {
       return;
     }
 
-    const userDetails = this.editUserForm.getRawValue();
-    delete userDetails.confirmPassword;
-
-    this._userService.updateUser(userDetails).subscribe({
+    this._userService.updateUser(this.editUserForm.getRawValue()).subscribe({
       next: (data) => {
         this._snackBar.open(this.translate.instant('USER.INFO.OK'), 'OK', {
           duration: 3000,
@@ -116,24 +96,5 @@ export class EditUserComponent implements OnInit {
         console.log(err);
       },
     });
-  }
-
-  get password() {
-    return this.editUserForm.controls['password'];
-  }
-  get confirmPassword() {
-    return this.editUserForm.controls['confirmPassword'];
-  }
-
-  hidePassword = signal(true);
-  clickEventHidePassword(event: MouseEvent) {
-    this.hidePassword.set(!this.hidePassword());
-    event.stopPropagation();
-  }
-
-  hideConfirmPassword = signal(true);
-  clickEventHideConfirmPassword(event: MouseEvent) {
-    this.hideConfirmPassword.set(!this.hideConfirmPassword());
-    event.stopPropagation();
   }
 }
