@@ -7,5 +7,4 @@ export interface User {
   destination: string;
   phone: number;
   address: string;
-  password: string;
 }
