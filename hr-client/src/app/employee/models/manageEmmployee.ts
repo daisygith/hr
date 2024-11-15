@@ -1,8 +1,9 @@
 export interface ManageEmployee {
-  employeeName: string;
-  phoneNumber: string;
+  id: number;
+  name: string;
+  phone: string;
   department: string;
-  jobTitle: string;
-  contactType: string;
-  attendance: string;
+  position: string;
+  typeOfContract: string;
+  // attendance: string;
 }

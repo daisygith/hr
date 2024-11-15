@@ -11,12 +11,13 @@ import {
   MatRowDef,
   MatTable,
 } from '@angular/material/table';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
 import { AsyncPipe } from '@angular/common';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-manage-employee',
@@ -36,6 +37,9 @@ import { AsyncPipe } from '@angular/common';
     MatIcon,
     TranslateModule,
     AsyncPipe,
+    MatMiniFabButton,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',
@@ -44,17 +48,20 @@ import { AsyncPipe } from '@angular/common';
 export class ManageEmployeeComponent implements OnInit {
   dataSource: ManageEmployee[] = [];
   displayedColumns = [
-    'employeeName',
-    'phoneNumber',
+    'name',
+    'phone',
     'department',
-    'jobTitle',
-    'contactType',
-    'attendance',
+    'position',
+    'typeOfContract',
+    // 'attendance',
     'details',
     'more',
   ];
 
-  constructor(private _employeeService: EmployeeService) {}
+  constructor(
+    private _employeeService: EmployeeService,
+    private _route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.getManageEmployee();
@@ -64,5 +71,11 @@ export class ManageEmployeeComponent implements OnInit {
     this._employeeService
       .getManageEmployee()
       .subscribe({ next: (value) => (this.dataSource = value) });
+  }
+
+  deleteManageEmployeeById(employeeId: ManageEmployee): void {
+    this.dataSource = this.dataSource.filter((item) => item !== employeeId);
+    console.log(this.dataSource);
+    this._employeeService.deleteManageEmployeeById(employeeId.id).subscribe();
   }
 }

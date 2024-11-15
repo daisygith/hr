@@ -1,20 +1,20 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Employee Name Column -->
-  <ng-container matColumnDef="employeeName">
+  <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>
       <!--      TODO  dodać wielkośc- szerokosc nazwy pod polski tytuł-->
       {{ "MANAGE_EMPLOYEE.EMPLOYEE_NAME" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.employeeName }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
   </ng-container>
 
   <!-- Phone Number Column -->
-  <ng-container matColumnDef="phoneNumber">
+  <ng-container matColumnDef="phone">
     <!--      TODO  dodać wielkośc- szerokosc nazwy pod polski tytuł-->
     <th mat-header-cell *matHeaderCellDef>
       {{ "MANAGE_EMPLOYEE.PHONE_NUMBER" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
   </ng-container>
 
   <!-- Department Column -->
@@ -27,35 +27,41 @@
   </ng-container>
 
   <!-- Job Title Column -->
-  <ng-container matColumnDef="jobTitle">
+  <ng-container matColumnDef="position">
     <!--      TODO  dodać wielkośc- szerokosc nazwy pod polski tytuł-->
     <th mat-header-cell *matHeaderCellDef>
       {{ "MANAGE_EMPLOYEE.JOB_TITLE" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.position }}</td>
   </ng-container>
 
   <!-- Contact Type Column -->
-  <ng-container matColumnDef="contactType">
+  <ng-container matColumnDef="typeOfContract">
     <th mat-header-cell *matHeaderCellDef>
       {{ "MANAGE_EMPLOYEE.CONTACT_TYPE" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.contactType }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.typeOfContract }}</td>
   </ng-container>
 
   <!-- Attendance Type Column -->
-  <ng-container matColumnDef="attendance">
-    <th mat-header-cell *matHeaderCellDef>
-      {{ "MANAGE_EMPLOYEE.ATTENDANCE" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.attendance }}</td>
-  </ng-container>
+  <!--  <ng-container matColumnDef="attendance">-->
+  <!--    <th mat-header-cell *matHeaderCellDef>-->
+  <!--      {{ "MANAGE_EMPLOYEE.ATTENDANCE" | translate }}-->
+  <!--    </th>-->
+  <!--    <td mat-cell *matCellDef="let element">{{ element.attendance }}</td>-->
+  <!--  </ng-container>-->
 
   <!-- Details Type Column -->
   <ng-container matColumnDef="details">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-stroked-button id="button-details">
+      <button
+        mat-stroked-button
+        id="button-details"
+        [routerLink]="['/employee', element.id]"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
         {{ "MANAGE_EMPLOYEE.BUTTON.SEE_DETAILS" | translate }}
       </button>
     </td>
@@ -65,8 +71,12 @@
   <ng-container matColumnDef="more">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-stroked-button id="button-more">
-        <mat-icon>more_vert</mat-icon>
+      <button
+        mat-mini-fab
+        id="button-more"
+        (click)="deleteManageEmployeeById(element)"
+      >
+        <mat-icon>delete</mat-icon>
       </button>
     </td>
   </ng-container>

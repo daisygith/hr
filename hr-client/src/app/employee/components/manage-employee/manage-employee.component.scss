@@ -36,4 +36,8 @@ app-manage-employee {
     background-color: var(--border-app-element) !important;
     height: 36px;
   }
+
+  .mat-mdc-mini-fab {
+    background-color: transparent;
+  }
 }
