@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgForOf, NgOptimizedImage } from '@angular/common';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
@@ -30,23 +30,30 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     TranslateModule,
     ReactiveFormsModule,
     NgForOf,
+    NgIf,
   ],
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class AddEmployeeComponent implements OnInit {
+  id: any;
+  employee: any;
+
   public translate: TranslateService = inject(TranslateService);
   public addEmployeeForm!: FormGroup;
 
   constructor(
+    private _route: ActivatedRoute,
     private _fb: FormBuilder,
     private _employeeService: EmployeeService,
     private _snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
+    this.id = this._route.snapshot.params['employeeId'];
     this.buildForm();
+    this.getEmployeeById(this.id);
   }
 
   public positionOptions: string[] = ['Junior', 'Mid', 'Senior'];
@@ -68,6 +75,17 @@ export class AddEmployeeComponent implements OnInit {
       department: [null],
       typeOfContract: [null],
       address: [null],
+    });
+  }
+
+  getEmployeeById(employeeId: number): void {
+    if (!this.id) {
+      return;
+    }
+    this._employeeService.getEmployeeById(employeeId).subscribe((data) => {
+      this.employee = data;
+      console.log(this.employee);
+      this.addEmployeeForm.patchValue(data);
     });
   }
 

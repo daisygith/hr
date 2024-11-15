@@ -6,9 +6,18 @@
           >person_apron</mat-icon
         >
       </div>
-      <div class="add-employee-title">
-        <div class="line1">{{ "ADD_EMPLOYEE.TITLE" | translate }}</div>
-      </div>
+      <div *ngIf="id != null; then title1; else title2"></div>
+
+      <ng-template #title1>
+        <div class="add-employee-title">
+          <div class="line1">{{ "ADD_EMPLOYEE.TITLE1" | translate }}</div>
+        </div>
+      </ng-template>
+      <ng-template #title2>
+        <div class="add-employee-title">
+          <div class="line1">{{ "ADD_EMPLOYEE.TITLE2" | translate }}</div>
+        </div>
+      </ng-template>
     </div>
   </div>
 
