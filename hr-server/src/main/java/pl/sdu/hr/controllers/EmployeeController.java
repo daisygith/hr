@@ -20,7 +20,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{employeeId}")
-    public EmployeeDto getEmployee(@PathVariable Long employeeId) throws Exception {
+    public EmployeeDto getEmployee(@PathVariable("employeeId") Long employeeId) throws Exception {
         EmployeeDto employeeDto = employeeService.findById(employeeId);
 
         return employeeDto;
@@ -41,7 +41,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{employeeId}")
-    public String deleteEmployee(@PathVariable Long employeeId) throws Exception {
+    public String deleteEmployee(@PathVariable("employeeId") Long employeeId) throws Exception {
         EmployeeDto tempEmployee = employeeService.findById(employeeId);
 
         if(tempEmployee == null) {

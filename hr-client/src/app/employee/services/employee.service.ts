@@ -10,24 +10,24 @@ import { environment } from '../../../environments/environment';
 export class EmployeeService {
   private http: HttpClient = inject(HttpClient);
   private _apiUrl = `${environment.apiUrl}/employees`;
-  // private _apiUrl = environment.apiUrl;
 
+  //add-employee
   addEmployee(addEmployee: Employee): Observable<Employee> {
     console.log(addEmployee);
     return this.http.post<Employee>(`${this._apiUrl}`, addEmployee);
   }
 
-  public getManageEmployee(): Observable<ManageEmployee[]> {
-    return of([
-      {
-        employeeName: 'Test1 Test1',
-        phoneNumber: '(+62) 928 7273 7262',
-        department: 'Design',
-        jobTitle: 'Creative Direction',
-        contactType: 'Onsite - Full time',
-        attendance: '120h 32m',
-      },
-    ]);
+  getEmployeeById(employeeId: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this._apiUrl}/${employeeId}`);
+  }
+
+  //manage-employee
+  getManageEmployee(): Observable<ManageEmployee[]> {
+    return this.http.get<ManageEmployee[]>(`${this._apiUrl}`);
+  }
+
+  deleteManageEmployeeById(employeeId: number): Observable<void> {
+    return this.http.delete<void>(`${this._apiUrl}/${employeeId}`);
   }
 
   public getRequestTimeOff(): Observable<RequestTimeOff[]> {

@@ -15,4 +15,11 @@ export const employeeRoutes: Routes = [
         (m) => m.AddEmployeeComponent,
       ),
   },
+  {
+    path: ':employeeId',
+    loadComponent: () =>
+      import('./components/add-employee/add-employee.component').then(
+        (m) => m.AddEmployeeComponent,
+      ),
+  },
 ];
