@@ -1,5 +1,10 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -11,6 +16,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Employee } from '../../models/employee';
 
 @Component({
   selector: 'app-add-employee',
@@ -31,14 +37,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     NgForOf,
     NgIf,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class AddEmployeeComponent implements OnInit {
-  id: any;
-  employee: any;
+  id: number | undefined;
+  employee: Employee | undefined;
+  isNew: boolean = false;
 
   public translate: TranslateService = inject(TranslateService);
   public addEmployeeForm!: FormGroup;
@@ -52,6 +61,7 @@ export class AddEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this._route.snapshot.params['employeeId'];
+    this.isNew = !this.id;
     this.buildForm();
     this.getEmployeeById(this.id);
   }
@@ -78,8 +88,8 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
-  getEmployeeById(employeeId: number): void {
-    if (!this.id) {
+  getEmployeeById(employeeId: number | undefined): void {
+    if (!employeeId) {
       return;
     }
     this._employeeService.getEmployeeById(employeeId).subscribe((data) => {
@@ -90,31 +100,65 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   saveData() {
-    this._employeeService
-      .addEmployee(this.addEmployeeForm.getRawValue())
-      .subscribe({
-        next: (data) => {
-          this._snackBar.open(
-            this.translate.instant('ADD_EMPLOYEE.INFO.OK'),
-            'OK',
-            {
-              duration: 3000,
-              panelClass: ['green-snackbar'],
-            },
-          );
-          console.log(data);
-        },
-        error: (err) => {
-          this._snackBar.open(
-            this.translate.instant('ADD_EMPLOYEE.INFO.INVALID'),
-            'X',
-            {
-              duration: 3000,
-              panelClass: ['red-snackbar'],
-            },
-          );
-          console.log(err);
-        },
-      });
+    if (this.isNew) {
+      this._employeeService
+        .addEmployee(this.addEmployeeForm.getRawValue())
+        .subscribe({
+          next: (data) => {
+            this._snackBar.open(
+              this.translate.instant('ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK'),
+              'OK',
+              {
+                duration: 3000,
+                panelClass: ['green-snackbar'],
+              },
+            );
+            console.log(data);
+          },
+          error: (err) => {
+            this._snackBar.open(
+              this.translate.instant(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+              ),
+              'X',
+              {
+                duration: 3000,
+                panelClass: ['red-snackbar'],
+              },
+            );
+            console.log(err);
+          },
+        });
+    } else {
+      this._employeeService
+        .updateEmployee(this.addEmployeeForm.getRawValue())
+        .subscribe({
+          next: (data) => {
+            this._snackBar.open(
+              this.translate.instant('ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK'),
+              'OK',
+              {
+                duration: 3000,
+                panelClass: ['green-snackbar'],
+              },
+            );
+            console.log(data);
+            this.employee = data;
+          },
+          error: (err) => {
+            this._snackBar.open(
+              this.translate.instant(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+              ),
+              'X',
+              {
+                duration: 3000,
+                panelClass: ['red-snackbar'],
+              },
+            );
+            console.log(err);
+          },
+        });
+    }
   }
 }
