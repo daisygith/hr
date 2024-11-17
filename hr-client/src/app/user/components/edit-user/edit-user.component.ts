@@ -18,6 +18,7 @@ import {
 import { UserService } from '../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { Profile } from '../../models/Profile';
 
 @Component({
   selector: 'app-edit-user',
@@ -44,6 +45,8 @@ import { ChangePasswordComponent } from '../change-password/change-password.comp
   encapsulation: ViewEncapsulation.None,
 })
 export class EditUserComponent implements OnInit {
+  profile: Profile | undefined;
+
   public translate: TranslateService = inject(TranslateService);
 
   public editUserForm!: FormGroup;
@@ -56,6 +59,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    this.getProfile();
   }
 
   public genderOption: string[] = ['MALE', 'FEMALE', 'OTHER'];
@@ -72,6 +76,13 @@ export class EditUserComponent implements OnInit {
       destination: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
+    });
+  }
+
+  getProfile(): void {
+    this._userService.getUserProfile().subscribe((data) => {
+      this.profile = data;
+      this.editUserForm.patchValue(data);
     });
   }
 
