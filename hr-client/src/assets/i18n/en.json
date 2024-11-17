@@ -1,6 +1,7 @@
 {
   "ADD_EMPLOYEE": {
-    "TITLE": "Add New Employee Profile",
+    "TITLE1": "User Profile",
+    "TITLE2": "Add New Employee Profile",
     "CHANGE_PROFILE": {
       "BUTTON": {
         "ADD": "Add",

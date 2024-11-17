@@ -1,13 +1,14 @@
 {
   "ADD_EMPLOYEE": {
-    "TITLE": "Utwórz nowy profil pracownika",
+    "TITLE1": "Profil użytkownika",
+    "TITLE2": "Utwórz nowy profil pracownika",
     "CHANGE_PROFILE": {
       "BUTTON": {
         "ADD": "Dodaj",
         "REMOVE": "Usuń"
       },
       "INFO": {
-        "OK": "Zalogowano pomyślnie",
+        "OK": "Zapisano pomyślnie",
         "INVALID": "Coś poszło nie tak"
       },
       "INFO_PICTURE": "Dozwolony format plików JPG, GIF or PNG. Max. rozmiar 800K.",
