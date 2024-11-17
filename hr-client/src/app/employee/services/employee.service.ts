@@ -3,7 +3,7 @@ import { RequestTimeOff } from '../models/requestTimeOff';
 import { ManageEmployee } from '../models/manageEmmployee';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Employee } from '../models/Employee';
+import { Employee } from '../models/employee';
 import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -12,13 +12,16 @@ export class EmployeeService {
   private _apiUrl = `${environment.apiUrl}/employees`;
 
   //add-employee
-  addEmployee(addEmployee: Employee): Observable<Employee> {
-    console.log(addEmployee);
-    return this.http.post<Employee>(`${this._apiUrl}`, addEmployee);
+  addEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(`${this._apiUrl}`, employee);
   }
 
   getEmployeeById(employeeId: number): Observable<Employee> {
     return this.http.get<Employee>(`${this._apiUrl}/${employeeId}`);
+  }
+
+  updateEmployee(employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${this._apiUrl}/${employee.id}`, employee);
   }
 
   //manage-employee
