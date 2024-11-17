@@ -33,7 +33,7 @@ public class EmployeeController {
         return dbEmployee;
     }
 
-    @PutMapping("")
+    @PutMapping("/{employeeId}")
     public EmployeeDto updateEmployee(@RequestBody EmployeeDto employeeDto){
         EmployeeDto dbEmployee = employeeService.update(employeeDto);
 
