@@ -2,23 +2,28 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
+
 import { ChangePassword } from '../models/changePassword';
+import { Profile } from '../models/Profile';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private http: HttpClient = inject(HttpClient);
-  private _apiUrl = `${environment.apiUrl}/users`;
+  private _apiUrl = `${environment.apiUrl}`;
 
-  updateUser(user: User): Observable<User> {
-    console.log(user);
-    return this.http.post<User>(`${this._apiUrl}/edit`, user);
+  getUserProfile(): Observable<Profile> {
+    return this.http.get<Profile>(`${this._apiUrl}/profiles/current`);
+  }
+
+  updateUser(profile: Profile): Observable<Profile> {
+    console.log(profile);
+    return this.http.put<Profile>(`${this._apiUrl}/profiles/edit`, profile);
   }
 
   changePassword(changePassword: ChangePassword): Observable<ChangePassword> {
     console.log(changePassword);
     return this.http.post<ChangePassword>(
-      `${this._apiUrl}/changePassword`,
+      `${this._apiUrl}/users/changePassword`,
       changePassword,
     );
   }

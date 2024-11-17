@@ -1,10 +1,10 @@
-export interface User {
-  id: string;
+export interface Profile {
+  id: number;
   name: string;
   staffId: number;
   email: string;
   gender: string;
   destination: string;
-  phone: number;
+  phone: string;
   address: string;
 }
