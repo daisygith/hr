@@ -23,7 +23,7 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { passwordMismatchDirective } from '../../../shared/password-mismatch.directive';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-change-password',
@@ -45,14 +45,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ChangePasswordComponent implements OnInit {
   public translate: TranslateService = inject(TranslateService);
+  public notification: NotificationService = inject(NotificationService);
+
+  private _fb: FormBuilder = inject(FormBuilder);
+  private _userService: UserService = inject(UserService);
 
   public changePasswordForm!: FormGroup;
-
-  constructor(
-    private _fb: FormBuilder,
-    private _userService: UserService,
-    private _snackBar: MatSnackBar,
-  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -86,17 +84,11 @@ export class ChangePasswordComponent implements OnInit {
 
     this._userService.changePassword(changePasswordDetails).subscribe({
       next: (data) => {
-        this._snackBar.open(this.translate.instant('USER.INFO.OK'), 'OK', {
-          duration: 3000,
-          panelClass: ['green-snackbar'],
-        });
+        this.notification.successMethod('USER.INFO.OK');
         console.log(data);
       },
       error: (err) => {
-        this._snackBar.open(this.translate.instant('USER.INFO.INVALID'), 'X', {
-          duration: 3000,
-          panelClass: ['red-snackbar'],
-        });
+        this.notification.errorMethod('USER.INFO.INVALID');
         console.log(err);
       },
     });

@@ -15,8 +15,8 @@ import { ShellComponent } from '../../../shell/components/shell/shell.component'
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from '../../models/employee';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -50,17 +50,16 @@ export class AddEmployeeComponent implements OnInit {
   isNew: boolean = false;
 
   public translate: TranslateService = inject(TranslateService);
+  public notification: NotificationService = inject(NotificationService);
+
+  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  private _fb: FormBuilder = inject(FormBuilder);
+  private _employeeService: EmployeeService = inject(EmployeeService);
+
   public addEmployeeForm!: FormGroup;
 
-  constructor(
-    private _route: ActivatedRoute,
-    private _fb: FormBuilder,
-    private _employeeService: EmployeeService,
-    private _snackBar: MatSnackBar,
-  ) {}
-
   ngOnInit(): void {
-    this.id = this._route.snapshot.params['employeeId'];
+    this.id = this._activeRoute.snapshot.params['employeeId'];
     this.isNew = !this.id;
     this.buildForm();
     this.getEmployeeById(this.id);
@@ -98,33 +97,21 @@ export class AddEmployeeComponent implements OnInit {
       this.addEmployeeForm.patchValue(data);
     });
   }
-
+  // TODO: poprawić komunikaty dla dodawania nowego pracownika i zapisanych zmian dla danego pracownika
   saveData() {
     if (this.isNew) {
       this._employeeService
         .addEmployee(this.addEmployeeForm.getRawValue())
         .subscribe({
           next: (data) => {
-            this._snackBar.open(
-              this.translate.instant('ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK'),
-              'OK',
-              {
-                duration: 3000,
-                panelClass: ['green-snackbar'],
-              },
+            this.notification.successMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
             );
             console.log(data);
           },
           error: (err) => {
-            this._snackBar.open(
-              this.translate.instant(
-                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-              ),
-              'X',
-              {
-                duration: 3000,
-                panelClass: ['red-snackbar'],
-              },
+            this.notification.errorMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
             );
             console.log(err);
           },
@@ -134,27 +121,15 @@ export class AddEmployeeComponent implements OnInit {
         .updateEmployee(this.addEmployeeForm.getRawValue())
         .subscribe({
           next: (data) => {
-            this._snackBar.open(
-              this.translate.instant('ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK'),
-              'OK',
-              {
-                duration: 3000,
-                panelClass: ['green-snackbar'],
-              },
+            this.notification.successMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
             );
             console.log(data);
             this.employee = data;
           },
           error: (err) => {
-            this._snackBar.open(
-              this.translate.instant(
-                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-              ),
-              'X',
-              {
-                duration: 3000,
-                panelClass: ['red-snackbar'],
-              },
+            this.notification.errorMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
             );
             console.log(err);
           },

@@ -16,9 +16,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { Profile } from '../../models/Profile';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -48,14 +48,12 @@ export class EditUserComponent implements OnInit {
   profile: Profile | undefined;
 
   public translate: TranslateService = inject(TranslateService);
+  public notification: NotificationService = inject(NotificationService);
+
+  private _fb: FormBuilder = inject(FormBuilder);
+  private _userService: UserService = inject(UserService);
 
   public editUserForm!: FormGroup;
-
-  constructor(
-    private _fb: FormBuilder,
-    private _userService: UserService,
-    private _snackBar: MatSnackBar,
-  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -93,17 +91,11 @@ export class EditUserComponent implements OnInit {
 
     this._userService.updateUser(this.editUserForm.getRawValue()).subscribe({
       next: (data) => {
-        this._snackBar.open(this.translate.instant('USER.INFO.OK'), 'OK', {
-          duration: 3000,
-          panelClass: ['green-snackbar'],
-        });
+        this.notification.successMethod('USER.INFO.OK');
         console.log(data);
       },
       error: (err) => {
-        this._snackBar.open(this.translate.instant('USER.INFO.INVALID'), 'X', {
-          duration: 3000,
-          panelClass: ['red-snackbar'],
-        });
+        this.notification.errorMethod('USER.INFO.INVALID');
         console.log(err);
       },
     });

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -17,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
 import { AsyncPipe } from '@angular/common';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-manage-employee',
@@ -46,6 +46,8 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class ManageEmployeeComponent implements OnInit {
+  private _employeeService: EmployeeService = inject(EmployeeService);
+
   dataSource: ManageEmployee[] = [];
   displayedColumns = [
     'name',
@@ -57,11 +59,6 @@ export class ManageEmployeeComponent implements OnInit {
     'details',
     'more',
   ];
-
-  constructor(
-    private _employeeService: EmployeeService,
-    private _route: ActivatedRoute,
-  ) {}
 
   ngOnInit(): void {
     this.getManageEmployee();

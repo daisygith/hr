@@ -26,7 +26,7 @@ import { MatInput, MatLabel } from '@angular/material/input';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { AuthService } from '../../../../services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationService } from '../../../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -56,15 +56,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   public translate: TranslateService = inject(TranslateService);
-  private authService = inject(AuthService);
   public router: Router = inject(Router);
+  public notification: NotificationService = inject(NotificationService);
+
+  private _authService = inject(AuthService);
+  private _fb = inject(FormBuilder);
 
   public loginForm!: FormGroup;
-
-  constructor(
-    private _fb: FormBuilder,
-    private _snackBar: MatSnackBar,
-  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -87,22 +85,12 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this.authService.login(userDetails).subscribe((data) => {
-        if (this.authService.isLoggedIn) {
-          this._snackBar.open(this.translate.instant('LOGIN.INFO.OK'), 'OK', {
-            duration: 3000,
-            panelClass: ['green-snackbar'],
-          });
+      this._authService.login(userDetails).subscribe((data) => {
+        if (this._authService.isLoggedIn) {
+          this.notification.successMethod('LOGIN.INFO.OK');
           this.router.navigate(['dashboard']);
         } else {
-          this._snackBar.open(
-            this.translate.instant('LOGIN.INFO.INVALID'),
-            'X',
-            {
-              duration: 3000,
-              panelClass: ['red-snackbar'],
-            },
-          );
+          this.notification.errorMethod('LOGIN.INFO.INVALID');
         }
         console.log(data);
       });

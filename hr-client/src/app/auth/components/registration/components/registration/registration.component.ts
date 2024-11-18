@@ -26,7 +26,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { passwordMismatchDirective } from '../../../../../shared/password-mismatch.directive';
 import { AuthService } from '../../../../services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationService } from '../../../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-registration',
@@ -55,15 +55,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegistrationComponent implements OnInit {
   public translate: TranslateService = inject(TranslateService);
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  public router = inject(Router);
+  public notification: NotificationService = inject(NotificationService);
+
+  private _authService = inject(AuthService);
+  private _fb: FormBuilder = inject(FormBuilder);
 
   public registrationForm!: FormGroup;
-
-  constructor(
-    private _fb: FormBuilder,
-    private _snackBar: MatSnackBar,
-  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -96,29 +94,15 @@ export class RegistrationComponent implements OnInit {
 
     delete userDetails.confirmPassword;
 
-    this.authService.registration(userDetails).subscribe({
+    this._authService.registration(userDetails).subscribe({
       next: (response) => {
-        this._snackBar.open(
-          this.translate.instant('REGISTRATION.INFO.OK'),
-          'OK',
-          {
-            duration: 3000,
-            panelClass: ['green-snackbar'],
-          },
-        );
+        this.notification.successMethod('REGISTRATION.INFO.OK');
         console.log(response);
         this.router.navigate(['login']);
       },
       error: (err) => {
+        this.notification.errorMethod('REGISTRATION.INFO.INVALID');
         console.log(err);
-        this._snackBar.open(
-          this.translate.instant('REGISTRATION.INFO.INVALID'),
-          'X',
-          {
-            duration: 3000,
-            panelClass: ['red-snackbar'],
-          },
-        );
       },
     });
   }

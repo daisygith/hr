@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -42,6 +42,8 @@ import { AsyncPipe } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
 })
 export class RequestTimeOffComponent implements OnInit {
+  private _employeeService: EmployeeService = inject(EmployeeService);
+
   dataSource: RequestTimeOff[] = [];
 
   displayedColumns = [
@@ -52,8 +54,6 @@ export class RequestTimeOffComponent implements OnInit {
     'statusEmployee',
     'edit',
   ];
-
-  constructor(private _employeeService: EmployeeService) {}
 
   ngOnInit(): void {
     this.getRequestTImeOff();
