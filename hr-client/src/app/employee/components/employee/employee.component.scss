@@ -50,6 +50,7 @@ app-employee {
     //  color: vaR(--main-color);
     //}
     button#add-employee-button,
+    button#request-time-off-application,
     button#filter1-button,
     button#filter2-button {
       border-radius: 10px;
@@ -58,6 +59,12 @@ app-employee {
     button#add-employee-button {
       background-color: var(--button-app-color);
       width: 180px;
+      margin: 0 10px 0 0;
+    }
+
+    button#request-time-off-application {
+      background-color: var(--button-app-color);
+      width: 210px;
     }
 
     button#filter1-button,
