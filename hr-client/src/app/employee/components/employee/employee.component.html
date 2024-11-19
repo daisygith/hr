@@ -24,6 +24,18 @@
           {{ "EMPLOYEE.ADD_EMPLOYEE" | translate }}
         </button>
       </div>
+      <div class="button-add">
+        <button
+          mat-flat-button
+          routerLink="/employee/request-time-off/new"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          id="request-time-off-application"
+        >
+          <mat-icon>add</mat-icon>
+          {{ "EMPLOYEE.APPLY_REQUEST_TIME_OFF" | translate }}
+        </button>
+      </div>
     </div>
   </div>
   <div class="employee-content list">
