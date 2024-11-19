@@ -1,0 +1,140 @@
+<div class="request-time-off-app">
+  <div class="request-time-off-app-content title">
+    <div class="request-time-off-app-content title left">
+      <div class="request-time-off-app-icon">
+        <mat-icon class="material-symbols-outlined" id="emp-icon"
+          >date_range</mat-icon
+        >
+      </div>
+      <div class="request-time-off-app-title">
+        <div class="line1">{{ "REQUEST_TIME_OFF.TITLE" | translate }}</div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="dateFormGroup">
+    <div class="request-time-off-app-content elements">
+      <div class="request-time-off-app-content top">
+        <div class="elements top left request">
+          <div class="elements-content columns">
+            <div class="element-content-left">
+              <div class="elements-title">
+                <div class="title-line">
+                  {{ "REQUEST_TIME_OFF.TITLE" | translate }}
+                </div>
+              </div>
+              <div class="elements-date">
+                <mat-form-field>
+                  <mat-date-range-input>
+                    <input
+                      matStartDate
+                      id="dateRange1"
+                      placeholder="Start date"
+                      formControlName="startDate"
+                    />
+                    <input
+                      matEndDate
+                      id="dateRange2"
+                      placeholder="End date"
+                      formControlName="endDate"
+                    />
+                  </mat-date-range-input>
+                </mat-form-field>
+              </div>
+              <div class="elements-calendar">
+                <mat-card class="calendar">
+                  <mat-calendar
+                    (selectedChange)="_onSelectedChange($event)"
+                    [selected]="selectedDateRange"
+                  ></mat-calendar>
+                </mat-card>
+              </div>
+            </div>
+
+            <div class="element-content-right">
+              <div class="element-request">
+                <div class="elements-title">
+                  <div class="title-line">
+                    <!--                  {{ "REQUEST_TIME_OFF.TITLE" | translate }}-->
+                    Leave Type
+                  </div>
+                  <mat-form-field class="input-full-width">
+                    <mat-select
+                      type="text"
+                      is="leaveType"
+                      formControlName="leaveType"
+                      placeholder=" - - Select - - "
+                    >
+                      <mat-option
+                        *ngFor="let leaveType of leaveType"
+                        [value]="leaveType"
+                      >
+                        {{ leaveType }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="element-request">
+                <div class="elements-title">
+                  <div class="title-line">
+                    <!--                  {{ "REQUEST_TIME_OFF.TITLE" | translate }}-->
+                    Employee
+                  </div>
+                  <mat-form-field class="input-full-width">
+                    <mat-select
+                      type="text"
+                      is="employeeId"
+                      formControlName="employeeId"
+                      placeholder=" - - Select - - "
+                    >
+                      <mat-option
+                        *ngFor="let employee of dataSource"
+                        [value]="employee.id"
+                      >
+                        {{ employee.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="element-request">
+                <div class="elements-title">
+                  <div class="title-line">
+                    <!--                  {{ "REQUEST_TIME_OFF.TITLE" | translate }}-->
+                    Reason
+                  </div>
+                  <mat-form-field class="input-full-width">
+                    <input
+                      matInput
+                      type="text"
+                      is="reason"
+                      formControlName="reason"
+                      id="reason-input"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="button-submit">
+                <button
+                  mat-stroked-button
+                  id="button-submit"
+                  (click)="saveData()"
+                >
+                  Submit Request
+                  <!--                  {{-->
+                  <!--                    "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES"-->
+                  <!--                      | translate-->
+                  <!--                  }}-->
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!--routerLink="/employee"-->
+<!--routerLinkActive="active"-->
+<!--ariaCurrentWhenActive="page"-->

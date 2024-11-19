@@ -22,4 +22,16 @@ export const employeeRoutes: Routes = [
         (m) => m.AddEmployeeComponent,
       ),
   },
+  {
+    path: 'request-time-off',
+    children: [
+      {
+        path: 'new',
+        loadComponent: () =>
+          import(
+            './components/request-time-off-application/request-time-off-application.component'
+          ).then((m) => m.RequestTimeOffApplicationComponent),
+      },
+    ],
+  },
 ];
