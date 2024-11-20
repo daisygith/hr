@@ -27,4 +27,6 @@ public class RequestTimeOffDto {
 
     private LocalDateTime endDate;
 
+    private long days;
+
 }

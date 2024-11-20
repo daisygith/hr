@@ -60,6 +60,25 @@ public class EmployeeController {
         RequestTimeOffDto dbRequest = employeeService.createRequest(registerRequestTimeOffDto);
 
         return dbRequest;
+    }
 
+    @GetMapping("/request-time-off")
+    public List<RequestTimeOffDto> getAllRequest(){
+        return employeeService.findAllRequest();
+    }
+
+
+    @GetMapping("/request-time-off/{employeeId}")
+    public RequestTimeOffDto getRequestForEmployeeById(@PathVariable("employeeId") Long employeeId) throws Exception {
+        RequestTimeOffDto requestTimeOffDto = employeeService.findRequestForEmployeeById(employeeId);
+
+        return requestTimeOffDto;
+    }
+
+    @PutMapping("/request-time-off/{employeeId}")
+    public RequestTimeOffDto updateRequestForEmployeeById(@RequestBody RegisterRequestTimeOffDto registerRequestTimeOffDto){
+        RequestTimeOffDto dbRequestTimeOffDto = employeeService.updateRequestForEmployeeById(registerRequestTimeOffDto);
+
+        return dbRequestTimeOffDto;
     }
 }

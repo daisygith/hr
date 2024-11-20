@@ -19,4 +19,10 @@ public interface EmployeeService {
     void deleteById(Long employeeId);
 
     RequestTimeOffDto createRequest(RegisterRequestTimeOffDto registerRequestTimeOffDto);
+
+    List<RequestTimeOffDto> findAllRequest();
+
+    RequestTimeOffDto findRequestForEmployeeById(Long employeeId) throws Exception;
+
+    RequestTimeOffDto updateRequestForEmployeeById(RegisterRequestTimeOffDto registerRequestTimeOffDto);
 }
