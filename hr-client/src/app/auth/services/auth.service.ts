@@ -7,7 +7,9 @@ import { environment } from '../../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private _apiUrl = `${environment.apiUrl}/auth`;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.autologin();
+  }
 
   isLoggedIn: boolean = false;
 
@@ -35,6 +37,11 @@ export class AuthService {
     password: string;
   }): Observable<any> {
     return this.http.post<any>(`${this._apiUrl}/signup`, userDetails);
+  }
+
+  autologin() {
+    const token = localStorage.getItem('JWT_Token');
+    this.isLoggedIn = !!token;
   }
 
   logout(): void {
