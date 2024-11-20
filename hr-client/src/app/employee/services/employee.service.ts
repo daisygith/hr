@@ -1,10 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { RequestTimeOff } from '../models/requestTimeOff';
 import { ManageEmployee } from '../models/manageEmmployee';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from '../models/employee';
 import { environment } from '../../../environments/environment';
+import { RegisterRequestTimeOff } from '../models/registerRequestTimeOff';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
@@ -33,15 +34,24 @@ export class EmployeeService {
     return this.http.delete<void>(`${this._apiUrl}/${employeeId}`);
   }
 
-  public getRequestTimeOff(): Observable<RequestTimeOff[]> {
-    return of([
-      {
-        employeeName: 'Test1 Test1',
-        leaveType: 'ANNUAL_LEAVE',
-        leaveFrom: '2024-03-03',
-        days: 1,
-        statusEmployee: 'pending',
-      },
-    ]);
+  addRequestForEmployee(
+    employee: RegisterRequestTimeOff,
+  ): Observable<RequestTimeOff> {
+    return this.http.post<RequestTimeOff>(
+      `${this._apiUrl}/request-time-off`,
+      employee,
+    );
   }
+
+  // public getRequestTimeOff(): Observable<RequestTimeOff[]> {
+  //   return of([
+  //     {
+  //       employeeName: 'Test1 Test1',
+  //       leaveType: 'ANNUAL_LEAVE',
+  //       leaveFrom: '2024-03-03',
+  //       days: 1,
+  //       statusEmployee: 'pending',
+  //     },
+  //   ]);
+  // }
 }

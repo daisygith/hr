@@ -5,8 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdu.hr.mappers.EmployeeMapper;
 import pl.sdu.hr.models.Employee;
+import pl.sdu.hr.models.RequestTimeOff;
 import pl.sdu.hr.payload.dto.EmployeeDto;
+import pl.sdu.hr.payload.dto.RegisterRequestTimeOffDto;
+import pl.sdu.hr.payload.dto.RequestTimeOffDto;
 import pl.sdu.hr.repository.EmployeeRepository;
+import pl.sdu.hr.repository.RequestTimeOffRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +20,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private RequestTimeOffRepository requestTimeOffRepository;
 
     @Override
     public List<EmployeeDto> findAll() {
@@ -75,6 +82,33 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeRepository.deleteById(employeeId);
 
+    }
+
+    @Transactional
+    @Override
+    public RequestTimeOffDto createRequest(RegisterRequestTimeOffDto registerRequestTimeOffDto){
+
+        Employee employee = employeeRepository.findById(registerRequestTimeOffDto.getEmployeeId()).orElseThrow();
+
+        RequestTimeOff requestTimeOff = RequestTimeOff.builder()
+                .employee(employee)
+                .leaveType(registerRequestTimeOffDto.getLeaveType())
+                .reason(registerRequestTimeOffDto.getReason())
+                .startDate(registerRequestTimeOffDto.getStartDate())
+                .endDate(registerRequestTimeOffDto.getEndDate())
+                .build();
+
+        requestTimeOffRepository.save(requestTimeOff);
+
+        RequestTimeOffDto requestTimeOffDto = RequestTimeOffDto.builder()
+                .id(requestTimeOff.getId())
+                .leaveType(requestTimeOff.getLeaveType())
+                .reason(requestTimeOff.getReason())
+                .startDate(requestTimeOff.getStartDate())
+                .endDate(requestTimeOff.getEndDate())
+                .build();
+
+        return requestTimeOffDto;
     }
 
 

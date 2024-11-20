@@ -3,6 +3,8 @@ package pl.sdu.hr.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.sdu.hr.payload.dto.EmployeeDto;
+import pl.sdu.hr.payload.dto.RegisterRequestTimeOffDto;
+import pl.sdu.hr.payload.dto.RequestTimeOffDto;
 import pl.sdu.hr.services.EmployeeService;
 
 import java.util.List;
@@ -51,5 +53,13 @@ public class EmployeeController {
         employeeService.deleteById(employeeId);
 
         return "Delete employee id" + employeeId;
+    }
+
+    @PostMapping("/request-time-off")
+    public RequestTimeOffDto addRequest(@RequestBody RegisterRequestTimeOffDto registerRequestTimeOffDto){
+        RequestTimeOffDto dbRequest = employeeService.createRequest(registerRequestTimeOffDto);
+
+        return dbRequest;
+
     }
 }

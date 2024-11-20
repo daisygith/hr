@@ -1,7 +1,6 @@
-export interface RequestTimeOff {
+import { RegisterRequestTimeOff } from './registerRequestTimeOff';
+
+export interface RequestTimeOff extends RegisterRequestTimeOff {
+  id: number;
   employeeName: string;
-  leaveType: string;
-  days: number;
-  statusEmployee: string;
-  leaveFrom: string;
 }
