@@ -171,6 +171,12 @@ img#picture-avatar {
   border-radius: 50%;
 }
 
+.elements.top.left {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  background-color: var(--main-color-text);
+}
+
 .button {
   display: grid;
   grid-template-columns: 1fr 1fr;
