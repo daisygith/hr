@@ -47,6 +47,7 @@ public class Profile {
     @Size(max = 150)
     private String address;
 
+    @Column(unique = true)
     private Long userId;
 
 }
