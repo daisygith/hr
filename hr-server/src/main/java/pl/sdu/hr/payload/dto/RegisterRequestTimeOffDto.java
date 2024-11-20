@@ -22,4 +22,5 @@ public class RegisterRequestTimeOffDto {
     private LocalDateTime startDate;
 
     private LocalDateTime endDate;
+
 }

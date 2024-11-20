@@ -32,6 +32,13 @@ export const employeeRoutes: Routes = [
             './components/request-time-off-application/request-time-off-application.component'
           ).then((m) => m.RequestTimeOffApplicationComponent),
       },
+      {
+        path: ':employeeId',
+        loadComponent: () =>
+          import(
+            './components/request-time-off-application/request-time-off-application.component'
+          ).then((m) => m.RequestTimeOffApplicationComponent),
+      },
     ],
   },
 ];

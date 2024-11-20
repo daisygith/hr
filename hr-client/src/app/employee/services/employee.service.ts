@@ -43,15 +43,22 @@ export class EmployeeService {
     );
   }
 
-  // public getRequestTimeOff(): Observable<RequestTimeOff[]> {
-  //   return of([
-  //     {
-  //       employeeName: 'Test1 Test1',
-  //       leaveType: 'ANNUAL_LEAVE',
-  //       leaveFrom: '2024-03-03',
-  //       days: 1,
-  //       statusEmployee: 'pending',
-  //     },
-  //   ]);
-  // }
+  getRequestForEmployee(): Observable<RequestTimeOff[]> {
+    return this.http.get<RequestTimeOff[]>(`${this._apiUrl}/request-time-off`);
+  }
+
+  getRequestForEmployeeById(employeeId: number): Observable<RequestTimeOff> {
+    return this.http.get<RequestTimeOff>(
+      `${this._apiUrl}/request-time-off/${employeeId}`,
+    );
+  }
+
+  updateRequestForEmployeeById(
+    employee: RequestTimeOff,
+  ): Observable<RequestTimeOff> {
+    return this.http.put<RequestTimeOff>(
+      `${this._apiUrl}/request-time-off/${employee.id}`,
+      employee,
+    );
+  }
 }

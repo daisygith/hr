@@ -13,7 +13,7 @@ import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { DatePipe, NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   DateRange,
@@ -23,11 +23,15 @@ import {
   MatDateRangeInput,
   MatDateRangePicker,
 } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { MatCard } from '@angular/material/card';
 import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { RequestTimeOff } from '../../models/requestTimeOff';
 
 @Component({
   selector: 'app-request-time-off-application',
@@ -57,6 +61,7 @@ import { NotificationService } from '../../../shared/services/notification.servi
     DatePipe,
   ],
   providers: [
+    provideNativeDateAdapter(),
     {
       provide: DateRange,
       useClass: DefaultMatCalendarRangeStrategy,
@@ -67,18 +72,27 @@ import { NotificationService } from '../../../shared/services/notification.servi
   encapsulation: ViewEncapsulation.None,
 })
 export class RequestTimeOffApplicationComponent implements OnInit {
+  id: number | undefined;
+  isNew: boolean = false;
+  requestById: RequestTimeOff | undefined;
+
   dataSource: ManageEmployee[] = [];
 
   public selectedDateRange: DateRange<Date | undefined> = inject(
     DateRange<Date>,
   );
+
+  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _fb: FormBuilder = inject(FormBuilder);
   private _employeeService: EmployeeService = inject(EmployeeService);
   public notification: NotificationService = inject(NotificationService);
 
   ngOnInit() {
+    this.id = this._activeRoute.snapshot.params['employeeId'];
+    this.isNew = !this.id;
     this.buildForm();
     this.getEmployeeName();
+    this.getRequestForEmployeeById(this.id);
   }
 
   public leaveType: string[] = [
@@ -88,8 +102,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     'SICK_LEAVE',
     'UNPAID_LEAVE',
   ];
-
-  // public employee: string[] = this.dateFormGroup.
 
   _onSelectedChange(date: Date): void {
     if (
@@ -130,6 +142,24 @@ export class RequestTimeOffApplicationComponent implements OnInit {
         console.log(data);
       },
     });
+  }
+
+  getRequestForEmployeeById(employeeId: number | undefined): void {
+    if (!employeeId) {
+      return;
+    }
+
+    this._employeeService
+      .getRequestForEmployeeById(employeeId)
+      .subscribe((data) => {
+        this.requestById = data;
+        console.log(this.requestById);
+        this.selectedDateRange = new DateRange<Date | undefined>(
+          data.startDate,
+          data.endDate,
+        );
+        this.dateFormGroup.patchValue(data);
+      });
   }
 
   saveData() {

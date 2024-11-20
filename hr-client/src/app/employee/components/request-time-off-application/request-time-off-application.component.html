@@ -118,13 +118,12 @@
                 <button
                   mat-stroked-button
                   id="button-submit"
+                  routerLink="/employee"
+                  routerLinkActive="active"
+                  ariaCurrentWhenActive="page"
                   (click)="saveData()"
                 >
                   Submit Request
-                  <!--                  {{-->
-                  <!--                    "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES"-->
-                  <!--                      | translate-->
-                  <!--                  }}-->
                 </button>
               </div>
             </div>
@@ -134,7 +133,3 @@
     </div>
   </form>
 </div>
-
-<!--routerLink="/employee"-->
-<!--routerLinkActive="active"-->
-<!--ariaCurrentWhenActive="page"-->

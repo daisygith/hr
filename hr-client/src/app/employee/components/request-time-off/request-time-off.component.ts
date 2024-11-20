@@ -16,7 +16,8 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-request-time-off',
@@ -36,6 +37,9 @@ import { AsyncPipe } from '@angular/common';
     MatIcon,
     TranslateModule,
     AsyncPipe,
+    DatePipe,
+    RouterLinkActive,
+    RouterLink,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
@@ -49,19 +53,20 @@ export class RequestTimeOffComponent implements OnInit {
   displayedColumns = [
     'employeeName',
     'leaveType',
-    'leaveFrom',
+    'startDate',
+    'endDate',
     'days',
-    'statusEmployee',
+    // 'statusEmployee',
     'edit',
   ];
 
   ngOnInit(): void {
-    // this.getRequestTImeOff();
+    this.getRequestForEmployee();
   }
 
-  // getRequestTImeOff(): void {
-  //   this._employeeService
-  //     .getRequestTimeOff()
-  //     .subscribe({ next: (value) => (this.dataSource = value) });
-  // }
+  getRequestForEmployee(): void {
+    this._employeeService.getRequestForEmployee().subscribe({
+      next: (value) => (this.dataSource = value),
+    });
+  }
 }

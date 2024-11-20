@@ -4,4 +4,5 @@ export interface RegisterRequestTimeOff {
   reason: string;
   startDate: Date;
   endDate: Date;
+  days: number;
 }
