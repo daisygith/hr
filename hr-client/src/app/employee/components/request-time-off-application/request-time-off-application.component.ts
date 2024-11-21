@@ -73,6 +73,7 @@ import { RequestTimeOff } from '../../models/requestTimeOff';
 })
 export class RequestTimeOffApplicationComponent implements OnInit {
   id: number | undefined;
+  idRequest: number | undefined;
   isNew: boolean = false;
   requestById: RequestTimeOff | undefined;
 
@@ -117,16 +118,18 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     } else {
       this.selectedDateRange = new DateRange(date, null);
     }
-    this.dateFormGroup
+    this.requestTimeOffFormGroup
       .get('startDate')
       ?.patchValue(this.selectedDateRange.start);
-    this.dateFormGroup.get('endDate')?.patchValue(this.selectedDateRange.end);
+    this.requestTimeOffFormGroup
+      .get('endDate')
+      ?.patchValue(this.selectedDateRange.end);
   }
 
-  public dateFormGroup!: FormGroup;
+  public requestTimeOffFormGroup!: FormGroup;
 
   public buildForm() {
-    this.dateFormGroup = this._fb.group({
+    this.requestTimeOffFormGroup = this._fb.group({
       employeeId: new FormControl(null),
       leaveType: [null],
       reason: [null],
@@ -144,40 +147,63 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     });
   }
 
-  getRequestForEmployeeById(employeeId: number | undefined): void {
-    if (!employeeId) {
+  getRequestForEmployeeById(id: number | undefined): void {
+    if (!id) {
       return;
     }
+    console.log('emplyeeId' + id);
+    console.log('id Request' + this.idRequest);
 
-    this._employeeService
-      .getRequestForEmployeeById(employeeId)
-      .subscribe((data) => {
-        this.requestById = data;
-        console.log(this.requestById);
-        this.selectedDateRange = new DateRange<Date | undefined>(
-          data.startDate,
-          data.endDate,
-        );
-        this.dateFormGroup.patchValue(data);
-      });
+    this._employeeService.getRequestForEmployeeById(id).subscribe((data) => {
+      this.requestById = data;
+      console.log('request by id');
+      console.log(this.requestById);
+      // this.selectedDateRange = new DateRange<Date | undefined>(
+      //   data.startDate,
+      //   data.endDate,
+      // );
+      this.requestTimeOffFormGroup.patchValue(data);
+    });
   }
 
   saveData() {
-    this._employeeService
-      .addRequestForEmployee(this.dateFormGroup.getRawValue())
-      .subscribe({
-        next: (data) => {
-          this.notification.successMethod(
-            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-          );
-          console.log(data);
-        },
-        error: (err) => {
-          this.notification.errorMethod(
-            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-          );
-          console.log(err);
-        },
-      });
+    if (this.isNew) {
+      this._employeeService
+        .addRequestForEmployee(this.requestTimeOffFormGroup.getRawValue())
+        .subscribe({
+          next: (data) => {
+            this.notification.successMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+            );
+            console.log(data);
+          },
+          error: (err) => {
+            this.notification.errorMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+            );
+            console.log(err);
+          },
+        });
+    } else {
+      this._employeeService
+        .updateRequestForEmployeeById(
+          this.requestTimeOffFormGroup.getRawValue(),
+        )
+        .subscribe({
+          next: (data) => {
+            this.notification.successMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+            );
+            console.log(data);
+            this.requestById = data;
+          },
+          error: (err) => {
+            this.notification.errorMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+            );
+            console.log(err);
+          },
+        });
+    }
   }
 }
