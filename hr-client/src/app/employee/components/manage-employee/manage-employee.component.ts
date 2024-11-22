@@ -47,7 +47,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class ManageEmployeeComponent implements OnInit {
   private _employeeService: EmployeeService = inject(EmployeeService);
-
+  clickedRows = new Set<ManageEmployee>();
   dataSource: ManageEmployee[] = [];
   displayedColumns = [
     'name',
@@ -57,7 +57,7 @@ export class ManageEmployeeComponent implements OnInit {
     'typeOfContract',
     // 'attendance',
     'details',
-    'more',
+    'delete',
   ];
 
   ngOnInit(): void {
