@@ -18,6 +18,9 @@ import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-manage-employee',
@@ -46,8 +49,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class ManageEmployeeComponent implements OnInit {
+  public notification: NotificationService = inject(NotificationService);
   private _employeeService: EmployeeService = inject(EmployeeService);
-  clickedRows = new Set<ManageEmployee>();
+  readonly dialog = inject(MatDialog);
+
   dataSource: ManageEmployee[] = [];
   displayedColumns = [
     'name',
@@ -70,9 +75,26 @@ export class ManageEmployeeComponent implements OnInit {
       .subscribe({ next: (value) => (this.dataSource = value) });
   }
 
+  openDialog(employeeId: ManageEmployee, e: Event) {
+    e.stopPropagation();
+    const dialogRef = this.dialog.open(DialogAnimationComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        this.deleteManageEmployeeById(employeeId);
+      }
+    });
+  }
+
   deleteManageEmployeeById(employeeId: ManageEmployee): void {
-    this.dataSource = this.dataSource.filter((item) => item !== employeeId);
-    console.log(this.dataSource);
-    this._employeeService.deleteManageEmployeeById(employeeId.id).subscribe();
+    this._employeeService
+      .deleteManageEmployeeById(employeeId.id)
+      .subscribe(() => {
+        this.dataSource = this.dataSource.filter((item) => item !== employeeId);
+      });
+  }
+
+  issuesTab(e: Event) {
+    e.stopPropagation();
   }
 }

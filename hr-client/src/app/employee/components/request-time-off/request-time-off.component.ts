@@ -16,8 +16,11 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-request-time-off',
@@ -41,13 +44,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     RouterLinkActive,
     RouterLink,
     MatMiniFabButton,
+    NgIf,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class RequestTimeOffComponent implements OnInit {
+  public notification: NotificationService = inject(NotificationService);
   private _employeeService: EmployeeService = inject(EmployeeService);
+  readonly dialog = inject(MatDialog);
 
   dataSource: RequestTimeOff[] = [];
 
@@ -72,9 +78,30 @@ export class RequestTimeOffComponent implements OnInit {
     });
   }
 
+  // TODO: tłumaczenia do notification
+
+  openDialog(id: RequestTimeOff) {
+    const dialogRef = this.dialog.open(DialogAnimationComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        this.deleteRequestForEmployeeById(id);
+        this.notification.successMethod('Dane usunięto poprawnie');
+      } else {
+        this.notification.errorMethod('Danych nie można usunąć');
+      }
+    });
+  }
+
+  // TODO jak obsłużyć błąd kiedy nie mozna usunąć pracownika ??
+
   deleteRequestForEmployeeById(id: RequestTimeOff): void {
-    this.dataSource = this.dataSource.filter((item) => item !== id);
-    console.log(this.dataSource);
-    this._employeeService.deleteRequestForEmployeeById(id.id).subscribe();
+    this._employeeService.deleteRequestForEmployeeById(id.id).subscribe(() => {
+      this.dataSource = this.dataSource.filter((data) => data !== id);
+    });
+  }
+
+  issuesTab(e: Event) {
+    e.stopPropagation();
   }
 }
