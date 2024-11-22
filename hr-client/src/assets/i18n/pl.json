@@ -9,7 +9,9 @@
       },
       "INFO": {
         "OK": "Zapisano pomyślnie",
-        "INVALID": "Coś poszło nie tak"
+        "OK_UPDATE": "Zmiany zapisano pomyślnie",
+        "INVALID": "Nie udało dodać się nowego pracownika",
+        "INVALID_UPDATE": "Nie udało się zapisać zmian"
       },
       "INFO_PICTURE": "Dozwolony format plików JPG, GIF or PNG. Max. rozmiar 800K.",
       "SUBTITLE": "Dodaj zdjęcie profilowe",
@@ -48,6 +50,7 @@
   },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Dodaj pracownika",
+    "APPLY_REQUEST_TIME_OFF": "Złóż wniosek o urlop",
     "FILTER": "Filtruj",
     "MANAGE_EMPLOYEE": "Zarządzaj pracownikami",
     "REQUEST_TIME_OFF": "Wniosek urlopowy",
@@ -83,7 +86,7 @@
       "SEE_DETAILS": "Więcej"
     },
     "CONTACT_TYPE": "Typ kontaktu",
-    "EMPLOYEE_NAME": "Imię i Nazwisko pracownika",
+    "EMPLOYEE_NAME": "Imię i Nazwisko",
     "DEPARTMENT": "Dział",
     "JOB_TITLE": "Tytuł służbowy",
     "PHONE_NUMBER": "Numer Telefonu"
@@ -117,13 +120,28 @@
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {
-      "EDIT": "Edycja"
+      "EDIT": "Edycja",
+      "SUBMIT_REQUEST": "Złóż wniosek"
     },
     "DAYS": "Dni",
-    "EMPLOYEE_NAME": "Imię i Nazwisko pracownika",
+    "DATE": {
+      "START_DATE": "Data początkowa",
+      "END_DATE": "Data końcowa"
+    },
+    "EMPLOYEE_NAME": "Imię i Nazwisko",
     "LEAVE_FROM": "Urlop od",
     "LEAVE_TYPE": "Rodzaj urlopu",
-    "STATUS": "Status"
+    "LEAVE_TYPES": {
+      "ANNUAL_LEAVE": "Urlop roczny",
+      "CASUAL_LEAVE": "Urlop okolicznościowy",
+      "PAID_TIME_OFF": "Urlop płatny wypoczynkowy",
+      "SICK_LEAVE": "Urlop chorobowy",
+      "UNPAID_LEAVE": "Urlop bezpłatny"
+    },
+    "REASON": "Uzasadnienie",
+    "SELECT": "Wybierz",
+    "STATUS": "Status",
+    "TITLE": "Wniosek urlopowy"
   },
   "SIDEBAR": {
     "EMPLOYEE": "Pracownicy",

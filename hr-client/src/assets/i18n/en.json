@@ -9,7 +9,9 @@
       },
       "INFO": {
         "OK": "Save successfully",
-        "INVALID": "Something went wrong"
+        "OK_UPDATE": "Changes saved successfully",
+        "INVALID": "Something went wrong",
+        "INVALID_UPDATE": "Failed to save changes"
       },
       "INFO_PICTURE": "Allowed JPG, GIF or PNG. Max size of 800K.",
       "SUBTITLE": "Change Profile picture form here",
@@ -48,6 +50,7 @@
   },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Add Employee",
+    "APPLY_REQUEST_TIME_OFF": "Apply request time off",
     "FILTER": "Filter",
     "MANAGE_EMPLOYEE": "Manage Employee",
     "REQUEST_TIME_OFF": "Request Time Off",
@@ -117,16 +120,28 @@
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {
-      "EDIT": "Edit"
+      "EDIT": "Edit",
+      "SUBMIT_REQUEST": "Submit request"
+    },
+    "DATE": {
+      "START_DATE": "Start date",
+      "END_DATE": "End date"
     },
     "DAYS": "Days",
     "EMPLOYEE_NAME": "Employee name",
     "LEAVE_FROM": "Leave from",
     "LEAVE_TYPE": "Leave Type",
     "LEAVE_TYPES": {
-      "ANNUAL_LEAVE": "Annual leave"
+      "ANNUAL_LEAVE": "Annual leave",
+      "CASUAL_LEAVE": "Casual leave",
+      "PAID_TIME_OFF": "Paid time off leave",
+      "SICK_LEAVE": "Sick leave",
+      "UNPAID_LEAVE": "Unpaid leave"
     },
-    "STATUS": "Status"
+    "REASON": "Reason",
+    "SELECT": "Select",
+    "STATUS": "Status",
+    "TITLE": "Leave Request"
   },
   "SIDEBAR": {
     "EMPLOYEE": "Employee",
