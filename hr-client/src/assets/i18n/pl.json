@@ -129,7 +129,8 @@
       "END_DATE": "Data końcowa"
     },
     "EMPLOYEE_NAME": "Imię i Nazwisko",
-    "LEAVE_FROM": "Urlop od",
+    "LEAVE_FROM": "Początek urlopu",
+    "LEAVE_TO": "Koniec urlopu",
     "LEAVE_TYPE": "Rodzaj urlopu",
     "LEAVE_TYPES": {
       "ANNUAL_LEAVE": "Urlop roczny",

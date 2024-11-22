@@ -130,6 +130,7 @@
     "DAYS": "Days",
     "EMPLOYEE_NAME": "Employee name",
     "LEAVE_FROM": "Leave from",
+    "LEAVE_TO": "Leave to",
     "LEAVE_TYPE": "Leave Type",
     "LEAVE_TYPES": {
       "ANNUAL_LEAVE": "Annual leave",
