@@ -1,8 +1,10 @@
 app-request-time-off {
   .mat-mdc-row .mat-mdc-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
     cursor: pointer;
+  }
+
+  .mat-mdc-row:hover .mat-mdc-cell {
+    background-color: var(--background-element);
   }
 
   button#button-edit {
@@ -34,5 +36,9 @@ app-request-time-off {
   tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
     background-color: var(--border-app-element) !important;
     height: 36px;
+  }
+
+  .mat-mdc-mini-fab {
+    background-color: transparent;
   }
 }

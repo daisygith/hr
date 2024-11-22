@@ -19,19 +19,28 @@ import {
   DateRange,
   DefaultMatCalendarRangeStrategy,
   MatDatepickerModule,
-  MatDatepickerToggle,
-  MatDateRangeInput,
-  MatDateRangePicker,
 } from '@angular/material/datepicker';
 import {
-  MatNativeDateModule,
+  MAT_DATE_LOCALE,
   provideNativeDateAdapter,
 } from '@angular/material/core';
 import { MatCard } from '@angular/material/card';
 import { EmployeeService } from '../../services/employee.service';
-import { ManageEmployee } from '../../models/manageEmmployee';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
+import { ManageEmployee } from '../../models/manageEmmployee';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'YYYY-MM-DD',
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-request-time-off-application',
@@ -51,17 +60,17 @@ import { RequestTimeOff } from '../../models/requestTimeOff';
     RouterLink,
     RouterLinkActive,
     TranslateModule,
-    MatDateRangePicker,
-    MatDatepickerToggle,
-    MatDateRangeInput,
+    // MatDateRangePicker,
+    // MatDatepickerToggle,
+    // MatDateRangeInput,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatCard,
     DatePipe,
   ],
   providers: [
-    provideNativeDateAdapter(),
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    provideNativeDateAdapter(MY_FORMATS),
     {
       provide: DateRange,
       useClass: DefaultMatCalendarRangeStrategy,
@@ -73,7 +82,6 @@ import { RequestTimeOff } from '../../models/requestTimeOff';
 })
 export class RequestTimeOffApplicationComponent implements OnInit {
   id: number | undefined;
-  idRequest: number | undefined;
   isNew: boolean = false;
   requestById: RequestTimeOff | undefined;
 
@@ -130,6 +138,7 @@ export class RequestTimeOffApplicationComponent implements OnInit {
 
   public buildForm() {
     this.requestTimeOffFormGroup = this._fb.group({
+      id: [null],
       employeeId: new FormControl(null),
       leaveType: [null],
       reason: [null],
@@ -147,23 +156,27 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     });
   }
 
-  getRequestForEmployeeById(id: number | undefined): void {
-    if (!id) {
+  getRequestForEmployeeById(employeeId: number | undefined): void {
+    if (!employeeId) {
       return;
     }
-    console.log('emplyeeId' + id);
-    console.log('id Request' + this.idRequest);
 
-    this._employeeService.getRequestForEmployeeById(id).subscribe((data) => {
-      this.requestById = data;
-      console.log('request by id');
-      console.log(this.requestById);
-      // this.selectedDateRange = new DateRange<Date | undefined>(
-      //   data.startDate,
-      //   data.endDate,
-      // );
-      this.requestTimeOffFormGroup.patchValue(data);
-    });
+    this._employeeService
+      .getRequestForEmployeeById(employeeId)
+      .subscribe((data) => {
+        this.requestById = {
+          ...data,
+          startDate: new Date(data.startDate),
+          endDate: new Date(data.endDate),
+        };
+        console.log('request by id');
+        console.log(this.requestById);
+        this.selectedDateRange = new DateRange<Date | undefined>(
+          this.requestById.startDate,
+          this.requestById.endDate,
+        );
+        this.requestTimeOffFormGroup.patchValue(this.requestById);
+      });
   }
 
   saveData() {

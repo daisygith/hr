@@ -11,7 +11,7 @@ import {
   MatRowDef,
   MatTable,
 } from '@angular/material/table';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
@@ -40,6 +40,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     DatePipe,
     RouterLinkActive,
     RouterLink,
+    MatMiniFabButton,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
@@ -58,6 +59,7 @@ export class RequestTimeOffComponent implements OnInit {
     'days',
     // 'statusEmployee',
     'edit',
+    'delete',
   ];
 
   ngOnInit(): void {
@@ -68,5 +70,11 @@ export class RequestTimeOffComponent implements OnInit {
     this._employeeService.getRequestForEmployee().subscribe({
       next: (value) => (this.dataSource = value),
     });
+  }
+
+  deleteRequestForEmployeeById(id: RequestTimeOff): void {
+    this.dataSource = this.dataSource.filter((item) => item !== id);
+    console.log(this.dataSource);
+    this._employeeService.deleteRequestForEmployeeById(id.id).subscribe();
   }
 }

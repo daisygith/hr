@@ -28,13 +28,17 @@
                     <input
                       matStartDate
                       id="dateRange1"
-                      placeholder="Start date"
+                      [placeholder]="
+                        'REQUEST_TIME_OFF.DATE.START_DATE' | translate
+                      "
                       formControlName="startDate"
                     />
                     <input
                       matEndDate
                       id="dateRange2"
-                      placeholder="End date"
+                      [placeholder]="
+                        'REQUEST_TIME_OFF.DATE.END_DATE' | translate
+                      "
                       formControlName="endDate"
                     />
                   </mat-date-range-input>
@@ -54,21 +58,23 @@
               <div class="element-request">
                 <div class="elements-title">
                   <div class="title-line">
-                    <!--                  {{ "REQUEST_TIME_OFF.TITLE" | translate }}-->
-                    Leave Type
+                    {{ "REQUEST_TIME_OFF.LEAVE_TYPE" | translate }}
                   </div>
                   <mat-form-field class="input-full-width">
                     <mat-select
                       type="text"
                       is="leaveType"
                       formControlName="leaveType"
-                      placeholder=" - - Select - - "
+                      [placeholder]="'REQUEST_TIME_OFF.SELECT' | translate"
                     >
                       <mat-option
                         *ngFor="let leaveType of leaveType"
                         [value]="leaveType"
                       >
-                        {{ leaveType }}
+                        {{
+                          "REQUEST_TIME_OFF.LEAVE_TYPES." + leaveType
+                            | translate
+                        }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -77,15 +83,14 @@
               <div class="element-request">
                 <div class="elements-title">
                   <div class="title-line">
-                    <!--                  {{ "REQUEST_TIME_OFF.TITLE" | translate }}-->
-                    Employee
+                    {{ "REQUEST_TIME_OFF.EMPLOYEE_NAME" | translate }}
                   </div>
                   <mat-form-field class="input-full-width">
                     <mat-select
                       type="text"
                       is="employeeId"
                       formControlName="employeeId"
-                      placeholder=" - - Select - - "
+                      [placeholder]="'REQUEST_TIME_OFF.SELECT' | translate"
                     >
                       <mat-option
                         *ngFor="let employee of dataSource"
@@ -100,8 +105,7 @@
               <div class="element-request">
                 <div class="elements-title">
                   <div class="title-line">
-                    <!--                  {{ "REQUEST_TIME_OFF.TITLE" | translate }}-->
-                    Reason
+                    {{ "REQUEST_TIME_OFF.REASON" | translate }}
                   </div>
                   <mat-form-field class="input-full-width">
                     <input
@@ -117,13 +121,14 @@
               <div class="button-submit">
                 <button
                   mat-stroked-button
+                  type="submit"
                   id="button-submit"
                   routerLink="/employee"
                   routerLinkActive="active"
                   ariaCurrentWhenActive="page"
                   (click)="saveData()"
                 >
-                  Submit Request
+                  {{ "REQUEST_TIME_OFF.BUTTON.SUBMIT_REQUEST" | translate }}
                 </button>
               </div>
             </div>
