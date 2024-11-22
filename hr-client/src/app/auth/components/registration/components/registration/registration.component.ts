@@ -94,17 +94,19 @@ export class RegistrationComponent implements OnInit {
 
     delete userDetails.confirmPassword;
 
-    this._authService.registration(userDetails).subscribe({
-      next: (response) => {
-        this.notification.successMethod('REGISTRATION.INFO.OK');
-        console.log(response);
-        this.router.navigate(['login']);
-      },
-      error: (err) => {
-        this.notification.errorMethod('REGISTRATION.INFO.INVALID');
-        console.log(err);
-      },
-    });
+    if (this.registrationForm.valid) {
+      this._authService.registration(userDetails).subscribe({
+        next: (response) => {
+          this.notification.successMethod('REGISTRATION.INFO.OK');
+          console.log(response);
+          this.router.navigate(['login']);
+        },
+        error: (err) => {
+          this.notification.errorMethod('REGISTRATION.INFO.INVALID');
+          console.log(err);
+        },
+      });
+    }
   }
 
   get username() {

@@ -56,6 +56,7 @@ export class ChangePasswordComponent implements OnInit {
     this.buildForm();
   }
 
+  // TODO: przekazać aktualne hasło dla użytkownika
   public buildForm() {
     this.changePasswordForm = this._fb.group(
       {

@@ -13,7 +13,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { ShellComponent } from '../../../shell/components/shell/shell.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee';
 import { NotificationService } from '../../../shared/services/notification.service';
@@ -76,14 +82,14 @@ export class AddEmployeeComponent implements OnInit {
 
   public buildForm() {
     this.addEmployeeForm = this._fb.group({
-      id: [null],
-      name: [null],
-      staffId: [null],
-      phone: [null],
-      position: [null],
-      department: [null],
-      typeOfContract: [null],
-      address: [null],
+      id: new FormControl(''),
+      name: new FormControl('', [Validators.required]),
+      staffId: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
+      position: new FormControl('', [Validators.required]),
+      department: new FormControl('', [Validators.required]),
+      typeOfContract: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
     });
   }
 
@@ -98,41 +104,43 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
   saveData() {
-    if (this.isNew) {
-      this._employeeService
-        .addEmployee(this.addEmployeeForm.getRawValue())
-        .subscribe({
-          next: (data) => {
-            this.notification.successMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-            );
-            console.log(data);
-          },
-          error: (err) => {
-            this.notification.errorMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-            );
-            console.log(err);
-          },
-        });
-    } else {
-      this._employeeService
-        .updateEmployee(this.addEmployeeForm.getRawValue())
-        .subscribe({
-          next: (data) => {
-            this.notification.successMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
-            );
-            console.log(data);
-            this.employee = data;
-          },
-          error: (err) => {
-            this.notification.errorMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-            );
-            console.log(err);
-          },
-        });
+    if (this.addEmployeeForm.valid) {
+      if (this.isNew) {
+        this._employeeService
+          .addEmployee(this.addEmployeeForm.getRawValue())
+          .subscribe({
+            next: (data) => {
+              this.notification.successMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+              );
+              console.log(data);
+            },
+            error: (err) => {
+              this.notification.errorMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+              );
+              console.log(err);
+            },
+          });
+      } else {
+        this._employeeService
+          .updateEmployee(this.addEmployeeForm.getRawValue())
+          .subscribe({
+            next: (data) => {
+              this.notification.successMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
+              );
+              console.log(data);
+              this.employee = data;
+            },
+            error: (err) => {
+              this.notification.errorMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+              );
+              console.log(err);
+            },
+          });
+      }
     }
   }
 }

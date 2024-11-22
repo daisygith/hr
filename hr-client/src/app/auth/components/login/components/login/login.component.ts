@@ -84,7 +84,6 @@ export class LoginComponent implements OnInit {
     const userDetails = { ...this.loginForm.value };
 
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       this._authService.login(userDetails).subscribe((data) => {
         if (this._authService.isLoggedIn) {
           this.notification.successMethod('LOGIN.INFO.OK');
@@ -92,7 +91,6 @@ export class LoginComponent implements OnInit {
         } else {
           this.notification.errorMethod('LOGIN.INFO.INVALID');
         }
-        console.log(data);
       });
     }
   }

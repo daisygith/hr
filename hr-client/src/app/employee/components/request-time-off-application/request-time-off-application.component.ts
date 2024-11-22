@@ -5,6 +5,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
@@ -138,12 +139,12 @@ export class RequestTimeOffApplicationComponent implements OnInit {
 
   public buildForm() {
     this.requestTimeOffFormGroup = this._fb.group({
-      id: [null],
-      employeeId: new FormControl(null),
-      leaveType: [null],
-      reason: [null],
-      startDate: [null],
-      endDate: [null],
+      id: new FormControl(''),
+      employeeId: new FormControl(''),
+      leaveType: new FormControl('', [Validators.required]),
+      reason: new FormControl('', [Validators.required]),
+      startDate: new FormControl('', [Validators.required]),
+      endDate: new FormControl('', [Validators.required]),
     });
   }
 
@@ -180,43 +181,45 @@ export class RequestTimeOffApplicationComponent implements OnInit {
   }
 
   saveData() {
-    if (this.isNew) {
-      this._employeeService
-        .addRequestForEmployee(this.requestTimeOffFormGroup.getRawValue())
-        .subscribe({
-          next: (data) => {
-            this.notification.successMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-            );
-            console.log(data);
-          },
-          error: (err) => {
-            this.notification.errorMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-            );
-            console.log(err);
-          },
-        });
-    } else {
-      this._employeeService
-        .updateRequestForEmployeeById(
-          this.requestTimeOffFormGroup.getRawValue(),
-        )
-        .subscribe({
-          next: (data) => {
-            this.notification.successMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-            );
-            console.log(data);
-            this.requestById = data;
-          },
-          error: (err) => {
-            this.notification.errorMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-            );
-            console.log(err);
-          },
-        });
+    if (this.requestTimeOffFormGroup.valid) {
+      if (this.isNew) {
+        this._employeeService
+          .addRequestForEmployee(this.requestTimeOffFormGroup.getRawValue())
+          .subscribe({
+            next: (data) => {
+              this.notification.successMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+              );
+              console.log(data);
+            },
+            error: (err) => {
+              this.notification.errorMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+              );
+              console.log(err);
+            },
+          });
+      } else {
+        this._employeeService
+          .updateRequestForEmployeeById(
+            this.requestTimeOffFormGroup.getRawValue(),
+          )
+          .subscribe({
+            next: (data) => {
+              this.notification.successMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+              );
+              console.log(data);
+              this.requestById = data;
+            },
+            error: (err) => {
+              this.notification.errorMethod(
+                'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+              );
+              console.log(err);
+            },
+          });
+      }
     }
   }
 }
