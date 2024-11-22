@@ -24,5 +24,7 @@ public interface EmployeeService {
 
     RequestTimeOffDto findRequestForEmployeeById(Long employeeId) throws Exception;
 
-    RequestTimeOffDto updateRequestForEmployeeById(RegisterRequestTimeOffDto registerRequestTimeOffDto);
+    RequestTimeOffDto updateRequestForEmployeeById(RequestTimeOffDto requestTimeOffDto);
+
+    void deleteRequestById(Long employeeId);
 }

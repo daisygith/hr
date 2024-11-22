@@ -167,20 +167,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override
-    public RequestTimeOffDto updateRequestForEmployeeById(RegisterRequestTimeOffDto registerRequestTimeOffDto) {
-        Employee employee = employeeRepository.findById(registerRequestTimeOffDto.getEmployeeId()).orElseThrow();
+    public RequestTimeOffDto updateRequestForEmployeeById(RequestTimeOffDto requestTimeOffDto) {
+        Employee employee = employeeRepository.findById(requestTimeOffDto.getEmployeeId()).orElseThrow();
 
         RequestTimeOff requestTimeOff = RequestTimeOff.builder()
                 .employee(employee)
-                .leaveType(registerRequestTimeOffDto.getLeaveType())
-                .reason(registerRequestTimeOffDto.getReason())
-                .startDate(registerRequestTimeOffDto.getStartDate())
-                .endDate(registerRequestTimeOffDto.getEndDate())
+                .id(requestTimeOffDto.getId())
+                .leaveType(requestTimeOffDto.getLeaveType())
+                .reason(requestTimeOffDto.getReason())
+                .startDate(requestTimeOffDto.getStartDate())
+                .endDate(requestTimeOffDto.getEndDate())
                 .build();
 
         requestTimeOffRepository.save(requestTimeOff);
 
-        RequestTimeOffDto requestTimeOffDto = RequestTimeOffDto.builder()
+        RequestTimeOffDto dbrequestTimeOffDto = RequestTimeOffDto.builder()
                 .id(requestTimeOff.getId())
                 .leaveType(requestTimeOff.getLeaveType())
                 .reason(requestTimeOff.getReason())
@@ -191,7 +192,13 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .employeeName(requestTimeOff.getEmployee().getName())
                 .build();
 
-        return requestTimeOffDto;
+        return dbrequestTimeOffDto;
+    }
+
+    @Transactional
+    @Override
+    public void deleteRequestById(Long employeeId){
+        requestTimeOffRepository.deleteById(employeeId);
     }
 
 
