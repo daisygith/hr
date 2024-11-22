@@ -46,8 +46,8 @@ import { NotificationService } from '../../../shared/services/notification.servi
 })
 export class AddEmployeeComponent implements OnInit {
   id: number | undefined;
-  employee: Employee | undefined;
   isNew: boolean = false;
+  employee: Employee | undefined;
 
   public translate: TranslateService = inject(TranslateService);
   public notification: NotificationService = inject(NotificationService);
@@ -97,7 +97,6 @@ export class AddEmployeeComponent implements OnInit {
       this.addEmployeeForm.patchValue(data);
     });
   }
-  // TODO: poprawić komunikaty dla dodawania nowego pracownika i zapisanych zmian dla danego pracownika
   saveData() {
     if (this.isNew) {
       this._employeeService
@@ -122,7 +121,7 @@ export class AddEmployeeComponent implements OnInit {
         .subscribe({
           next: (data) => {
             this.notification.successMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
             );
             console.log(data);
             this.employee = data;

@@ -7,7 +7,6 @@
         >
       </div>
       <div *ngIf="id != null; then title1; else title2"></div>
-
       <ng-template #title1>
         <div class="add-employee-title">
           <div class="line1">{{ "ADD_EMPLOYEE.TITLE1" | translate }}</div>
@@ -22,7 +21,7 @@
   </div>
 
   <div class="add-employee-content elements">
-    <div class="add-employee-content elements top">
+    <div class="add-employee-content top">
       <div class="elements top left">
         <div class="elements-title">
           <div class="title-line1">
@@ -60,11 +59,7 @@
         </div>
       </div>
     </div>
-    <!--    <form [formGroup]="addEmployeeForm">-->
-    <div
-      class="add-employee-content elements bottom"
-      [formGroup]="addEmployeeForm"
-    >
+    <div class="add-employee-content bottom" [formGroup]="addEmployeeForm">
       <div class="elements-title">
         <div class="title-line1">
           {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.TITLE" | translate }}

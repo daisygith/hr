@@ -53,12 +53,6 @@ app-add-employee {
       //background-color: var(--color-8);
     }
 
-    .elements.top.left {
-      display: grid;
-      grid-template-rows: 1fr 2fr;
-      background-color: var(--main-color-text);
-    }
-
     //change input
     .mdc-text-field__input {
       width: 80%;
