@@ -10,6 +10,12 @@ app-edit-user {
       margin: 16px 16px 0 16px;
     }
 
+    .edit-user-content.top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 0 16px 0;
+    }
+
     .edit-user-content.title {
       display: flex;
       flex-direction: row;
