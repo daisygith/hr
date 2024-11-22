@@ -44,7 +44,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{employeeId}")
-    public String deleteEmployee(@PathVariable("employeeId") Long employeeId) throws Exception {
+    public MessageResponse deleteEmployee(@PathVariable("employeeId") Long employeeId) throws Exception {
         EmployeeDto tempEmployee = employeeService.findById(employeeId);
 
         if(tempEmployee == null) {
@@ -53,7 +53,7 @@ public class EmployeeController {
 
         employeeService.deleteById(employeeId);
 
-        return "Delete employee id" + employeeId;
+        return new MessageResponse("Delete employee id" + employeeId);
     }
 
     @PostMapping("/request-time-off")
