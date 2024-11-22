@@ -4,11 +4,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import { AuthService } from '../../../auth/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, TranslateModule, MatIcon],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    TranslateModule,
+    MatIcon,
+    NgOptimizedImage,
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
