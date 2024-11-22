@@ -19,6 +19,7 @@ html {
 html,
 body {
   height: 100%;
+  overflow-y: hidden;
 }
 body {
   margin: 0;
@@ -131,10 +132,15 @@ mat-icon#request-icon {
 
 .elements.top.left,
 .elements.top.right,
-.elements.bottom {
+.add-employee-content.bottom,
+.edit-user-content.bottom {
   border-radius: 10px;
   border: 1px solid var(--border-app-element);
   padding: 20px 20px 20px 20px;
+}
+
+.add-employee-content.top {
+  margin: 0 0 16px 0;
 }
 
 .elements-title {
