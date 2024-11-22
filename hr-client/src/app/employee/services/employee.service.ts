@@ -34,6 +34,7 @@ export class EmployeeService {
     return this.http.delete<void>(`${this._apiUrl}/${employeeId}`);
   }
 
+  //request-time-off
   addRequestForEmployee(
     employee: RegisterRequestTimeOff,
   ): Observable<RequestTimeOff> {
@@ -59,6 +60,12 @@ export class EmployeeService {
     return this.http.put<RequestTimeOff>(
       `${this._apiUrl}/request-time-off/${employee.id}`,
       employee,
+    );
+  }
+
+  deleteRequestForEmployeeById(employeeId: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this._apiUrl}/request-time-off/${employeeId}`,
     );
   }
 }
