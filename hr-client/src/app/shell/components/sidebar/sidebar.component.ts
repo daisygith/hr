@@ -25,6 +25,8 @@ export class SidebarComponent {
 
   constructor(private _snackBar: MatSnackBar) {}
 
+  public user = this.authService.user;
+
   onLogout() {
     this.authService.logout();
     this.router.navigate(['login']);
