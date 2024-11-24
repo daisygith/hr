@@ -86,19 +86,20 @@ export class RequestTimeOffComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
         this.deleteRequestForEmployeeById(id);
-        this.notification.successMethod('Dane usunięto poprawnie');
-      } else {
-        this.notification.errorMethod('Danych nie można usunąć');
       }
     });
   }
 
-  // TODO jak obsłużyć błąd kiedy nie mozna usunąć pracownika ??
-
   deleteRequestForEmployeeById(id: RequestTimeOff): void {
-    this._employeeService.deleteRequestForEmployeeById(id.id).subscribe(() => {
-      this.dataSource = this.dataSource.filter((data) => data !== id);
-    });
+    this._employeeService.deleteRequestForEmployeeById(id.id).subscribe(
+      () => {
+        this.dataSource = this.dataSource.filter((data) => data !== id);
+        this.notification.successMethod('Dane usunięto poprawnie');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
   }
 
   issuesTab(e: Event) {

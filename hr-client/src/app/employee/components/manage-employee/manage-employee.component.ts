@@ -87,14 +87,14 @@ export class ManageEmployeeComponent implements OnInit {
   }
 
   deleteManageEmployeeById(employeeId: ManageEmployee): void {
-    this._employeeService
-      .deleteManageEmployeeById(employeeId.id)
-      .subscribe(() => {
+    this._employeeService.deleteManageEmployeeById(employeeId.id).subscribe(
+      () => {
         this.dataSource = this.dataSource.filter((item) => item !== employeeId);
-      });
-  }
-
-  issuesTab(e: Event) {
-    e.stopPropagation();
+        this.notification.successMethod('Dane usunięto poprawnie');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
   }
 }

@@ -12,6 +12,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { jwtInterceptor } from './auth/services/jwtInterceptor';
 import { MatNativeDateModule } from '@angular/material/core';
+import { errorHandlerInterceptor } from './shared/interceptors/error-handler-interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,7 +32,9 @@ export const appConfig: ApplicationConfig = {
       }),
       MatNativeDateModule,
     ),
-    provideHttpClient(withInterceptors([jwtInterceptor])),
+    provideHttpClient(
+      withInterceptors([jwtInterceptor, errorHandlerInterceptor]),
+    ),
     // providers: [provideHttpClient()]
   ],
 };
