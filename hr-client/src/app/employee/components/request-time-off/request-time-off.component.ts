@@ -78,9 +78,8 @@ export class RequestTimeOffComponent implements OnInit {
     });
   }
 
-  // TODO: tłumaczenia do notification
-
-  openDialog(id: RequestTimeOff) {
+  openDialog(id: RequestTimeOff, e: Event) {
+    e.stopPropagation();
     const dialogRef = this.dialog.open(DialogAnimationComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -94,15 +93,11 @@ export class RequestTimeOffComponent implements OnInit {
     this._employeeService.deleteRequestForEmployeeById(id.id).subscribe(
       () => {
         this.dataSource = this.dataSource.filter((data) => data !== id);
-        this.notification.successMethod('Dane usunięto poprawnie');
+        this.notification.successMethod('DATA.REMOVE_OK');
       },
       (error) => {
         console.log(error);
       },
     );
-  }
-
-  issuesTab(e: Event) {
-    e.stopPropagation();
   }
 }

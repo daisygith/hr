@@ -48,6 +48,10 @@
       }
     }
   },
+  "DATA": {
+    "REMOVE_OK": "Data deleted successfully",
+    "REMOVE_FAIL": "Data cannot be deleted"
+  },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Add Employee",
     "APPLY_REQUEST_TIME_OFF": "Apply request time off",
@@ -66,6 +70,7 @@
       "OK": "Login successfully",
       "INVALID": "Something went wrong"
     },
+    "LOGOUT": "Logout successfully",
     "PASSWORD": "Password",
     "REGISTRATION": {
       "BUTTON": "Create an account",

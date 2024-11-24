@@ -3,8 +3,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import { AuthService } from '../../../auth/services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgOptimizedImage } from '@angular/common';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,14 +22,13 @@ import { NgOptimizedImage } from '@angular/common';
 export class SidebarComponent {
   private authService = inject(AuthService);
   public router: Router = inject(Router);
-
-  constructor(private _snackBar: MatSnackBar) {}
+  public notification: NotificationService = inject(NotificationService);
 
   public user = this.authService.user;
 
   onLogout() {
     this.authService.logout();
     this.router.navigate(['login']);
-    this._snackBar.open('Logout successfully', 'X');
+    this.notification.logOut('LOGIN.LOGOUT');
   }
 }

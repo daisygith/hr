@@ -11,7 +11,7 @@ export function errorHandlerInterceptor(
   return next(req).pipe(
     catchError((error) => {
       console.log('error is intercept');
-      notification.errorMethod('Danych nie można usunąć');
+      notification.errorMethod('DATA.REMOVE_FAIL');
       console.error(error);
       return throwError(error.message);
     }),

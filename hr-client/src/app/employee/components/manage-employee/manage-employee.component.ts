@@ -90,7 +90,7 @@ export class ManageEmployeeComponent implements OnInit {
     this._employeeService.deleteManageEmployeeById(employeeId.id).subscribe(
       () => {
         this.dataSource = this.dataSource.filter((item) => item !== employeeId);
-        this.notification.successMethod('Dane usunięto poprawnie');
+        this.notification.successMethod('DATA.REMOVE_OK');
       },
       (error) => {
         console.log(error);

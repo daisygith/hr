@@ -48,6 +48,10 @@
       }
     }
   },
+  "DATA": {
+    "REMOVE_OK": "Dane usunięto poprawnie",
+    "REMOVE_FAIL": "Danych nie można usunąć"
+  },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Dodaj pracownika",
     "APPLY_REQUEST_TIME_OFF": "Złóż wniosek o urlop",
@@ -66,6 +70,7 @@
       "OK": "Zalogowano pomyślnie",
       "INVALID": "Coś poszło nie tak"
     },
+    "LOGOUT": "Wylogowano pomyślnie",
     "PASSWORD": "Hasło",
     "REGISTRATION": {
       "BUTTON": "Załóż konto",

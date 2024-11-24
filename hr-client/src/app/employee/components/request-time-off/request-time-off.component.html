@@ -36,8 +36,6 @@
       {{ element.endDate | date: "YYYY-MM-dd" }}
     </td>
   </ng-container>
-  <!--TODO dodać kolumne Leave To-->
-  <!-- Leave From Column -->
 
   <!-- Days Type Column -->
   <ng-container matColumnDef="days">
@@ -75,8 +73,12 @@
   <!-- Details Type Column -->
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element" (click)="issuesTab($event)">
-      <button mat-mini-fab id="button-more" (click)="openDialog(element)">
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-mini-fab
+        id="button-more"
+        (click)="openDialog(element, $event)"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -89,5 +91,3 @@
     [routerLink]="['/employee/request-time-off', row.id]"
   ></tr>
 </table>
-
-<!--        (click)="deleteRequestForEmployeeById(element)"-->

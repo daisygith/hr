@@ -20,4 +20,11 @@ export class NotificationService {
       panelClass: ['red-snackbar'],
     });
   }
+
+  public logOut(messageKey: string) {
+    this._snackBar.open(this._translate.instant(messageKey), 'OK', {
+      duration: 3000,
+      panelClass: ['green-snackbar'],
+    });
+  }
 }
