@@ -9,6 +9,9 @@ import { ManageEmployeeComponent } from '../manage-employee/manage-employee.comp
 import { ShellComponent } from '../../../shell/components/shell/shell.component';
 import { RequestTimeOffComponent } from '../request-time-off/request-time-off.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
@@ -29,6 +32,9 @@ import { TranslateModule } from '@ngx-translate/core';
     RequestTimeOffComponent,
     TranslateModule,
     MatTabLabel,
+    MatFormField,
+    MatInput,
+    ReactiveFormsModule,
   ],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss',

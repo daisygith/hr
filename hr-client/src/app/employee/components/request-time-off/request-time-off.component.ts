@@ -10,6 +10,7 @@ import {
   MatRow,
   MatRowDef,
   MatTable,
+  MatTableDataSource,
 } from '@angular/material/table';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -21,6 +22,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-request-time-off',
@@ -45,6 +48,8 @@ import { NotificationService } from '../../../shared/services/notification.servi
     RouterLink,
     MatMiniFabButton,
     NgIf,
+    MatFormField,
+    MatInput,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
@@ -55,7 +60,7 @@ export class RequestTimeOffComponent implements OnInit {
   private _employeeService: EmployeeService = inject(EmployeeService);
   readonly dialog = inject(MatDialog);
 
-  dataSource: RequestTimeOff[] = [];
+  dataSource = new MatTableDataSource<RequestTimeOff>([]);
 
   displayedColumns = [
     'employeeName',
@@ -74,7 +79,7 @@ export class RequestTimeOffComponent implements OnInit {
 
   getRequestForEmployee(): void {
     this._employeeService.getRequestForEmployee().subscribe({
-      next: (value) => (this.dataSource = value),
+      next: (value) => (this.dataSource.data = value),
     });
   }
 
@@ -92,12 +97,19 @@ export class RequestTimeOffComponent implements OnInit {
   deleteRequestForEmployeeById(id: RequestTimeOff): void {
     this._employeeService.deleteRequestForEmployeeById(id.id).subscribe(
       () => {
-        this.dataSource = this.dataSource.filter((data) => data !== id);
+        this.dataSource.data = this.dataSource.data.filter(
+          (data) => data !== id,
+        );
         this.notification.successMethod('DATA.REMOVE_OK');
       },
       (error) => {
         console.log(error);
       },
     );
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

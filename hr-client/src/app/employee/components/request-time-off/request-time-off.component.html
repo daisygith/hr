@@ -1,3 +1,20 @@
+<div class="list-toolbar">
+  <div class="list-title">
+    {{ "EMPLOYEE.REQUEST_TIME_OFF" | translate }}
+  </div>
+  <div class="list-additional-elem">
+    <mat-form-field class="input-full-width">
+      <mat-icon id="filter-icon">filter_alt</mat-icon>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        type="text"
+        [placeholder]="'EMPLOYEE.FILTER' | translate"
+        id="input-filter"
+      />
+    </mat-form-field>
+  </div>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Employee Name Column -->
   <ng-container matColumnDef="employeeName">

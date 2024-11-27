@@ -47,20 +47,6 @@
             <mat-icon id="manage-icon">manage_accounts</mat-icon>
             {{ "EMPLOYEE.MANAGE_EMPLOYEE" | translate }}
           </ng-template>
-          <div class="list-toolbar">
-            <div class="list-title">
-              {{ "EMPLOYEE.MANAGE_EMPLOYEE" | translate }}
-            </div>
-            <div class="list-additional-elem">
-              <app-input></app-input>
-              <div class="button-filter">
-                <button mat-stroked-button id="filter1-button">
-                  <mat-icon>filter_alt</mat-icon>
-                  {{ "EMPLOYEE.FILTER" | translate }}
-                </button>
-              </div>
-            </div>
-          </div>
           <div class="list-content">
             <app-manage-employee></app-manage-employee>
           </div>
@@ -71,21 +57,6 @@
             <mat-icon id="request-icon">person_check</mat-icon>
             {{ "EMPLOYEE.REQUEST_TIME_OFF" | translate }}
           </ng-template>
-          <div class="list-toolbar">
-            <div class="list-title">
-              {{ "EMPLOYEE.REQUEST_TIME_OFF" | translate }}
-            </div>
-            <div class="list-additional-elem">
-              <app-input></app-input>
-              <div class="button-filter">
-                <!--                TODO  dodać wielkośc- szerokosc przycisku pod polski tytuł-->
-                <button mat-stroked-button id="filter2-button">
-                  <mat-icon>filter_alt</mat-icon>
-                  {{ "EMPLOYEE.FILTER" | translate }}
-                </button>
-              </div>
-            </div>
-          </div>
           <div class="list-content">
             <app-request-time-off></app-request-time-off>
           </div>

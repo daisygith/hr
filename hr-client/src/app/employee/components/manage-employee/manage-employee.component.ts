@@ -10,6 +10,7 @@ import {
   MatRow,
   MatRowDef,
   MatTable,
+  MatTableDataSource,
 } from '@angular/material/table';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -21,6 +22,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-manage-employee',
@@ -43,6 +46,8 @@ import { NotificationService } from '../../../shared/services/notification.servi
     MatMiniFabButton,
     RouterLink,
     RouterLinkActive,
+    MatFormField,
+    MatInput,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',
@@ -53,7 +58,7 @@ export class ManageEmployeeComponent implements OnInit {
   private _employeeService: EmployeeService = inject(EmployeeService);
   readonly dialog = inject(MatDialog);
 
-  dataSource: ManageEmployee[] = [];
+  dataSource = new MatTableDataSource<ManageEmployee>([]);
   displayedColumns = [
     'name',
     'phone',
@@ -72,7 +77,7 @@ export class ManageEmployeeComponent implements OnInit {
   getManageEmployee(): void {
     this._employeeService
       .getManageEmployee()
-      .subscribe({ next: (value) => (this.dataSource = value) });
+      .subscribe({ next: (value) => (this.dataSource.data = value) });
   }
 
   openDialog(employeeId: ManageEmployee, e: Event) {
@@ -89,12 +94,19 @@ export class ManageEmployeeComponent implements OnInit {
   deleteManageEmployeeById(employeeId: ManageEmployee): void {
     this._employeeService.deleteManageEmployeeById(employeeId.id).subscribe(
       () => {
-        this.dataSource = this.dataSource.filter((item) => item !== employeeId);
+        this.dataSource.data = this.dataSource.data.filter(
+          (item) => item !== employeeId,
+        );
         this.notification.successMethod('DATA.REMOVE_OK');
       },
       (error) => {
         console.log(error);
       },
     );
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
