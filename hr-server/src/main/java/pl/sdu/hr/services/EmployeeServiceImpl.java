@@ -9,6 +9,7 @@ import pl.sdu.hr.models.RequestTimeOff;
 import pl.sdu.hr.payload.dto.EmployeeDto;
 import pl.sdu.hr.payload.dto.RegisterRequestTimeOffDto;
 import pl.sdu.hr.payload.dto.RequestTimeOffDto;
+import pl.sdu.hr.payload.request.SaveImageRequest;
 import pl.sdu.hr.repository.EmployeeRepository;
 import pl.sdu.hr.repository.RequestTimeOffRepository;
 
@@ -201,5 +202,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         requestTimeOffRepository.deleteById(employeeId);
     }
 
+
+    @Transactional
+    @Override
+    public EmployeeDto saveImageForEmployee(Long employeeId, SaveImageRequest request){
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        employee.setImage(request.getUrl());
+        employeeRepository.save(employee);
+        return EmployeeMapper.mapEmployeeToEmployeeDto(employee);
+
+
+    }
 
 }

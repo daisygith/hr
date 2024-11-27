@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.sdu.hr.payload.dto.EmployeeDto;
 import pl.sdu.hr.payload.dto.RegisterRequestTimeOffDto;
 import pl.sdu.hr.payload.dto.RequestTimeOffDto;
+import pl.sdu.hr.payload.request.SaveImageRequest;
 import pl.sdu.hr.payload.response.MessageResponse;
 import pl.sdu.hr.services.EmployeeService;
 
@@ -95,6 +96,12 @@ public class EmployeeController {
 
         return new MessageResponse("Delete request for employee id" + employeeId);
 
+    }
 
+    @PutMapping("{employeeId}/image")
+    public EmployeeDto saveImageForEmployee(@PathVariable("employeeId") Long employeeId, @RequestBody SaveImageRequest request){
+        EmployeeDto dbImage = employeeService.saveImageForEmployee(employeeId, request);
+
+        return dbImage;
     }
 }

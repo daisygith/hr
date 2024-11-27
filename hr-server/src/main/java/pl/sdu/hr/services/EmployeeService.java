@@ -3,6 +3,7 @@ package pl.sdu.hr.services;
 import pl.sdu.hr.payload.dto.EmployeeDto;
 import pl.sdu.hr.payload.dto.RegisterRequestTimeOffDto;
 import pl.sdu.hr.payload.dto.RequestTimeOffDto;
+import pl.sdu.hr.payload.request.SaveImageRequest;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface EmployeeService {
     RequestTimeOffDto updateRequestForEmployeeById(RequestTimeOffDto requestTimeOffDto);
 
     void deleteRequestById(Long employeeId);
+
+    EmployeeDto saveImageForEmployee(Long employeeId, SaveImageRequest request);
 }

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Employee } from '../models/employee';
 import { environment } from '../../../environments/environment';
 import { RegisterRequestTimeOff } from '../models/registerRequestTimeOff';
+import { SaveImageRequest } from '../../shared/models/save-image-request';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
@@ -66,6 +67,17 @@ export class EmployeeService {
   deleteRequestForEmployeeById(employeeId: number): Observable<void> {
     return this.http.delete<void>(
       `${this._apiUrl}/request-time-off/${employeeId}`,
+    );
+  }
+
+  //image
+  saveImageForEmployee(
+    url: string,
+    employeeId: number | undefined,
+  ): Observable<SaveImageRequest> {
+    return this.http.put<SaveImageRequest>(
+      `${this._apiUrl}/${employeeId}/image`,
+      { url: url },
     );
   }
 }

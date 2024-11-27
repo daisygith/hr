@@ -14,6 +14,7 @@ public class EmployeeMapper {
                 .department(employee.getDepartment())
                 .typeOfContract(employee.getTypeOfContract())
                 .address(employee.getAddress())
+                .image(employee.getImage())
                 .build();
 
         return employeeDto;
@@ -29,6 +30,7 @@ public class EmployeeMapper {
                 .department(employeeDto.getDepartment())
                 .typeOfContract(employeeDto.getTypeOfContract())
                 .address(employeeDto.getAddress())
+                .image(employeeDto.getImage())
                 .build();
 
         return employee;

@@ -34,7 +34,7 @@
         <div class="elements-content">
           <div class="picture">
             <img
-              ngSrc="assets/image/default-avatar.png"
+              [ngSrc]="imageUrl ?? 'assets/image/default-avatar.png'"
               alt="default avatar"
               height="100"
               width="100"
@@ -46,6 +46,9 @@
               <button mat-stroked-button id="button-update">
                 {{ "ADD_EMPLOYEE.CHANGE_PROFILE.BUTTON.ADD" | translate }}
               </button>
+              <app-file-upload
+                (onUploadSuccess)="onUploadImage($event, employee?.id)"
+              />
             </div>
             <div class="button-remove">
               <button mat-stroked-button id="button-remove">

@@ -18,6 +18,10 @@ export class AuthService {
     return this._user;
   }
 
+  public get token(): string {
+    return localStorage.getItem('JWT_Token') ?? '';
+  }
+
   isLoggedIn: boolean = false;
 
   login(userDetails: {

@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.sdu.hr.payload.response.MessageResponse;
+import pl.sdu.hr.payload.response.UploadResponse;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -25,15 +25,16 @@ public class ImageUploadController {
     private String uploadDir;
 
     @PostMapping("/images")
-    public ResponseEntity<MessageResponse> uploadImage(@RequestParam("file") MultipartFile file){
+    public ResponseEntity<UploadResponse> uploadImage(@RequestParam("file") MultipartFile file) throws Exception {
         try {
             String filePath = saveImage(file);
-            return ResponseEntity.ok(new MessageResponse(filePath));
+            return ResponseEntity.ok(new UploadResponse(filePath));
         } catch (IOException e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MessageResponse("Error uploading image"));
+            throw new Exception("Error uploading image");
         }
     }
 
+    // todo przeniesc do serwisu
     private String saveImage(MultipartFile file) throws IOException {
         Path uploadPath = Paths.get(uploadDir);
         if(!Files.exists(uploadPath)){
@@ -44,11 +45,11 @@ public class ImageUploadController {
         Path filePath = uploadPath.resolve(fileName);
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
-        return filePath.toString();
+        return "/uploads/images/" + fileName;
     }
 
     @GetMapping("images/{filename}")
-    public ResponseEntity<Resource> getImage(@PathVariable String filename){
+    public ResponseEntity<Resource> getImage(@PathVariable("filename") String filename){
         try {
             Path filePath = Paths.get(uploadDir).resolve(filename);
             Resource resource = new UrlResource(filePath.toUri());

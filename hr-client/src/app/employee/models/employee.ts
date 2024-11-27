@@ -7,4 +7,5 @@ export interface Employee {
   department: string;
   typeOfContract: string;
   address: string;
+  image?: string;
 }

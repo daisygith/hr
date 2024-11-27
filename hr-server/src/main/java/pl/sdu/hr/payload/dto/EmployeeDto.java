@@ -27,4 +27,6 @@ public class EmployeeDto {
 
     private String address;
 
+    private String image;
+
 }

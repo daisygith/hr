@@ -48,4 +48,6 @@ public class Employee {
     @Size(max = 250)
     private String address;
 
+    private String image;
+
 }
