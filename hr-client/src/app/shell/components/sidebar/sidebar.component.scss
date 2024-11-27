@@ -25,20 +25,18 @@
   }
 
   .avatar {
-    padding: 13px 6px 13px 12px;
+    padding: 12px;
+    height: 40px;
     border: 1px solid var(--border-app-element);
     border-radius: 20px;
     background-color: var(--border-app-element);
     display: grid;
     grid-template-columns: 40px auto;
+    gap: 8px;
   }
-  //.avatar-img {
-  //  border-radius: 10px;
-  //  border: 1px solid var(--border-app-element);
-  //}
 
   img#id-avatar {
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
   a#user-link {
@@ -46,15 +44,11 @@
     color: var(--main-color);
   }
 
-  .user-data {
-    margin: 3px 0 0 6px;
-
-    .user-name {
-      font-weight: bold;
-    }
-    .user-staffId {
-      font-size: 12px;
-    }
+  .user-name {
+    font-weight: bold;
+  }
+  .user-staffId {
+    font-size: 12px;
   }
 
   .title-menu {
