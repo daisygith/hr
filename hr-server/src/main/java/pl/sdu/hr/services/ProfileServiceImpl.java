@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.sdu.hr.mappers.ProfileMapper;
 import pl.sdu.hr.models.Profile;
 import pl.sdu.hr.payload.dto.ProfileDto;
+import pl.sdu.hr.payload.request.SaveImageRequest;
 import pl.sdu.hr.repository.ProfileRepository;
 
 import java.util.Optional;
@@ -20,7 +21,10 @@ public class ProfileServiceImpl implements ProfileService{
     public ProfileDto findByUserId(Long userId) throws Exception {
         Optional<Profile> profile = profileRepository.findByUserId(userId);
         if (profile.isEmpty()) {
-            return null;
+            Profile newProfile = new Profile();
+            newProfile.setUserId(userId);
+            profileRepository.save(newProfile);
+            return ProfileMapper.mapProfileToProfileDto(newProfile);
         }
         ProfileDto profileDto = ProfileMapper.mapProfileToProfileDto(profile.get());
 
@@ -38,5 +42,15 @@ public class ProfileServiceImpl implements ProfileService{
 
         return profileListDto;
 
+    }
+
+    @Transactional
+    @Override
+    public ProfileDto saveImageForUser(Long userId, SaveImageRequest request) {
+        Profile profile = profileRepository.findByUserId(userId).orElseThrow();
+        profile.setImage(request.getUrl());
+        profileRepository.save(profile);
+
+        return ProfileMapper.mapProfileToProfileDto(profile);
     }
 }

@@ -15,6 +15,7 @@ public class ProfileMapper {
                 .destination(profile.getDestination())
                 .phone(profile.getPhone())
                 .address(profile.getAddress())
+                .image(profile.getImage())
                 .userId(profile.getUserId())
                 .build();
 
@@ -31,6 +32,7 @@ public class ProfileMapper {
                 .destination(profileDto.getDestination())
                 .phone(profileDto.getPhone())
                 .address(profileDto.getAddress())
+                .image(profileDto.getImage())
                 .userId(profileDto.getUserId())
                 .build();
 

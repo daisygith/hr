@@ -27,6 +27,8 @@ public class ProfileDto {
 
     private String address;
 
+    private String image;
+
     private Long userId;
 
 

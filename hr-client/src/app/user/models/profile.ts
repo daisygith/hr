@@ -7,4 +7,5 @@ export interface Profile {
   destination: string;
   phone: string;
   address: string;
+  image?: string;
 }

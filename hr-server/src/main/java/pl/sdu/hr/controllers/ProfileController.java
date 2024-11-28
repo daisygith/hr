@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import pl.sdu.hr.payload.dto.ProfileDto;
+import pl.sdu.hr.payload.request.SaveImageRequest;
 import pl.sdu.hr.security.services.UserDetailsImpl;
 import pl.sdu.hr.services.ProfileService;
 
@@ -27,5 +28,12 @@ public class ProfileController {
         ProfileDto dbProfile = profileService.update(profileDto);
 
         return dbProfile;
+    }
+
+    @PutMapping("/image")
+    public ProfileDto saveImageForUser(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody SaveImageRequest request){
+        ProfileDto dbImage = profileService.saveImageForUser(userDetails.getId(), request);
+
+        return dbImage;
     }
 }

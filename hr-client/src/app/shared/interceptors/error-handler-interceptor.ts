@@ -9,11 +9,11 @@ export function errorHandlerInterceptor(
 ): Observable<HttpEvent<unknown>> {
   const notification: NotificationService = inject(NotificationService);
   return next(req).pipe(
-    catchError((error) => {
+    catchError((error: any) => {
       console.log('error is intercept');
-      notification.errorMethod('DATA.REMOVE_FAIL');
+      notification.errorMethod(error?.error?.message);
       console.error(error);
-      return throwError(error.message);
+      return throwError(error?.error?.message);
     }),
   );
 }

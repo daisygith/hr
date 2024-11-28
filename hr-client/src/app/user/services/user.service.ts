@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { ChangePassword } from '../models/changePassword';
 import { Profile } from '../models/Profile';
+import { SaveImageRequest } from '../../shared/models/save-image-request';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -26,5 +27,11 @@ export class UserService {
       `${this._apiUrl}/users/changePassword`,
       changePassword,
     );
+  }
+
+  saveImageForUser(url: string): Observable<SaveImageRequest> {
+    return this.http.put<SaveImageRequest>(`${this._apiUrl}/profiles/image`, {
+      url: url,
+    });
   }
 }
