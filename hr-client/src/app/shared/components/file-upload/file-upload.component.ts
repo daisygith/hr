@@ -11,11 +11,12 @@ import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { UploadResponse } from '../../models/upload-response';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-file-upload',
   standalone: true,
-  imports: [NgIf, NgSwitch, NgSwitchCase],
+  imports: [NgIf, NgSwitch, NgSwitchCase, TranslateModule],
   templateUrl: './file-upload.component.html',
   styleUrl: './file-upload.component.scss',
   encapsulation: ViewEncapsulation.None,

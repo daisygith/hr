@@ -110,7 +110,8 @@ export class AddEmployeeComponent implements OnInit {
       this.addEmployeeForm.patchValue(data);
       this.imageUrl = data?.image
         ? `${environment.apiUrl}${data?.image}?token=${this._authService.token}`
-        : '';
+        : undefined;
+      console.log(this.imageUrl);
     });
   }
   saveData() {
@@ -158,6 +159,7 @@ export class AddEmployeeComponent implements OnInit {
     this._employeeService.deleteImageForEmployee(employeeId).subscribe(
       (data) => {
         this.notification.successMethod('DATA.REMOVE_OK');
+        this.imageUrl = undefined;
       },
       (error) => {
         console.log(error);
@@ -169,7 +171,7 @@ export class AddEmployeeComponent implements OnInit {
     console.log(url);
     this.imageUrl = url
       ? `${environment.apiUrl}${url}?token=${this._authService.token}`
-      : '';
+      : undefined;
     if (this.isNew) {
       this.addEmployeeForm.get('image')?.patchValue(url);
     } else {

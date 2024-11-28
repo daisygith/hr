@@ -8,9 +8,10 @@ app-file-upload {
   //  width: 126px;
   //  height: 48px;
   //}
-  input[type="file" i] {
+  input[type="file"] {
     background-color: transparent !important;
     border: transparent !important;
+    display: none;
   }
 
   button#button-update {
@@ -21,6 +22,7 @@ app-file-upload {
     background-color: var(--main-color-text);
     color: var(--main-color);
     width: 126px;
-    height: 48px;
+    height: 40px;
+    font-size: 14px;
   }
 }

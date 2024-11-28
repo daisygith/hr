@@ -8,6 +8,13 @@ $my-theme: mat.define-theme(
       theme-type: light,
       primary: mat.$azure-palette,
     ),
+    typography: (
+      plain-family: Inter,
+      brand-family: Open Sans,
+      bold-weight: 900,
+      medium-weight: 500,
+      regular-weight: 300,
+    ),
   )
 );
 
