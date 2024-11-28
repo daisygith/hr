@@ -104,4 +104,20 @@ public class EmployeeController {
 
         return dbImage;
     }
+
+    @DeleteMapping("{employeeId}/image")
+    public MessageResponse deleteImageForEmployee(@PathVariable("employeeId") Long employeeId) throws Exception{
+        EmployeeDto tempImage = employeeService.findById(employeeId);
+
+
+
+        if(tempImage == null) {
+            throw new RuntimeException("Employee id not found" + employeeId);
+        }
+
+        employeeService.deleteImageForEmployee(employeeId);
+
+        return new MessageResponse("Delete image for employee" + employeeId);
+
+    }
 }

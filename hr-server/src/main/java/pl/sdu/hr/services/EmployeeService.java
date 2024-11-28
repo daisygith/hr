@@ -30,4 +30,6 @@ public interface EmployeeService {
     void deleteRequestById(Long employeeId);
 
     EmployeeDto saveImageForEmployee(Long employeeId, SaveImageRequest request);
+
+    void deleteImageForEmployee(Long employeeId);
 }

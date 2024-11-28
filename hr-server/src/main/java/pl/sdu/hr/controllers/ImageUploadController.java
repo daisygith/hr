@@ -48,6 +48,7 @@ public class ImageUploadController {
         return "/uploads/images/" + fileName;
     }
 
+
     @GetMapping("images/{filename}")
     public ResponseEntity<Resource> getImage(@PathVariable("filename") String filename){
         try {
@@ -63,5 +64,6 @@ public class ImageUploadController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 
 }

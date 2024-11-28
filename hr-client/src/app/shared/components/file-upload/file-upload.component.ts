@@ -1,4 +1,11 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
@@ -11,6 +18,7 @@ import { UploadResponse } from '../../models/upload-response';
   imports: [NgIf, NgSwitch, NgSwitchCase],
   templateUrl: './file-upload.component.html',
   styleUrl: './file-upload.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class FileUploadComponent implements OnInit {
   @Output()
@@ -33,8 +41,7 @@ export class FileUploadComponent implements OnInit {
     }
   }
 
-  // TODO private
-  onUpload() {
+  private onUpload() {
     if (this.file) {
       const formData = new FormData();
       formData.append('file', this.file, this.file.name);

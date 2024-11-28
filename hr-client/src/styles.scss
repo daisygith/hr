@@ -189,15 +189,8 @@ img#picture-avatar {
   margin: 0 0 10px 0;
 }
 
-button#button-update,
 button#button-remove {
   border-radius: 10px;
-}
-
-button#button-update {
-  border-color: var(--positive-element);
-  color: var(--main-color);
-  width: 126px;
 }
 
 button#button-remove {

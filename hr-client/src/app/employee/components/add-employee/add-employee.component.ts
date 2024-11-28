@@ -154,6 +154,17 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
+  onDeleteImage(employeeId: number | undefined) {
+    this._employeeService.deleteImageForEmployee(employeeId).subscribe(
+      (data) => {
+        this.notification.successMethod('DATA.REMOVE_OK');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
+
   public onUploadImage(url: string, employeeId: number | undefined) {
     console.log(url);
     this.imageUrl = url
@@ -166,32 +177,8 @@ export class AddEmployeeComponent implements OnInit {
         .saveImageForEmployee(url, employeeId)
         .subscribe((data) => {
           console.log(data);
-          // TODO dopytać się
           this.addEmployeeForm.patchValue(data);
         });
     }
-    /**
-     TODO dodac zapis url do employee
-     // FE
-     1) w employee.service.ts musimy dodać metodę saveImageForEmployee,
-        która przyjmuje w parametrach (url: string, employeeId: number)
-        W metodzie musimy wykonać strzał PUT do BE pod adres /employees/{employeeId}/image
-        z body {url: string} - dodać w shared nowy model SaveImageRequest
-     2 ) wywołać ją w onUploadImage //TODO do sprawdzenia
-       3) do Employee.ts dodać pole image?: string;
-       4) w addEmployeeForm dodać pole image (nie jest wymagane)
-
-     // BE
-       - w encji Employee dodać pole image (może być nullem)
-       - to samo w DTO
-     1) W serwerze dodać m EmployeeController dodać nowy endpoint PUT /{employeeId}/image
-        W payload dodać nowy model SaveImageRequest z polem url
-        Przekazać odczytane employeeId i body do serwisu
-     2) Dodać nową metodę w serwisie saveImageForEmployee z parametrami request (SaveImageRequest) i employeeId
-        - pobrać Employee po id
-        - w pobranym employee ustawiamy pole image wartością request.getUrl()
-        - zapisujemy
-        - mapujemy employee na employeeDto i zwracamy (tam też dodać mapowanie image)
-      */
   }
 }

@@ -214,4 +214,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+    @Transactional
+    @Override
+    public void deleteImageForEmployee(Long employeeId) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        employee.setImage(null);
+        employeeRepository.save(employee);
+    }
+
 }

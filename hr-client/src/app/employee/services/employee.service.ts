@@ -80,4 +80,8 @@ export class EmployeeService {
       { url: url },
     );
   }
+
+  deleteImageForEmployee(employeeId: number | undefined): Observable<void> {
+    return this.http.delete<void>(`${this._apiUrl}/${employeeId}/image`);
+  }
 }

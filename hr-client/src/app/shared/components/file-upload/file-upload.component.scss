@@ -1,0 +1,26 @@
+app-file-upload {
+  //input#button-update {
+  //  border-radius: 10px;
+  //}
+  //input#button-update {
+  //  border: 1px solid var(--positive-element);
+  //  color: var(--main-color);
+  //  width: 126px;
+  //  height: 48px;
+  //}
+  input[type="file" i] {
+    background-color: transparent !important;
+    border: transparent !important;
+  }
+
+  button#button-update {
+    border-radius: 10px;
+  }
+  button#button-update {
+    border: 1px solid var(--positive-element);
+    background-color: var(--main-color-text);
+    color: var(--main-color);
+    width: 126px;
+    height: 48px;
+  }
+}
