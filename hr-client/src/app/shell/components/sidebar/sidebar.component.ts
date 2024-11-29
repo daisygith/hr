@@ -1,10 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import { AuthService } from '../../../auth/services/auth.service';
 import { NgOptimizedImage } from '@angular/common';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { environment } from '../../../../environments/environment';
+import { UserService } from '../../../user/services/user.service';
+import { Profile } from '../../../user/models/profile';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,16 +22,32 @@ import { NotificationService } from '../../../shared/services/notification.servi
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent {
-  private authService = inject(AuthService);
+export class SidebarComponent implements OnInit {
+  private _authService = inject(AuthService);
+  private _userService: UserService = inject(UserService);
   public router: Router = inject(Router);
   public notification: NotificationService = inject(NotificationService);
 
-  public user = this.authService.user;
+  profile: Profile | undefined;
+  public imageUrl: string | undefined;
+  public user = this._authService.user;
+
+  ngOnInit(): void {
+    this.getProfile();
+  }
 
   onLogout() {
-    this.authService.logout();
+    this._authService.logout();
     this.router.navigate(['login']);
     this.notification.logOut('LOGIN.LOGOUT');
+  }
+
+  getProfile(): void {
+    this._userService.getUserProfile().subscribe((data) => {
+      this.imageUrl = data?.image
+        ? `${environment.apiUrl}${data?.image}?token=${this._authService.token}`
+        : undefined;
+      console.log(this.imageUrl);
+    });
   }
 }

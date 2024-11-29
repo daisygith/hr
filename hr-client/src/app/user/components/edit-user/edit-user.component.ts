@@ -17,11 +17,11 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
-import { Profile } from '../../models/Profile';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../../auth/services/auth.service';
 import { FileUploadComponent } from '../../../shared/components/file-upload/file-upload.component';
+import { Profile } from '../../models/profile';
 
 @Component({
   selector: 'app-edit-user',

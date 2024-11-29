@@ -4,8 +4,8 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 
 import { ChangePassword } from '../models/changePassword';
-import { Profile } from '../models/Profile';
 import { SaveImageRequest } from '../../shared/models/save-image-request';
+import { Profile } from '../models/profile';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
