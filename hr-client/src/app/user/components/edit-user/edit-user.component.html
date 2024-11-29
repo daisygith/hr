@@ -41,7 +41,11 @@
                 <app-file-upload (onUploadSuccess)="onUploadImage($event)" />
               </div>
               <div class="button-remove">
-                <button mat-stroked-button id="button-remove">
+                <button
+                  mat-stroked-button
+                  id="button-remove"
+                  (click)="onDeleteImage()"
+                >
                   {{ "USER.CHANGE_PROFILE.BUTTON.REMOVE" | translate }}
                 </button>
               </div>

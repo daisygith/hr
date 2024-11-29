@@ -34,4 +34,8 @@ export class UserService {
       url: url,
     });
   }
+
+  deleteImageForUser(): Observable<void> {
+    return this.http.delete<void>(`${this._apiUrl}/profiles/image`);
+  }
 }

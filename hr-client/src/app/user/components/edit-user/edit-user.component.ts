@@ -120,4 +120,16 @@ export class EditUserComponent implements OnInit {
       console.log(data);
     });
   }
+
+  onDeleteImage() {
+    this._userService.deleteImageForUser().subscribe(
+      () => {
+        this.notification.successMethod('DATA.REMOVE_OK');
+        this.imageUrl = undefined;
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
 }

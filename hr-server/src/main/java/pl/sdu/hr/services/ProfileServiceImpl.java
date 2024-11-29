@@ -53,4 +53,12 @@ public class ProfileServiceImpl implements ProfileService{
 
         return ProfileMapper.mapProfileToProfileDto(profile);
     }
+
+    @Transactional
+    @Override
+    public void deleteImageForUser(Long userId){
+        Profile profile = profileRepository.findByUserId(userId).orElseThrow();
+        profile.setImage(null);
+        profileRepository.save(profile);
+    }
 }

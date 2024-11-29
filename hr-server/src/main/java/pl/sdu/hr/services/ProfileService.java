@@ -11,4 +11,6 @@ public interface ProfileService {
 
     ProfileDto saveImageForUser(Long userId, SaveImageRequest request);
 
+    void deleteImageForUser(Long userId);
+
 }

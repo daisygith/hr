@@ -5,6 +5,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import pl.sdu.hr.payload.dto.ProfileDto;
 import pl.sdu.hr.payload.request.SaveImageRequest;
+import pl.sdu.hr.payload.response.MessageResponse;
 import pl.sdu.hr.security.services.UserDetailsImpl;
 import pl.sdu.hr.services.ProfileService;
 
@@ -36,4 +37,19 @@ public class ProfileController {
 
         return dbImage;
     }
+
+    @DeleteMapping("/image")
+    public MessageResponse deleteImageForUser(@AuthenticationPrincipal UserDetailsImpl userDetails) throws Exception{
+        ProfileDto tempImage = profileService.findByUserId(userDetails.getId());
+
+        if(tempImage == null){
+            throw new RuntimeException("Profile id not found" + userDetails.getId());
+        }
+
+        profileService.deleteImageForUser(userDetails.getId());
+
+        return new MessageResponse("Delete image for user" + userDetails.getId());
+    }
+
+
 }
