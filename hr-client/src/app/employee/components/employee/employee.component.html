@@ -41,8 +41,7 @@
   <div class="employee-content list">
     <div class="list-tabs">
       <mat-tab-group mat-stretch-tabs="false">
-        <!--TODO: dostosowac szerokosc label dla polskich nazw-->
-        <mat-tab>
+        <mat-tab class="manage-employee">
           <ng-template mat-tab-label>
             <mat-icon id="manage-icon">manage_accounts</mat-icon>
             {{ "EMPLOYEE.MANAGE_EMPLOYEE" | translate }}
@@ -51,7 +50,6 @@
             <app-manage-employee></app-manage-employee>
           </div>
         </mat-tab>
-        <!--TODO: dostosowac szerokosc label dla polskich nazw-->
         <mat-tab>
           <ng-template mat-tab-label>
             <mat-icon id="request-icon">person_check</mat-icon>

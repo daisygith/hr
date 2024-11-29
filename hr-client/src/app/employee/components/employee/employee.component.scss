@@ -96,5 +96,10 @@ app-employee {
     .list-title {
       padding: 0;
     }
+
+    div#mat-tab-label-0-0,
+    div#mat-tab-label-0-1 {
+      width: 250px;
+    }
   }
 }

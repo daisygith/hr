@@ -19,15 +19,21 @@
   <!-- Employee Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>
-      <!--      TODO  dodać wielkośc- szerokosc nazwy pod polski tytuł-->
       {{ "MANAGE_EMPLOYEE.EMPLOYEE_NAME" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    <td mat-cell *matCellDef="let element">
+      <img
+        src="assets/image/default-avatar.png"
+        alt="default avatar"
+        height="30"
+        width="30"
+        id="picture-avatar"
+      />{{ element.name }}
+    </td>
   </ng-container>
 
   <!-- Phone Number Column -->
   <ng-container matColumnDef="phone">
-    <!--      TODO  dodać wielkośc- szerokosc nazwy pod polski tytuł-->
     <th mat-header-cell *matHeaderCellDef>
       {{ "MANAGE_EMPLOYEE.PHONE_NUMBER" | translate }}
     </th>
@@ -36,7 +42,6 @@
 
   <!-- Department Column -->
   <ng-container matColumnDef="department">
-    <!--      TODO  dodać wielkośc- szerokosc nazwy pod angielski tytuł-->
     <th mat-header-cell *matHeaderCellDef>
       {{ "MANAGE_EMPLOYEE.DEPARTMENT" | translate }}
     </th>
@@ -45,7 +50,6 @@
 
   <!-- Job Title Column -->
   <ng-container matColumnDef="position">
-    <!--      TODO  dodać wielkośc- szerokosc nazwy pod polski tytuł-->
     <th mat-header-cell *matHeaderCellDef>
       {{ "MANAGE_EMPLOYEE.JOB_TITLE" | translate }}
     </th>

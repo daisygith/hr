@@ -73,4 +73,17 @@ app-manage-employee {
   .mat-mdc-mini-fab {
     background-color: transparent;
   }
+
+  .mat-column-name {
+    width: 200px;
+  }
+
+  .mat-column-phone {
+    width: 160px;
+  }
+
+  .mat-column-department,
+  .mat-column-position {
+    width: 140px;
+  }
 }

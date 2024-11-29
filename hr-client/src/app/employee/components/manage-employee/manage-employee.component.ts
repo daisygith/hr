@@ -17,7 +17,7 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
@@ -48,6 +48,7 @@ import { MatInput } from '@angular/material/input';
     RouterLinkActive,
     MatFormField,
     MatInput,
+    NgOptimizedImage,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',
@@ -56,6 +57,7 @@ import { MatInput } from '@angular/material/input';
 export class ManageEmployeeComponent implements OnInit {
   public notification: NotificationService = inject(NotificationService);
   private _employeeService: EmployeeService = inject(EmployeeService);
+
   readonly dialog = inject(MatDialog);
 
   dataSource = new MatTableDataSource<ManageEmployee>([]);
