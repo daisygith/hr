@@ -4,7 +4,6 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 
 import { ChangePassword } from '../models/changePassword';
-import { SaveImageRequest } from '../../shared/models/save-image-request';
 import { Profile } from '../models/profile';
 
 @Injectable({ providedIn: 'root' })
@@ -29,8 +28,8 @@ export class UserService {
     );
   }
 
-  saveImageForUser(url: string): Observable<SaveImageRequest> {
-    return this.http.put<SaveImageRequest>(`${this._apiUrl}/profiles/image`, {
+  saveImageForUser(url: string): Observable<Profile> {
+    return this.http.put<Profile>(`${this._apiUrl}/profiles/image`, {
       url: url,
     });
   }

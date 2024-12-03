@@ -38,12 +38,12 @@ app-request-time-off {
     background-color: var(--background-element);
   }
 
-  button#button-edit {
-    color: var(--main-color);
-    border: 1px solid var(--border-app-element);
-    border-radius: 10px;
-    width: 94px;
-  }
+  //button#button-edit {
+  //  color: var(--main-color);
+  //  border: 1px solid var(--border-app-element);
+  //  border-radius: 10px;
+  //  width: 94px;
+  //}
 
   button#button-details {
     width: 124px;
@@ -75,18 +75,23 @@ app-request-time-off {
   }
 
   .mat-column-employeeName {
-    width: 300px;
+    min-width: 200px;
     height: 52px;
     display: flex;
     align-items: center;
   }
 
   .mat-column-leaveType {
-    width: 300px;
+    min-width: 200px;
   }
 
   .mat-column-startDate,
   .mat-column-endDate {
-    width: 160px;
+    min-width: 160px;
+  }
+
+  .mat-column-edit,
+  .mat-column-delete {
+    width: 58px;
   }
 }

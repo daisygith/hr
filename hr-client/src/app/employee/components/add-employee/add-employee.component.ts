@@ -24,8 +24,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { FileUploadComponent } from '../../../shared/components/file-upload/file-upload.component';
-import { environment } from '../../../../environments/environment';
-import { AuthService } from '../../../auth/services/auth.service';
+import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 
 @Component({
   selector: 'app-add-employee',
@@ -49,6 +48,7 @@ import { AuthService } from '../../../auth/services/auth.service';
     RouterLink,
     RouterLinkActive,
     FileUploadComponent,
+    ImageTokenPipe,
   ],
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.scss',
@@ -58,7 +58,6 @@ export class AddEmployeeComponent implements OnInit {
   id: number | undefined;
   isNew: boolean = false;
   employee: Employee | undefined;
-  public imageUrl: string | undefined;
 
   public translate: TranslateService = inject(TranslateService);
   public notification: NotificationService = inject(NotificationService);
@@ -66,9 +65,12 @@ export class AddEmployeeComponent implements OnInit {
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _fb: FormBuilder = inject(FormBuilder);
   private _employeeService: EmployeeService = inject(EmployeeService);
-  private _authService: AuthService = inject(AuthService);
 
   public addEmployeeForm!: FormGroup;
+
+  public get imageUrl() {
+    return this.addEmployeeForm?.get('image')?.value;
+  }
 
   ngOnInit(): void {
     this.id = this._activeRoute.snapshot.params['employeeId'];
@@ -106,12 +108,7 @@ export class AddEmployeeComponent implements OnInit {
     }
     this._employeeService.getEmployeeById(employeeId).subscribe((data) => {
       this.employee = data;
-      console.log(this.employee);
       this.addEmployeeForm.patchValue(data);
-      this.imageUrl = data?.image
-        ? `${environment.apiUrl}${data?.image}?token=${this._authService.token}`
-        : undefined;
-      console.log(this.imageUrl);
     });
   }
   saveData() {
@@ -124,13 +121,11 @@ export class AddEmployeeComponent implements OnInit {
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
               );
-              console.log(data);
             },
             error: (err) => {
               this.notification.errorMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
               );
-              console.log(err);
             },
           });
       } else {
@@ -141,14 +136,12 @@ export class AddEmployeeComponent implements OnInit {
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
               );
-              console.log(data);
               this.employee = data;
             },
             error: (err) => {
               this.notification.errorMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
               );
-              console.log(err);
             },
           });
       }
@@ -159,7 +152,6 @@ export class AddEmployeeComponent implements OnInit {
     this._employeeService.deleteImageForEmployee(employeeId).subscribe(
       (data) => {
         this.notification.successMethod('DATA.REMOVE_OK');
-        this.imageUrl = undefined;
       },
       (error) => {
         console.log(error);
@@ -168,17 +160,12 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   public onUploadImage(url: string, employeeId: number | undefined) {
-    console.log(url);
-    this.imageUrl = url
-      ? `${environment.apiUrl}${url}?token=${this._authService.token}`
-      : undefined;
     if (this.isNew) {
       this.addEmployeeForm.get('image')?.patchValue(url);
     } else {
       this._employeeService
         .saveImageForEmployee(url, employeeId)
         .subscribe((data) => {
-          console.log(data);
           this.addEmployeeForm.patchValue(data);
         });
     }

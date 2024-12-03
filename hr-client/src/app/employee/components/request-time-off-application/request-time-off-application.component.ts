@@ -94,6 +94,8 @@ export class RequestTimeOffApplicationComponent implements OnInit {
   private _employeeService: EmployeeService = inject(EmployeeService);
   public notification: NotificationService = inject(NotificationService);
 
+  public requestTimeOffFormGroup!: FormGroup;
+
   ngOnInit() {
     this.id = this._activeRoute.snapshot.params['employeeId'];
     this.isNew = !this.id;
@@ -132,8 +134,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
       ?.patchValue(this.selectedDateRange.end);
   }
 
-  public requestTimeOffFormGroup!: FormGroup;
-
   public buildForm() {
     this.requestTimeOffFormGroup = this._fb.group({
       id: new FormControl(''),
@@ -142,6 +142,7 @@ export class RequestTimeOffApplicationComponent implements OnInit {
       reason: new FormControl('', [Validators.required]),
       startDate: new FormControl('', [Validators.required]),
       endDate: new FormControl('', [Validators.required]),
+      image: new FormControl(null),
     });
   }
 
@@ -149,7 +150,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     this._employeeService.getManageEmployee().subscribe({
       next: (data) => {
         this.dataSource = data;
-        console.log(data);
       },
     });
   }
@@ -158,7 +158,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     if (!employeeId) {
       return;
     }
-
     this._employeeService
       .getRequestForEmployeeById(employeeId)
       .subscribe((data) => {
@@ -167,8 +166,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
           startDate: new Date(data.startDate),
           endDate: new Date(data.endDate),
         };
-        console.log('request by id');
-        console.log(this.requestById);
         this.selectedDateRange = new DateRange<Date | undefined>(
           this.requestById.startDate,
           this.requestById.endDate,
@@ -187,13 +184,11 @@ export class RequestTimeOffApplicationComponent implements OnInit {
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
               );
-              console.log(data);
             },
             error: (err) => {
               this.notification.errorMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
               );
-              console.log(err);
             },
           });
       } else {
@@ -206,14 +201,12 @@ export class RequestTimeOffApplicationComponent implements OnInit {
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
               );
-              console.log(data);
               this.requestById = data;
             },
             error: (err) => {
               this.notification.errorMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
               );
-              console.log(err);
             },
           });
       }

@@ -17,13 +17,14 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
-import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, NgIf, NgOptimizedImage } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 
 @Component({
   selector: 'app-request-time-off',
@@ -50,6 +51,8 @@ import { MatInput } from '@angular/material/input';
     NgIf,
     MatFormField,
     MatInput,
+    ImageTokenPipe,
+    NgOptimizedImage,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',

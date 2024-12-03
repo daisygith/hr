@@ -18,10 +18,9 @@ import {
 import { UserService } from '../../services/user.service';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { NotificationService } from '../../../shared/services/notification.service';
-import { environment } from '../../../../environments/environment';
-import { AuthService } from '../../../auth/services/auth.service';
 import { FileUploadComponent } from '../../../shared/components/file-upload/file-upload.component';
 import { Profile } from '../../models/profile';
+import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 
 @Component({
   selector: 'app-edit-user',
@@ -43,6 +42,7 @@ import { Profile } from '../../models/profile';
     NgForOf,
     ChangePasswordComponent,
     FileUploadComponent,
+    ImageTokenPipe,
   ],
   templateUrl: './edit-user.component.html',
   styleUrl: './edit-user.component.scss',
@@ -50,16 +50,18 @@ import { Profile } from '../../models/profile';
 })
 export class EditUserComponent implements OnInit {
   profile: Profile | undefined;
-  public imageUrl: string | undefined;
 
   public translate: TranslateService = inject(TranslateService);
   public notification: NotificationService = inject(NotificationService);
 
   private _fb: FormBuilder = inject(FormBuilder);
   private _userService: UserService = inject(UserService);
-  private _authService: AuthService = inject(AuthService);
 
   public editUserForm!: FormGroup;
+
+  public get imageUrl() {
+    return this.editUserForm?.get('image')?.value;
+  }
 
   ngOnInit(): void {
     this.buildForm();
@@ -80,6 +82,7 @@ export class EditUserComponent implements OnInit {
       destination: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
+      image: new FormControl(null),
     });
   }
 
@@ -87,10 +90,6 @@ export class EditUserComponent implements OnInit {
     this._userService.getUserProfile().subscribe((data) => {
       this.profile = data;
       this.editUserForm.patchValue(data);
-      this.imageUrl = data?.image
-        ? `${environment.apiUrl}${data?.image}?token=${this._authService.token}`
-        : undefined;
-      console.log(this.imageUrl);
     });
   }
 
@@ -102,22 +101,16 @@ export class EditUserComponent implements OnInit {
     this._userService.updateUser(this.editUserForm.getRawValue()).subscribe({
       next: (data) => {
         this.notification.successMethod('USER.INFO.OK');
-        console.log(data);
       },
       error: (err) => {
         this.notification.errorMethod('USER.INFO.INVALID');
-        console.log(err);
       },
     });
   }
 
   public onUploadImage(url: string) {
-    console.log(url);
-    this.imageUrl = url
-      ? `${environment.apiUrl}${url}?token=${this._authService.token}`
-      : undefined;
     this._userService.saveImageForUser(url).subscribe((data) => {
-      console.log(data);
+      this.editUserForm.patchValue(data);
     });
   }
 
@@ -125,7 +118,6 @@ export class EditUserComponent implements OnInit {
     this._userService.deleteImageForUser().subscribe(
       () => {
         this.notification.successMethod('DATA.REMOVE_OK');
-        this.imageUrl = undefined;
       },
       (error) => {
         console.log(error);

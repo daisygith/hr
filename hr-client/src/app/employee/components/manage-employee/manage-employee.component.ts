@@ -24,6 +24,7 @@ import { DialogAnimationComponent } from '../../../shared/components/dialog-anim
 import { NotificationService } from '../../../shared/services/notification.service';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 
 @Component({
   selector: 'app-manage-employee',
@@ -49,6 +50,7 @@ import { MatInput } from '@angular/material/input';
     MatFormField,
     MatInput,
     NgOptimizedImage,
+    ImageTokenPipe,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',

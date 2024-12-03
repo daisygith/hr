@@ -46,7 +46,7 @@ app-manage-employee {
   }
 
   button#button-details {
-    width: 128px;
+    width: 40px;
   }
 
   button#button-more {
@@ -59,10 +59,10 @@ app-manage-employee {
     }
   }
 
-  th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details,
-  td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
-    width: 136px;
-  }
+  //th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details,
+  //td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
+  //  width: 136px;
+  //}
 
   tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
     background-color: var(--border-app-element) !important;
@@ -74,20 +74,25 @@ app-manage-employee {
   }
 
   .mat-column-name {
-    width: 300px;
+    min-width: 200px;
     height: 52px;
     display: flex;
     align-items: center;
   }
   .mat-column-phone {
-    width: 250px;
+    min-width: 160px;
   }
 
   .mat-column-department,
   .mat-column-position {
-    width: 200px;
+    min-width: 160px;
   }
   .mat-column-typeOfContract {
-    width: 400px;
+    min-width: 200px;
+  }
+
+  .mat-column-delete,
+  .mat-column-details {
+    width: 58px;
   }
 }

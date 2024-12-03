@@ -134,6 +134,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                             .employeeId(item.getEmployee().getId())
                             .employeeName(item.getEmployee().getName())
                             .days(getDaysDifference(item))
+                            .image(item.getEmployee().getImage())
 
                     .build());
         });
@@ -161,6 +162,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .days(getDaysDifference(requestTimeOff))
                 .employeeId(requestTimeOff.getEmployee().getId())
                 .employeeName(requestTimeOff.getEmployee().getName())
+                .image(requestTimeOff.getEmployee().getImage())
                 .build();
 
         return requestTimeOffDto;
@@ -191,6 +193,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .days(getDaysDifference(requestTimeOff))
                 .employeeId(requestTimeOff.getEmployee().getId())
                 .employeeName(requestTimeOff.getEmployee().getName())
+                .image(requestTimeOff.getEmployee().getImage())
                 .build();
 
         return dbrequestTimeOffDto;

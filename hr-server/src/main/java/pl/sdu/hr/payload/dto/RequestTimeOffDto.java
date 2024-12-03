@@ -29,4 +29,6 @@ public class RequestTimeOffDto {
 
     private long days;
 
+    private String image;
+
 }

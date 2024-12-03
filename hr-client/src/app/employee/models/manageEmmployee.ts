@@ -5,5 +5,5 @@ export interface ManageEmployee {
   department: string;
   position: string;
   typeOfContract: string;
-  // attendance: string;
+  image?: string;
 }
