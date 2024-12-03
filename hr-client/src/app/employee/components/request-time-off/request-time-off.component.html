@@ -21,7 +21,15 @@
     <th mat-header-cell *matHeaderCellDef>
       {{ "REQUEST_TIME_OFF.EMPLOYEE_NAME" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.employeeName }}</td>
+    <td mat-cell *matCellDef="let element">
+      <img
+        src="assets/image/default-avatar.png"
+        alt="default avatar"
+        height="30"
+        width="30"
+        id="picture-avatar"
+      />{{ element.employeeName }}
+    </td>
   </ng-container>
 
   <!-- Leave Type Column -->

@@ -61,7 +61,12 @@
     <th mat-header-cell *matHeaderCellDef>
       {{ "MANAGE_EMPLOYEE.CONTACT_TYPE" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.typeOfContract }}</td>
+    <td mat-cell *matCellDef="let element">
+      {{
+        "ADD_EMPLOYEE.PERSONAL_DETAILS.TYPE_OF_CONTRACT." +
+          element.typeOfContract | translate
+      }}
+    </td>
   </ng-container>
 
   <!-- Details Type Column -->

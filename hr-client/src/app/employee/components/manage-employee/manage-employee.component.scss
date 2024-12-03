@@ -61,7 +61,6 @@ app-manage-employee {
 
   th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details,
   td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
-    padding-right: 0;
     width: 136px;
   }
 
@@ -75,15 +74,20 @@ app-manage-employee {
   }
 
   .mat-column-name {
-    width: 200px;
+    width: 300px;
+    height: 52px;
+    display: flex;
+    align-items: center;
   }
-
   .mat-column-phone {
-    width: 160px;
+    width: 250px;
   }
 
   .mat-column-department,
   .mat-column-position {
-    width: 140px;
+    width: 200px;
+  }
+  .mat-column-typeOfContract {
+    width: 400px;
   }
 }

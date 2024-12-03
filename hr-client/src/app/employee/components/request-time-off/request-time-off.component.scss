@@ -73,4 +73,20 @@ app-request-time-off {
   .mat-mdc-mini-fab {
     background-color: transparent;
   }
+
+  .mat-column-employeeName {
+    width: 300px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mat-column-leaveType {
+    width: 300px;
+  }
+
+  .mat-column-startDate,
+  .mat-column-endDate {
+    width: 160px;
+  }
 }
