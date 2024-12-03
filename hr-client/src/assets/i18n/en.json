@@ -61,6 +61,12 @@
     "SUBTITLE": "Manage your employee",
     "TITLE": "Employee"
   },
+  "FILE": {
+    "DELETE_DATA": "Delete data?",
+    "QUESTION": "Would you like to delete data?",
+    "NO": "No",
+    "YES": "Yes"
+  },
   "LOGIN": {
     "BUTTON": {
       "LOGIN": "Login"

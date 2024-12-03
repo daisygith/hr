@@ -61,6 +61,12 @@
     "SUBTITLE": "Zarządzaj swoimi pracownikami",
     "TITLE": "Pracownicy"
   },
+  "FILE": {
+    "DELETE_DATA": "Usunąć dane?",
+    "QUESTION": "Czy na pewno chcesz usunąć dane?",
+    "NO": "Nie",
+    "YES": "Tak"
+  },
   "LOGIN": {
     "BUTTON": {
       "LOGIN": "Zaloguj"
