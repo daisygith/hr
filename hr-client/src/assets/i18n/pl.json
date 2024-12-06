@@ -162,7 +162,8 @@
     "MAIN_MENU": "MENU GŁÓWNE",
     "OTHER": "INNE",
     "SETTINGS": "Ustawienia",
-    "STAFF_LIST": "Lista rzeczy"
+    "STAFF_LIST": "Lista rzeczy",
+    "USERS_LIST": "Użytkownicy"
   },
   "USER": {
     "CHANGE_PASSWORD": {

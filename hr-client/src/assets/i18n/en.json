@@ -162,7 +162,8 @@
     "MAIN_MENU": "MAIN MENU",
     "OTHER": "OTHER",
     "SETTINGS": "Settings",
-    "STAFF_LIST": "Staff List"
+    "STAFF_LIST": "Staff List",
+    "USERS_LIST": "Users"
   },
   "USER": {
     "CHANGE_PASSWORD": {
