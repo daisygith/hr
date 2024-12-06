@@ -12,6 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
+import { Role } from '../../../auth/models/role';
 
 @Component({
   selector: 'app-employee',
@@ -35,9 +37,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormField,
     MatInput,
     ReactiveFormsModule,
+    HasRoleDirective,
   ],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class EmployeeComponent {}
+export class EmployeeComponent {
+  public canAddEmployeeRoles = [Role.MODERATOR, Role.ADMIN];
+}

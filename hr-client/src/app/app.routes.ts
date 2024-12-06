@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthGuardService } from './auth/services/authGuard.service';
+import { RoleGuardService } from './auth/services/roleGuard.service';
+import { Role } from './auth/models/role';
 
 export const routes: Routes = [
   {
@@ -12,6 +14,13 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./auth/components/registration/registration.routes').then(
         (m) => m.routesRegistration,
+      ),
+  },
+  {
+    path: 'unauthorized',
+    loadComponent: () =>
+      import('./auth/components/unauthorized/unauthorized.component').then(
+        (c) => c.UnauthorizedComponent,
       ),
   },
   {
@@ -29,6 +38,8 @@ export const routes: Routes = [
       },
       {
         path: 'employee',
+        canActivate: [RoleGuardService],
+        data: { roles: [Role.USER, Role.MODERATOR, Role.ADMIN] },
         loadChildren: () =>
           import('./employee/employee.routes').then((m) => m.employeeRoutes),
       },

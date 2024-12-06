@@ -4,10 +4,12 @@ import { Injectable } from '@angular/core';
 import { LoginResponse } from '../models/login-response';
 import { environment } from '../../../environments/environment';
 import { User } from '../models/User';
+import { Role } from '../models/role';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private _apiUrl = `${environment.apiUrl}/auth`;
+
   constructor(private http: HttpClient) {
     this.autologin();
   }
@@ -71,5 +73,17 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return this.isLoggedIn;
+  }
+
+  hasRole(requiredRoles: Role[]): boolean {
+    if (!this.user) return false;
+
+    return this.user.roles.some((role) => requiredRoles.includes(<Role>role));
+  }
+
+  hasMultipleRoles(requiredRoles: Role[]): boolean {
+    if (!this.user) return false;
+
+    return requiredRoles.every((role) => this.user!.roles.includes(role));
   }
 }

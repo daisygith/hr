@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="employee-content title right">
-      <div class="button-add">
+      <div class="button-add" *hasRole="canAddEmployeeRoles">
         <button
           mat-flat-button
           routerLink="/employee/new"
