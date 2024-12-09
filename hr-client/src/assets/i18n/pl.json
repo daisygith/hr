@@ -58,7 +58,7 @@
     "FILTER": "Filtruj",
     "MANAGE_EMPLOYEE": "Zarządzaj pracownikami",
     "REQUEST_TIME_OFF": "Wniosek urlopowy",
-    "SUBTITLE": "Zarządzaj swoimi pracownikami",
+    "SUBTITLE": "Zarządzaj pracownikami",
     "TITLE": "Pracownicy"
   },
   "FILE": {
@@ -210,5 +210,10 @@
       "STAFF_ID": "Identyfikator Pracownika",
       "TITLE": "Dane Osobowe"
     }
+  },
+  "USERS_LIST": {
+    "MANAGE_USERS": "Zarządzaj użytkownikami",
+    "SUBTITLE": "Zarządzaj użytkownikami",
+    "TITLE": "Użytkownicy"
   }
 }

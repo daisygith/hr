@@ -58,7 +58,7 @@
     "FILTER": "Filter",
     "MANAGE_EMPLOYEE": "Manage Employee",
     "REQUEST_TIME_OFF": "Request Time Off",
-    "SUBTITLE": "Manage your employee",
+    "SUBTITLE": "Manage employee",
     "TITLE": "Employee"
   },
   "FILE": {
@@ -208,7 +208,11 @@
       "SUBTITLE": "To change User's personal detail, edit and save from here",
       "STAFF_ID": "Staff ID",
       "TITLE": "Personal Details"
-    },
-    "TITLE": "Edit User Profile"
+    }
+  },
+  "USERS_LIST": {
+    "MANAGE_USERS": "Manage users",
+    "SUBTITLE": "Manage users",
+    "TITLE": "Users"
   }
 }
