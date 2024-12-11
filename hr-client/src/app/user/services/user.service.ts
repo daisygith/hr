@@ -8,33 +8,33 @@ import { Profile } from '../models/profile';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private http: HttpClient = inject(HttpClient);
+  private _http: HttpClient = inject(HttpClient);
   private _apiUrl = `${environment.apiUrl}`;
 
   getUserProfile(): Observable<Profile> {
-    return this.http.get<Profile>(`${this._apiUrl}/profiles/current`);
+    return this._http.get<Profile>(`${this._apiUrl}/profiles/current`);
   }
 
   updateUser(profile: Profile): Observable<Profile> {
     console.log(profile);
-    return this.http.put<Profile>(`${this._apiUrl}/profiles/edit`, profile);
+    return this._http.put<Profile>(`${this._apiUrl}/profiles/edit`, profile);
   }
 
   changePassword(changePassword: ChangePassword): Observable<ChangePassword> {
     console.log(changePassword);
-    return this.http.post<ChangePassword>(
+    return this._http.post<ChangePassword>(
       `${this._apiUrl}/users/changePassword`,
       changePassword,
     );
   }
 
   saveImageForUser(url: string): Observable<Profile> {
-    return this.http.put<Profile>(`${this._apiUrl}/profiles/image`, {
+    return this._http.put<Profile>(`${this._apiUrl}/profiles/image`, {
       url: url,
     });
   }
 
   deleteImageForUser(): Observable<void> {
-    return this.http.delete<void>(`${this._apiUrl}/profiles/image`);
+    return this._http.delete<void>(`${this._apiUrl}/profiles/image`);
   }
 }

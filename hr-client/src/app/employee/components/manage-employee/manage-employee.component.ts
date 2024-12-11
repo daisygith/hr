@@ -79,9 +79,9 @@ export class ManageEmployeeComponent implements OnInit {
   }
 
   getManageEmployee(): void {
-    this._employeeService
-      .getManageEmployee()
-      .subscribe({ next: (value) => (this.dataSource.data = value) });
+    this._employeeService.getManageEmployee().subscribe({
+      next: (value) => (this.dataSource.data = value),
+    });
   }
 
   openDialog(employeeId: ManageEmployee, e: Event) {

@@ -5,6 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { TranslateModule } from '@ngx-translate/core';
+import { ManageUsersComponent } from '../manage-users/manage-users.component';
 
 @Component({
   selector: 'app-user-management',
@@ -18,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
     MatTabGroup,
     MatTabLabel,
+    ManageUsersComponent,
   ],
   templateUrl: './users-management.component.html',
   styleUrl: './users-management.component.scss',

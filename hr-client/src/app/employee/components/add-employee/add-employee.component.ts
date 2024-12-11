@@ -118,6 +118,7 @@ export class AddEmployeeComponent implements OnInit {
           .addEmployee(this.addEmployeeForm.getRawValue())
           .subscribe({
             next: (data) => {
+              this.addEmployeeForm.patchValue(data);
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
               );
@@ -133,10 +134,11 @@ export class AddEmployeeComponent implements OnInit {
           .updateEmployee(this.addEmployeeForm.getRawValue())
           .subscribe({
             next: (data) => {
+              this.addEmployeeForm.patchValue(data);
+              this.employee = data;
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
               );
-              this.employee = data;
             },
             error: (err) => {
               this.notification.errorMethod(

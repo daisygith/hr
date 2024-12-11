@@ -92,15 +92,21 @@
     "USERNAME": "Nazwa użytkownika"
   },
   "MANAGE_EMPLOYEE": {
-    "ATTENDANCE": "Frekwencja",
-    "BUTTON": {
-      "SEE_DETAILS": "Więcej"
-    },
     "CONTACT_TYPE": "Typ kontaktu",
     "EMPLOYEE_NAME": "Imię i Nazwisko",
     "DEPARTMENT": "Dział",
     "JOB_TITLE": "Tytuł służbowy",
     "PHONE_NUMBER": "Numer Telefonu"
+  },
+  "MANAGE_USER": {
+    "USERNAME": "Nazwa użytkownika",
+    "EMAIL": "Email",
+    "ROLE": "Rola",
+    "ROLES": {
+      "ADMIN": "Admin",
+      "MODERATOR": "Moderator",
+      "USER": "Użytkownik"
+    }
   },
   "NAVBAR": {
     "SEARCH_HERE": "Szukaj"
