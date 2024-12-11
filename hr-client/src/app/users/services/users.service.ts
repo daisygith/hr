@@ -7,9 +7,9 @@ import { UserList } from '../model/user-list';
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private _http: HttpClient = inject(HttpClient);
-  private _apiUrl = `${environment.apiUrl}`;
+  private _apiUrl = `${environment.apiUrl}/users`;
 
   findAllUsers(): Observable<UserList[]> {
-    return this._http.get<UserList[]>(`${this._apiUrl}/users}`);
+    return this._http.get<UserList[]>(`${this._apiUrl}`);
   }
 }

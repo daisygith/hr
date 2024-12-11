@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.sdu.hr.payload.dto.UsersDto;
-import pl.sdu.hr.repository.UsersRepository;
+import pl.sdu.hr.services.UsersService;
 
 import java.util.List;
 
@@ -13,10 +13,10 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UsersController {
     @Autowired
-    UsersRepository usersRepository;
+    UsersService usersService;
 
     @GetMapping("")
     public List<UsersDto> findAllUsers() {
-        return usersRepository.findAllUsers();
+        return usersService.findAllUsers();
     }
 }
