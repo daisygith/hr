@@ -12,7 +12,7 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { ShellComponent } from '../../../shell/components/shell/shell.component';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import {
   FormBuilder,
   FormControl,
@@ -59,7 +59,6 @@ export class AddEmployeeComponent implements OnInit {
   isNew: boolean = false;
   employee: Employee | undefined;
 
-  public translate: TranslateService = inject(TranslateService);
   public notification: NotificationService = inject(NotificationService);
 
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
