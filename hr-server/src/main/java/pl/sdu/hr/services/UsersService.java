@@ -8,4 +8,12 @@ public interface UsersService {
 
     List<UsersDto>findAllUsers();
 
+    UsersDto findUserById(Long userId) throws Exception;
+
+    UsersDto createUser(UsersDto userDto);
+
+    UsersDto updateUser(UsersDto userDto);
+
+    void deleteUserById(Long userId);
+
 }

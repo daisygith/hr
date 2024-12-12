@@ -62,9 +62,10 @@ export class AddUserComponent implements OnInit {
     this.id = this._activeRoute.snapshot.params['userId'];
     this.isNew = !this.id;
     this.buildForm();
+    this.getUserById(this.id);
   }
 
-  public roles: string[] = ['ADMIN', 'MODERATOR', 'USER'];
+  public roles: string[] = ['ROLE_ADMIN', 'ROLE_MODERATOR', 'ROLE_USER'];
 
   public buildForm() {
     this.addUserForm = this._fb.group({
@@ -73,5 +74,50 @@ export class AddUserComponent implements OnInit {
       username: new FormControl('', [Validators.required]),
       roles: new FormControl('', [Validators.required]),
     });
+  }
+
+  getUserById(userId: number | undefined): void {
+    if (!userId) {
+      return;
+    }
+
+    this._usersService.getUserById(userId).subscribe((data) => {
+      this.user = data;
+      this.addUserForm.patchValue(data);
+      console.log(data);
+    });
+  }
+
+  saveData() {
+    if (this.addUserForm.valid) {
+      if (this.isNew) {
+        this._usersService
+          .createUser(this.addUserForm.getRawValue())
+          .subscribe({
+            next: (value) => {
+              this.addUserForm.patchValue(value);
+              // todo: dodac info ze utworzono lub nie utworzono użytkownika
+              this.notification.successMethod('ok');
+            },
+            error: (err) => {
+              this.notification.errorMethod('err');
+            },
+          });
+      } else {
+        this._usersService
+          .updateUser(this.addUserForm.getRawValue())
+          .subscribe({
+            next: (value) => {
+              this.addUserForm.patchValue(value);
+              this.user = value;
+              // todo: dodac info ze utworzono lub nie utworzono użytkownika
+              this.notification.successMethod('ok');
+            },
+            error: (err) => {
+              this.notification.errorMethod('not ok');
+            },
+          });
+      }
+    }
   }
 }

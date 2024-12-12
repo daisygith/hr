@@ -67,12 +67,15 @@
     </td>
   </ng-container>
 
-  <!--  (click)="openDialog(element, $event)"-->
   <!-- Details Type Column -->
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-mini-fab id="button-more">
+      <button
+        mat-mini-fab
+        id="button-more"
+        (click)="openDialog(element, $event)"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </td>

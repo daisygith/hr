@@ -23,6 +23,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatInput } from '@angular/material/input';
 import { NgOptimizedImage } from '@angular/common';
 import { MatMiniFabButton } from '@angular/material/button';
+import { NotificationService } from '../../../shared/services/notification.service';
+import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -53,6 +55,7 @@ import { MatMiniFabButton } from '@angular/material/button';
   encapsulation: ViewEncapsulation.None,
 })
 export class ManageUsersComponent implements OnInit {
+  public notification: NotificationService = inject(NotificationService);
   private _usersServices: UsersService = inject(UsersService);
   readonly dialog = inject(MatDialog);
 
@@ -69,6 +72,30 @@ export class ManageUsersComponent implements OnInit {
     });
   }
 
+  openDialog(userId: UserList, e: Event) {
+    e.stopPropagation();
+    const dialogRef = this.dialog.open(DialogAnimationComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        this.deleteUserById(userId);
+      }
+    });
+  }
+
+  deleteUserById(userId: UserList): void {
+    this._usersServices.deleteUserById(userId.id).subscribe(
+      () => {
+        this.dataSource.data = this.dataSource.data.filter(
+          (item) => item !== userId,
+        );
+        this.notification.successMethod('DATA.REMOVE_OK');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

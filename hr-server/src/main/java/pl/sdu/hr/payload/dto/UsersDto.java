@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.sdu.hr.models.Role;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -16,5 +20,6 @@ public class UsersDto {
 
     private String username;
 
-    private String roles;
+//    private String roles;
+private Set<Role> roles = new HashSet<>();
 }
