@@ -19,9 +19,10 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatInput } from '@angular/material/input';
 import { NgOptimizedImage } from '@angular/common';
+import { MatMiniFabButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-manage-users',
@@ -44,6 +45,8 @@ import { NgOptimizedImage } from '@angular/common';
     RouterLink,
     MatInput,
     NgOptimizedImage,
+    MatMiniFabButton,
+    RouterLinkActive,
   ],
   templateUrl: './manage-users.component.html',
   styleUrl: './manage-users.component.scss',
@@ -54,7 +57,7 @@ export class ManageUsersComponent implements OnInit {
   readonly dialog = inject(MatDialog);
 
   dataSource = new MatTableDataSource<UserList>([]);
-  displayedColumns = ['username', 'email', 'roles'];
+  displayedColumns = ['username', 'email', 'roles', 'details', 'delete'];
 
   ngOnInit(): void {
     this.getManageUsers();

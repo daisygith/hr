@@ -43,21 +43,15 @@ app-user-management {
       font-size: 14px;
     }
 
-    //button#add-employee-button,
-    //button#request-time-off-application{
-    //  border-radius: 10px;
-    //}
+    button#add-user-button {
+      border-radius: 10px;
+    }
 
-    //button#add-employee-button {
-    //  background-color: var(--button-app-color);
-    //  width: 200px;
-    //  margin: 0 10px 0 0;
-    //}
-    //
-    //button#request-time-off-application {
-    //  background-color: var(--button-app-color);
-    //  width: 220px;
-    //}
+    button#add-user-button {
+      background-color: var(--button-app-color);
+      width: 200px;
+      margin: 0 10px 0 0;
+    }
 
     .users-content.list {
       border: 1px solid var(--border-app-element);

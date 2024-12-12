@@ -1,6 +1,6 @@
 {
   "ADD_EMPLOYEE": {
-    "TITLE1": "User Profile",
+    "TITLE1": "Employee Profile",
     "TITLE2": "Add New Employee Profile",
     "CHANGE_PROFILE": {
       "BUTTON": {
@@ -99,14 +99,16 @@
     "PHONE_NUMBER": "Phone Number"
   },
   "MANAGE_USER": {
+    "EMAIL": "E-mail",
     "USERNAME": "User name",
-    "EMAIL": "Email",
     "ROLE": "Role",
     "ROLES": {
       "ADMIN": "Admin",
       "MODERATOR": "Moderator",
       "USER": "User"
-    }
+    },
+    "TITLE1": "User profile",
+    "TITLE2": "Add New User Profile"
   },
   "NAVBAR": {
     "SEARCH_HERE": "Search"
@@ -217,6 +219,9 @@
     }
   },
   "USERS_LIST": {
+    "BUTTON": {
+      "ADD_USER": "Add user"
+    },
     "MANAGE_USERS": "Manage users",
     "SUBTITLE": "Manage users",
     "TITLE": "Users"

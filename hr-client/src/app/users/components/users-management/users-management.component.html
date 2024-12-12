@@ -12,30 +12,18 @@
       </div>
     </div>
     <div class="users-content title right">
-      <!--      <div class="button-add">-->
-      <!--        <button-->
-      <!--          mat-flat-button-->
-      <!--          routerLink="/employee/new"-->
-      <!--          routerLinkActive="active"-->
-      <!--          ariaCurrentWhenActive="page"-->
-      <!--          id="add-employee-button"-->
-      <!--        >-->
-      <!--          <mat-icon>add</mat-icon>-->
-      <!--          {{ "EMPLOYEE.ADD_EMPLOYEE" | translate }}-->
-      <!--        </button>-->
-      <!--      </div>-->
-      <!--      <div class="button-add">-->
-      <!--        <button-->
-      <!--          mat-flat-button-->
-      <!--          routerLink="/employee/request-time-off/new"-->
-      <!--          routerLinkActive="active"-->
-      <!--          ariaCurrentWhenActive="page"-->
-      <!--          id="request-time-off-application"-->
-      <!--        >-->
-      <!--          <mat-icon>add</mat-icon>-->
-      <!--          {{ "EMPLOYEE.APPLY_REQUEST_TIME_OFF" | translate }}-->
-      <!--        </button>-->
-      <!--      </div>-->
+      <div class="button-add">
+        <button
+          mat-flat-button
+          routerLink="/users/new"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          id="add-user-button"
+        >
+          <mat-icon>add</mat-icon>
+          {{ "USERS_LIST.BUTTON.ADD_USER" | translate }}
+        </button>
+      </div>
     </div>
   </div>
   <div class="users-content list">
@@ -47,7 +35,6 @@
             {{ "USERS_LIST.MANAGE_USERS" | translate }}
           </ng-template>
           <div class="list-content">
-            <!--            <app-manage-employee></app-manage-employee>-->
             <app-manage-users></app-manage-users>
           </div>
         </mat-tab>

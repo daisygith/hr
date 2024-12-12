@@ -8,4 +8,18 @@ export const usersRoutes: Routes = [
         (m) => m.UsersManagementComponent,
       ),
   },
+  {
+    path: 'new',
+    loadComponent: () =>
+      import('./components/add-user/add-user.component').then(
+        (m) => m.AddUserComponent,
+      ),
+  },
+  {
+    path: ':userId',
+    loadComponent: () =>
+      import('./components/add-user/add-user.component').then(
+        (m) => m.AddUserComponent,
+      ),
+  },
 ];

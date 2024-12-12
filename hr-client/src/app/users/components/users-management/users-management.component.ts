@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { TranslateModule } from '@ngx-translate/core';
 import { ManageUsersComponent } from '../manage-users/manage-users.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-user-management',
@@ -20,6 +21,8 @@ import { ManageUsersComponent } from '../manage-users/manage-users.component';
     MatTabGroup,
     MatTabLabel,
     ManageUsersComponent,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './users-management.component.html',
   styleUrl: './users-management.component.scss',
