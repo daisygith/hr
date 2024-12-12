@@ -4,6 +4,7 @@ package pl.sdu.hr.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.sdu.hr.mappers.UsersMapper;
 import pl.sdu.hr.models.User;
 import pl.sdu.hr.payload.dto.UsersDto;
 import pl.sdu.hr.repository.UsersRepository;
@@ -24,12 +25,7 @@ public class UsersServiceImpl implements UsersService{
         List<UsersDto> usersListDto = new ArrayList<>();
 
         usersList.forEach((User item) -> {
-            usersListDto.add(UsersDto.builder()
-                            .id(item.getId())
-                            .email(item.getEmail())
-                            .username(item.getUsername())
-                            .roles(item.getRoles())
-                    .build());
+            usersListDto.add(UsersMapper.mapUserToUserDto(item));
         });
 
         return usersListDto;
@@ -40,12 +36,7 @@ public class UsersServiceImpl implements UsersService{
 
         User user = usersRepository.findById(userId).orElseThrow();
 
-        UsersDto usersDto = UsersDto.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .roles(user.getRoles())
-                .build();
+        UsersDto usersDto = UsersMapper.mapUserToUserDto(user);
 
         return usersDto;
     }
@@ -53,21 +44,11 @@ public class UsersServiceImpl implements UsersService{
     @Transactional
     @Override
     public UsersDto createUser(UsersDto userDto) {
-        User user = User.builder()
-                .id(userDto.getId())
-                .email(userDto.getEmail())
-                .username(userDto.getUsername())
-                .roles(userDto.getRoles())
-                .build();
+        User user = UsersMapper.mapUserDtoToUser(userDto);
 
         usersRepository.save(user);
 
-        UsersDto usersDto = UsersDto.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .roles(user.getRoles())
-                .build();
+        UsersDto usersDto = UsersMapper.mapUserToUserDto(user);
 
         return usersDto;
     }
@@ -75,21 +56,11 @@ public class UsersServiceImpl implements UsersService{
     @Transactional
     @Override
     public UsersDto updateUser(UsersDto userDto){
-        User user = User.builder()
-                .id(userDto.getId())
-                .email(userDto.getEmail())
-                .username(userDto.getUsername())
-                .roles(userDto.getRoles())
-                .build();
+        User user = UsersMapper.mapUserDtoToUser(userDto);
 
         usersRepository.save(user);
 
-        UsersDto usersDto = UsersDto.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .roles(user.getRoles())
-                .build();
+        UsersDto usersDto = UsersMapper.mapUserToUserDto(user);
 
         return usersDto;
     }
