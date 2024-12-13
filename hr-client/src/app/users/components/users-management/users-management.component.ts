@@ -5,7 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { TranslateModule } from '@ngx-translate/core';
-import { ManageUsersComponent } from '../manage-users/manage-users.component';
+import { UsersListComponent } from '../users-list/users-list.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     TranslateModule,
     MatTabGroup,
     MatTabLabel,
-    ManageUsersComponent,
+    UsersListComponent,
     RouterLink,
     RouterLinkActive,
   ],

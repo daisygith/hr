@@ -20,6 +20,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { User } from '../../../auth/models/User';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { UsersService } from '../../services/users.service';
+import { Role } from '../../model/role';
+import { UserList } from '../../model/user-list';
 
 @Component({
   selector: 'app-add-user',
@@ -65,14 +67,18 @@ export class AddUserComponent implements OnInit {
     this.getUserById(this.id);
   }
 
-  public roles: string[] = ['ROLE_ADMIN', 'ROLE_MODERATOR', 'ROLE_USER'];
+  public roles: Role[] = [
+    { id: 1, name: 'ROLE_USER' },
+    { id: 2, name: 'ROLE_MODERATOR' },
+    { id: 3, name: 'ROLE_ADMIN' },
+  ];
 
   public buildForm() {
     this.addUserForm = this._fb.group({
-      id: new FormControl(''),
-      email: new FormControl('', [Validators.required]),
-      username: new FormControl('', [Validators.required]),
-      roles: new FormControl('', [Validators.required]),
+      id: new FormControl(null),
+      email: new FormControl(null, [Validators.required]),
+      username: new FormControl(null, [Validators.required]),
+      roles: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -80,44 +86,53 @@ export class AddUserComponent implements OnInit {
     if (!userId) {
       return;
     }
-
     this._usersService.getUserById(userId).subscribe((data) => {
-      this.user = data;
-      this.addUserForm.patchValue(data);
+      // this.user = data; TODO
+      this._patchForm(data);
       console.log(data);
     });
   }
 
   saveData() {
     if (this.addUserForm.valid) {
+      const formData = this.addUserForm.getRawValue();
+      const payloadUser: UserList = {
+        ...formData,
+        roles: formData.roles.map((role: number) =>
+          this.roles.find((item) => item.id === role),
+        ),
+      };
       if (this.isNew) {
-        this._usersService
-          .createUser(this.addUserForm.getRawValue())
-          .subscribe({
-            next: (value) => {
-              this.addUserForm.patchValue(value);
-              // todo: dodac info ze utworzono lub nie utworzono użytkownika
-              this.notification.successMethod('ok');
-            },
-            error: (err) => {
-              this.notification.errorMethod('err');
-            },
-          });
+        this._usersService.createUser(payloadUser).subscribe({
+          next: (value) => {
+            this._patchForm(value);
+            // todo: dodac info ze utworzono lub nie utworzono użytkownika
+            this.notification.successMethod('ok');
+          },
+          error: (err) => {
+            this.notification.errorMethod('err');
+          },
+        });
       } else {
-        this._usersService
-          .updateUser(this.addUserForm.getRawValue())
-          .subscribe({
-            next: (value) => {
-              this.addUserForm.patchValue(value);
-              this.user = value;
-              // todo: dodac info ze utworzono lub nie utworzono użytkownika
-              this.notification.successMethod('ok');
-            },
-            error: (err) => {
-              this.notification.errorMethod('not ok');
-            },
-          });
+        this._usersService.updateUser(payloadUser).subscribe({
+          next: (value) => {
+            this._patchForm(value);
+            // this.user = value; TODO
+            // todo: dodac info ze utworzono lub nie utworzono użytkownika
+            this.notification.successMethod('ok');
+          },
+          error: (err) => {
+            this.notification.errorMethod('not ok');
+          },
+        });
       }
     }
+  }
+
+  private _patchForm(data: UserList) {
+    this.addUserForm.patchValue({
+      ...data,
+      roles: data.roles?.map((role) => role.id),
+    });
   }
 }

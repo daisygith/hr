@@ -27,7 +27,7 @@ import { NotificationService } from '../../../shared/services/notification.servi
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 
 @Component({
-  selector: 'app-manage-users',
+  selector: 'app-users-list',
   standalone: true,
   imports: [
     ImageTokenPipe,
@@ -50,11 +50,11 @@ import { DialogAnimationComponent } from '../../../shared/components/dialog-anim
     MatMiniFabButton,
     RouterLinkActive,
   ],
-  templateUrl: './manage-users.component.html',
-  styleUrl: './manage-users.component.scss',
+  templateUrl: './users-list.component.html',
+  styleUrl: './users-list.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class ManageUsersComponent implements OnInit {
+export class UsersListComponent implements OnInit {
   public notification: NotificationService = inject(NotificationService);
   private _usersServices: UsersService = inject(UsersService);
   readonly dialog = inject(MatDialog);
