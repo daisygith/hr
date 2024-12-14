@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.sdu.hr.models.ERequestTimeOff;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,8 @@ public class RequestTimeOffDto {
     private LocalDateTime endDate;
 
     private long days;
+
+    private ERequestTimeOff status;
 
     private String image;
 

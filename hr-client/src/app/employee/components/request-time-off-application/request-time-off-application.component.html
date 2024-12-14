@@ -118,18 +118,57 @@
                   </mat-form-field>
                 </div>
               </div>
-              <div class="button-submit">
-                <button
-                  mat-stroked-button
-                  type="submit"
-                  id="button-submit"
-                  routerLink="/employee"
-                  routerLinkActive="active"
-                  ariaCurrentWhenActive="page"
-                  (click)="saveData()"
+              <div class="element-request button-change">
+                <div
+                  class="button-submit"
+                  *hasRole="canSaveRequestTimeOffRoles"
                 >
-                  {{ "REQUEST_TIME_OFF.BUTTON.SUBMIT_REQUEST" | translate }}
-                </button>
+                  <button
+                    mat-stroked-button
+                    type="submit"
+                    id="button-submit"
+                    routerLink="/employee"
+                    routerLinkActive="active"
+                    ariaCurrentWhenActive="page"
+                    (click)="saveData()"
+                  >
+                    {{ "REQUEST_TIME_OFF.BUTTON.SUBMIT_REQUEST" | translate }}
+                  </button>
+                </div>
+              </div>
+              <div class="element-request button-change">
+                <div
+                  class="button-submit"
+                  *hasRole="canChangeStatusRequestTimeOff"
+                >
+                  <button
+                    mat-stroked-button
+                    type="submit"
+                    id="button-approve"
+                    routerLink="/employee"
+                    routerLinkActive="active"
+                    ariaCurrentWhenActive="page"
+                    (click)="onApproveData(id)"
+                  >
+                    {{ "REQUEST_TIME_OFF.BUTTON.APPROVE" | translate }}
+                  </button>
+                </div>
+                <div
+                  class="button-submit"
+                  *hasRole="canChangeStatusRequestTimeOff"
+                >
+                  <button
+                    mat-stroked-button
+                    type="submit"
+                    id="button-reject"
+                    routerLink="/employee"
+                    routerLinkActive="active"
+                    ariaCurrentWhenActive="page"
+                    (click)="onRejectData()"
+                  >
+                    {{ "REQUEST_TIME_OFF.BUTTON.REJECT" | translate }}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

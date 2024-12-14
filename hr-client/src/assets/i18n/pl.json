@@ -139,7 +139,9 @@
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {
+      "APPROVE": "Akceptuj",
       "EDIT": "Edycja",
+      "REJECT": "Odrzuć",
       "SUBMIT_REQUEST": "Złóż wniosek"
     },
     "DAYS": "Dni",
@@ -160,6 +162,11 @@
     },
     "REASON": "Uzasadnienie",
     "SELECT": "Wybierz",
+    "STAT": {
+      "APPROVED": "Zaakceptowany",
+      "PENDING": "Nierozstrzygnięty",
+      "REJECTED": "Odrzucony"
+    },
     "STATUS": "Status",
     "TITLE": "Wniosek urlopowy"
   },

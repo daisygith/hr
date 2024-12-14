@@ -139,7 +139,9 @@
   },
   "REQUEST_TIME_OFF": {
     "BUTTON": {
+      "APPROVE": "Approve",
       "EDIT": "Edit",
+      "REJECT": "Reject",
       "SUBMIT_REQUEST": "Submit request"
     },
     "DATE": {
@@ -160,6 +162,11 @@
     },
     "REASON": "Reason",
     "SELECT": "Select",
+    "STAT": {
+      "APPROVED": "Approved",
+      "PENDING": "Pending",
+      "REJECTED": "Rejected"
+    },
     "STATUS": "Status",
     "TITLE": "Leave Request"
   },

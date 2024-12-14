@@ -71,9 +71,9 @@ export class RequestTimeOffComponent implements OnInit {
     'startDate',
     'endDate',
     'days',
+    'status',
     // 'statusEmployee',
-    'edit',
-    'delete',
+    'actions',
   ];
 
   ngOnInit(): void {
@@ -86,29 +86,31 @@ export class RequestTimeOffComponent implements OnInit {
     });
   }
 
-  openDialog(id: RequestTimeOff, e: Event) {
+  openDialog(row: RequestTimeOff, e: Event) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(DialogAnimationComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
-        this.deleteRequestForEmployeeById(id);
+        this.deleteRequestForEmployeeById(row);
       }
     });
   }
 
-  deleteRequestForEmployeeById(id: RequestTimeOff): void {
-    this._employeeService.deleteRequestForEmployeeById(id.id).subscribe(
-      () => {
-        this.dataSource.data = this.dataSource.data.filter(
-          (data) => data !== id,
-        );
-        this.notification.successMethod('DATA.REMOVE_OK');
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+  deleteRequestForEmployeeById(requestTimeOff: RequestTimeOff): void {
+    this._employeeService
+      .deleteRequestForEmployeeById(requestTimeOff.id)
+      .subscribe(
+        () => {
+          this.dataSource.data = this.dataSource.data.filter(
+            (data) => data !== requestTimeOff,
+          );
+          this.notification.successMethod('DATA.REMOVE_OK');
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
   }
 
   applyFilter(event: Event) {

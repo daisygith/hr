@@ -5,4 +5,5 @@ export interface RegisterRequestTimeOff {
   startDate: Date;
   endDate: Date;
   days: number;
+  status: string;
 }

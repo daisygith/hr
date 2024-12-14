@@ -30,6 +30,8 @@ import { EmployeeService } from '../../services/employee.service';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
 import { ManageEmployee } from '../../models/manageEmmployee';
+import { Role } from '../../../auth/models/role';
+import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 
 export const MY_FORMATS = {
   parse: {
@@ -65,6 +67,7 @@ export const MY_FORMATS = {
     MatDatepickerModule,
     MatCard,
     DatePipe,
+    HasRoleDirective,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
@@ -82,12 +85,15 @@ export class RequestTimeOffApplicationComponent implements OnInit {
   id: number | undefined;
   isNew: boolean = false;
   requestById: RequestTimeOff | undefined;
+  status: string | undefined;
 
   dataSource: ManageEmployee[] = [];
 
   public selectedDateRange: DateRange<Date | undefined> = inject(
     DateRange<Date>,
   );
+  public canSaveRequestTimeOffRoles = [Role.USER];
+  public canChangeStatusRequestTimeOff = [Role.ADMIN];
 
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _fb: FormBuilder = inject(FormBuilder);
@@ -97,7 +103,7 @@ export class RequestTimeOffApplicationComponent implements OnInit {
   public requestTimeOffFormGroup!: FormGroup;
 
   ngOnInit() {
-    this.id = this._activeRoute.snapshot.params['employeeId'];
+    this.id = this._activeRoute.snapshot.params['requestId'];
     this.isNew = !this.id;
     this.buildForm();
     this.getEmployeeName();
@@ -142,6 +148,7 @@ export class RequestTimeOffApplicationComponent implements OnInit {
       reason: new FormControl('', [Validators.required]),
       startDate: new FormControl('', [Validators.required]),
       endDate: new FormControl('', [Validators.required]),
+      status: new FormControl(null),
       image: new FormControl(null),
     });
   }
@@ -154,12 +161,12 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     });
   }
 
-  getRequestForEmployeeById(employeeId: number | undefined): void {
-    if (!employeeId) {
+  getRequestForEmployeeById(requestId: number | undefined): void {
+    if (!requestId) {
       return;
     }
     this._employeeService
-      .getRequestForEmployeeById(employeeId)
+      .getRequestForEmployeeById(requestId)
       .subscribe((data) => {
         this.requestById = {
           ...data,
@@ -174,8 +181,17 @@ export class RequestTimeOffApplicationComponent implements OnInit {
       });
   }
 
+  onApproveData(requestId: number | undefined): void {
+    this._employeeService.setStatusApproveById(requestId).subscribe({
+      next: (value) => {
+        this.requestTimeOffFormGroup.patchValue(value);
+      },
+    });
+  }
+
   saveData() {
     if (this.requestTimeOffFormGroup.valid) {
+      this.requestTimeOffFormGroup.patchValue({ status: 'PENDING' });
       if (this.isNew) {
         this._employeeService
           .addRequestForEmployee(this.requestTimeOffFormGroup.getRawValue())
@@ -211,5 +227,9 @@ export class RequestTimeOffApplicationComponent implements OnInit {
           });
       }
     }
+  }
+
+  onRejectData() {
+    this.requestTimeOffFormGroup.patchValue({ status: 'REJECTED' });
   }
 }

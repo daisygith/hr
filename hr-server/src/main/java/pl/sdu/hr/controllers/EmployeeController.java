@@ -120,4 +120,18 @@ public class EmployeeController {
         return new MessageResponse("Delete image for employee" + employeeId);
 
     }
+
+    @PutMapping("/request-time-off/{requestId}/approve")
+    public RequestTimeOffDto setStatusApproveById(@PathVariable("requestId") Long requestId){
+        RequestTimeOffDto dbRequestTimeOffDto = employeeService.setStatusApproveById(requestId);
+
+        return dbRequestTimeOffDto;
+    }
+
+    @PutMapping("/request-time-off/{requestId}/reject")
+    public RequestTimeOffDto setStatusRejectById(@PathVariable("requestId") Long requestId){
+        RequestTimeOffDto dbRequestTimeOffDto = employeeService.setStatusRejectById(requestId);
+
+        return dbRequestTimeOffDto;
+    }
 }

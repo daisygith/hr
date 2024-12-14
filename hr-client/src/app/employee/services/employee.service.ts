@@ -84,4 +84,20 @@ export class EmployeeService {
   deleteImageForEmployee(employeeId: number | undefined): Observable<void> {
     return this._http.delete<void>(`${this._apiUrl}/${employeeId}/image`);
   }
+
+  setStatusApproveById(
+    requestId: number | undefined,
+  ): Observable<RequestTimeOff> {
+    return this._http.put<RequestTimeOff>(
+      `${this._apiUrl}/request-time-off/${requestId}/approve`,
+      null,
+    );
+  }
+
+  setStatusRejectById(requestId: number): Observable<RequestTimeOff> {
+    return this._http.put<RequestTimeOff>(
+      `${this._apiUrl}/request-time-off/${requestId}/reject`,
+      null,
+    );
+  }
 }

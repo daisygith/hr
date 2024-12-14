@@ -23,6 +23,7 @@ public class RequestTimeOffMapper {
                 .startDate(requestTimeOff.getStartDate())
                 .endDate(requestTimeOff.getEndDate())
                 .days(getDaysDifference(requestTimeOff))
+                .status(requestTimeOff.getStatus())
                 .employeeId(requestTimeOff.getEmployee().getId())
                 .employeeName(requestTimeOff.getEmployee().getName())
                 .image(requestTimeOff.getEmployee().getImage())

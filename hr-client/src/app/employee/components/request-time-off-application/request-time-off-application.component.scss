@@ -174,10 +174,32 @@ app-request-time-off-application {
       margin: 0 0 40px 0;
     }
 
-    button#button-submit {
+    .element-request.button-change {
+      margin: 0 0 40px 0;
+      display: flex;
+    }
+
+    button#button-submit,
+    button#button-approve,
+    button#button-reject {
+      width: 140px;
+    }
+
+    button#button-submit,
+    button#button-approve,
+    button#button-reject {
       background-color: var(--positive-element);
       color: var(--main-color-text);
       border-radius: 10px;
+    }
+
+    button#button-approve {
+      margin: 0 10px 0 0;
+    }
+
+    button#button-reject {
+      background-color: var(--negative-element);
+      border-color: var(--negative-border);
     }
   }
 }

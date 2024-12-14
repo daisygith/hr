@@ -32,4 +32,9 @@ public interface EmployeeService {
     EmployeeDto saveImageForEmployee(Long employeeId, SaveImageRequest request);
 
     void deleteImageForEmployee(Long employeeId);
+
+    RequestTimeOffDto setStatusApproveById(Long requestId);
+
+    RequestTimeOffDto setStatusRejectById(Long requestId);
+
 }

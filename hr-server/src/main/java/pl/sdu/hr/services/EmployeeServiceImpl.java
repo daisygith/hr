@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdu.hr.mappers.EmployeeMapper;
 import pl.sdu.hr.mappers.RequestTimeOffMapper;
+import pl.sdu.hr.models.ERequestTimeOff;
 import pl.sdu.hr.models.Employee;
 import pl.sdu.hr.models.RequestTimeOff;
 import pl.sdu.hr.payload.dto.EmployeeDto;
@@ -175,5 +176,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setImage(null);
         employeeRepository.save(employee);
     }
+
+    @Transactional
+    @Override
+    public RequestTimeOffDto setStatusApproveById(Long requestId){
+        RequestTimeOff requestTimeOff = requestTimeOffRepository.findById(requestId).orElseThrow();
+        requestTimeOff.setStatus(ERequestTimeOff.APPROVE);
+        requestTimeOffRepository.save(requestTimeOff);
+
+        return RequestTimeOffMapper.mapRequestTimeOffToRequestTimeOffDto(requestTimeOff);}
+
+    @Transactional
+    @Override
+    public RequestTimeOffDto setStatusRejectById(Long requestId){
+        RequestTimeOff requestTimeOff = requestTimeOffRepository.findById(requestId).orElseThrow();
+        requestTimeOff.setStatus(ERequestTimeOff.REJECT);
+        requestTimeOffRepository.save(requestTimeOff);
+
+        return RequestTimeOffMapper.mapRequestTimeOffToRequestTimeOffDto(requestTimeOff);
+            }
 
 }

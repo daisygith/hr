@@ -28,6 +28,10 @@ public class RequestTimeOff {
 
     private LocalDateTime endDate;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ERequestTimeOff status;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employeeId")
     private Employee employee;
