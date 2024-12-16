@@ -272,3 +272,8 @@ button#language-button {
 .mat-mdc-unelevated-button:not(:disabled) {
   background-color: var(--button-app-color) !important;
 }
+
+.row-actions {
+  display: flex;
+  gap: 4px;
+}

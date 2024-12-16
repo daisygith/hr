@@ -37,7 +37,7 @@
         <div class="element-title">{{ "SIDEBAR.EMPLOYEE" | translate }}</div>
       </a>
     </div>
-    <div class="menu-element">
+    <div class="menu-element" *hasRole="canUsersRoles">
       <a routerLink="/users" routerLinkActive="active">
         <mat-icon class="material-symbols-outlined" id="users-list-icon">
           user_attributes

@@ -7,7 +7,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { environment } from '../../../../environments/environment';
 import { UserService } from '../../../user/services/user.service';
-import { Profile } from '../../../user/models/profile';
+import { Role } from '../../../auth/models/role';
+import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,6 +19,7 @@ import { Profile } from '../../../user/models/profile';
     TranslateModule,
     MatIcon,
     NgOptimizedImage,
+    HasRoleDirective,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
@@ -28,7 +30,8 @@ export class SidebarComponent implements OnInit {
   public router: Router = inject(Router);
   public notification: NotificationService = inject(NotificationService);
 
-  profile: Profile | undefined;
+  public canUsersRoles = [Role.MODERATOR, Role.ADMIN];
+
   public imageUrl: string | undefined;
   public user = this._authService.user;
 
