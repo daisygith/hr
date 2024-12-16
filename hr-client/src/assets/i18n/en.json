@@ -163,9 +163,9 @@
     "REASON": "Reason",
     "SELECT": "Select",
     "STAT": {
-      "APPROVED": "Approved",
+      "APPROVE": "Approved",
       "PENDING": "Pending",
-      "REJECTED": "Rejected"
+      "REJECT": "Rejected"
     },
     "STATUS": "Status",
     "TITLE": "Leave Request"

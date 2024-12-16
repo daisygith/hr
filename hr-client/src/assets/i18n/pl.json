@@ -163,9 +163,9 @@
     "REASON": "Uzasadnienie",
     "SELECT": "Wybierz",
     "STAT": {
-      "APPROVED": "Zaakceptowany",
-      "PENDING": "Nierozstrzygnięty",
-      "REJECTED": "Odrzucony"
+      "APPROVE": "Zaakceptowany",
+      "PENDING": "W toku",
+      "REJECT": "Odrzucony"
     },
     "STATUS": "Status",
     "TITLE": "Wniosek urlopowy"
