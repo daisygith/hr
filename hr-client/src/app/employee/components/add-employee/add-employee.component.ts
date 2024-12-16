@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   ActivatedRoute,
+  Router,
   RouterLink,
   RouterLinkActive,
   RouterOutlet,
@@ -64,6 +65,7 @@ export class AddEmployeeComponent implements OnInit {
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _fb: FormBuilder = inject(FormBuilder);
   private _employeeService: EmployeeService = inject(EmployeeService);
+  private _router = inject(Router);
 
   public addEmployeeForm!: FormGroup;
 
@@ -121,6 +123,7 @@ export class AddEmployeeComponent implements OnInit {
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
               );
+              this._router.navigateByUrl(`/employee/${data.id}`);
             },
             error: (err) => {
               this.notification.errorMethod(
@@ -133,8 +136,8 @@ export class AddEmployeeComponent implements OnInit {
           .updateEmployee(this.addEmployeeForm.getRawValue())
           .subscribe({
             next: (data) => {
-              this.addEmployeeForm.patchValue(data);
               this.employee = data;
+              this.addEmployeeForm.patchValue(data);
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
               );
