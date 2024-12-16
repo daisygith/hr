@@ -72,34 +72,43 @@
   </ng-container>
 
   <!-- Details Type Column -->
-  <ng-container matColumnDef="details">
+  <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button
-        mat-mini-fab
-        id="button-details"
-        [routerLink]="['/employee', element.id]"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
-        <mat-icon>edit</mat-icon>
-      </button>
+      <div class="row-actions">
+        <button
+          mat-mini-fab
+          id="button-details"
+          [routerLink]="['/employee', element.id]"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          id="button-more"
+          (click)="openDialog(element, $event)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </td>
   </ng-container>
 
-  <!-- Details Type Column -->
-  <ng-container matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element">
-      <button
-        mat-mini-fab
-        id="button-more"
-        (click)="openDialog(element, $event)"
-      >
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
+  <!--  &lt;!&ndash; Details Type Column &ndash;&gt;-->
+  <!--  <ng-container matColumnDef="delete">-->
+  <!--    <th mat-header-cell *matHeaderCellDef></th>-->
+  <!--    <td mat-cell *matCellDef="let element">-->
+  <!--      <button-->
+  <!--        mat-mini-fab-->
+  <!--        id="button-more"-->
+  <!--        (click)="openDialog(element, $event)"-->
+  <!--      >-->
+  <!--        <mat-icon>delete</mat-icon>-->
+  <!--      </button>-->
+  <!--    </td>-->
+  <!--  </ng-container>-->
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr

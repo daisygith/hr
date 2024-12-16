@@ -70,8 +70,7 @@ export class ManageEmployeeComponent implements OnInit {
     'position',
     'typeOfContract',
     // 'attendance',
-    'details',
-    'delete',
+    'actions',
   ];
 
   ngOnInit(): void {
@@ -79,6 +78,7 @@ export class ManageEmployeeComponent implements OnInit {
   }
 
   getManageEmployee(): void {
+    // console.log('getManageEmployee');
     this._employeeService.getManageEmployee().subscribe({
       next: (value) => (this.dataSource.data = value),
     });

@@ -60,7 +60,7 @@ export class UsersListComponent implements OnInit {
   readonly dialog = inject(MatDialog);
 
   dataSource = new MatTableDataSource<UserList>([]);
-  displayedColumns = ['username', 'email', 'roles', 'details', 'delete'];
+  displayedColumns = ['username', 'email', 'roles', 'actions'];
 
   ngOnInit(): void {
     this.getManageUsers();
