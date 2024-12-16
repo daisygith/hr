@@ -1,8 +1,4 @@
 app-request-time-off {
-  .row-actions {
-    display: flex;
-    gap: 4px;
-  }
   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: transparent;
     border: 1px solid var(--border-app-element);
@@ -94,8 +90,7 @@ app-request-time-off {
     min-width: 160px;
   }
 
-  .mat-column-edit,
-  .mat-column-delete {
+  .mat-column-actions {
     width: 58px;
   }
 }

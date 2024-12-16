@@ -14,7 +14,12 @@ import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { DatePipe, NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   DateRange,
@@ -98,6 +103,7 @@ export class RequestTimeOffApplicationComponent implements OnInit {
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _fb: FormBuilder = inject(FormBuilder);
   private _employeeService: EmployeeService = inject(EmployeeService);
+  private _router = inject(Router);
   public notification: NotificationService = inject(NotificationService);
 
   public requestTimeOffFormGroup!: FormGroup;
@@ -181,14 +187,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
       });
   }
 
-  onApproveData(requestId: number | undefined): void {
-    this._employeeService.setStatusApproveById(requestId).subscribe({
-      next: (value) => {
-        this.requestTimeOffFormGroup.patchValue(value);
-      },
-    });
-  }
-
   saveData() {
     if (this.requestTimeOffFormGroup.valid) {
       this.requestTimeOffFormGroup.patchValue({ status: 'PENDING' });
@@ -197,8 +195,12 @@ export class RequestTimeOffApplicationComponent implements OnInit {
           .addRequestForEmployee(this.requestTimeOffFormGroup.getRawValue())
           .subscribe({
             next: (data) => {
+              this.requestTimeOffFormGroup.patchValue(data);
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+              );
+              this._router.navigateByUrl(
+                `/employees/request-time-off/${data.id}`,
               );
             },
             error: (err) => {
@@ -214,6 +216,7 @@ export class RequestTimeOffApplicationComponent implements OnInit {
           )
           .subscribe({
             next: (data) => {
+              this.requestTimeOffFormGroup.patchValue(data);
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
               );
@@ -229,7 +232,19 @@ export class RequestTimeOffApplicationComponent implements OnInit {
     }
   }
 
-  onRejectData() {
-    this.requestTimeOffFormGroup.patchValue({ status: 'REJECTED' });
+  onApproveData(requestId: number | undefined): void {
+    this._employeeService.setStatusApproveById(requestId).subscribe({
+      next: (value) => {
+        this.requestTimeOffFormGroup.patchValue(value);
+      },
+    });
+  }
+
+  onRejectData(requestId: number | undefined) {
+    this._employeeService.setStatusRejectById(requestId).subscribe({
+      next: (value) => {
+        this.requestTimeOffFormGroup.patchValue(value);
+      },
+    });
   }
 }

@@ -94,7 +94,9 @@ export class EmployeeService {
     );
   }
 
-  setStatusRejectById(requestId: number): Observable<RequestTimeOff> {
+  setStatusRejectById(
+    requestId: number | undefined,
+  ): Observable<RequestTimeOff> {
     return this._http.put<RequestTimeOff>(
       `${this._apiUrl}/request-time-off/${requestId}/reject`,
       null,
