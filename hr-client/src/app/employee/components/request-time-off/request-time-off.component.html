@@ -86,7 +86,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <div class="row-actions">
+      <div class="row-actions" *hasRole="canEditByUserStatusRequest">
         <button
           mat-mini-fab
           id="button-edit"
@@ -103,6 +103,44 @@
         >
           <mat-icon>delete</mat-icon>
         </button>
+      </div>
+
+      <div class="row-actions">
+        <div
+          *ngIf="
+            element.status !== 'PENDING';
+            then buttonView;
+            else buttonChangeStatus
+          "
+        ></div>
+        <ng-template #buttonChangeStatus>
+          <button
+            mat-stroked-button
+            *hasRole="canChangeStatusRequest"
+            id="button-approve"
+          >
+            {{ "REQUEST_TIME_OFF.BUTTON.APPROVE" | translate }}
+          </button>
+          <button
+            mat-stroked-button
+            *hasRole="canChangeStatusRequest"
+            id="button-reject"
+          >
+            {{ "REQUEST_TIME_OFF.BUTTON.REJECT" | translate }}
+          </button>
+        </ng-template>
+        <ng-template #buttonView>
+          <button
+            *hasRole="canChangeStatusRequest"
+            mat-mini-fab
+            id="button-loupe"
+            [routerLink]="['/employee/request-time-off', element.id]"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            <mat-icon>search</mat-icon>
+          </button>
+        </ng-template>
       </div>
     </td>
   </ng-container>

@@ -155,8 +155,17 @@ app-request-time-off-application {
     }
 
     //input#dateRange1,
-    input#reason-input {
+    input#reason-input,
+    input#leaveType-inputReadonly,
+    input#name-inputReadonly,
+    input#reason-inputReadonly {
       padding: 8px 0 0 0;
+    }
+
+    input#leaveType-inputReadonly,
+    input#name-inputReadonly,
+    input#reason-inputReadonly {
+      cursor: default;
     }
 
     .input-title {
@@ -195,6 +204,10 @@ app-request-time-off-application {
     button#button-reject {
       background-color: var(--negative-element);
       border-color: var(--negative-border);
+    }
+
+    .mat-date-range-input-wrapper {
+      width: 86px;
     }
   }
 }

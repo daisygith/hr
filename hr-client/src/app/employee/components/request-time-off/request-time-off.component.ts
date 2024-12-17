@@ -25,6 +25,8 @@ import { NotificationService } from '../../../shared/services/notification.servi
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
+import { Role } from '../../../auth/models/role';
+import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 
 @Component({
   selector: 'app-request-time-off',
@@ -53,12 +55,15 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
     MatInput,
     ImageTokenPipe,
     NgOptimizedImage,
+    HasRoleDirective,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class RequestTimeOffComponent implements OnInit {
+  public canChangeStatusRequest = [Role.ADMIN];
+  public canEditByUserStatusRequest = [Role.USER];
   public notification: NotificationService = inject(NotificationService);
   private _employeeService: EmployeeService = inject(EmployeeService);
   readonly dialog = inject(MatDialog);
