@@ -159,7 +159,7 @@
                     routerLink="/employee"
                     routerLinkActive="active"
                     ariaCurrentWhenActive="page"
-                    (click)="draftData(id)"
+                    (click)="draftData()"
                   >
                     {{ "REQUEST_TIME_OFF.BUTTON.DRAFT_REQUEST" | translate }}
                   </button>
@@ -171,7 +171,7 @@
                     routerLink="/employee"
                     routerLinkActive="active"
                     ariaCurrentWhenActive="page"
-                    (click)="saveData()"
+                    (click)="saveData(id)"
                   >
                     {{ "REQUEST_TIME_OFF.BUTTON.SUBMIT_REQUEST" | translate }}
                   </button>

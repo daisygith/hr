@@ -135,10 +135,11 @@ public class EmployeeController {
         return dbRequestTimeOffDto;
     }
 
-    @PutMapping("/request-time-off/{requestId}/draft")
-    public RequestTimeOffDto setStatusDraftById(@PathVariable("requestId") Long requestId){
-        RequestTimeOffDto dbRequestTimeOffDto = employeeService.setStatusRejectById(requestId);
+    @PutMapping("/request-time-off/{requestId}/pending")
+    public RequestTimeOffDto setStatusPendingById(@PathVariable("requestId") Long requestId){
+        RequestTimeOffDto dbRequestTimeOffDto = employeeService.setStatusPendingById(requestId);
 
         return dbRequestTimeOffDto;
     }
+
 }

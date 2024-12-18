@@ -37,6 +37,6 @@ public interface EmployeeService {
 
     RequestTimeOffDto setStatusRejectById(Long requestId);
 
-    RequestTimeOffDto setStatusDraftById(Long requestId);
+    RequestTimeOffDto setStatusPendingById(Long requestId);
 
 }

@@ -103,11 +103,11 @@ export class EmployeeService {
     );
   }
 
-  setStatusDraftById(
+  setStatusPendingById(
     requestId: number | undefined,
   ): Observable<RequestTimeOff> {
     return this._http.put<RequestTimeOff>(
-      `${this._apiUrl}/request-time-off/${requestId}/draft`,
+      `${this._apiUrl}/request-time-off/${requestId}/pending`,
       null,
     );
   }

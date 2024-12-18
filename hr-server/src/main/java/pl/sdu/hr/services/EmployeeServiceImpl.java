@@ -97,6 +97,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .employee(employee)
                 .leaveType(registerRequestTimeOffDto.getLeaveType())
                 .reason(registerRequestTimeOffDto.getReason())
+                .status(ERequestTimeOff.DRAFT)
                 .startDate(registerRequestTimeOffDto.getStartDate())
                 .endDate(registerRequestTimeOffDto.getEndDate())
                 .build();
@@ -196,14 +197,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         return RequestTimeOffMapper.mapRequestTimeOffToRequestTimeOffDto(requestTimeOff);
             }
 
-            @Transactional
+
+    @Transactional
     @Override
-    public RequestTimeOffDto setStatusDraftById(Long requestId){
+    public RequestTimeOffDto setStatusPendingById(Long requestId){
         RequestTimeOff requestTimeOff = requestTimeOffRepository.findById(requestId).orElseThrow();
-        requestTimeOff.setStatus(ERequestTimeOff.DRAFT);
+        requestTimeOff.setStatus(ERequestTimeOff.PENDING);
         requestTimeOffRepository.save(requestTimeOff);
 
         return RequestTimeOffMapper.mapRequestTimeOffToRequestTimeOffDto(requestTimeOff);
-            }
-
+    }
 }

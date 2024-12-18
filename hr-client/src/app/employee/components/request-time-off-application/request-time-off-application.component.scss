@@ -177,7 +177,7 @@ app-request-time-off-application {
     .button-submit {
       display: flex;
       float: left;
-      flex-direction: column;
+      //flex-direction: column;
       justify-content: center;
     }
 
@@ -188,7 +188,7 @@ app-request-time-off-application {
     button#button-draft {
       width: 250px;
       border-radius: 10px;
-      margin: 0px 0px 10px 0px;
+      margin: 0px 10px 0px 0px;
     }
 
     button#button-submit,
