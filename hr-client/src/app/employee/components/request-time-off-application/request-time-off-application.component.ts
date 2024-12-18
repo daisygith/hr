@@ -37,6 +37,7 @@ import { RequestTimeOff } from '../../models/requestTimeOff';
 import { ManageEmployee } from '../../models/manageEmmployee';
 import { Role } from '../../../auth/models/role';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
+import { AuthService } from '../../../auth/services/auth.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -105,6 +106,7 @@ export class RequestTimeOffApplicationComponent implements OnInit {
   private _employeeService: EmployeeService = inject(EmployeeService);
   private _router = inject(Router);
   public notification: NotificationService = inject(NotificationService);
+  private _authService = inject(AuthService);
 
   public requestTimeOffFormGroup!: FormGroup;
 
@@ -157,6 +159,11 @@ export class RequestTimeOffApplicationComponent implements OnInit {
       status: new FormControl(null),
       image: new FormControl(null),
     });
+
+    if (!this._authService.hasRole([Role.USER])) {
+      this.requestTimeOffFormGroup.disable();
+      // this.requestTimeOffFormGroup.get('leaveType')?.disable();
+    }
   }
 
   getEmployeeName(): void {

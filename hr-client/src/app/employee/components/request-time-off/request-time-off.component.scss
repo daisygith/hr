@@ -61,12 +61,12 @@ app-request-time-off {
   }
 
   .mat-column-leaveType {
-    min-width: 200px;
+    min-width: 150px;
   }
 
   .mat-column-startDate,
   .mat-column-endDate {
-    min-width: 160px;
+    min-width: 130px;
   }
 
   .mat-column-actions {
@@ -90,5 +90,9 @@ app-request-time-off {
   button#button-reject {
     border-color: var(--negative-element);
     color: var(--negative-element);
+  }
+  .status {
+    &.approve {
+    }
   }
 }

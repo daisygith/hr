@@ -42,106 +42,7 @@
       </ng-template>
     </div>
   </div>
-  <div
-    class="request-time-off-app-content elements"
-    *hasRole="canChangeStatusRequestTimeOff"
-  >
-    <div class="request-time-off-app-content top">
-      <div class="elements top left request">
-        <div class="elements-content columns">
-          <div class="element-content-left">
-            <div class="elements-title">
-              <div class="title-line">
-                {{ "REQUEST_TIME_OFF.TITLE" | translate }}
-              </div>
-            </div>
-            <div class="elements-date">
-              <mat-form-field>
-                <mat-date-range-input>
-                  <input
-                    matStartDate
-                    id="dateRange1Readonly"
-                    placeholder="{{
-                      requestById?.startDate | date: 'YYYY-MM-dd'
-                    }}"
-                    disabled
-                  />
-                  <input
-                    matEndDate
-                    id="dateRange2Readonly"
-                    placeholder="{{
-                      requestById?.endDate | date: 'YYYY-MM-dd'
-                    }}"
-                    disabled
-                  />
-                </mat-date-range-input>
-              </mat-form-field>
-            </div>
-            <div class="elements-calendar">
-              <mat-card class="calendar">
-                <mat-calendar [selected]="selectedDateRange"></mat-calendar>
-              </mat-card>
-            </div>
-          </div>
-
-          <div class="element-content-right">
-            <div class="element-request">
-              <div class="elements-title">
-                <div class="title-line">
-                  {{ "REQUEST_TIME_OFF.LEAVE_TYPE" | translate }}
-                </div>
-                <mat-form-field class="input-full-width">
-                  <input
-                    matInput
-                    type="text"
-                    id="leaveType-inputReadonly"
-                    placeholder="{{ requestById?.leaveType }}"
-                    readonly
-                  />
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="element-request">
-              <div class="elements-title">
-                <div class="title-line">
-                  {{ "REQUEST_TIME_OFF.EMPLOYEE_NAME" | translate }}
-                </div>
-                <mat-form-field class="input-full-width">
-                  <input
-                    matInput
-                    type="text"
-                    id="name-inputReadonly"
-                    placeholder="{{ requestById?.employeeName }}"
-                    readonly
-                  />
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="element-request">
-              <div class="elements-title">
-                <div class="title-line">
-                  {{ "REQUEST_TIME_OFF.REASON" | translate }}
-                </div>
-                <mat-form-field class="input-full-width">
-                  <input
-                    matInput
-                    type="text"
-                    id="reason-inputReadonly"
-                    placeholder="{{ requestById?.reason }}"
-                    readonly
-                  />
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <form
-    [formGroup]="requestTimeOffFormGroup"
-    *hasRole="canSaveRequestTimeOffRoles"
-  >
+  <form [formGroup]="requestTimeOffFormGroup">
     <div class="request-time-off-app-content elements">
       <div class="request-time-off-app-content top">
         <div class="elements top left request">
@@ -251,6 +152,7 @@
               <div class="element-request button-change">
                 <div class="button-submit">
                   <button
+                    *hasRole="canSaveRequestTimeOffRoles"
                     mat-stroked-button
                     type="submit"
                     id="button-submit"

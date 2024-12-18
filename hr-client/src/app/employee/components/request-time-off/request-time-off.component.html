@@ -78,7 +78,9 @@
       {{ "REQUEST_TIME_OFF.STATUS" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      {{ "REQUEST_TIME_OFF.STAT." + element.status | translate }}
+      <span class="status {{ element.status | lowercase }}">{{
+        "REQUEST_TIME_OFF.STAT." + element.status | translate
+      }}</span>
     </td>
   </ng-container>
 
@@ -86,8 +88,9 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <div class="row-actions" *hasRole="canEditByUserStatusRequest">
+      <div class="row-actions">
         <button
+          *hasRole="canEditByUserStatusRequest"
           mat-mini-fab
           id="button-edit"
           [routerLink]="['/employee/request-time-off', element.id]"
@@ -97,15 +100,13 @@
           <mat-icon>edit</mat-icon>
         </button>
         <button
+          *hasRole="canEditByUserStatusRequest"
           mat-mini-fab
           id="button-more"
           (click)="openDialog(element, $event)"
         >
           <mat-icon>delete</mat-icon>
         </button>
-      </div>
-
-      <div class="row-actions">
         <div
           *ngIf="
             element.status !== 'PENDING';
@@ -118,6 +119,7 @@
             mat-stroked-button
             *hasRole="canChangeStatusRequest"
             id="button-approve"
+            (click)="onApprove($event, element)"
           >
             {{ "REQUEST_TIME_OFF.BUTTON.APPROVE" | translate }}
           </button>
@@ -125,6 +127,7 @@
             mat-stroked-button
             *hasRole="canChangeStatusRequest"
             id="button-reject"
+            (click)="onReject($event, element)"
           >
             {{ "REQUEST_TIME_OFF.BUTTON.REJECT" | translate }}
           </button>

@@ -17,7 +17,13 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
-import { AsyncPipe, DatePipe, NgIf, NgOptimizedImage } from '@angular/common';
+import {
+  AsyncPipe,
+  DatePipe,
+  LowerCasePipe,
+  NgIf,
+  NgOptimizedImage,
+} from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
@@ -56,6 +62,7 @@ import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
     ImageTokenPipe,
     NgOptimizedImage,
     HasRoleDirective,
+    LowerCasePipe,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
@@ -121,5 +128,35 @@ export class RequestTimeOffComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  onApprove(event: any, row: RequestTimeOff) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this._employeeService.setStatusApproveById(row.id).subscribe({
+      next: (newRow) => {
+        const newData = this.dataSource.data.map((item) =>
+          item.id === newRow.id ? newRow : item,
+        );
+        console.log(newData);
+        this.dataSource.data = newData;
+      },
+    });
+  }
+
+  onReject(event: any, row: RequestTimeOff) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this._employeeService.setStatusRejectById(row.id).subscribe({
+      next: (newRow) => {
+        const newData = this.dataSource.data.map((item) =>
+          item.id === newRow.id ? newRow : item,
+        );
+        console.log(newData);
+        this.dataSource.data = newData;
+      },
+    });
   }
 }
