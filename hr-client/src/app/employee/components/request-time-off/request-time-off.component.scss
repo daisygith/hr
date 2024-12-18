@@ -91,8 +91,20 @@ app-request-time-off {
     border-color: var(--negative-element);
     color: var(--negative-element);
   }
-  .status {
+  span.status {
+    padding: 10px;
+    border-radius: 18px;
     &.approve {
+      background-color: var(--positive-background-element);
+    }
+    &.reject {
+      background-color: var(--negative-border);
+    }
+    &.pending {
+      background-color: var(--pending-status-color);
+    }
+    &.draft {
+      border: 1px solid var(--border-app-element);
     }
   }
 }

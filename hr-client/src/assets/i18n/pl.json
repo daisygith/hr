@@ -140,6 +140,7 @@
   "REQUEST_TIME_OFF": {
     "BUTTON": {
       "APPROVE": "Akceptuj",
+      "DRAFT_REQUEST": "Zapisz jako wersję roboczą",
       "EDIT": "Edycja",
       "REJECT": "Odrzuć",
       "SUBMIT_REQUEST": "Złóż wniosek"
@@ -164,6 +165,7 @@
     "SELECT": "Wybierz",
     "STAT": {
       "APPROVE": "Zaakceptowany",
+      "DRAFT": "Wersja robocza",
       "PENDING": "W toku",
       "REJECT": "Odrzucony"
     },

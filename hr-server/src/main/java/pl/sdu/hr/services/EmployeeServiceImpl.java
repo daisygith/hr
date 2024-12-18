@@ -196,4 +196,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         return RequestTimeOffMapper.mapRequestTimeOffToRequestTimeOffDto(requestTimeOff);
             }
 
+            @Transactional
+    @Override
+    public RequestTimeOffDto setStatusDraftById(Long requestId){
+        RequestTimeOff requestTimeOff = requestTimeOffRepository.findById(requestId).orElseThrow();
+        requestTimeOff.setStatus(ERequestTimeOff.DRAFT);
+        requestTimeOffRepository.save(requestTimeOff);
+
+        return RequestTimeOffMapper.mapRequestTimeOffToRequestTimeOffDto(requestTimeOff);
+            }
+
 }

@@ -175,12 +175,20 @@ app-request-time-off-application {
     }
 
     .button-submit {
-      display: block;
+      display: flex;
       float: left;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .element-request {
       margin: 0 0 40px 0;
+    }
+
+    button#button-draft {
+      width: 250px;
+      border-radius: 10px;
+      margin: 0px 0px 10px 0px;
     }
 
     button#button-submit,

@@ -140,6 +140,7 @@
   "REQUEST_TIME_OFF": {
     "BUTTON": {
       "APPROVE": "Approve",
+      "DRAFT_REQUEST": "Save as draft",
       "EDIT": "Edit",
       "REJECT": "Reject",
       "SUBMIT_REQUEST": "Submit request"
@@ -164,6 +165,7 @@
     "SELECT": "Select",
     "STAT": {
       "APPROVE": "Approved",
+      "DRAFT": "Draft",
       "PENDING": "Pending",
       "REJECT": "Rejected"
     },

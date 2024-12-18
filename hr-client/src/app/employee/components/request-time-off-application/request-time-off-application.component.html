@@ -155,6 +155,18 @@
                     *hasRole="canSaveRequestTimeOffRoles"
                     mat-stroked-button
                     type="submit"
+                    id="button-draft"
+                    routerLink="/employee"
+                    routerLinkActive="active"
+                    ariaCurrentWhenActive="page"
+                    (click)="draftData(id)"
+                  >
+                    {{ "REQUEST_TIME_OFF.BUTTON.DRAFT_REQUEST" | translate }}
+                  </button>
+                  <button
+                    *hasRole="canSaveRequestTimeOffRoles"
+                    mat-stroked-button
+                    type="submit"
                     id="button-submit"
                     routerLink="/employee"
                     routerLinkActive="active"

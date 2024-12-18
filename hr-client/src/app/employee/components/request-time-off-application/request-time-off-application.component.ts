@@ -194,9 +194,14 @@ export class RequestTimeOffApplicationComponent implements OnInit {
       });
   }
 
-  saveData() {
+  draftData(requestId: number | undefined) {
     if (this.requestTimeOffFormGroup.valid) {
-      this.requestTimeOffFormGroup.patchValue({ status: 'PENDING' });
+      // this.requestTimeOffFormGroup.patchValue({ status: 'DRAFT' });
+      this._employeeService.setStatusDraftById(requestId).subscribe({
+        next: (value) => {
+          this.requestTimeOffFormGroup.patchValue(value);
+        },
+      });
       if (this.isNew) {
         this._employeeService
           .addRequestForEmployee(this.requestTimeOffFormGroup.getRawValue())
@@ -237,6 +242,10 @@ export class RequestTimeOffApplicationComponent implements OnInit {
           });
       }
     }
+  }
+
+  saveData() {
+    // this.requestTimeOffFormGroup.patchValue({ status: 'PENDING' });
   }
 
   onApproveData(requestId: number | undefined): void {

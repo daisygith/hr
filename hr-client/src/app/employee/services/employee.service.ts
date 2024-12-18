@@ -102,4 +102,13 @@ export class EmployeeService {
       null,
     );
   }
+
+  setStatusDraftById(
+    requestId: number | undefined,
+  ): Observable<RequestTimeOff> {
+    return this._http.put<RequestTimeOff>(
+      `${this._apiUrl}/request-time-off/${requestId}/draft`,
+      null,
+    );
+  }
 }

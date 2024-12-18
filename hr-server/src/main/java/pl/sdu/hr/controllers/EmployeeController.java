@@ -134,4 +134,11 @@ public class EmployeeController {
 
         return dbRequestTimeOffDto;
     }
+
+    @PutMapping("/request-time-off/{requestId}/draft")
+    public RequestTimeOffDto setStatusDraftById(@PathVariable("requestId") Long requestId){
+        RequestTimeOffDto dbRequestTimeOffDto = employeeService.setStatusRejectById(requestId);
+
+        return dbRequestTimeOffDto;
+    }
 }
