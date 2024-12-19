@@ -89,4 +89,18 @@ app-manage-employee {
   .mat-column-actions {
     width: 58px;
   }
+
+  span.type {
+    padding: 10px;
+    border-radius: 18px;
+    &.it {
+      background-color: var(--it-department);
+    }
+    &.hr {
+      background-color: var(--hr-department);
+    }
+    &.designer {
+      background-color: var(--designer-department);
+    }
+  }
 }

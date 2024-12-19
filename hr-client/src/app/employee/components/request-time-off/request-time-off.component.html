@@ -40,7 +40,9 @@
       {{ "REQUEST_TIME_OFF.LEAVE_TYPE" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      {{ "REQUEST_TIME_OFF.LEAVE_TYPES." + element.leaveType | translate }}
+      <span class="type {{ element.leaveType | lowercase }}">
+        {{ "REQUEST_TIME_OFF.LEAVE_TYPES." + element.leaveType | translate }}
+      </span>
     </td>
   </ng-container>
 

@@ -47,9 +47,7 @@ body {
   --positive-element: #12a779;
   --positive-background-element: rgba(11, 227, 161, 0.7);
   --color-3: #ffa40a;
-  --pending-status-color: rgba(255, 178, 38, 0.57);
-  --color-4: #913af6;
-  //--border-element: #427ddc;
+  //--color-4: #913af6;
   --background-element: rgba(0, 87, 255, 0.11);
   --background-app-color: #f2f3f5;
   --main-color-text: #ffffff;
@@ -58,10 +56,20 @@ body {
   --negative-element: #a71212ff;
   --negative-border: #ee636383;
 
+  --positive-status: rgba(106, 243, 200, 0.56);
+  --pending-status-color: rgba(246, 195, 100, 0.56);
+  --annual-color: #669ef8;
+  --paid-time-off-color: rgba(172, 110, 246, 0.56);
+  --unpaid-color: rgba(250, 145, 105, 0.56);
+  --casual-color: rgba(250, 105, 231, 0.56);
   //
   --mat-form-field-container-vertical-padding: 0px;
   --mat-form-field-filled-with-label-container-padding-top: 16px;
   --mat-tab-header-active-focus-label-text-color: rgb(0, 87, 255);
+
+  --it-department: #427ddc;
+  --hr-department: #913af6;
+  --designer-department: #12a779;
 }
 
 html,

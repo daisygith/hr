@@ -157,7 +157,7 @@
     "LEAVE_TYPES": {
       "ANNUAL_LEAVE": "Urlop roczny",
       "CASUAL_LEAVE": "Urlop okolicznościowy",
-      "PAID_TIME_OFF": "Urlop płatny wypoczynkowy",
+      "PAID_TIME_OFF": "Urlop płatny",
       "SICK_LEAVE": "Urlop chorobowy",
       "UNPAID_LEAVE": "Urlop bezpłatny"
     },

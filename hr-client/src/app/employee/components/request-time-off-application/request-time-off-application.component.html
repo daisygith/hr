@@ -156,9 +156,6 @@
                     mat-stroked-button
                     type="submit"
                     id="button-draft"
-                    routerLink="/employee"
-                    routerLinkActive="active"
-                    ariaCurrentWhenActive="page"
                     (click)="draftData()"
                   >
                     {{ "REQUEST_TIME_OFF.BUTTON.DRAFT_REQUEST" | translate }}
@@ -168,10 +165,7 @@
                     mat-stroked-button
                     type="submit"
                     id="button-submit"
-                    routerLink="/employee"
-                    routerLinkActive="active"
-                    ariaCurrentWhenActive="page"
-                    (click)="saveData(id)"
+                    (click)="saveData()"
                   >
                     {{ "REQUEST_TIME_OFF.BUTTON.SUBMIT_REQUEST" | translate }}
                   </button>

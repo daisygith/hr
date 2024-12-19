@@ -95,7 +95,7 @@ app-request-time-off {
     padding: 10px;
     border-radius: 18px;
     &.approve {
-      background-color: var(--positive-background-element);
+      background-color: var(--positive-status);
     }
     &.reject {
       background-color: var(--negative-border);
@@ -105,6 +105,26 @@ app-request-time-off {
     }
     &.draft {
       border: 1px solid var(--border-app-element);
+    }
+  }
+
+  span.type {
+    padding: 10px;
+    border-radius: 18px;
+    &.sick_leave {
+      background-color: var(--positive-status);
+    }
+    &.annual_leave {
+      background-color: var(--annual-color);
+    }
+    &.paid_time_off {
+      background-color: var(--paid-time-off-color);
+    }
+    &.unpaid_leave {
+      background-color: var(--unpaid-color);
+    }
+    &.casual_leave {
+      background-color: var(--casual-color);
     }
   }
 }

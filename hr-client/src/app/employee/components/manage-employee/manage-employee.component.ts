@@ -17,7 +17,12 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
-import { AsyncPipe, NgIf, NgOptimizedImage } from '@angular/common';
+import {
+  AsyncPipe,
+  LowerCasePipe,
+  NgIf,
+  NgOptimizedImage,
+} from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
@@ -56,6 +61,7 @@ import { AuthService } from '../../../auth/services/auth.service';
     ImageTokenPipe,
     HasRoleDirective,
     NgIf,
+    LowerCasePipe,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',
