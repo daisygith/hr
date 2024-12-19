@@ -221,46 +221,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
         );
       },
     });
-
-    // if (this.isNew) {
-    //   this._employeeService
-    //     .addRequestForEmployee(this.requestTimeOffFormGroup.getRawValue())
-    //     .subscribe({
-    //       next: (data) => {
-    //         this.requestTimeOffFormGroup.patchValue(data);
-    //         this.notification.successMethod(
-    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-    //         );
-    //         this._router.navigateByUrl(
-    //           `/employees/request-time-off/${data.id}`,
-    //         );
-    //       },
-    //       error: (err) => {
-    //         this.notification.errorMethod(
-    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-    //         );
-    //       },
-    //     });
-    // } else {
-    //   this._employeeService
-    //     .updateRequestForEmployeeById(
-    //       this.requestTimeOffFormGroup.getRawValue(),
-    //     )
-    //     .subscribe({
-    //       next: (data) => {
-    //         this.requestTimeOffFormGroup.patchValue(data);
-    //         this.notification.successMethod(
-    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-    //         );
-    //         this.requestById = data;
-    //       },
-    //       error: (err) => {
-    //         this.notification.errorMethod(
-    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-    //         );
-    //       },
-    //     });
-    // }
   }
 
   saveData() {
@@ -284,11 +244,6 @@ export class RequestTimeOffApplicationComponent implements OnInit {
           this._router.navigateByUrl(`/employee`);
         },
       });
-    // this._employeeService.setStatusPendingById(requestId).subscribe({
-    //   next: (value) => {
-    //     this.requestTimeOffFormGroup.patchValue(value);
-    //   },
-    // });
   }
 
   onApproveData(requestId: number | undefined): void {
