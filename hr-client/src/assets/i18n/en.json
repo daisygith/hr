@@ -175,6 +175,7 @@
   "SIDEBAR": {
     "EMPLOYEE": "Employee",
     "DASHBOARD": "Dashboard",
+    "DEPARTMENTS": "Departments",
     "LOGOUT": "Logout",
     "MAIN_MENU": "MAIN MENU",
     "OTHER": "OTHER",

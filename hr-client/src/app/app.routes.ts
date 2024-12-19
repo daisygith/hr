@@ -50,8 +50,19 @@ export const routes: Routes = [
       },
       {
         path: 'users',
+        canActivate: [RoleGuardService],
+        data: { roles: [Role.MODERATOR, Role.ADMIN] },
         loadChildren: () =>
           import('./users/users.routes').then((m) => m.usersRoutes),
+      },
+      {
+        path: 'departments',
+        canActivate: [RoleGuardService],
+        data: { roles: [Role.USER, Role.MODERATOR, Role.ADMIN] },
+        loadChildren: () =>
+          import('./department/department.routes').then(
+            (m) => m.departmentRoutes,
+          ),
       },
     ],
   },

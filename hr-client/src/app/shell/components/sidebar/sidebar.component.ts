@@ -31,6 +31,7 @@ export class SidebarComponent implements OnInit {
   public notification: NotificationService = inject(NotificationService);
 
   public canUsersRoles = [Role.MODERATOR, Role.ADMIN];
+  public canDepartmentsRoles = [Role.USER, Role.MODERATOR, Role.ADMIN];
 
   public imageUrl: string | undefined;
   public user = this._authService.user;
