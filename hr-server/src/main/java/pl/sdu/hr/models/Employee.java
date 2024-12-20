@@ -50,4 +50,6 @@ public class Employee {
 
     private String image;
 
+    private Long departmentId;
+
 }

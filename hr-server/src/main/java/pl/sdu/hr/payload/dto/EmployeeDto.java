@@ -29,4 +29,6 @@ public class EmployeeDto {
 
     private String image;
 
+    private Long departmentId;
+
 }
