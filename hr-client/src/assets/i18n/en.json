@@ -52,6 +52,13 @@
     "REMOVE_OK": "Data deleted successfully",
     "REMOVE_FAIL": "Data cannot be deleted"
   },
+  "DEPARTMENTS": {
+    "BUTTON": {
+      "ADD_DEPARTMENT": "Add department"
+    },
+    "SUBTITLE": "Manage departments",
+    "TITLE": "Departments"
+  },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Add Employee",
     "APPLY_REQUEST_TIME_OFF": "Apply request time off",

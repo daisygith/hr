@@ -52,6 +52,13 @@
     "REMOVE_OK": "Dane usunięto poprawnie",
     "REMOVE_FAIL": "Danych nie można usunąć"
   },
+  "DEPARTMENTS": {
+    "BUTTON": {
+      "ADD_DEPARTMENT": "Dodaj dział"
+    },
+    "SUBTITLE": "Zarządzaj działami",
+    "TITLE": "Działy"
+  },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Dodaj pracownika",
     "APPLY_REQUEST_TIME_OFF": "Złóż wniosek o urlop",
