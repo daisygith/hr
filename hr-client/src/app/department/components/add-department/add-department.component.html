@@ -1,0 +1,58 @@
+<div class="add-department">
+  <div class="add-department-content title">
+    <div class="add-department-content title left">
+      <div class="add-department-icon">
+        <mat-icon class="material-symbols-outlined" id="emp-icon"
+          >person_apron</mat-icon
+        >
+      </div>
+
+      <div class="add-department-title">
+        <div class="line1">{{ "DEPARTMENTS.TITLE" | translate }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-department-content elements">
+    <div class="add-department-content bottom">
+      <div class="elements-title">
+        <div class="title-line1">
+          {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.TITLE" | translate }}
+        </div>
+      </div>
+      <div class="add-department-content info-personal">
+        <div class="info-personal-left">
+          <div class="input-title">
+            {{ "MANAGE_USER.USERNAME" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              type="text"
+              is="name"
+              formControlName="name"
+              [placeholder]="'MANAGE_USER.USERNAME' | translate"
+              id="input-name-personal"
+            />
+          </mat-form-field>
+        </div>
+        <div class="save-changes">
+          <div class="button-save">
+            <!--          <button-->
+            <!--            mat-stroked-button-->
+            <!--            routerLink="/employee"-->
+            <!--            routerLinkActive="active"-->
+            <!--            ariaCurrentWhenActive="page"-->
+            <!--            id="button-save"-->
+            <!--            (click)="saveData()"-->
+            <!--          >-->
+            <!--            {{-->
+            <!--              "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate-->
+            <!--            }}-->
+            <!--          </button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
