@@ -14,7 +14,7 @@
   </div>
 
   <div class="add-department-content elements">
-    <div class="add-department-content bottom">
+    <div class="add-department-content bottom" [formGroup]="addDepartmentGroup">
       <div class="elements-title">
         <div class="title-line1">
           {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.TITLE" | translate }}
@@ -36,21 +36,21 @@
             />
           </mat-form-field>
         </div>
-        <div class="save-changes">
-          <div class="button-save">
-            <!--          <button-->
-            <!--            mat-stroked-button-->
-            <!--            routerLink="/employee"-->
-            <!--            routerLinkActive="active"-->
-            <!--            ariaCurrentWhenActive="page"-->
-            <!--            id="button-save"-->
-            <!--            (click)="saveData()"-->
-            <!--          >-->
-            <!--            {{-->
-            <!--              "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate-->
-            <!--            }}-->
-            <!--          </button>-->
-          </div>
+      </div>
+      <div class="save-changes">
+        <div class="button-save">
+          <button
+            mat-stroked-button
+            routerLink="/departments"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            id="button-save"
+            (click)="saveData()"
+          >
+            {{
+              "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate
+            }}
+          </button>
         </div>
       </div>
     </div>

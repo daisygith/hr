@@ -14,8 +14,16 @@ import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { NgForOf, NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { DepartmentService } from '../../service/department.service';
+import { DepartmentsList } from '../../models/departmentsList';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-add-department',
@@ -40,16 +48,82 @@ import { TranslateModule } from '@ngx-translate/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class AddDepartmentComponent implements OnInit {
-  private _fb: FormBuilder = inject(FormBuilder);
+  id: number | undefined;
+  isNew: boolean = false;
+  department: DepartmentsList | undefined;
 
+  private _fb: FormBuilder = inject(FormBuilder);
+  private _departmentService: DepartmentService = inject(DepartmentService);
+  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  private _router = inject(Router);
+
+  public notification: NotificationService = inject(NotificationService);
   public addDepartmentGroup!: FormGroup;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.id = this._activeRoute.snapshot.params['departmentId'];
+    this.isNew = !this.id;
+    this.buildForm();
+    this.getDepartmentById(this.id);
+  }
 
   public buildForm() {
     this.addDepartmentGroup = this._fb.group({
       id: new FormControl(null),
       name: new FormControl(null, [Validators.required]),
     });
+  }
+
+  getDepartmentById(departmentId: number | undefined): void {
+    if (!departmentId) {
+      return;
+    }
+    this._departmentService
+      .getDepartmentById(departmentId)
+      .subscribe((data) => {
+        this.department = data;
+        this.addDepartmentGroup.patchValue(data);
+      });
+  }
+
+  saveData() {
+    if (this.addDepartmentGroup.invalid) {
+      return;
+    }
+    if (this.isNew) {
+      this._departmentService
+        .addDepartment(this.addDepartmentGroup.getRawValue())
+        .subscribe({
+          next: (data) => {
+            this.addDepartmentGroup.patchValue(data);
+            this.notification.successMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+            );
+            // this._router.navigateByUrl(`/departments/${data.id}`);
+          },
+          error: (err) => {
+            this.notification.errorMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+            );
+          },
+        });
+    } else {
+      this._departmentService
+        .updateDepartment(this.addDepartmentGroup.getRawValue())
+        .subscribe({
+          next: (data) => {
+            this.department = data;
+            this.addDepartmentGroup.patchValue(data);
+            this.notification.successMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
+            );
+          },
+          error: (err) => {
+            this.notification.errorMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+            );
+          },
+        });
+    }
   }
 }
