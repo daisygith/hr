@@ -13,4 +13,13 @@ public class DepartmentMapper {
 
         return departmentDto;
     }
+
+    public static Department mapDepartmentDtoToDepartment(DepartmentDto departmentDto){
+        Department department = Department.builder()
+                .id(departmentDto.getId())
+                .name(departmentDto.getName())
+                .build();
+
+        return department;
+    }
 }
