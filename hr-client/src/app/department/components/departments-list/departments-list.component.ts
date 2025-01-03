@@ -18,7 +18,7 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgOptimizedImage } from '@angular/common';
 import { MatInput } from '@angular/material/input';
-import { DepartmentService } from '../../service/department.service';
+import { DepartmentService } from '../../services/department.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Role } from '../../../auth/models/role';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';

@@ -1,95 +1,84 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { MatOption } from '@angular/material/autocomplete';
-import { MatSelect } from '@angular/material/select';
-import { NgForOf, NgIf } from '@angular/common';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { DepartmentService } from '../../services/department.service';
-import { DepartmentsList } from '../../models/departmentsList';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { ProjectsList } from '../../models/projectsList';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
-  selector: 'app-add-department',
+  selector: 'app-add-project',
   standalone: true,
   imports: [
-    FormsModule,
     MatButton,
     MatFormField,
     MatIcon,
     MatInput,
-    MatOption,
-    MatSelect,
-    NgForOf,
-    NgIf,
     ReactiveFormsModule,
     RouterLink,
-    RouterLinkActive,
     TranslateModule,
+    RouterLinkActive,
   ],
-  templateUrl: './add-department.component.html',
-  styleUrl: './add-department.component.scss',
+  templateUrl: './add-project.component.html',
+  styleUrl: './add-project.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class AddDepartmentComponent implements OnInit {
+export class AddProjectComponent implements OnInit {
   id: number | undefined;
   isNew: boolean = false;
-  department: DepartmentsList | undefined;
+  project: ProjectsList | undefined;
 
   private _fb: FormBuilder = inject(FormBuilder);
-  private _departmentService: DepartmentService = inject(DepartmentService);
+  private _projectService: ProjectService = inject(ProjectService);
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
 
   public notification: NotificationService = inject(NotificationService);
-  public addDepartmentGroup!: FormGroup;
+  public addProjectGroup!: FormGroup;
 
   ngOnInit(): void {
-    this.id = this._activeRoute.snapshot.params['departmentId'];
+    this.id = this._activeRoute.snapshot.params['projectId'];
     this.isNew = !this.id;
     this.buildForm();
-    this.getDepartmentById(this.id);
+    this.getProjectById(this.id);
   }
 
   public buildForm() {
-    this.addDepartmentGroup = this._fb.group({
+    this.addProjectGroup = this._fb.group({
       id: new FormControl(null),
       name: new FormControl(null, [Validators.required]),
     });
   }
 
-  getDepartmentById(departmentId: number | undefined): void {
-    if (!departmentId) {
+  getProjectById(projectId: number | undefined): void {
+    if (!projectId) {
       return;
     }
-    this._departmentService
-      .getDepartmentById(departmentId)
-      .subscribe((data) => {
-        this.department = data;
-        this.addDepartmentGroup.patchValue(data);
-      });
+    this._projectService.getProjectById(projectId).subscribe((data) => {
+      this.project = data;
+      this.addProjectGroup.patchValue(data);
+    });
   }
 
   saveData() {
-    if (this.addDepartmentGroup.invalid) {
+    if (this.addProjectGroup.invalid) {
       return;
     }
     if (this.isNew) {
-      this._departmentService
-        .addDepartment(this.addDepartmentGroup.getRawValue())
+      this._projectService
+        .addProject(this.addProjectGroup.getRawValue())
         .subscribe({
           next: (data) => {
-            this.addDepartmentGroup.patchValue(data);
+            this.addProjectGroup.patchValue(data);
             this.notification.successMethod(
               'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
             );
@@ -102,12 +91,12 @@ export class AddDepartmentComponent implements OnInit {
           },
         });
     } else {
-      this._departmentService
-        .updateDepartment(this.addDepartmentGroup.getRawValue())
+      this._projectService
+        .updateProject(this.addProjectGroup.getRawValue())
         .subscribe({
           next: (data) => {
-            this.department = data;
-            this.addDepartmentGroup.patchValue(data);
+            this.project = data;
+            this.addProjectGroup.patchValue(data);
             this.notification.successMethod(
               'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
             );

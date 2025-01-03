@@ -53,6 +53,14 @@
         <div class="element-title">{{ "SIDEBAR.DEPARTMENTS" | translate }}</div>
       </a>
     </div>
+    <div class="menu-element" *hasRole="canDepartmentsRoles">
+      <a routerLink="/projects" routerLinkActive="active">
+        <mat-icon class="material-symbols-outlined" id="project-icon">
+          workspaces
+        </mat-icon>
+        <div class="element-title">{{ "SIDEBAR.PROJECTS" | translate }}</div>
+      </a>
+    </div>
   </div>
   <div class="sidebar bottom">
     <div class="title-menu">{{ "SIDEBAR.OTHER" | translate }}</div>

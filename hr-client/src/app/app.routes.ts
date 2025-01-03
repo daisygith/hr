@@ -64,6 +64,13 @@ export const routes: Routes = [
             (m) => m.departmentRoutes,
           ),
       },
+      {
+        path: 'projects',
+        canActivate: [RoleGuardService],
+        data: { roles: [Role.USER, Role.MODERATOR, Role.ADMIN] },
+        loadChildren: () =>
+          import('./projects/project.routes').then((m) => m.projectRoutes),
+      },
     ],
   },
   {

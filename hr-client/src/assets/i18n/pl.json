@@ -121,6 +121,14 @@
   "NAVBAR": {
     "SEARCH_HERE": "Szukaj"
   },
+  "PROJECTS": {
+    "BUTTON": {
+      "ADD_DEPARTMENT": "Dodaj projekt"
+    },
+    "NAME": "Nazwa projektu",
+    "SUBTITLE": "Zarządzaj projektami",
+    "TITLE": "Projekty"
+  },
   "REGISTRATION": {
     "BUTTON": {
       "SING_UP": "Zarejestruj się"
@@ -187,6 +195,7 @@
     "LOGOUT": "Wyloguj",
     "MAIN_MENU": "MENU GŁÓWNE",
     "OTHER": "INNE",
+    "PROJECTS": "Projekty",
     "SETTINGS": "Ustawienia",
     "STAFF_LIST": "Lista rzeczy",
     "USERS_LIST": "Użytkownicy"
