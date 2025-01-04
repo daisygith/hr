@@ -83,30 +83,30 @@ export class ProjectsListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openDialog(departmentId: DepartmentsList, e: Event) {
+  openDialog(projectId: ProjectsList, e: Event) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(DialogAnimationComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
-        // this.deleteDepartmentById(departmentId);
+        this.deleteProjectById(projectId);
       }
     });
   }
 
-  // deleteDepartmentById(departmentId: DepartmentsList): void {
-  //   this._departmentService.deleteDepartment(departmentId.id).subscribe(
-  //     () => {
-  //       this.dataSource.data = this.dataSource.data.filter(
-  //         (item) => item !== departmentId,
-  //       );
-  //       this.notification.successMethod('DATA.REMOVE_OK');
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     },
-  //   );
-  // }
+  deleteProjectById(projectId: ProjectsList): void {
+    this._projectService.deleteProject(projectId.id).subscribe(
+      () => {
+        this.dataSource.data = this.dataSource.data.filter(
+          (item) => item !== projectId,
+        );
+        this.notification.successMethod('DATA.REMOVE_OK');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  }
 
   onRowCLick(row: DepartmentsList) {
     if (!this._authService.hasRole(this.canSeeDetailsEmployee)) {
