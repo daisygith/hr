@@ -9,6 +9,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -51,5 +54,11 @@ public class Employee {
     private String image;
 
     private Long departmentId;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(  name = "project_employees",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private Set<Project> projectEmployees = new HashSet<>();
 
 }

@@ -2,11 +2,11 @@ export interface Task {
   id: number;
   name: string;
   status: string;
-  describe: string;
+  description: string;
   employeeId: number;
-  estimatedWorkTime: string;
-  estimatedWorkTimeEnd: string;
+  estimatedWorkTime: Date;
+  estimatedTaskTimeEnd: Date;
   startDate: Date;
-  priority: string;
-  typeOfExercise: string;
+  priorityStatus: string;
+  typeTask: string;
 }

@@ -1,5 +1,8 @@
 package pl.sdu.hr.models;
 
 public enum ETaskStatus {
-    NEW
+    NEW,
+    PRIORITY,
+    WORK_IN_PROGRESS,
+    DONE
 }

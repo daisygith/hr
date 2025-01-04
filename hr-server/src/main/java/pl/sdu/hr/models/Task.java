@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -26,6 +28,24 @@ public class Task {
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private ETaskStatus status;
+
+    private String description;
+
+    private Long employeeId;
+
+    private LocalDateTime estimatedWorkTime;
+
+    private LocalDateTime estimatedTaskTimeEnd;
+
+    private LocalDateTime startDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private EPriorityStatus priorityStatus;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ETypeTask typeTask;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
