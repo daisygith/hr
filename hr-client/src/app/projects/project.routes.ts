@@ -18,8 +18,8 @@ export const projectRoutes: Routes = [
   {
     path: ':projectId',
     loadComponent: () =>
-      import('./components/add-project/add-project.component').then(
-        (m) => m.AddProjectComponent,
+      import('./components/manage-project/manage-project.component').then(
+        (m) => m.ManageProjectComponent,
       ),
   },
 ];

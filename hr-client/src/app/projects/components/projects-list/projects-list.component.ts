@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Role } from '../../../auth/models/role';
 import { NotificationService } from '../../../shared/services/notification.service';
-import { DepartmentService } from '../../../department/services/department.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -27,6 +26,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatMiniFabButton } from '@angular/material/button';
 import { ProjectsList } from '../../models/projectsList';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-projects-list',
@@ -59,7 +59,7 @@ export class ProjectsListComponent implements OnInit {
   public canSeeDetailsEmployee = [Role.ADMIN];
   public notification: NotificationService = inject(NotificationService);
 
-  private _departmentService: DepartmentService = inject(DepartmentService);
+  private _projectService: ProjectService = inject(ProjectService);
   private _authService = inject(AuthService);
   private _router: Router = inject(Router);
 
@@ -69,14 +69,14 @@ export class ProjectsListComponent implements OnInit {
   displayedColumns = ['name', 'actions'];
 
   ngOnInit(): void {
-    // this.getDepartments();
+    this.getProjects();
   }
 
-  // getDepartments(): void {
-  //   this._departmentService.getDepartments().subscribe({
-  //     next: (value) => (this.dataSource.data = value),
-  //   });
-  // }
+  getProjects(): void {
+    this._projectService.getProjects().subscribe({
+      next: (value) => (this.dataSource.data = value),
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

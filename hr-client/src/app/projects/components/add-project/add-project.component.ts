@@ -90,23 +90,24 @@ export class AddProjectComponent implements OnInit {
             );
           },
         });
-    } else {
-      this._projectService
-        .updateProject(this.addProjectGroup.getRawValue())
-        .subscribe({
-          next: (data) => {
-            this.project = data;
-            this.addProjectGroup.patchValue(data);
-            this.notification.successMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
-            );
-          },
-          error: (err) => {
-            this.notification.errorMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-            );
-          },
-        });
     }
+    // else {
+    //   this._projectService
+    //     .updateProject(this.addProjectGroup.getRawValue())
+    //     .subscribe({
+    //       next: (data) => {
+    //         this.project = data;
+    //         this.addProjectGroup.patchValue(data);
+    //         this.notification.successMethod(
+    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
+    //         );
+    //       },
+    //       error: (err) => {
+    //         this.notification.errorMethod(
+    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+    //         );
+    //       },
+    //     });
+    // }
   }
 }
