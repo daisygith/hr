@@ -1,11 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Inject,
   inject,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import {
+  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
@@ -80,6 +82,8 @@ export class AddTaskComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
   }
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { projectId: number }) {}
 
   public statusOption: string[] = [
     'NEW',

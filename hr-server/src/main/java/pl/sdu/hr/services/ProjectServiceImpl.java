@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdu.hr.mappers.ProjectMapper;
+import pl.sdu.hr.mappers.TaskMapper;
 import pl.sdu.hr.models.Project;
+import pl.sdu.hr.models.Task;
 import pl.sdu.hr.payload.dto.ProjectDto;
+import pl.sdu.hr.payload.dto.TaskDto;
 import pl.sdu.hr.repository.ProjectRepository;
+import pl.sdu.hr.repository.TaskRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +19,9 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService{
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private TaskRepository taskRepository;
 
     @Override
     public List<ProjectDto> findAllProjects() {
@@ -53,5 +60,18 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public void deleteProjectById(Long projectId) {
         projectRepository.deleteById(projectId);
+    }
+
+    @Transactional
+    @Override
+    public TaskDto createTask (TaskDto taskDto, Long projectId){
+
+        Task task = TaskMapper.mapTaskDtoToTask(taskDto);
+
+        taskRepository.save(task);
+
+        TaskDto taskListDto = TaskMapper.mapTaskToTaskDto(task);
+
+        return taskListDto;
     }
 }

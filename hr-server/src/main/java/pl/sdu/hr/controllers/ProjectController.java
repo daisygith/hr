@@ -3,6 +3,7 @@ package pl.sdu.hr.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.sdu.hr.payload.dto.ProjectDto;
+import pl.sdu.hr.payload.dto.TaskDto;
 import pl.sdu.hr.payload.response.MessageResponse;
 import pl.sdu.hr.services.ProjectService;
 
@@ -45,4 +46,13 @@ public class ProjectController {
 
         return new MessageResponse("Delete project id" + projectId);
     }
+
+    @PostMapping("/{projectId}/tasks")
+    public TaskDto addTask(@RequestBody TaskDto taskDto, @PathVariable("projectId") Long projectId){
+        TaskDto dbTask = projectService.createTask(taskDto, projectId);
+
+        return dbTask;
+
+    }
+
 }
