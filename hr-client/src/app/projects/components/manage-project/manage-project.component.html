@@ -24,17 +24,17 @@
       <mat-tab-group mat-stretch-tabs="false">
         <mat-tab class="manage-employee">
           <ng-template mat-tab-label>
-            <mat-icon id="manage-icon">manage_accounts</mat-icon>
-            {{ "EMPLOYEE.MANAGE_EMPLOYEE" | translate }}
+            <mat-icon id="manage-icon">task</mat-icon>
+            Zarządzaj zadaniami
           </ng-template>
           <div class="list-content">
-            <!--            <app-manage-employee></app-manage-employee>-->
+            <app-dashboard-task />
           </div>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>
-            <mat-icon id="request-icon">person_check</mat-icon>
-            {{ "EMPLOYEE.REQUEST_TIME_OFF" | translate }}
+            <mat-icon id="request-icon">person_add</mat-icon>
+            Zarządzaj pracownikami
           </ng-template>
           <div class="list-content">
             <!--            <app-request-time-off></app-request-time-off>-->

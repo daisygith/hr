@@ -1,0 +1,31 @@
+app-dashboard-task {
+  .list-toolbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 10px 0;
+  }
+
+  .list-title {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 0 6px 0;
+  }
+  .table-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .mat-mdc-table .mat-mdc-header-cell:first-child {
+    border-bottom-left-radius: 0px;
+  }
+  .mat-mdc-table .mat-mdc-header-cell:last-child {
+    border-bottom-right-radius: 0px;
+  }
+  .mat-mdc-header-cell {
+    text-align: center;
+  }
+}

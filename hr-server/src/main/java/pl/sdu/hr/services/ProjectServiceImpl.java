@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProjectServiceImpl implements ProjectService{
+public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
@@ -46,7 +46,7 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Transactional
     @Override
-    public ProjectDto createProject(ProjectDto projectDto){
+    public ProjectDto createProject(ProjectDto projectDto) {
         Project project = ProjectMapper.mapProjectDtoToProject(projectDto);
 
         projectRepository.save(project);
@@ -64,7 +64,7 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Transactional
     @Override
-    public TaskDto createTask (TaskDto taskDto, Long projectId){
+    public TaskDto createTask(TaskDto taskDto, Long projectId) {
 
         Task task = TaskMapper.mapTaskDtoToTask(taskDto);
 
@@ -72,6 +72,18 @@ public class ProjectServiceImpl implements ProjectService{
 
         TaskDto taskListDto = TaskMapper.mapTaskToTaskDto(task);
 
+        return taskListDto;
+    }
+
+    @Override
+    public List<TaskDto> findAllTasks(Long projectId) {
+
+        List<Task> taskList = taskRepository.findAll();
+        List<TaskDto> taskListDto = new ArrayList<>();
+
+        taskList.forEach((Task item) -> {
+            taskListDto.add(TaskMapper.mapTaskToTaskDto(item));
+        });
         return taskListDto;
     }
 }

@@ -92,14 +92,18 @@ export class AddTaskComponent implements OnInit {
     'DONE',
   ];
 
+  public priorityOption: string[] = ['NORMAL', 'HIGH', 'LOW'];
+
+  public typeTaskOption: string[] = ['NORMAL', 'FAULT'];
+
   public buildForm() {
     this.addTaskGroup = this._fb.group({
-      id: new FormControl(null),
+      id: new FormControl(''),
       name: new FormControl(null),
       status: new FormControl(null),
       description: new FormControl(null),
       employeeId: new FormControl(null),
-      projectId: new FormControl(null),
+      projectId: new FormControl(this.data.projectId),
       estimatedWorkTime: new Date(),
       estimatedTaskTimeEnd: new Date(),
       startDate: new Date(),

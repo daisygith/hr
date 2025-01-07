@@ -36,7 +36,7 @@ export class ProjectService {
   //manage-project
 
   //task
-  getTasks(projectId: number): Observable<Task[]> {
+  getTasks(projectId: number | undefined): Observable<Task[]> {
     return this._http.get<Task[]>(`${this._apiUrl}/${projectId}/tasks`);
   }
 

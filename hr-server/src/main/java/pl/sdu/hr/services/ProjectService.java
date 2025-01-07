@@ -17,5 +17,7 @@ public interface ProjectService {
     //task
 
     TaskDto createTask(TaskDto taskDto, Long projectId);
+
+    List<TaskDto> findAllTasks(Long projectId);
 }
 

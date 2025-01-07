@@ -11,6 +11,7 @@ import { ProjectService } from '../../services/project.service';
 import { ProjectsList } from '../../models/projectsList';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
+import { DashboardTaskComponent } from '../dashboard-task/dashboard-task.component';
 
 @Component({
   selector: 'app-manage-project',
@@ -26,6 +27,7 @@ import { AddTaskComponent } from '../add-task/add-task.component';
     RouterLinkActive,
     MatTabGroup,
     MatTabLabel,
+    DashboardTaskComponent,
   ],
   templateUrl: './manage-project.component.html',
   styleUrl: './manage-project.component.scss',
