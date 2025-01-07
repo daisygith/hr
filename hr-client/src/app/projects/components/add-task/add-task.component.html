@@ -1,0 +1,121 @@
+<div class="add-task-title">
+  <h2 mat-dialog-title>Dodaj nowe zadanie</h2>
+  <button mat-button mat-dialog-close (click)="onNoClick()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="add-task-content" [formGroup]="addTaskGroup">
+  <div class="input-task-left">
+    <div class="add-task-box">
+      <div class="add-task-title">Nazwa zadania</div>
+      <mat-form-field class="input-full-width">
+        <input
+          matInput
+          type="text"
+          is="name"
+          formControlName="name"
+          [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"
+          id="input-name"
+        />
+      </mat-form-field>
+    </div>
+    <div class="add-task-box">
+      <div class="add-task-title">Status</div>
+      <mat-form-field class="input-full-width">
+        <mat-select type="text" is="status" formControlName="status">
+          <mat-option *ngFor="let status of statusOption" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="add-task-box">
+      <div class="add-task-title">Opis</div>
+      <mat-form-field class="input-full-width">
+        <input
+          matInput
+          type="text"
+          is="name"
+          formControlName="description"
+          [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"
+          id="input-description"
+        />
+      </mat-form-field>
+    </div>
+    <div class="add-task-box">
+      <div class="add-task-title">Pracownik</div>
+      <mat-form-field class="input-full-width">
+        <input
+          matInput
+          type="text"
+          is="name"
+          formControlName="description"
+          [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"
+          id="input-employee"
+        />
+      </mat-form-field>
+    </div>
+    <div class="add-task-box">
+      <div class="add-task-title">Średni czas pracy</div>
+      <mat-form-field class="input-full-width">
+        <input
+          matInput
+          type="text"
+          is="estimatedWorkTime"
+          formControlName="estimatedWorkTime"
+          [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"
+          id="input-estimatedWorkTime"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="input-task-right">
+    <div class="add-task-box">
+      <div class="add-task-title">Średni czas zakończenia zadania</div>
+      <mat-form-field class="input-full-width">
+        <input
+          matInput
+          type="text"
+          is="estimatedTaskTimeEnd"
+          formControlName="estimatedTaskTimeEnd"
+          [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"
+          id="input-estimatedTaskTimeEnd"
+        />
+      </mat-form-field>
+    </div>
+    <div class="add-task-box">
+      <div class="add-task-title">Data początkowa</div>
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="startDate" />
+        <mat-datepicker-toggle matIconSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="add-task-box">
+      <div class="add-task-title">priorityStatus</div>
+      <mat-form-field class="input-full-width">
+        <mat-select type="text" is="status" formControlName="status">
+          <mat-option *ngFor="let status of statusOption" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="add-task-box">
+      <div class="add-task-title">Typ zadania</div>
+      <mat-form-field class="input-full-width">
+        <mat-select type="text" is="status" formControlName="status">
+          <mat-option *ngFor="let status of statusOption" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close id="button-save" (click)="saveData()">
+    Zapisz
+  </button>
+</mat-dialog-actions>

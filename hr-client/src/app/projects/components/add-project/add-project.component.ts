@@ -10,7 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { ProjectsList } from '../../models/projectsList';
@@ -34,22 +34,17 @@ import { ProjectService } from '../../services/project.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class AddProjectComponent implements OnInit {
-  id: number | undefined;
-  isNew: boolean = false;
   project: ProjectsList | undefined;
 
   private _fb: FormBuilder = inject(FormBuilder);
   private _projectService: ProjectService = inject(ProjectService);
-  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  private _router = inject(Router);
 
   public notification: NotificationService = inject(NotificationService);
   public addProjectGroup!: FormGroup;
 
   ngOnInit(): void {
-    this.id = this._activeRoute.snapshot.params['projectId'];
-    this.isNew = !this.id;
     this.buildForm();
-    this.getProjectById(this.id);
   }
 
   public buildForm() {
@@ -59,55 +54,25 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
-  getProjectById(projectId: number | undefined): void {
-    if (!projectId) {
-      return;
-    }
-    this._projectService.getProjectById(projectId).subscribe((data) => {
-      this.project = data;
-      this.addProjectGroup.patchValue(data);
-    });
-  }
-
   saveData() {
     if (this.addProjectGroup.invalid) {
       return;
     }
-    if (this.isNew) {
-      this._projectService
-        .addProject(this.addProjectGroup.getRawValue())
-        .subscribe({
-          next: (data) => {
-            this.addProjectGroup.patchValue(data);
-            this.notification.successMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-            );
-            // this._router.navigateByUrl(`/departments/${data.id}`);
-          },
-          error: (err) => {
-            this.notification.errorMethod(
-              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-            );
-          },
-        });
-    }
-    // else {
-    //   this._projectService
-    //     .updateProject(this.addProjectGroup.getRawValue())
-    //     .subscribe({
-    //       next: (data) => {
-    //         this.project = data;
-    //         this.addProjectGroup.patchValue(data);
-    //         this.notification.successMethod(
-    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
-    //         );
-    //       },
-    //       error: (err) => {
-    //         this.notification.errorMethod(
-    //           'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-    //         );
-    //       },
-    //     });
-    // }
+    this._projectService
+      .addProject(this.addProjectGroup.getRawValue())
+      .subscribe({
+        next: (data) => {
+          this.addProjectGroup.patchValue(data);
+          this.notification.successMethod(
+            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+          );
+          this._router.navigateByUrl(`/projects`);
+        },
+        error: (err) => {
+          this.notification.errorMethod(
+            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+          );
+        },
+      });
   }
 }

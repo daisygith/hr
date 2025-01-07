@@ -83,12 +83,15 @@ body {
   border-radius: 6px;
   background-color: var(--background-element);
 }
-//todo dodac reszte z menu
+
 .active mat-icon#dashboard-icon,
 .active mat-icon#staff_list-icon,
 .active mat-icon#groups-icon,
 .active mat-icon#settings-icon,
-.active mat-icon#logout-icon {
+.active mat-icon#logout-icon,
+.active mat-icon#users-list-icon,
+.active mat-icon#department-icon,
+.active mat-icon#project-icon {
   color: var(--button-app-color);
 }
 .active div {
