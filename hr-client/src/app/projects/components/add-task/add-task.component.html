@@ -20,16 +20,6 @@
       </mat-form-field>
     </div>
     <div class="add-task-box">
-      <div class="add-task-title">Status</div>
-      <mat-form-field class="input-full-width">
-        <mat-select type="text" is="status" formControlName="status">
-          <mat-option *ngFor="let status of statusOption" [value]="status">
-            {{ status }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="add-task-box">
       <div class="add-task-title">Opis</div>
       <mat-form-field class="input-full-width">
         <input
@@ -42,19 +32,19 @@
         />
       </mat-form-field>
     </div>
-    <!--    <div class="add-task-box">-->
-    <!--      <div class="add-task-title">Pracownik</div>-->
-    <!--      <mat-form-field class="input-full-width">-->
-    <!--        <input-->
-    <!--          matInput-->
-    <!--          type="text"-->
-    <!--          is="name"-->
-    <!--          formControlName="employeeId"-->
-    <!--          [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"-->
-    <!--          id="input-employee"-->
-    <!--        />-->
-    <!--      </mat-form-field>-->
-    <!--    </div>-->
+    <div class="add-task-box">
+      <div class="add-task-title">Pracownik</div>
+      <mat-form-field class="input-full-width">
+        <input
+          matInput
+          type="text"
+          is="name"
+          formControlName="employeeId"
+          [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.NAME' | translate"
+          id="input-employee"
+        />
+      </mat-form-field>
+    </div>
     <div class="add-task-box">
       <div class="add-task-title">Średni czas pracy</div>
       <mat-form-field class="input-full-width">
@@ -68,6 +58,20 @@
         />
       </mat-form-field>
     </div>
+    <div *ngIf="task?.id != null; then option1; else option2"></div>
+    <ng-template #option1>
+      <div class="add-task-box">
+        <div class="add-task-title">Status</div>
+        <mat-form-field class="input-full-width">
+          <mat-select type="text" is="status" formControlName="status">
+            <mat-option *ngFor="let status of statusOption" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-template>
+    <ng-template #option2></ng-template>
   </div>
   <div class="input-task-right">
     <div class="add-task-box">

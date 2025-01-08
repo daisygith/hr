@@ -27,7 +27,7 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import {
   MatDatepicker,
   MatDatepickerInput,
@@ -35,7 +35,10 @@ import {
 } from '@angular/material/datepicker';
 import { ProjectService } from '../../services/project.service';
 import { NotificationService } from '../../../shared/services/notification.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectsList } from '../../models/projectsList';
+import { Task } from '../../models/task';
+import { ProjectManagementService } from '../../services/project-management.service';
 
 @Component({
   selector: 'app-add-task',
@@ -59,6 +62,7 @@ import { Router } from '@angular/router';
     MatDatepickerInput,
     MatFormFieldModule,
     MatInputModule,
+    NgIf,
   ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss',
@@ -69,10 +73,19 @@ export class AddTaskComponent implements OnInit {
   private _fb: FormBuilder = inject(FormBuilder);
   private _projectService: ProjectService = inject(ProjectService);
   private _router = inject(Router);
+  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  private _projectManagementService: ProjectManagementService = inject(
+    ProjectManagementService,
+  );
 
   public notification: NotificationService = inject(NotificationService);
 
   public addTaskGroup!: FormGroup;
+
+  isNew: boolean = false;
+
+  task!: Task;
+  project!: ProjectsList;
 
   readonly dialogRef = inject(MatDialogRef<AddTaskComponent>);
   onNoClick(): void {
@@ -81,9 +94,15 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    if (this.data.projectId && this.data.taskId) {
+      this.getTaskById(this.data.projectId, this.data.taskId);
+    }
+    this.isNew = !this.data.taskId;
   }
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { projectId: number }) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { projectId: number; taskId: number },
+  ) {}
 
   public statusOption: string[] = ['NEW', 'WORK_IN_PROGRESS', 'DONE'];
 
@@ -93,7 +112,7 @@ export class AddTaskComponent implements OnInit {
 
   public buildForm() {
     this.addTaskGroup = this._fb.group({
-      id: new FormControl(''),
+      id: new FormControl(null),
       name: new FormControl(null),
       status: new FormControl(null),
       description: new FormControl(null),
@@ -107,21 +126,52 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
+  getTaskById(projectId: number, taskId: number) {
+    this._projectService.getTaskById(projectId, taskId).subscribe((el) => {
+      this.task = el;
+      this.addTaskGroup.patchValue(el);
+    });
+  }
+
   saveData() {
     if (this.addTaskGroup.invalid) {
       return;
     }
-    this._projectService.addTask(this.addTaskGroup.getRawValue()).subscribe({
-      next: (data) => {
-        this.addTaskGroup.patchValue(data);
-        this.notification.successMethod('ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK');
-        this._router.navigateByUrl(`/projects/${data.id}`);
-      },
-      error: (err) => {
-        this.notification.errorMethod(
-          'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-        );
-      },
-    });
+    if (this.isNew) {
+      this._projectService.addTask(this.addTaskGroup.getRawValue()).subscribe({
+        next: (data) => {
+          this.addTaskGroup.patchValue(data);
+          this.notification.successMethod(
+            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+          );
+          this._projectManagementService.refreshTasks();
+          this._router.navigateByUrl(`/projects/${this.project.id}`);
+        },
+        error: (err) => {
+          this.notification.errorMethod(
+            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+          );
+        },
+      });
+    } else {
+      this._projectService
+        .updateTaskById(this.addTaskGroup.getRawValue())
+        .subscribe({
+          next: (data) => {
+            this.task = data;
+            this.addTaskGroup.patchValue(data);
+            this.notification.successMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
+            );
+            this._projectManagementService.refreshTasks();
+            this._router.navigateByUrl(`/projects/${this.project.id}`);
+          },
+          error: (err) => {
+            this.notification.errorMethod(
+              'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+            );
+          },
+        });
+    }
   }
 }

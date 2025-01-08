@@ -51,9 +51,19 @@ export class ProjectService {
     );
   }
 
-  deleteTaskById(projectId: number, taskId: number): Observable<void> {
+  deleteTaskById(
+    projectId: number | undefined,
+    taskId: number,
+  ): Observable<void> {
     return this._http.delete<void>(
       `${this._apiUrl}/${projectId}/tasks/${taskId}`,
+    );
+  }
+
+  updateTaskById(task: Task): Observable<Task> {
+    return this._http.put<Task>(
+      `${this._apiUrl}/${task.projectId}/tasks/${task.id}`,
+      task,
     );
   }
 }

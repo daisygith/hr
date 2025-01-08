@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdu.hr.mappers.ProjectMapper;
 import pl.sdu.hr.mappers.TaskMapper;
+import pl.sdu.hr.models.ETaskStatus;
 import pl.sdu.hr.models.Project;
 import pl.sdu.hr.models.Task;
 import pl.sdu.hr.payload.dto.ProjectDto;
@@ -68,6 +69,7 @@ public class ProjectServiceImpl implements ProjectService {
         Project project = projectRepository.findById(projectId).orElseThrow();
 
         Task task = TaskMapper.mapTaskDtoToTask(taskDto);
+        task.setStatus(ETaskStatus.NEW);
         task.setProject(project);
 
         taskRepository.save(task);
@@ -103,4 +105,21 @@ public class ProjectServiceImpl implements ProjectService {
 
         return taskDto;
     }
+
+    @Transactional
+    @Override
+    public TaskDto updateTask(TaskDto taskDto, Long projectId) {
+        Project project = projectRepository.findById(projectId).orElseThrow();
+
+        Task task = TaskMapper.mapTaskDtoToTask(taskDto);
+        task.setProject(project);
+
+        taskRepository.save(task);
+
+        TaskDto taskListDto = TaskMapper.mapTaskToTaskDto(task);
+
+        return taskListDto;
+    }
+
+
 }

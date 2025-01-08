@@ -60,6 +60,13 @@ public class ProjectController {
         return projectService.findTasksByProjectId(projectId);
     }
 
+    @GetMapping("/{projectId}/tasks/{taskId}")
+    public TaskDto findTaskById(@PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId) throws Exception{
+        TaskDto taskDto = projectService.findTaskById(taskId);
+
+        return taskDto;
+    }
+
     @DeleteMapping("/{projectId}/tasks/{taskId}")
     public MessageResponse deleteTaskById(@PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId) throws Exception {
         TaskDto tempTask = projectService.findTaskById(taskId);
@@ -72,4 +79,11 @@ public class ProjectController {
             return new MessageResponse("Delete task by id" + taskId);
     }
 
+    @PutMapping("/{projectId}/tasks/{taskId}")
+    public TaskDto updateTaskById(@RequestBody TaskDto taskDto, @PathVariable("projectId") Long projectId, @PathVariable String taskId){
+        TaskDto dbTask = projectService.updateTask(taskDto, projectId);
+
+        return dbTask;
+
+    }
 }

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   MatCell,
   MatCellDef,
@@ -20,10 +20,11 @@ import { DatePipe, LowerCasePipe, NgForOf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatMiniFabButton } from '@angular/material/button';
-import { ProjectsList } from '../../models/projectsList';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { AddTaskComponent } from '../add-task/add-task.component';
+import { ProjectManagementService } from '../../services/project-management.service';
 
 @Component({
   selector: 'app-dashboard-task',
@@ -55,6 +56,10 @@ import { NotificationService } from '../../../shared/services/notification.servi
 export class DashboardTaskComponent implements OnInit {
   private _projectService: ProjectService = inject(ProjectService);
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  private _router = inject(Router);
+  private _projectManagementService: ProjectManagementService = inject(
+    ProjectManagementService,
+  );
   public notification: NotificationService = inject(NotificationService);
 
   readonly dialog = inject(MatDialog);
@@ -62,8 +67,6 @@ export class DashboardTaskComponent implements OnInit {
   tasksMap: Map<string, Task[]> = new Map<string, Task[]>();
 
   id: number | undefined;
-
-  project!: ProjectsList;
 
   ngOnInit(): void {
     this.id = +this._activeRoute.snapshot.params['projectId'];
@@ -74,6 +77,11 @@ export class DashboardTaskComponent implements OnInit {
       }
     });
     this.getTasks(this.id);
+    this._projectManagementService.refreshTasks$.subscribe({
+      next: () => {
+        this.getTasks(this.id);
+      },
+    });
   }
 
   getTasks(projectId: number | undefined): void {
@@ -91,21 +99,33 @@ export class DashboardTaskComponent implements OnInit {
     });
   }
 
-  openDialog(projectId: number, taskId: Task, e: Event) {
+  openDialog(projectId: number | undefined, taskId: Task, e: Event) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(DialogAnimationComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
-        this.deleteTaskById(projectId, taskId);
+        this.deleteTaskById(this.id, taskId);
       }
     });
   }
 
-  deleteTaskById(projectId: number, taskId: Task): void {
-    this._projectService.deleteTaskById(projectId, taskId.id).subscribe(
+  openDialogEdit(taskId: number) {
+    // e.stopPropagation();
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      data: { projectId: this.id, taskId: taskId },
+      height: '650px',
+      width: '900px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
+
+  deleteTaskById(projectId: number | undefined, taskId: Task): void {
+    this._projectService.deleteTaskById(this.id, taskId.id).subscribe(
       () => {
         this.notification.successMethod('DATA.REMOVE_OK');
+        this._router.navigateByUrl(`/projects/${this.id}`);
       },
       (error) => {
         console.log(error);

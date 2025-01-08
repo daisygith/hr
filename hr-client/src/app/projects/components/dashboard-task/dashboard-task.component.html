@@ -11,10 +11,18 @@
         <br />
         {{ task.startDate | date: "YYYY-MM-dd" }}
         <div class="button-action">
-          <button mat-mini-fab id="button-edit">
+          <button
+            mat-mini-fab
+            id="button-edit"
+            (click)="openDialogEdit(task.id)"
+          >
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-mini-fab id="button-delete">
+          <button
+            mat-mini-fab
+            id="button-delete"
+            (click)="openDialog(this.id, task, $event)"
+          >
             <mat-icon>delete</mat-icon>
           </button>
         </div>
@@ -29,13 +37,17 @@
         <br />
         {{ task.startDate | date: "YYYY-MM-dd" }}
         <div class="button-action">
-          <button mat-mini-fab id="button-edit">
+          <button
+            mat-mini-fab
+            id="button-edit"
+            (click)="openDialogEdit(task.id)"
+          >
             <mat-icon>edit</mat-icon>
           </button>
           <button
             mat-mini-fab
             id="button-delete"
-            (click)="openDialog(project, task, $event)"
+            (click)="openDialog(this.id, task, $event)"
           >
             <mat-icon>delete</mat-icon>
           </button>
@@ -51,13 +63,17 @@
         <br />
         {{ task.startDate | date: "YYYY-MM-dd" }}
         <div class="button-action">
-          <button mat-mini-fab id="button-edit">
+          <button
+            mat-mini-fab
+            id="button-edit"
+            (click)="openDialogEdit(task.id)"
+          >
             <mat-icon>edit</mat-icon>
           </button>
           <button
             mat-mini-fab
             id="button-delete"
-            (click)="openDialog(project, task, $event)"
+            (click)="openDialog(this.id, task, $event)"
           >
             <mat-icon>delete</mat-icon>
           </button>

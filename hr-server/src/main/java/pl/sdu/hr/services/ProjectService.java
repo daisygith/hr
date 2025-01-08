@@ -23,5 +23,7 @@ public interface ProjectService {
     void deleteTaskById(Long projectId, Long taskId);
 
     TaskDto findTaskById(Long taskId) throws Exception;
+
+    TaskDto updateTask(TaskDto taskDto, Long projectId);
 }
 
