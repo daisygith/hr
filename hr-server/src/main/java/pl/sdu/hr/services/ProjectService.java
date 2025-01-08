@@ -19,5 +19,9 @@ public interface ProjectService {
     TaskDto createTask(TaskDto taskDto, Long projectId);
 
     List<TaskDto> findTasksByProjectId(Long projectId);
+
+    void deleteTaskById(Long projectId, Long taskId);
+
+    TaskDto findTaskById(Long taskId) throws Exception;
 }
 

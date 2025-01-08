@@ -5,46 +5,64 @@
 <div class="dashboard-task-content">
   <div class="task-table">
     <div class="task-table-title">Oczekujące</div>
-    <div class="task-table-content new">
-      <ng-container *ngFor="let task of tasksMap.get('NEW')">
+    <ng-container *ngFor="let task of tasksMap.get('NEW')">
+      <div class="task-table-content new">
         {{ task.name }}
         <br />
         {{ task.startDate | date: "YYYY-MM-dd" }}
-      </ng-container>
-      <div class="button-action">
-        <button mat-mini-fab id="button-edit">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-mini-fab id="button-delete">
-          <mat-icon>delete</mat-icon>
-        </button>
+        <div class="button-action">
+          <button mat-mini-fab id="button-edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab id="button-delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
   <div class="task-table">
     <div class="task-table-title">W toku</div>
-    <div class="task-table-content workInProgress">
-      <ng-container *ngFor="let task of tasksMap.get('WORK_IN_PROGRESS')">
+    <ng-container *ngFor="let task of tasksMap.get('WORK_IN_PROGRESS')">
+      <div class="task-table-content workInProgress">
         {{ task.name }}
         <br />
         {{ task.startDate | date: "YYYY-MM-dd" }}
-      </ng-container>
-      <div class="button-action">
-        <button mat-mini-fab id="button-edit">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-mini-fab id="button-delete">
-          <mat-icon>delete</mat-icon>
-        </button>
+        <div class="button-action">
+          <button mat-mini-fab id="button-edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            id="button-delete"
+            (click)="openDialog(project, task, $event)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
   <div class="task-table">
     <div class="task-table-title">Skończone</div>
-    <div class="task-table-content done">
-      <ng-container *ngFor="let task of tasksMap.get('DONE')">
+    <ng-container *ngFor="let task of tasksMap.get('DONE')">
+      <div class="task-table-content done">
         {{ task.name }}
-      </ng-container>
-    </div>
+        <br />
+        {{ task.startDate | date: "YYYY-MM-dd" }}
+        <div class="button-action">
+          <button mat-mini-fab id="button-edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            id="button-delete"
+            (click)="openDialog(project, task, $event)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>

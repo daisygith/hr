@@ -39,7 +39,7 @@ public class ProjectController {
         ProjectDto tempProject = projectService.findProjectById(projectId);
 
         if(tempProject == null) {
-            throw new RuntimeException("Project is not fount " + projectId);
+            throw new RuntimeException("Project is not fountd " + projectId);
         }
 
         projectService.deleteProjectById(projectId);
@@ -58,6 +58,18 @@ public class ProjectController {
     @GetMapping("/{projectId}/tasks")
     public List<TaskDto> findAllTasks(@PathVariable("projectId") Long projectId) {
         return projectService.findTasksByProjectId(projectId);
+    }
+
+    @DeleteMapping("/{projectId}/tasks/{taskId}")
+    public MessageResponse deleteTaskById(@PathVariable("projectId") Long projectId, @PathVariable("taskId") Long taskId) throws Exception {
+        TaskDto tempTask = projectService.findTaskById(taskId);
+
+        if(tempTask == null) {
+            throw new RuntimeException("Project is not found" + taskId);
+        }
+            projectService.deleteTaskById(projectId,taskId);
+
+            return new MessageResponse("Delete task by id" + taskId);
     }
 
 }

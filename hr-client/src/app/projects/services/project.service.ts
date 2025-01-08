@@ -50,4 +50,10 @@ export class ProjectService {
       task,
     );
   }
+
+  deleteTaskById(projectId: number, taskId: number): Observable<void> {
+    return this._http.delete<void>(
+      `${this._apiUrl}/${projectId}/tasks/${taskId}`,
+    );
+  }
 }

@@ -88,4 +88,19 @@ public class ProjectServiceImpl implements ProjectService {
         });
         return taskListDto;
     }
+
+    @Transactional
+    @Override
+    public void deleteTaskById(Long projectId, Long taskId){
+        taskRepository.deleteById(taskId);
+    }
+
+    @Override
+    public TaskDto findTaskById(Long takId) throws Exception {
+        Task task = taskRepository.findById(takId).orElseThrow();
+
+        TaskDto taskDto = TaskMapper.mapTaskToTaskDto(task);
+
+        return taskDto;
+    }
 }

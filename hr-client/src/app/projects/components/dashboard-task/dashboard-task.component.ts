@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   MatCell,
   MatCellDef,
@@ -20,6 +20,10 @@ import { DatePipe, LowerCasePipe, NgForOf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatMiniFabButton } from '@angular/material/button';
+import { ProjectsList } from '../../models/projectsList';
+import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
+import { MatDialog } from '@angular/material/dialog';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-dashboard-task',
@@ -51,10 +55,15 @@ import { MatMiniFabButton } from '@angular/material/button';
 export class DashboardTaskComponent implements OnInit {
   private _projectService: ProjectService = inject(ProjectService);
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
-  private _router = inject(Router);
+  public notification: NotificationService = inject(NotificationService);
+
+  readonly dialog = inject(MatDialog);
+
   tasksMap: Map<string, Task[]> = new Map<string, Task[]>();
 
   id: number | undefined;
+
+  project!: ProjectsList;
 
   ngOnInit(): void {
     this.id = +this._activeRoute.snapshot.params['projectId'];
@@ -80,5 +89,27 @@ export class DashboardTaskComponent implements OnInit {
         });
       },
     });
+  }
+
+  openDialog(projectId: number, taskId: Task, e: Event) {
+    e.stopPropagation();
+    const dialogRef = this.dialog.open(DialogAnimationComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        this.deleteTaskById(projectId, taskId);
+      }
+    });
+  }
+
+  deleteTaskById(projectId: number, taskId: Task): void {
+    this._projectService.deleteTaskById(projectId, taskId.id).subscribe(
+      () => {
+        this.notification.successMethod('DATA.REMOVE_OK');
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
   }
 }
