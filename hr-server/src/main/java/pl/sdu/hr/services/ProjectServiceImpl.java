@@ -65,8 +65,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Transactional
     @Override
     public TaskDto createTask(TaskDto taskDto, Long projectId) {
+        Project project = projectRepository.findById(projectId).orElseThrow();
 
         Task task = TaskMapper.mapTaskDtoToTask(taskDto);
+        task.setProject(project);
 
         taskRepository.save(task);
 
@@ -76,9 +78,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<TaskDto> findAllTasks(Long projectId) {
+    public List<TaskDto> findTasksByProjectId(Long projectId) {
 
-        List<Task> taskList = taskRepository.findAll();
+        List<Task> taskList = taskRepository.findAllByProjectId(projectId);
         List<TaskDto> taskListDto = new ArrayList<>();
 
         taskList.forEach((Task item) -> {

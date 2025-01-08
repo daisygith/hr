@@ -85,12 +85,7 @@ export class AddTaskComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { projectId: number }) {}
 
-  public statusOption: string[] = [
-    'NEW',
-    'PRIORITY',
-    'WORK_IN_PROGRESS',
-    'DONE',
-  ];
+  public statusOption: string[] = ['NEW', 'WORK_IN_PROGRESS', 'DONE'];
 
   public priorityOption: string[] = ['NORMAL', 'HIGH', 'LOW'];
 
@@ -104,8 +99,8 @@ export class AddTaskComponent implements OnInit {
       description: new FormControl(null),
       employeeId: new FormControl(null),
       projectId: new FormControl(this.data.projectId),
-      estimatedWorkTime: new Date(),
-      estimatedTaskTimeEnd: new Date(),
+      estimatedWorkTime: new FormControl(null),
+      estimatedTaskTimeEnd: new FormControl(null),
       startDate: new Date(),
       priorityStatus: new FormControl(null),
       typeTask: new FormControl(null),

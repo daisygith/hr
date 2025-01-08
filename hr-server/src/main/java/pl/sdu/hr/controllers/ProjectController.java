@@ -57,7 +57,7 @@ public class ProjectController {
 
     @GetMapping("/{projectId}/tasks")
     public List<TaskDto> findAllTasks(@PathVariable("projectId") Long projectId) {
-        return projectService.findAllTasks(projectId);
+        return projectService.findTasksByProjectId(projectId);
     }
 
 }

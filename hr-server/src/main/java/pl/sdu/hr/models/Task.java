@@ -33,9 +33,9 @@ public class Task {
 
     private Long employeeId;
 
-    private LocalDateTime estimatedWorkTime;
+    private String estimatedWorkTime;
 
-    private LocalDateTime estimatedTaskTimeEnd;
+    private String estimatedTaskTimeEnd;
 
     private LocalDateTime startDate;
 

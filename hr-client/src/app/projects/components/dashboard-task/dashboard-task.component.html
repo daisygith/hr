@@ -1,50 +1,50 @@
 <div class="list-toolbar">
   <div class="list-title">Zarządzaj zadaniami</div>
 </div>
-<div class="table-content">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Employee Name Column -->
-    <ng-container matColumnDef="new">
-      <th mat-header-cell *matHeaderCellDef>Oczekujące</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsNEW"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnsNEW"></tr>
-  </table>
-
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Employee Name Column -->
-    <ng-container matColumnDef="priority">
-      <th mat-header-cell *matHeaderCellDef>Priorytet</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsPRIORITY"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnsPRIORITY"></tr>
-  </table>
-
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Employee Name Column -->
-    <ng-container matColumnDef="work_in_progress">
-      <th mat-header-cell *matHeaderCellDef>W toku</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsWORKINPROGRESS"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: displayedColumnsWORKINPROGRESS"
-    ></tr>
-  </table>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Employee Name Column -->
-    <ng-container matColumnDef="done">
-      <th mat-header-cell *matHeaderCellDef>Skończone</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsDONE"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnsDONE"></tr>
-  </table>
+<div class="dashboard-task-content">
+  <div class="task-table">
+    <div class="task-table-title">Oczekujące</div>
+    <div class="task-table-content new">
+      <ng-container *ngFor="let task of tasksMap.get('NEW')">
+        {{ task.name }}
+        <br />
+        {{ task.startDate | date: "YYYY-MM-dd" }}
+      </ng-container>
+      <div class="button-action">
+        <button mat-mini-fab id="button-edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab id="button-delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="task-table">
+    <div class="task-table-title">W toku</div>
+    <div class="task-table-content workInProgress">
+      <ng-container *ngFor="let task of tasksMap.get('WORK_IN_PROGRESS')">
+        {{ task.name }}
+        <br />
+        {{ task.startDate | date: "YYYY-MM-dd" }}
+      </ng-container>
+      <div class="button-action">
+        <button mat-mini-fab id="button-edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab id="button-delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="task-table">
+    <div class="task-table-title">Skończone</div>
+    <div class="task-table-content done">
+      <ng-container *ngFor="let task of tasksMap.get('DONE')">
+        {{ task.name }}
+      </ng-container>
+    </div>
+  </div>
 </div>

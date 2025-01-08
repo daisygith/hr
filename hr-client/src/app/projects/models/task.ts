@@ -5,8 +5,8 @@ export interface Task {
   description: string;
   employeeId: number;
   projectId: number;
-  estimatedWorkTime: Date;
-  estimatedTaskTimeEnd: Date;
+  estimatedWorkTime: string;
+  estimatedTaskTimeEnd: string;
   startDate: Date;
   priorityStatus: string;
   typeTask: string;

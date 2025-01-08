@@ -18,6 +18,6 @@ public interface ProjectService {
 
     TaskDto createTask(TaskDto taskDto, Long projectId);
 
-    List<TaskDto> findAllTasks(Long projectId);
+    List<TaskDto> findTasksByProjectId(Long projectId);
 }
 

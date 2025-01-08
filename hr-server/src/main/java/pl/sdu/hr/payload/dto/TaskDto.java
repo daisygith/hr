@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import pl.sdu.hr.models.EPriorityStatus;
 import pl.sdu.hr.models.ETaskStatus;
 import pl.sdu.hr.models.ETypeTask;
-import pl.sdu.hr.models.Project;
 
 import java.time.LocalDateTime;
 
@@ -27,9 +26,9 @@ public class TaskDto {
 
     private Long employeeId;
 
-    private LocalDateTime estimatedWorkTime;
+    private String estimatedWorkTime;
 
-    private LocalDateTime estimatedTaskTimeEnd;
+    private String estimatedTaskTimeEnd;
 
     private LocalDateTime startDate;
 
@@ -37,5 +36,5 @@ public class TaskDto {
 
     private ETypeTask typeTask;
 
-    private Project project;
+    private ProjectDto project;
 }

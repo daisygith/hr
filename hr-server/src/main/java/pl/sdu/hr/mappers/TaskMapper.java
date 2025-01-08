@@ -10,13 +10,13 @@ public class TaskMapper {
                 .id(task.getId())
                 .name(task.getName())
                 .description(task.getDescription())
+                .status(task.getStatus())
                 .employeeId(task.getEmployeeId())
                 .estimatedWorkTime(task.getEstimatedWorkTime())
                 .estimatedTaskTimeEnd(task.getEstimatedTaskTimeEnd())
                 .startDate(task.getStartDate())
                 .priorityStatus(task.getPriorityStatus())
                 .typeTask(task.getTypeTask())
-                .project(task.getProject())
                 .build();
 
         return taskDto;
@@ -27,13 +27,13 @@ public class TaskMapper {
                 .id(taskDto.getId())
                 .name(taskDto.getName())
                 .description(taskDto.getDescription())
+                .status(taskDto.getStatus())
                 .employeeId(taskDto.getEmployeeId())
                 .estimatedWorkTime(taskDto.getEstimatedWorkTime())
                 .estimatedTaskTimeEnd(taskDto.getEstimatedTaskTimeEnd())
                 .startDate(taskDto.getStartDate())
                 .priorityStatus(taskDto.getPriorityStatus())
                 .typeTask(taskDto.getTypeTask())
-                .project(taskDto.getProject())
                 .build();
 
         return task;
