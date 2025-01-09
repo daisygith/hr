@@ -8,7 +8,7 @@
       </div>
 
       <div class="add-project-title">
-        <div class="line1">{{ "PROJECTS.TITLE" | translate }}</div>
+        <div class="line1">{{ "PROJECTS.TITLE2" | translate }}</div>
       </div>
     </div>
   </div>
@@ -17,13 +17,13 @@
     <div class="add-project-content bottom" [formGroup]="addProjectGroup">
       <div class="elements-title">
         <div class="title-line1">
-          {{ "ADD_EMPLOYEE.PERSONAL_DETAILS.TITLE" | translate }}
+          {{ "PROJECTS.DATA_OF_PROJECT" | translate }}
         </div>
       </div>
       <div class="add-project-content info-personal">
         <div class="info-personal-left">
           <div class="input-title">
-            {{ "MANAGE_USER.USERNAME" | translate }}
+            {{ "PROJECTS.NAME" | translate }}
           </div>
           <mat-form-field class="input-full-width">
             <input
@@ -31,7 +31,7 @@
               type="text"
               is="name"
               formControlName="name"
-              [placeholder]="'MANAGE_USER.USERNAME' | translate"
+              [placeholder]="'PROJECTS.NAME' | translate"
               id="input-name-personal"
             />
           </mat-form-field>

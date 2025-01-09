@@ -1,23 +1,19 @@
 <div class="list-toolbar">
-  <div class="list-title">Zarządzaj zadaniami</div>
+  <div class="list-title">{{ "ADD_TASK.MANAGE_TASKS" | translate }}</div>
 </div>
 
 <div class="dashboard-task-content">
   <div class="task-table">
-    <div class="task-table-title">Oczekujące</div>
+    <div class="task-table-title">{{ "ADD_TASK.STATUS.NEW" | translate }}</div>
     <ng-container *ngFor="let task of tasksMap.get('NEW')">
-      <div class="task-table-content new">
-        {{ task.name }}
-        <br />
-        {{ task.startDate | date: "YYYY-MM-dd" }}
+      <div class="task-table-content new" (click)="openDialogEdit(task.id)">
+        <div class="description-task">
+          {{ task.name }}
+          <!--        {{ task.startDate | date: "YYYY-MM-dd" }}-->
+          <br />
+          {{ task.employeeId }}
+        </div>
         <div class="button-action">
-          <button
-            mat-mini-fab
-            id="button-edit"
-            (click)="openDialogEdit(task.id)"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
           <button
             mat-mini-fab
             id="button-delete"
@@ -30,20 +26,21 @@
     </ng-container>
   </div>
   <div class="task-table">
-    <div class="task-table-title">W toku</div>
+    <div class="task-table-title">
+      {{ "ADD_TASK.STATUS.WORK_IN_PROGRESS" | translate }}
+    </div>
     <ng-container *ngFor="let task of tasksMap.get('WORK_IN_PROGRESS')">
-      <div class="task-table-content workInProgress">
-        {{ task.name }}
-        <br />
-        {{ task.startDate | date: "YYYY-MM-dd" }}
+      <div
+        class="task-table-content workInProgress"
+        (click)="openDialogEdit(task.id)"
+      >
+        <div class="description-task">
+          {{ task.name }}
+          <!--        {{ task.startDate | date: "YYYY-MM-dd" }}-->
+          <br />
+          {{ task.employeeId }}
+        </div>
         <div class="button-action">
-          <button
-            mat-mini-fab
-            id="button-edit"
-            (click)="openDialogEdit(task.id)"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
           <button
             mat-mini-fab
             id="button-delete"
@@ -56,20 +53,16 @@
     </ng-container>
   </div>
   <div class="task-table">
-    <div class="task-table-title">Skończone</div>
+    <div class="task-table-title">{{ "ADD_TASK.STATUS.DONE" | translate }}</div>
     <ng-container *ngFor="let task of tasksMap.get('DONE')">
-      <div class="task-table-content done">
-        {{ task.name }}
-        <br />
-        {{ task.startDate | date: "YYYY-MM-dd" }}
+      <div class="task-table-content done" (click)="openDialogEdit(task.id)">
+        <div class="description-task">
+          {{ task.name }}
+          <!--        {{ task.startDate | date: "YYYY-MM-dd" }}-->
+          <br />
+          {{ task.employeeId }}
+        </div>
         <div class="button-action">
-          <button
-            mat-mini-fab
-            id="button-edit"
-            (click)="openDialogEdit(task.id)"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
           <button
             mat-mini-fab
             id="button-delete"

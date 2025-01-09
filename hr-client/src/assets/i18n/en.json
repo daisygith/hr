@@ -48,6 +48,39 @@
       }
     }
   },
+  "ADD_TASK": {
+    "BUTTON": {
+      "ADD_TASK": "Add task",
+      "SAVE": "Save"
+    },
+    "EMPLOYEE": "Employee",
+    "ESTIMATED_WORK_TIME": "Estimated work time",
+    "ESTIMATED_TASK_TIME_END": "Estimated task time end",
+    "DESCRIPTION": "Description",
+    "MANAGE_EMPLOYEES": "Manage employees",
+    "MANAGE_TASKS": "Manage tasks",
+    "NAME_OF_TASK": "Name of task",
+    "PRIORITY": {
+      "HIGH": "High",
+      "NORMAL": "Normal",
+      "LOW": "Low"
+    },
+    "PRIORITY_STATUS": "Priority",
+    "STATUS": {
+      "NEW": "Pending",
+      "WORK_IN_PROGRESS": "In progress",
+      "DONE": "Done"
+    },
+    "STATUS_TITLE": "Status",
+    "START_DATE": "Start date",
+    "TITLE1": "Task: {{value}}",
+    "TITLE2": "Add new task",
+    "TYPE_OF_TASK": {
+      "NORMAL": "Normal",
+      "FAULT": "Fault"
+    },
+    "TYPE_OF_TASK_TITLE": "Type of task"
+  },
   "DATA": {
     "REMOVE_OK": "Data deleted successfully",
     "REMOVE_FAIL": "Data cannot be deleted"
@@ -56,9 +89,12 @@
     "BUTTON": {
       "ADD_DEPARTMENT": "Add department"
     },
+    "DATA_OF_DEPARTMENT": "Data of department",
+    "DEPARTMENT": "Department {{value}}",
     "NAME": "Name of department",
     "SUBTITLE": "Manage departments",
-    "TITLE": "Departments"
+    "TITLE": "Departments",
+    "TITLE2": "Add new department"
   },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Add Employee",
@@ -125,9 +161,12 @@
     "BUTTON": {
       "ADD_DEPARTMENT": "Add project"
     },
+    "DATA_OF_PROJECT": "Data of project",
     "NAME": "Name of project",
+    "PROJECT": "Project: {{value}}",
     "SUBTITLE": "Manage projects",
-    "TITLE": "Projects"
+    "TITLE": "Projects",
+    "TITLE2": "Add new project"
   },
   "REGISTRATION": {
     "BUTTON": {

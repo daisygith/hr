@@ -7,14 +7,16 @@
         >
       </div>
       <div class="manage-project-title">
-        <div class="line1">{{ project?.name }}</div>
+        <div class="line1">
+          {{ "PROJECTS.PROJECT" | translate: { value: project?.name } }}
+        </div>
       </div>
     </div>
     <div class="manage-project-content title right">
       <div class="button-add" *hasRole="canAddEmployeeRoles">
         <button mat-flat-button id="add-employee-button" (click)="openDialog()">
           <mat-icon>add</mat-icon>
-          Dodaj zadanie
+          {{ "ADD_TASK.BUTTON.ADD_TASK" | translate }}
         </button>
       </div>
     </div>
@@ -25,7 +27,7 @@
         <mat-tab class="manage-employee">
           <ng-template mat-tab-label>
             <mat-icon id="manage-icon">task</mat-icon>
-            Zarządzaj zadaniami
+            {{ "ADD_TASK.MANAGE_TASKS" | translate }}
           </ng-template>
           <div class="list-content">
             <app-dashboard-task />
@@ -34,7 +36,7 @@
         <mat-tab>
           <ng-template mat-tab-label>
             <mat-icon id="request-icon">person_add</mat-icon>
-            Zarządzaj pracownikami
+            {{ "ADD_TASK.MANAGE_EMPLOYEES" | translate }}
           </ng-template>
           <div class="list-content">
             <!--            <app-request-time-off></app-request-time-off>-->

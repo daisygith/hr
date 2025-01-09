@@ -48,6 +48,39 @@
       }
     }
   },
+  "ADD_TASK": {
+    "BUTTON": {
+      "ADD_TASK": "Dodaj zadanie",
+      "SAVE": "Zapisz"
+    },
+    "EMPLOYEE": "Pracownik",
+    "ESTIMATED_WORK_TIME": "Szacowany czas pracy",
+    "ESTIMATED_TASK_TIME_END": "Przewidywany czas zakońćzenia zadania",
+    "DESCRIPTION": "Opis",
+    "MANAGE_EMPLOYEES": "Zarządzaj pracownikami",
+    "MANAGE_TASKS": "Zarządzaj zadaniami",
+    "NAME_OF_TASK": "Nazwa zadania",
+    "PRIORITY": {
+      "HIGH": "Wysoki",
+      "NORMAL": "Normalny",
+      "LOW": "Niski"
+    },
+    "PRIORITY_STATUS": "Priorytet",
+    "STATUS": {
+      "NEW": "Oczekujące",
+      "WORK_IN_PROGRESS": "W toku",
+      "DONE": "Zakończone"
+    },
+    "STATUS_TITLE": "Status",
+    "START_DATE": "Data założenia zadania",
+    "TITLE1": "Zadanie: {{value}}",
+    "TITLE2": "Dodaj nowe zadanie",
+    "TYPE_OF_TASK": {
+      "NORMAL": "Normalne",
+      "FAULT": "Błąd"
+    },
+    "TYPE_OF_TASK_TITLE": "Type of task"
+  },
   "DATA": {
     "REMOVE_OK": "Dane usunięto poprawnie",
     "REMOVE_FAIL": "Danych nie można usunąć"
@@ -56,9 +89,12 @@
     "BUTTON": {
       "ADD_DEPARTMENT": "Dodaj dział"
     },
+    "DATA_OF_DEPARTMENT": "Dane działu",
+    "DEPARTMENT": "Dział {{value}}",
     "NAME": "Nazwa działu",
     "SUBTITLE": "Zarządzaj działami",
-    "TITLE": "Działy"
+    "TITLE": "Działy",
+    "TITLE2": "Dodaj nowy dział"
   },
   "EMPLOYEE": {
     "ADD_EMPLOYEE": "Dodaj pracownika",
@@ -125,9 +161,12 @@
     "BUTTON": {
       "ADD_DEPARTMENT": "Dodaj projekt"
     },
+    "DATA_OF_PROJECT": "Dane projektu",
     "NAME": "Nazwa projektu",
+    "PROJECT": "Projekt: {{value}}",
     "SUBTITLE": "Zarządzaj projektami",
-    "TITLE": "Projekty"
+    "TITLE": "Projekty",
+    "TITLE2": "Dodaj nowy project"
   },
   "REGISTRATION": {
     "BUTTON": {
