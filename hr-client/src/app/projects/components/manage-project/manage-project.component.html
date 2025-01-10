@@ -14,7 +14,17 @@
     </div>
     <div class="manage-project-content title right">
       <div class="button-add" *hasRole="canAddEmployeeRoles">
-        <button mat-flat-button id="add-employee-button" (click)="openDialog()">
+        <button mat-flat-button id="add-task-button" (click)="openDialogTask()">
+          <mat-icon>add</mat-icon>
+          {{ "ADD_TASK.BUTTON.ADD_TASK" | translate }}
+        </button>
+      </div>
+      <div class="button-add" *hasRole="canAddEmployeeRoles">
+        <button
+          mat-flat-button
+          id="add-employee-button"
+          (click)="openDialogEmployees()"
+        >
           <mat-icon>add</mat-icon>
           {{ "ADD_TASK.BUTTON.ADD_TASK" | translate }}
         </button>

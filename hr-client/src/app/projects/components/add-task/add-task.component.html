@@ -1,15 +1,14 @@
 <div class="add-task-title">
-  <!--  todo dodac tłumaczenia-->
   <div *ngIf="isNew; then title2; else title1"></div>
   <ng-template #title2>
     <h2 mat-dialog-title>{{ "ADD_TASK.TITLE2" | translate }}</h2>
   </ng-template>
   <ng-template #title1>
     <h2 mat-dialog-title>
-      {{ "ADD_TASK.TITLE1" | translate: { value: task?.name } }}
+      {{ "ADD_TASK.TITLE1" | translate: { value: task.name } }}
     </h2>
   </ng-template>
-  <button mat-button mat-dialog-close (click)="onNoClick()">
+  <button mat-button mat-dialog-close id="button-close" (click)="onNoClick()">
     <mat-icon>close</mat-icon>
   </button>
 </div>
@@ -106,7 +105,12 @@
     <div class="add-task-box">
       <div class="add-task-title">{{ "ADD_TASK.START_DATE" | translate }}</div>
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" formControlName="startDate" />
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="startDate"
+          id="input-startDate"
+        />
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"

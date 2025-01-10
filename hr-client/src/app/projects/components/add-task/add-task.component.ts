@@ -35,7 +35,7 @@ import {
 } from '@angular/material/datepicker';
 import { ProjectService } from '../../services/project.service';
 import { NotificationService } from '../../../shared/services/notification.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProjectsList } from '../../models/projectsList';
 import { Task } from '../../models/task';
 import { ProjectManagementService } from '../../services/project-management.service';
@@ -73,7 +73,6 @@ export class AddTaskComponent implements OnInit {
   private _fb: FormBuilder = inject(FormBuilder);
   private _projectService: ProjectService = inject(ProjectService);
   private _router = inject(Router);
-  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _projectManagementService: ProjectManagementService = inject(
     ProjectManagementService,
   );

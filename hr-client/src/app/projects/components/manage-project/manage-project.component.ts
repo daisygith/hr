@@ -12,6 +12,7 @@ import { ProjectsList } from '../../models/projectsList';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { DashboardTaskComponent } from '../dashboard-task/dashboard-task.component';
+import { AddEmployeesComponent } from '../add-employees/add-employees.component';
 
 @Component({
   selector: 'app-manage-project',
@@ -59,9 +60,19 @@ export class ManageProjectComponent implements OnInit {
     });
   }
 
-  openDialog() {
+  openDialogTask() {
     const dialogRef = this.dialog.open(AddTaskComponent, {
       data: { projectId: this.id },
+      height: '650px',
+      width: '900px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
+
+  openDialogEmployees() {
+    const dialogRef = this.dialog.open(AddEmployeesComponent, {
+      // data: { projectId: this.id },
       height: '650px',
       width: '900px',
     });

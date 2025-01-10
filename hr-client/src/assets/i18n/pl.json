@@ -79,7 +79,7 @@
       "NORMAL": "Normalne",
       "FAULT": "Błąd"
     },
-    "TYPE_OF_TASK_TITLE": "Type of task"
+    "TYPE_OF_TASK_TITLE": "Typ zadania"
   },
   "DATA": {
     "REMOVE_OK": "Dane usunięto poprawnie",

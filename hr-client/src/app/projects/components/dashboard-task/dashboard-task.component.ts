@@ -125,6 +125,7 @@ export class DashboardTaskComponent implements OnInit {
     this._projectService.deleteTaskById(this.id, taskId.id).subscribe(
       () => {
         this.notification.successMethod('DATA.REMOVE_OK');
+        this._projectManagementService.refreshTasks();
         this._router.navigateByUrl(`/projects/${this.id}`);
       },
       (error) => {

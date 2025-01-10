@@ -123,7 +123,8 @@ export class AddEmployeeComponent implements OnInit {
               this.notification.successMethod(
                 'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
               );
-              this._router.navigateByUrl(`/employee/${data.id}`);
+              // this._router.navigateByUrl(`/employee/${data.id}`);
+              this._router.navigateByUrl(`/employee`);
             },
             error: (err) => {
               this.notification.errorMethod(

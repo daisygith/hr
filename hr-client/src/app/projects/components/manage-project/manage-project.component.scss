@@ -38,10 +38,15 @@ app-manage-project {
       font-weight: 600;
     }
 
+    button#add-task-button {
+      margin: 0 10px 0 0;
+    }
+    button#add-task-button,
     button#add-employee-button {
       border-radius: 10px;
     }
 
+    button#add-task-button,
     button#add-employee-button {
       background-color: var(--button-app-color);
       width: 200px;
