@@ -65,6 +65,18 @@ public class ProjectServiceImpl implements ProjectService {
         return projectListDto;
     }
 
+    @Transactional
+    @Override
+    public ProjectDto updateProject(ProjectDto projectDto){
+        Project project = ProjectMapper.mapProjectDtoToProject(projectDto);
+
+        projectRepository.save(project);
+
+        ProjectDto projectDto1 = ProjectMapper.mapProjectToProjectDto(project);
+
+        return projectDto1;
+    }
+
 
     @Override
     public void deleteProjectById(Long projectId) {
@@ -144,5 +156,15 @@ public class ProjectServiceImpl implements ProjectService {
         ProjectDto projectDto = ProjectMapper.mapProjectToProjectDtoWithEmployees(project);
 
         return projectDto;
+    }
+
+    @Transactional
+    @Override
+    public void deleteEmployeeFromProject(Long projectId, Long employeeId){
+        Project project = projectRepository.findById(projectId).orElseThrow();
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        project.getProjectEmployees().remove(employee);
+
+        projectRepository.save(project);
     }
 }

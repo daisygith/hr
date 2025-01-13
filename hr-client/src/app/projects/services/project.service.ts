@@ -47,7 +47,7 @@ export class ProjectService {
   }
 
   deleteEmployeeFromProject(
-    projectId: number,
+    projectId: number | undefined,
     employeesId: number | undefined,
   ): Observable<void> {
     return this._http.delete<void>(

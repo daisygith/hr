@@ -13,6 +13,8 @@ public interface ProjectService {
 
     ProjectDto createProject (ProjectDto projectDto);
 
+    ProjectDto updateProject (ProjectDto projectDto);
+
     void deleteProjectById(Long projectId);
 
     //task
@@ -28,5 +30,7 @@ public interface ProjectService {
     TaskDto updateTask(TaskDto taskDto, Long projectId);
 
     ProjectDto addEmployeesToProject(EmployeesRequest request, Long projectId);
+
+    void deleteEmployeeFromProject(Long projectId, Long EmployeeId);
 }
 

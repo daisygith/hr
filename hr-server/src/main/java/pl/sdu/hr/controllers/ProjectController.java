@@ -35,6 +35,13 @@ public class ProjectController {
         return dbProject;
     }
 
+    @PutMapping("/{projectId}")
+    public ProjectDto updateProject(@RequestBody ProjectDto projectDto){
+        ProjectDto dbProject = projectService.updateProject(projectDto);
+
+        return dbProject;
+    }
+
     @DeleteMapping("/{projectId}")
     public MessageResponse deleteProjectById(@PathVariable("projectId") Long projectId) throws Exception {
         ProjectDto tempProject = projectService.findProjectById(projectId);
@@ -94,5 +101,18 @@ public class ProjectController {
 
         return project;
 
+    }
+
+    @DeleteMapping("/{projectId}/employees/{employeeId}")
+    public MessageResponse deleteEmployeeFromProject(@PathVariable("projectId") Long projectId, @PathVariable("employeeId") Long employeeId) throws Exception {
+        ProjectDto tempProject = projectService.findProjectById(projectId);
+
+        if(tempProject == null) {
+            throw new RuntimeException("Project is not fountd " + projectId);
+        }
+
+        projectService.deleteEmployeeFromProject(projectId,employeeId);
+
+        return new MessageResponse("Delete project id" + projectId);
     }
 }

@@ -102,6 +102,7 @@ export class ManageProjectIdComponent implements OnInit {
     this.addProjectGroup = this._fb.group({
       id: new FormControl(null),
       name: new FormControl(null, [Validators.required]),
+      employees: new FormControl(null),
     });
   }
 
@@ -138,7 +139,7 @@ export class ManageProjectIdComponent implements OnInit {
 
   openDialogDelete(
     employeeId: number | undefined,
-    projectId: number,
+    projectId: number | undefined,
     e: Event,
   ) {
     e.stopPropagation();
@@ -152,7 +153,7 @@ export class ManageProjectIdComponent implements OnInit {
   }
 
   deleteEmployeeFromProject(
-    projectId: number,
+    projectId: number | undefined,
     employeeId: number | undefined,
   ): void {
     this._projectService
@@ -161,6 +162,7 @@ export class ManageProjectIdComponent implements OnInit {
         this.dataSource.data = this.dataSource.data.filter(
           (item) => item.id !== employeeId,
         );
+        console.log(employeeId);
       });
   }
 }
