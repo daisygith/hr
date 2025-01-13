@@ -15,11 +15,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 import { AddEmployeesComponent } from '../add-employees/add-employees.component';
-import { Role } from '../../../auth/models/role';
 import { ProjectDetails } from '../../models/projectDetails';
 import {
   MatCell,
@@ -34,6 +33,7 @@ import {
   MatTable,
   MatTableDataSource,
 } from '@angular/material/table';
+import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 
 @Component({
   selector: 'app-manage-project-id',
@@ -59,6 +59,7 @@ import {
     MatRow,
     MatRowDef,
     MatHeaderCellDef,
+    MatMiniFabButton,
   ],
   templateUrl: './manage-project-id.component.html',
   styleUrl: './manage-project-id.component.scss',
@@ -78,10 +79,8 @@ export class ManageProjectIdComponent implements OnInit {
   public notification: NotificationService = inject(NotificationService);
   public addProjectGroup!: FormGroup;
 
-  dataSource = new MatTableDataSource<ProjectDetails>([]);
-  displayedColumns = ['name'];
-
-  public canAddEmployeeRoles = [Role.MODERATOR, Role.ADMIN];
+  dataSource = new MatTableDataSource<ProjectsList>([]);
+  displayedColumns = ['name', 'actions'];
 
   ngOnInit(): void {
     this.id = this._activeRoute.snapshot.params['projectId'];
@@ -94,7 +93,8 @@ export class ManageProjectIdComponent implements OnInit {
       return;
     }
     this._projectService.getProjectById(projectId).subscribe((data) => {
-      this.project = data;
+      this.projectDetails = data;
+      this.dataSource.data = this.projectDetails.employees;
       this.addProjectGroup.patchValue(data);
     });
   }
@@ -127,13 +127,24 @@ export class ManageProjectIdComponent implements OnInit {
 
   openDialogEmployees() {
     const dialogRef = this.dialog.open(AddEmployeesComponent, {
-      data: { projectId: this.id, employees: [this.projectDetails] },
+      data: { projectId: this.id, employees: [this.projectDetails?.employees] },
       height: '650px',
       width: '400px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
+    });
+  }
+
+  openDialogDelete(employeeId: ProjectDetails, e: Event) {
+    e.stopPropagation();
+    const dialogRef = this.dialog.open(DialogAnimationComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        // this.deleteProjectById(projectId);
+      }
     });
   }
 }

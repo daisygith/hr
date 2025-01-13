@@ -8,12 +8,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Role } from '../../../auth/models/role';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
-import { ProjectsList } from '../../models/projectsList';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { DashboardTaskComponent } from '../dashboard-task/dashboard-task.component';
-import { AddEmployeesComponent } from '../add-employees/add-employees.component';
 import { ManageProjectIdComponent } from '../manage-project-id/manage-project-id.component';
+import { ProjectDetails } from '../../models/projectDetails';
 
 @Component({
   selector: 'app-manage-project',
@@ -38,8 +37,7 @@ import { ManageProjectIdComponent } from '../manage-project-id/manage-project-id
 })
 export class ManageProjectComponent implements OnInit {
   id: number | undefined;
-  project: ProjectsList | undefined;
-
+  projectDetails: ProjectDetails | undefined;
   readonly dialog = inject(MatDialog);
 
   private _projectService: ProjectService = inject(ProjectService);
@@ -57,7 +55,7 @@ export class ManageProjectComponent implements OnInit {
       return;
     }
     this._projectService.getProjectById(projectId).subscribe((data) => {
-      this.project = data;
+      this.projectDetails = data;
       // this.addProjectGroup.patchValue(data);
     });
   }
@@ -72,15 +70,15 @@ export class ManageProjectComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  openDialogEmployees() {
-    const dialogRef = this.dialog.open(AddEmployeesComponent, {
-      data: { projectId: this.id, employees: [] },
-      height: '650px',
-      width: '900px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
-  }
+  // openDialogEmployees() {
+  //   const dialogRef = this.dialog.open(AddEmployeesComponent, {
+  //     data: { projectId: this.id, employees: [] },
+  //     height: '650px',
+  //     width: '900px',
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log(result);
+  //   });
+  // }
 }

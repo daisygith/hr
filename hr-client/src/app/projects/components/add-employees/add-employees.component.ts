@@ -81,7 +81,10 @@ export class AddEmployeesComponent implements OnInit {
     this.getManageEmployee();
   }
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { projectId: number }) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: { projectId: number; employeesIds: number },
+  ) {}
 
   readonly dialogRef = inject(MatDialogRef<AddEmployeesComponent>);
   onNoClick(): void {

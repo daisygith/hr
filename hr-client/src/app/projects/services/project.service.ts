@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { ProjectsList } from '../models/projectsList';
 import { Task } from '../models/task';
+import { ProjectDetails } from '../models/projectDetails';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
@@ -14,8 +15,8 @@ export class ProjectService {
     return this._http.get<ProjectsList[]>(`${this._apiUrl}`);
   }
 
-  getProjectById(projectId: number): Observable<ProjectsList> {
-    return this._http.get<ProjectsList>(`${this._apiUrl}/${projectId}`);
+  getProjectById(projectId: number): Observable<ProjectDetails> {
+    return this._http.get<ProjectDetails>(`${this._apiUrl}/${projectId}`);
   }
 
   addProject(project: ProjectsList): Observable<ProjectsList> {
