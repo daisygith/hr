@@ -81,7 +81,9 @@
               <button
                 mat-mini-fab
                 id="button-more"
-                (click)="openDialogDelete(project?.id, element.id, $event)"
+                (click)="
+                  openDialogDelete(projectDetails?.id, element.id, $event)
+                "
               >
                 <mat-icon>delete</mat-icon>
               </button>

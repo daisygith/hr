@@ -23,8 +23,8 @@ export class ProjectService {
     return this._http.post<ProjectsList>(`${this._apiUrl}`, project);
   }
 
-  updateProject(project: ProjectsList): Observable<ProjectsList> {
-    return this._http.put<ProjectsList>(
+  updateProject(project: ProjectDetails): Observable<ProjectDetails> {
+    return this._http.put<ProjectDetails>(
       `${this._apiUrl}/${project.id}`,
       project,
     );

@@ -1,10 +1,12 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Inject,
   inject,
   OnInit,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { EmployeeService } from '../../../employee/services/employee.service';
@@ -12,6 +14,7 @@ import { ManageEmployee } from '../../../employee/models/manageEmmployee';
 import { MatButton } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
+  MatDialog,
   MatDialogActions,
   MatDialogClose,
   MatDialogRef,
@@ -67,9 +70,7 @@ import { ProjectService } from '../../services/project.service';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddEmployeesComponent implements OnInit {
-  employees: ManageEmployee[] = [];
-
+export class AddEmployeesComponent implements OnInit, AfterViewInit {
   private _employeeService: EmployeeService = inject(EmployeeService);
   private _projectService: ProjectService = inject(ProjectService);
   private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
@@ -77,10 +78,17 @@ export class AddEmployeesComponent implements OnInit {
   displayedColumns = ['select', 'name'];
   selection = new SelectionModel<ManageEmployee>(true, []);
 
+  readonly dialog = inject(MatDialog);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   ngOnInit() {
     this.getManageEmployee();
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { projectId: number; employeesIds: number },
@@ -93,7 +101,6 @@ export class AddEmployeesComponent implements OnInit {
 
   getManageEmployee(): void {
     this._employeeService.getManageEmployee().subscribe((employee) => {
-      // this.employees = employee;
       this.dataSource.data = employee;
       this._cdr.detectChanges();
     });

@@ -67,7 +67,6 @@ import { DialogAnimationComponent } from '../../../shared/components/dialog-anim
 })
 export class ManageProjectIdComponent implements OnInit {
   id: number | undefined;
-  project: ProjectsList | undefined;
   projectDetails: ProjectDetails | undefined;
 
   readonly dialog = inject(MatDialog);
@@ -111,7 +110,7 @@ export class ManageProjectIdComponent implements OnInit {
       .updateProject(this.addProjectGroup.getRawValue())
       .subscribe({
         next: (data) => {
-          this.project = data;
+          this.projectDetails = data;
           this.addProjectGroup.patchValue(data);
           this.notification.successMethod(
             'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
