@@ -74,7 +74,7 @@ export class AddEmployeesComponent implements OnInit {
   private _projectService: ProjectService = inject(ProjectService);
   private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   dataSource = new MatTableDataSource<ManageEmployee>([]);
-  displayedColumns = ['name', 'select'];
+  displayedColumns = ['select', 'name'];
   selection = new SelectionModel<ManageEmployee>(true, []);
 
   ngOnInit() {

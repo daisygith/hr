@@ -23,6 +23,11 @@ app-manage-project-id {
     }
 
     .project-id-form.elements {
+      margin: 0 0 10px 0;
+    }
+
+    .project-id-form.elements,
+    .project-id-employees.elements {
       border-radius: 10px;
       border: 1px solid var(--border-app-element);
       padding: 20px 20px 20px 20px;

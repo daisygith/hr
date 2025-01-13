@@ -55,6 +55,25 @@
       </div>
     </div>
   </div>
-  <!--(click)="saveData()"-->
-  <div class="project-id-employees">coscos</div>
+
+  <div class="project-id-employees elements">
+    <div class="elements-title">
+      <div class="title-line1">
+        {{ "PROJECTS.DATA_OF_PROJECT" | translate }}
+      </div>
+    </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Employee Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ "MANAGE_EMPLOYEE.EMPLOYEE_NAME" | translate }}
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.employees }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
 </div>

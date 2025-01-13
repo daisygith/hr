@@ -20,6 +20,20 @@ import { NotificationService } from '../../../shared/services/notification.servi
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 import { AddEmployeesComponent } from '../add-employees/add-employees.component';
 import { Role } from '../../../auth/models/role';
+import { ProjectDetails } from '../../models/projectDetails';
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
+  MatTable,
+  MatTableDataSource,
+} from '@angular/material/table';
 
 @Component({
   selector: 'app-manage-project-id',
@@ -35,6 +49,16 @@ import { Role } from '../../../auth/models/role';
     RouterLink,
     RouterLinkActive,
     HasRoleDirective,
+    MatTable,
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatHeaderCellDef,
   ],
   templateUrl: './manage-project-id.component.html',
   styleUrl: './manage-project-id.component.scss',
@@ -43,6 +67,7 @@ import { Role } from '../../../auth/models/role';
 export class ManageProjectIdComponent implements OnInit {
   id: number | undefined;
   project: ProjectsList | undefined;
+  projectDetails: ProjectDetails | undefined;
 
   readonly dialog = inject(MatDialog);
 
@@ -52,6 +77,9 @@ export class ManageProjectIdComponent implements OnInit {
 
   public notification: NotificationService = inject(NotificationService);
   public addProjectGroup!: FormGroup;
+
+  dataSource = new MatTableDataSource<ProjectDetails>([]);
+  displayedColumns = ['name'];
 
   public canAddEmployeeRoles = [Role.MODERATOR, Role.ADMIN];
 
@@ -99,9 +127,9 @@ export class ManageProjectIdComponent implements OnInit {
 
   openDialogEmployees() {
     const dialogRef = this.dialog.open(AddEmployeesComponent, {
-      data: { projectId: this.id, employees: [] },
+      data: { projectId: this.id, employees: [this.projectDetails] },
       height: '650px',
-      width: '900px',
+      width: '400px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
