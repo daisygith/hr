@@ -36,6 +36,25 @@ export class ProjectService {
 
   //manage-project
 
+  addEmployeesToProject(
+    projectId: number,
+    employeesIds: number[],
+  ): Observable<ProjectsList> {
+    return this._http.post<ProjectsList>(
+      `${this._apiUrl}/${projectId}/employees`,
+      { employeesIds },
+    );
+  }
+
+  deleteEmployeeFromProject(
+    projectId: number,
+    employeesId: number | undefined,
+  ): Observable<void> {
+    return this._http.delete<void>(
+      `${this._apiUrl}/${projectId}/employees/${employeesId}`,
+    );
+  }
+
   //task
   getTasks(projectId: number | undefined): Observable<Task[]> {
     return this._http.get<Task[]>(`${this._apiUrl}/${projectId}/tasks`);
@@ -65,16 +84,6 @@ export class ProjectService {
     return this._http.put<Task>(
       `${this._apiUrl}/${task.projectId}/tasks/${task.id}`,
       task,
-    );
-  }
-
-  addEmployeesToProject(
-    projectId: number,
-    employeesIds: number[],
-  ): Observable<ProjectsList> {
-    return this._http.post<ProjectsList>(
-      `${this._apiUrl}/${projectId}/employees`,
-      { employeesIds },
     );
   }
 }

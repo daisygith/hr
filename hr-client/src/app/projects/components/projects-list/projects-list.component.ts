@@ -83,7 +83,7 @@ export class ProjectsListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openDialog(projectId: ProjectsList, e: Event) {
+  openDialog(projectId: number, e: Event) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(DialogAnimationComponent);
 
@@ -94,11 +94,11 @@ export class ProjectsListComponent implements OnInit {
     });
   }
 
-  deleteProjectById(projectId: ProjectsList): void {
-    this._projectService.deleteProject(projectId.id).subscribe(
+  deleteProjectById(projectId: number): void {
+    this._projectService.deleteProject(projectId).subscribe(
       () => {
         this.dataSource.data = this.dataSource.data.filter(
-          (item) => item !== projectId,
+          (item) => item.id !== projectId,
         );
         this.notification.successMethod('DATA.REMOVE_OK');
       },

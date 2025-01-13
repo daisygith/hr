@@ -137,14 +137,31 @@ export class ManageProjectIdComponent implements OnInit {
     });
   }
 
-  openDialogDelete(employeeId: ProjectDetails, e: Event) {
+  openDialogDelete(
+    employeeId: number | undefined,
+    projectId: number,
+    e: Event,
+  ) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(DialogAnimationComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
-        // this.deleteProjectById(projectId);
+        this.deleteEmployeeFromProject(projectId, employeeId);
       }
     });
+  }
+
+  deleteEmployeeFromProject(
+    projectId: number,
+    employeeId: number | undefined,
+  ): void {
+    this._projectService
+      .deleteEmployeeFromProject(projectId, employeeId)
+      .subscribe(() => {
+        this.dataSource.data = this.dataSource.data.filter(
+          (item) => item.id !== employeeId,
+        );
+      });
   }
 }
