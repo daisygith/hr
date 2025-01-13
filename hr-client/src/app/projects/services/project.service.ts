@@ -66,4 +66,14 @@ export class ProjectService {
       task,
     );
   }
+
+  addEmployeesToProject(
+    projectId: number,
+    employeesIds: number[],
+  ): Observable<ProjectsList> {
+    return this._http.post<ProjectsList>(
+      `${this._apiUrl}/${projectId}/employees`,
+      { employeesIds },
+    );
+  }
 }

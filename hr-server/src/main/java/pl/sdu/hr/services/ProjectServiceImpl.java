@@ -6,15 +6,20 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.sdu.hr.mappers.ProjectMapper;
 import pl.sdu.hr.mappers.TaskMapper;
 import pl.sdu.hr.models.ETaskStatus;
+import pl.sdu.hr.models.Employee;
 import pl.sdu.hr.models.Project;
 import pl.sdu.hr.models.Task;
 import pl.sdu.hr.payload.dto.ProjectDto;
 import pl.sdu.hr.payload.dto.TaskDto;
+import pl.sdu.hr.payload.request.EmployeesRequest;
+import pl.sdu.hr.repository.EmployeeRepository;
 import pl.sdu.hr.repository.ProjectRepository;
 import pl.sdu.hr.repository.TaskRepository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -23,6 +28,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private TaskRepository taskRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @Override
     public List<ProjectDto> findAllProjects() {
@@ -41,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectDto findProjectById(Long projectId) throws Exception {
         Project project = projectRepository.findById(projectId).orElseThrow();
 
-        ProjectDto projectDto = ProjectMapper.mapProjectToProjectDto(project);
+        ProjectDto projectDto = ProjectMapper.mapProjectToProjectDtoWithEmployees(project);
         return projectDto;
     }
 
@@ -121,5 +129,20 @@ public class ProjectServiceImpl implements ProjectService {
         return taskListDto;
     }
 
+    @Transactional
+    @Override
+    public ProjectDto addEmployeesToProject(EmployeesRequest request, Long projectId) {
+        Project project = projectRepository.findById(projectId).orElseThrow();
+        List<Employee> employees = employeeRepository.findAllById(request.getEmployeesIds());
+        Set<Employee> projectEmployees = new HashSet<>();
+        projectEmployees.addAll(project.getProjectEmployees());
+        projectEmployees.addAll(employees);
 
+        project.setProjectEmployees((List<Employee>) projectEmployees);
+        projectRepository.save(project);
+
+        ProjectDto projectDto = ProjectMapper.mapProjectToProjectDtoWithEmployees(project);
+
+        return projectDto;
+    }
 }

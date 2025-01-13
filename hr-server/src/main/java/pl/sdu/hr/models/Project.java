@@ -7,9 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -27,11 +26,11 @@ public class Project {
     private String name;
 
     @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, orphanRemoval = true )
-    private Set<Task> task = new LinkedHashSet<>();
+    private List<Task> task = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(  name = "project_employees",
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
-    private Set<Employee> projectEmployees = new HashSet<>();
+    private List<Employee> projectEmployees = new ArrayList<>();
 }

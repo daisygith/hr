@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Inject,
   inject,
   OnInit,
   ViewEncapsulation,
@@ -10,6 +11,7 @@ import { EmployeeService } from '../../../employee/services/employee.service';
 import { ManageEmployee } from '../../../employee/models/manageEmmployee';
 import { MatButton } from '@angular/material/button';
 import {
+  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogClose,
   MatDialogRef,
@@ -34,6 +36,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatIcon } from '@angular/material/icon';
 import { MatPaginator } from '@angular/material/paginator';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-add-employees',
@@ -68,6 +71,7 @@ export class AddEmployeesComponent implements OnInit {
   employees: ManageEmployee[] = [];
 
   private _employeeService: EmployeeService = inject(EmployeeService);
+  private _projectService: ProjectService = inject(ProjectService);
   private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   dataSource = new MatTableDataSource<ManageEmployee>([]);
   displayedColumns = ['name', 'select'];
@@ -76,6 +80,8 @@ export class AddEmployeesComponent implements OnInit {
   ngOnInit() {
     this.getManageEmployee();
   }
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { projectId: number }) {}
 
   readonly dialogRef = inject(MatDialogRef<AddEmployeesComponent>);
   onNoClick(): void {
@@ -110,5 +116,17 @@ export class AddEmployeesComponent implements OnInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  saveData() {
+    const employeeIds = this.selection.selected.map((employee) => employee.id);
+    this._projectService
+      .addEmployeesToProject(this.data.projectId, employeeIds)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.dialogRef.close(data);
+        },
+      });
   }
 }

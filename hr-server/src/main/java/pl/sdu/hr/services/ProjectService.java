@@ -2,6 +2,7 @@ package pl.sdu.hr.services;
 
 import pl.sdu.hr.payload.dto.ProjectDto;
 import pl.sdu.hr.payload.dto.TaskDto;
+import pl.sdu.hr.payload.request.EmployeesRequest;
 
 import java.util.List;
 
@@ -25,5 +26,7 @@ public interface ProjectService {
     TaskDto findTaskById(Long taskId) throws Exception;
 
     TaskDto updateTask(TaskDto taskDto, Long projectId);
+
+    ProjectDto addEmployeesToProject(EmployeesRequest request, Long projectId);
 }
 

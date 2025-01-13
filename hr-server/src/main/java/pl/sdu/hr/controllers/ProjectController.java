@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.sdu.hr.payload.dto.ProjectDto;
 import pl.sdu.hr.payload.dto.TaskDto;
+import pl.sdu.hr.payload.request.EmployeesRequest;
 import pl.sdu.hr.payload.response.MessageResponse;
 import pl.sdu.hr.services.ProjectService;
 
@@ -84,6 +85,14 @@ public class ProjectController {
         TaskDto dbTask = projectService.updateTask(taskDto, projectId);
 
         return dbTask;
+
+    }
+
+    @PostMapping("/{projectId}/employees")
+    public ProjectDto addEmployeesToProject(@RequestBody EmployeesRequest request, @PathVariable("projectId") Long projectId){
+        ProjectDto project = projectService.addEmployeesToProject(request, projectId);
+
+        return project;
 
     }
 }

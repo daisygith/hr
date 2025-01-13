@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.sdu.hr.models.Task;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,5 +18,7 @@ public class ProjectDto {
 
     private String name;
 
-    private Set<Task> task = new HashSet<>();
+    private Set<TaskDto> task = new HashSet<>();
+
+    private Set<EmployeeDto> employees = new HashSet<>();
 }
