@@ -19,16 +19,6 @@
           {{ "ADD_TASK.BUTTON.ADD_TASK" | translate }}
         </button>
       </div>
-      <div class="button-add" *hasRole="canAddEmployeeRoles">
-        <button
-          mat-flat-button
-          id="add-employee-button"
-          (click)="openDialogEmployees()"
-        >
-          <mat-icon>add</mat-icon>
-          {{ "ADD_TASK.BUTTON.ADD_TASK" | translate }}
-        </button>
-      </div>
     </div>
   </div>
   <div class="manage-project-content list">
@@ -45,11 +35,11 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>
-            <mat-icon id="request-icon">person_add</mat-icon>
-            {{ "ADD_TASK.MANAGE_EMPLOYEES" | translate }}
+            <mat-icon id="request-icon">folder_managed</mat-icon>
+            {{ "ADD_TASK.MANAGE_PROJECT" | translate }}
           </ng-template>
           <div class="list-content">
-            <!--            <app-request-time-off></app-request-time-off>-->
+            <app-manage-project-id />
           </div>
         </mat-tab>
       </mat-tab-group>

@@ -1,0 +1,60 @@
+<div class="add-manage-project-id">
+  <div class="list-toolbar">
+    <div class="list-title">
+      {{ "ADD_TASK.MANAGE_PROJECT" | translate }}
+    </div>
+    <div class="button-add" *hasRole="canAddEmployeeRoles">
+      <button
+        mat-flat-button
+        id="add-employee-button"
+        (click)="openDialogEmployees()"
+      >
+        <mat-icon>add</mat-icon>
+        {{ "ADD_TASK.BUTTON.ADD_EMPLOYEES" | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="project-id-form elements">
+    <div class="project-id-form top" [formGroup]="addProjectGroup">
+      <div class="elements-title">
+        <div class="title-line1">
+          {{ "PROJECTS.DATA_OF_PROJECT" | translate }}
+        </div>
+      </div>
+      <div class="project-id-form info-personal">
+        <div class="info-personal-left">
+          <div class="input-title">
+            {{ "PROJECTS.NAME" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              type="text"
+              is="name"
+              formControlName="name"
+              [placeholder]="'PROJECTS.NAME' | translate"
+              id="input-name"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="save-changes">
+        <div class="button-save">
+          <button
+            mat-stroked-button
+            routerLink="/projects"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            id="button-save"
+          >
+            {{
+              "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate
+            }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--(click)="saveData()"-->
+  <div class="project-id-employees">coscos</div>
+</div>

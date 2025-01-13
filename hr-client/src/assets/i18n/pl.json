@@ -50,6 +50,7 @@
   },
   "ADD_TASK": {
     "BUTTON": {
+      "ADD_EMPLOYEES": "Dodaj pracowników",
       "ADD_TASK": "Dodaj zadanie",
       "SAVE": "Zapisz"
     },
@@ -57,7 +58,7 @@
     "ESTIMATED_WORK_TIME": "Szacowany czas pracy",
     "ESTIMATED_TASK_TIME_END": "Przewidywany czas zakońćzenia zadania",
     "DESCRIPTION": "Opis",
-    "MANAGE_EMPLOYEES": "Zarządzaj pracownikami",
+    "MANAGE_PROJECT": "Zarządzaj projektem",
     "MANAGE_TASKS": "Zarządzaj zadaniami",
     "NAME_OF_TASK": "Nazwa zadania",
     "PRIORITY": {

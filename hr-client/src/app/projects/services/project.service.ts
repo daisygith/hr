@@ -22,12 +22,12 @@ export class ProjectService {
     return this._http.post<ProjectsList>(`${this._apiUrl}`, project);
   }
 
-  // updateProject(project: ProjectsList): Observable<ProjectsList> {
-  //   return this._http.put<ProjectsList>(
-  //     `${this._apiUrl}/${project.id}`,
-  //     project,
-  //   );
-  // }
+  updateProject(project: ProjectsList): Observable<ProjectsList> {
+    return this._http.put<ProjectsList>(
+      `${this._apiUrl}/${project.id}`,
+      project,
+    );
+  }
 
   deleteProject(projectId: number): Observable<void> {
     return this._http.delete<void>(`${this._apiUrl}/${projectId}`);

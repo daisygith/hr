@@ -39,15 +39,10 @@ app-manage-project {
     }
 
     button#add-task-button {
-      margin: 0 10px 0 0;
-    }
-    button#add-task-button,
-    button#add-employee-button {
       border-radius: 10px;
     }
 
-    button#add-task-button,
-    button#add-employee-button {
+    button#add-task-button {
       background-color: var(--button-app-color);
       width: 200px;
     }

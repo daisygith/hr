@@ -50,6 +50,7 @@
   },
   "ADD_TASK": {
     "BUTTON": {
+      "ADD_EMPLOYEES": "Add employees",
       "ADD_TASK": "Add task",
       "SAVE": "Save"
     },
@@ -57,7 +58,7 @@
     "ESTIMATED_WORK_TIME": "Estimated work time",
     "ESTIMATED_TASK_TIME_END": "Estimated task time end",
     "DESCRIPTION": "Description",
-    "MANAGE_EMPLOYEES": "Manage employees",
+    "MANAGE_PROJECT": "Manage project",
     "MANAGE_TASKS": "Manage tasks",
     "NAME_OF_TASK": "Name of task",
     "PRIORITY": {

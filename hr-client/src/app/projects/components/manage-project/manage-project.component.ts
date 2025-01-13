@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { DashboardTaskComponent } from '../dashboard-task/dashboard-task.component';
 import { AddEmployeesComponent } from '../add-employees/add-employees.component';
+import { ManageProjectIdComponent } from '../manage-project-id/manage-project-id.component';
 
 @Component({
   selector: 'app-manage-project',
@@ -29,6 +30,7 @@ import { AddEmployeesComponent } from '../add-employees/add-employees.component'
     MatTabGroup,
     MatTabLabel,
     DashboardTaskComponent,
+    ManageProjectIdComponent,
   ],
   templateUrl: './manage-project.component.html',
   styleUrl: './manage-project.component.scss',
