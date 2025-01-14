@@ -15,7 +15,7 @@ public class ProjectMapper {
                         project.getTask()
                                 .stream()
                                 .map(TaskMapper::mapTaskToTaskDto)
-                                .collect(Collectors.toSet())
+                                .collect(Collectors.toList())
                         : null)
                 .build();
 
@@ -31,13 +31,13 @@ public class ProjectMapper {
                         project.getTask()
                                 .stream()
                                 .map(TaskMapper::mapTaskToTaskDto)
-                                .collect(Collectors.toSet())
+                                .collect(Collectors.toList())
                         : null)
                 .employees(project.getProjectEmployees() != null ?
                         project.getProjectEmployees()
                                 .stream()
                                 .map(employee -> EmployeeMapper.mapEmployeeToEmployeeDto(employee))
-                                .collect(Collectors.toSet())
+                                .collect(Collectors.toList())
                         : null)
                 .build();
 

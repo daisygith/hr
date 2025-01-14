@@ -9,8 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -59,6 +59,6 @@ public class Employee {
     @JoinTable(  name = "project_employees",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id"))
-    private Set<Project> projectEmployees = new HashSet<>();
+    private List<Project> projectEmployees = new ArrayList<>();
 
 }

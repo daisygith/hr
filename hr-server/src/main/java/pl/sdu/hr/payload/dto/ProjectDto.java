@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,7 +18,7 @@ public class ProjectDto {
 
     private String name;
 
-    private Set<TaskDto> task = new HashSet<>();
+    private List<TaskDto> task = new ArrayList<>();
 
-    private Set<EmployeeDto> employees = new HashSet<>();
+    private List<EmployeeDto> employees = new ArrayList<>();
 }

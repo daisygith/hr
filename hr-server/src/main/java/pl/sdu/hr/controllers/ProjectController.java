@@ -36,8 +36,8 @@ public class ProjectController {
     }
 
     @PutMapping("/{projectId}")
-    public ProjectDto updateProject(@RequestBody ProjectDto projectDto){
-        ProjectDto dbProject = projectService.updateProject(projectDto);
+    public ProjectDto updateProject(@PathVariable("projectId") Long projectId, @RequestBody ProjectDto projectDto){
+        ProjectDto dbProject = projectService.updateProject(projectId,projectDto);
 
         return dbProject;
     }

@@ -17,9 +17,7 @@ import pl.sdu.hr.repository.ProjectRepository;
 import pl.sdu.hr.repository.TaskRepository;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -67,8 +65,10 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Transactional
     @Override
-    public ProjectDto updateProject(ProjectDto projectDto){
-        Project project = ProjectMapper.mapProjectDtoToProject(projectDto);
+    public ProjectDto updateProject(Long ProjectId, ProjectDto projectDto){
+        Project project = projectRepository.findById(projectDto.getId()).orElseThrow();
+
+        project.setName(projectDto.getName());
 
         projectRepository.save(project);
 
@@ -146,11 +146,7 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectDto addEmployeesToProject(EmployeesRequest request, Long projectId) {
         Project project = projectRepository.findById(projectId).orElseThrow();
         List<Employee> employees = employeeRepository.findAllById(request.getEmployeesIds());
-        Set<Employee> projectEmployees = new HashSet<>();
-        projectEmployees.addAll(project.getProjectEmployees());
-        projectEmployees.addAll(employees);
-
-        project.setProjectEmployees((List<Employee>) projectEmployees);
+        project.getProjectEmployees().addAll(employees);
         projectRepository.save(project);
 
         ProjectDto projectDto = ProjectMapper.mapProjectToProjectDtoWithEmployees(project);

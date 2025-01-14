@@ -107,6 +107,10 @@ export class ManageProjectIdComponent implements OnInit {
   }
 
   saveData() {
+    if (this.addProjectGroup.invalid) {
+      return;
+    }
+
     this._projectService
       .updateProject(this.addProjectGroup.getRawValue())
       .subscribe({

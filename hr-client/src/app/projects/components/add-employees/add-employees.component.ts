@@ -40,6 +40,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { MatIcon } from '@angular/material/icon';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProjectService } from '../../services/project.service';
+import { ProjectManagementService } from '../../services/project-management.service';
 
 @Component({
   selector: 'app-add-employees',
@@ -74,6 +75,9 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
   private _employeeService: EmployeeService = inject(EmployeeService);
   private _projectService: ProjectService = inject(ProjectService);
   private _cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private _projectManagementService: ProjectManagementService = inject(
+    ProjectManagementService,
+  );
   dataSource = new MatTableDataSource<ManageEmployee>([]);
   displayedColumns = ['select', 'name'];
   selection = new SelectionModel<ManageEmployee>(true, []);
@@ -134,8 +138,8 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
       .addEmployeesToProject(this.data.projectId, employeeIds)
       .subscribe({
         next: (data) => {
-          console.log(data);
           this.dialogRef.close(data);
+          this._projectManagementService.refreshTasks();
         },
       });
   }
