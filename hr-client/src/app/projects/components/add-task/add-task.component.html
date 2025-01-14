@@ -5,7 +5,7 @@
   </ng-template>
   <ng-template #title1>
     <h2 mat-dialog-title>
-      {{ "ADD_TASK.TITLE1" | translate: { value: task.name } }}
+      {{ "ADD_TASK.TITLE1" | translate: { value: task?.name } }}
     </h2>
   </ng-template>
   <button mat-button mat-dialog-close id="button-close" (click)="onNoClick()">
@@ -45,14 +45,14 @@
     <div class="add-task-box">
       <div class="add-task-title">{{ "ADD_TASK.EMPLOYEE" | translate }}</div>
       <mat-form-field class="input-full-width">
-        <input
-          matInput
-          type="text"
-          is="name"
-          formControlName="employeeId"
-          [placeholder]="'ADD_TASK.EMPLOYEE' | translate"
-          id="input-employee"
-        />
+        <mat-select type="text" is="employeeId" formControlName="employeeId">
+          <mat-option
+            *ngFor="let employee of employeeArr"
+            [value]="employee.id"
+          >
+            {{ employee.name }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="add-task-box">

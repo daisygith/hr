@@ -41,6 +41,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProjectService } from '../../services/project.service';
 import { ProjectManagementService } from '../../services/project-management.service';
+import { ProjectDetails } from '../../models/projectDetails';
 
 @Component({
   selector: 'app-add-employees',
@@ -82,6 +83,8 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
   displayedColumns = ['select', 'name'];
   selection = new SelectionModel<ManageEmployee>(true, []);
 
+  projectDetails: ProjectDetails | undefined;
+
   readonly dialog = inject(MatDialog);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -95,7 +98,7 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
   }
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { projectId: number; employeesIds: number },
+    public data: { projectId: number; employees: ManageEmployee[] },
   ) {}
 
   readonly dialogRef = inject(MatDialogRef<AddEmployeesComponent>);
@@ -104,8 +107,23 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
   }
 
   getManageEmployee(): void {
-    this._employeeService.getManageEmployee().subscribe((employee) => {
-      this.dataSource.data = employee;
+    this._employeeService.getManageEmployee().subscribe((employees) => {
+      console.log(employees);
+      console.log(this.data.employees);
+      const ar = this.data.employees;
+      // this.dataSource.data = employees.filter(
+      //   (item) => item.id !== this.data.employees[item.id],
+      // );
+      // employees.forEach((item) => {
+      //   this.data.employees.filter((em) => em !== item).map((e) => employees);
+      // });
+      const arrayFiltered = employees.filter((item) => {
+        return ar.every((f) => {
+          return f.id !== item.id;
+        });
+      });
+
+      this.dataSource.data = arrayFiltered;
       this._cdr.detectChanges();
     });
   }

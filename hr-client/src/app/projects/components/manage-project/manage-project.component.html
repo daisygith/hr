@@ -30,7 +30,7 @@
             {{ "ADD_TASK.MANAGE_TASKS" | translate }}
           </ng-template>
           <div class="list-content">
-            <app-dashboard-task />
+            <app-dashboard-task [projectDetails]="projectDetails" />
           </div>
         </mat-tab>
         <mat-tab>

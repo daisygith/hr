@@ -1,4 +1,10 @@
-import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -25,6 +31,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { ProjectManagementService } from '../../services/project-management.service';
+import { ProjectDetails } from '../../models/projectDetails';
 
 @Component({
   selector: 'app-dashboard-task',
@@ -67,6 +74,8 @@ export class DashboardTaskComponent implements OnInit {
   tasksMap: Map<string, Task[]> = new Map<string, Task[]>();
 
   id: number | undefined;
+  @Input()
+  projectDetails: ProjectDetails | undefined;
 
   ngOnInit(): void {
     this.id = +this._activeRoute.snapshot.params['projectId'];
@@ -113,7 +122,11 @@ export class DashboardTaskComponent implements OnInit {
   openDialogEdit(taskId: number) {
     // e.stopPropagation();
     const dialogRef = this.dialog.open(AddTaskComponent, {
-      data: { projectId: this.id, taskId: taskId },
+      data: {
+        projectId: this.id,
+        taskId: taskId,
+        employees: this.projectDetails?.employees,
+      },
       height: '650px',
       width: '900px',
     });

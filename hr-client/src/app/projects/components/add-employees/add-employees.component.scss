@@ -105,8 +105,8 @@ app-add-employees {
     margin-right: unset;
   }
 
-  h2#mat-mdc-dialog-title-0 {
-    font-family: "Inter", sans-serif;
+  h2 {
+    font-family: "Inter", sans-serif !important;
   }
 
   .mat-elevation-z8 {
