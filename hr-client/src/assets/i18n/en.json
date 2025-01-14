@@ -143,6 +143,9 @@
     "JOB_TITLE": "Job Title",
     "PHONE_NUMBER": "Phone Number"
   },
+  "MANAGE_PROJECT": {
+    "EMPLOYEES": "Employees assigned to the project"
+  },
   "MANAGE_USER": {
     "EMAIL": "E-mail",
     "USERNAME": "User name",

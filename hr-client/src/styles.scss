@@ -130,12 +130,12 @@ select:focus-visible {
   box-shadow: none;
   .mat-mdc-header-cell {
     &:first-child {
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
     &:last-child {
-      border-top-right-radius: 8px;
-      border-bottom-right-radius: 8px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 }
@@ -143,6 +143,11 @@ select:focus-visible {
 mat-icon#manage-icon,
 mat-icon#request-icon {
   margin: 6px !important;
+}
+
+tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
+  //background-color: var(--border-app-element) !important;
+  height: 36px !important;
 }
 
 //add-employee, edit-user

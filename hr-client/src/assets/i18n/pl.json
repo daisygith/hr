@@ -143,6 +143,9 @@
     "JOB_TITLE": "Tytuł służbowy",
     "PHONE_NUMBER": "Numer Telefonu"
   },
+  "MANAGE_PROJECT": {
+    "EMPLOYEES": "Pracownicy przypisani do projektu"
+  },
   "MANAGE_USER": {
     "EMAIL": "E-mail",
     "USERNAME": "Nazwa użytkownika",

@@ -80,10 +80,32 @@ app-add-task {
 
   button#button-close {
     margin: 0 0 0 0;
+    min-width: 0;
+    padding: 0 14px 0 14px;
+    color: var(--main-color);
   }
 
-  button#button-close:hover,
-  button#button-save:hover {
+  button#button-save {
+    border-radius: 10px;
     background-color: var(--border-app-element);
+    border: 1px solid var(--positive-element);
+    color: var(--positive-element);
+  }
+
+  button#button-close:hover {
+    background-color: var(--border-app-element);
+  }
+
+  button#button-save:hover {
+    background-color: var(--positive-element);
+    color: var(--main-color-text);
+  }
+
+  .mat-mdc-button > .mat-icon {
+    margin-right: unset;
+  }
+
+  h2#mat-mdc-dialog-title-0 {
+    font-family: "Inter", sans-serif;
   }
 }
