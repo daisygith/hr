@@ -49,9 +49,11 @@
     </th>
 
     <td mat-cell *matCellDef="let element">
-      <span class="type {{ element.department | lowercase }}">{{
-        element.department
-      }}</span>
+      <mat-chip
+        class="type {{ element.department | lowercase }}"
+        id="chip-type"
+        >{{ element.department }}</mat-chip
+      >
     </td>
   </ng-container>
 

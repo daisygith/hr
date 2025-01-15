@@ -63,7 +63,7 @@ export class ManageProjectComponent implements OnInit {
   openDialogTask() {
     const dialogRef = this.dialog.open(AddTaskComponent, {
       data: { projectId: this.id, employees: this.projectDetails?.employees },
-      height: '650px',
+      // height: '650px',
       width: '900px',
     });
 

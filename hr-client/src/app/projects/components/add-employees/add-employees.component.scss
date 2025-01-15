@@ -8,14 +8,11 @@ app-add-employees {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .input-task-left,
-  .input-task-right {
-    margin: 0 8px 0 8px;
-  }
+
   .add-task-title {
     font-size: 12px;
     font-weight: 600;
-    padding: 20px 8px 10px 0;
+    padding: 20px 8px 0 0;
   }
 
   .mdc-text-field__input {
@@ -115,5 +112,24 @@ app-add-employees {
 
   td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-select.mat-column-select.ng-star-inserted {
     width: 0;
+  }
+
+  input#input-filter {
+    margin: 0 0 0 30px;
+    padding: 8px 0 0 0;
+  }
+
+  mat-icon#filter-icon {
+    left: -18px;
+    position: absolute;
+    padding: 8px 0 0 14px;
+    color: var(--border-app-element);
+  }
+
+  .list-additional-elem {
+    width: 50%;
+    //display: flex;
+    //justify-items: flex-end;
+    float: right;
   }
 }

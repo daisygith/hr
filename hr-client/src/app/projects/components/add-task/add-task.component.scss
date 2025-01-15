@@ -7,15 +7,13 @@ app-add-task {
   .add-task-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 14px;
   }
-  .input-task-left,
-  .input-task-right {
-    margin: 0 8px 0 8px;
-  }
+
   .add-task-title {
     font-size: 12px;
     font-weight: 600;
-    padding: 20px 8px 10px 0;
+    padding: 20px 8px 0 0;
   }
 
   .mdc-text-field__input {

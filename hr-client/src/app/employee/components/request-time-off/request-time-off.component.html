@@ -40,9 +40,9 @@
       {{ "REQUEST_TIME_OFF.LEAVE_TYPE" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <span class="type {{ element.leaveType | lowercase }}">
+      <mat-chip class="type {{ element.leaveType | lowercase }}" id="chip-type">
         {{ "REQUEST_TIME_OFF.LEAVE_TYPES." + element.leaveType | translate }}
-      </span>
+      </mat-chip>
     </td>
   </ng-container>
 
@@ -80,9 +80,11 @@
       {{ "REQUEST_TIME_OFF.STATUS" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <span class="status {{ element.status | lowercase }}">{{
-        "REQUEST_TIME_OFF.STAT." + element.status | translate
-      }}</span>
+      <mat-chip
+        class="status {{ element.status | lowercase }}"
+        id="chip-status"
+        >{{ "REQUEST_TIME_OFF.STAT." + element.status | translate }}</mat-chip
+      >
     </td>
   </ng-container>
 

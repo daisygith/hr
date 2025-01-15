@@ -132,8 +132,8 @@ export class ManageProjectIdComponent implements OnInit {
   openDialogEmployees() {
     const dialogRef = this.dialog.open(AddEmployeesComponent, {
       data: { projectId: this.id, employees: this.projectDetails?.employees },
-      height: '600px',
-      width: '400px',
+      // height: '600px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

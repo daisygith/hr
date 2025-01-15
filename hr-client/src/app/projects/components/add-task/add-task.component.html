@@ -5,151 +5,157 @@
   </ng-template>
   <ng-template #title1>
     <h2 mat-dialog-title>
-      {{ "ADD_TASK.TITLE1" | translate: { value: task?.name } }}
+      {{ "ADD_TASK.TITLE1" | translate: { value: task!.name } }}
     </h2>
   </ng-template>
   <button mat-button mat-dialog-close id="button-close" (click)="onNoClick()">
     <mat-icon>close</mat-icon>
   </button>
 </div>
-<div class="add-task-content" [formGroup]="addTaskGroup">
-  <div class="input-task-left">
-    <div class="add-task-box">
-      <div class="add-task-title">
-        {{ "ADD_TASK.NAME_OF_TASK" | translate }}
-      </div>
-      <mat-form-field class="input-full-width">
-        <input
-          matInput
-          type="text"
-          is="name"
-          formControlName="name"
-          [placeholder]="'ADD_TASK.NAME_OF_TASK' | translate"
-          id="input-name"
-        />
-      </mat-form-field>
-    </div>
-    <div class="add-task-box">
-      <div class="add-task-title">{{ "ADD_TASK.DESCRIPTION" | translate }}</div>
-      <mat-form-field class="input-full-width">
-        <input
-          matInput
-          type="text"
-          is="name"
-          formControlName="description"
-          [placeholder]="'ADD_TASK.DESCRIPTION' | translate"
-          id="input-description"
-        />
-      </mat-form-field>
-    </div>
-    <div class="add-task-box">
-      <div class="add-task-title">{{ "ADD_TASK.EMPLOYEE" | translate }}</div>
-      <mat-form-field class="input-full-width">
-        <mat-select type="text" is="employeeId" formControlName="employeeId">
-          <mat-option
-            *ngFor="let employee of employeeArr"
-            [value]="employee.id"
-          >
-            {{ employee.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="add-task-box">
-      <div class="add-task-title">
-        {{ "ADD_TASK.ESTIMATED_WORK_TIME" | translate }}
-      </div>
-      <mat-form-field class="input-full-width">
-        <input
-          matInput
-          type="text"
-          is="estimatedWorkTime"
-          formControlName="estimatedWorkTime"
-          [placeholder]="'ADD_TASK.ESTIMATED_WORK_TIME' | translate"
-          id="input-estimatedWorkTime"
-        />
-      </mat-form-field>
-    </div>
-    <div *ngIf="task?.id != null; then option1"></div>
-    <ng-template #option1>
+<mat-dialog-content>
+  <div class="add-task-content" [formGroup]="addTaskGroup">
+    <div class="input-task-left">
       <div class="add-task-box">
         <div class="add-task-title">
-          {{ "ADD_TASK.STATUS_TITLE" | translate }}
+          {{ "ADD_TASK.NAME_OF_TASK" | translate }}
         </div>
         <mat-form-field class="input-full-width">
-          <mat-select type="text" is="status" formControlName="status">
-            <mat-option *ngFor="let status of statusOption" [value]="status">
-              {{ "ADD_TASK.STATUS." + status | translate }}
+          <input
+            matInput
+            type="text"
+            is="name"
+            formControlName="name"
+            [placeholder]="'ADD_TASK.NAME_OF_TASK' | translate"
+            id="input-name"
+          />
+        </mat-form-field>
+      </div>
+      <div class="add-task-box">
+        <div class="add-task-title">
+          {{ "ADD_TASK.DESCRIPTION" | translate }}
+        </div>
+        <mat-form-field class="input-full-width">
+          <input
+            matInput
+            type="text"
+            is="name"
+            formControlName="description"
+            [placeholder]="'ADD_TASK.DESCRIPTION' | translate"
+            id="input-description"
+          />
+        </mat-form-field>
+      </div>
+      <div class="add-task-box">
+        <div class="add-task-title">{{ "ADD_TASK.EMPLOYEE" | translate }}</div>
+        <mat-form-field class="input-full-width">
+          <mat-select type="text" is="employeeId" formControlName="employeeId">
+            <mat-option
+              *ngFor="let employee of employeeArr"
+              [value]="employee.id"
+            >
+              {{ employee.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-    </ng-template>
+      <div class="add-task-box">
+        <div class="add-task-title">
+          {{ "ADD_TASK.ESTIMATED_WORK_TIME" | translate }}
+        </div>
+        <mat-form-field class="input-full-width">
+          <input
+            matInput
+            type="text"
+            is="estimatedWorkTime"
+            formControlName="estimatedWorkTime"
+            [placeholder]="'ADD_TASK.ESTIMATED_WORK_TIME' | translate"
+            id="input-estimatedWorkTime"
+          />
+        </mat-form-field>
+      </div>
+      <div *ngIf="task?.id != null; then option1"></div>
+      <ng-template #option1>
+        <div class="add-task-box">
+          <div class="add-task-title">
+            {{ "ADD_TASK.STATUS_TITLE" | translate }}
+          </div>
+          <mat-form-field class="input-full-width">
+            <mat-select type="text" is="status" formControlName="status">
+              <mat-option *ngFor="let status of statusOption" [value]="status">
+                {{ "ADD_TASK.STATUS." + status | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </ng-template>
+    </div>
+    <div class="input-task-right">
+      <div class="add-task-box">
+        <div class="add-task-title">
+          {{ "ADD_TASK.ESTIMATED_TASK_TIME_END" | translate }}
+        </div>
+        <mat-form-field class="input-full-width">
+          <input
+            matInput
+            type="text"
+            is="estimatedTaskTimeEnd"
+            formControlName="estimatedTaskTimeEnd"
+            [placeholder]="'ADD_TASK.ESTIMATED_TASK_TIME_END' | translate"
+            id="input-estimatedTaskTimeEnd"
+          />
+        </mat-form-field>
+      </div>
+      <div class="add-task-box">
+        <div class="add-task-title">
+          {{ "ADD_TASK.START_DATE" | translate }}
+        </div>
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="startDate"
+            id="input-startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="add-task-box">
+        <div class="add-task-title">
+          {{ "ADD_TASK.PRIORITY_STATUS" | translate }}
+        </div>
+        <mat-form-field class="input-full-width">
+          <mat-select type="text" is="status" formControlName="priorityStatus">
+            <mat-option
+              *ngFor="let priority of priorityOption"
+              [value]="priority"
+            >
+              {{ "ADD_TASK.PRIORITY." + priority | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="add-task-box">
+        <div class="add-task-title">
+          {{ "ADD_TASK.TYPE_OF_TASK_TITLE" | translate }}
+        </div>
+        <mat-form-field class="input-full-width">
+          <mat-select type="text" is="status" formControlName="typeTask">
+            <mat-option
+              *ngFor="let typeTask of typeTaskOption"
+              [value]="typeTask"
+            >
+              {{ "ADD_TASK.TYPE_OF_TASK." + typeTask | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
-  <div class="input-task-right">
-    <div class="add-task-box">
-      <div class="add-task-title">
-        {{ "ADD_TASK.ESTIMATED_TASK_TIME_END" | translate }}
-      </div>
-      <mat-form-field class="input-full-width">
-        <input
-          matInput
-          type="text"
-          is="estimatedTaskTimeEnd"
-          formControlName="estimatedTaskTimeEnd"
-          [placeholder]="'ADD_TASK.ESTIMATED_TASK_TIME_END' | translate"
-          id="input-estimatedTaskTimeEnd"
-        />
-      </mat-form-field>
-    </div>
-    <div class="add-task-box">
-      <div class="add-task-title">{{ "ADD_TASK.START_DATE" | translate }}</div>
-      <mat-form-field>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          formControlName="startDate"
-          id="input-startDate"
-        />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div class="add-task-box">
-      <div class="add-task-title">
-        {{ "ADD_TASK.PRIORITY_STATUS" | translate }}
-      </div>
-      <mat-form-field class="input-full-width">
-        <mat-select type="text" is="status" formControlName="priorityStatus">
-          <mat-option
-            *ngFor="let priority of priorityOption"
-            [value]="priority"
-          >
-            {{ "ADD_TASK.PRIORITY." + priority | translate }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="add-task-box">
-      <div class="add-task-title">
-        {{ "ADD_TASK.TYPE_OF_TASK_TITLE" | translate }}
-      </div>
-      <mat-form-field class="input-full-width">
-        <mat-select type="text" is="status" formControlName="typeTask">
-          <mat-option
-            *ngFor="let typeTask of typeTaskOption"
-            [value]="typeTask"
-          >
-            {{ "ADD_TASK.TYPE_OF_TASK." + typeTask | translate }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
-</div>
+</mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close id="button-save" (click)="saveData()">
     {{ "ADD_TASK.BUTTON.SAVE" | translate }}

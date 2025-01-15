@@ -85,9 +85,7 @@ app-manage-employee {
     width: 58px;
   }
 
-  span.type {
-    padding: 10px;
-    border-radius: 18px;
+  mat-chip#chip-type.type {
     &.it {
       background-color: var(--it-department);
     }

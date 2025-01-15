@@ -86,9 +86,8 @@ app-request-time-off {
     border-color: var(--negative-element);
     color: var(--negative-element);
   }
-  span.status {
-    padding: 10px;
-    border-radius: 18px;
+
+  mat-chip#chip-status.status {
     &.approve {
       background-color: var(--positive-status);
     }
@@ -103,9 +102,7 @@ app-request-time-off {
     }
   }
 
-  span.type {
-    padding: 10px;
-    border-radius: 18px;
+  mat-chip#chip-type.type {
     &.sick_leave {
       background-color: var(--positive-status);
     }

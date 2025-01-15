@@ -33,6 +33,7 @@ import { MatInput } from '@angular/material/input';
 import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 import { Role } from '../../../auth/models/role';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
+import { MatChip } from '@angular/material/chips';
 
 @Component({
   selector: 'app-request-time-off',
@@ -63,6 +64,7 @@ import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
     NgOptimizedImage,
     HasRoleDirective,
     LowerCasePipe,
+    MatChip,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',

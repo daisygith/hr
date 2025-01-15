@@ -10,6 +10,12 @@ app-manage-project-id {
       overflow: hidden;
     }
 
+    .project-id {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
     .list-title {
       font-size: 20px;
       font-weight: 600;
@@ -20,10 +26,6 @@ app-manage-project-id {
       border-radius: 10px;
       background-color: var(--button-app-color);
       width: 200px;
-    }
-
-    .project-id-form.elements {
-      margin: 0 0 10px 0;
     }
 
     .project-id-form.elements,
@@ -87,6 +89,9 @@ app-manage-project-id {
 
     .project-id-form.info-personal {
       margin: 0 0 30px 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 102%;
     }
 
     .button-save {
@@ -102,6 +107,7 @@ app-manage-project-id {
 
     .title-line1 {
       margin: 0 0 20px 0;
+      font-size: 18px;
     }
 
     .mat-elevation-z8 {

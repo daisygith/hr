@@ -33,6 +33,7 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 import { Role } from '../../../auth/models/role';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 import { AuthService } from '../../../auth/services/auth.service';
+import { MatChip } from '@angular/material/chips';
 
 @Component({
   selector: 'app-manage-employee',
@@ -62,6 +63,7 @@ import { AuthService } from '../../../auth/services/auth.service';
     HasRoleDirective,
     NgIf,
     LowerCasePipe,
+    MatChip,
   ],
   templateUrl: './manage-employee.component.html',
   styleUrl: './manage-employee.component.scss',

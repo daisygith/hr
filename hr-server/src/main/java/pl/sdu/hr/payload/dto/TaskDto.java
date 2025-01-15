@@ -26,6 +26,8 @@ public class TaskDto {
 
     private Long employeeId;
 
+    private String employeeName;
+
     private String estimatedWorkTime;
 
     private String estimatedTaskTimeEnd;

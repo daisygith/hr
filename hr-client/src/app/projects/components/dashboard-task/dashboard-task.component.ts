@@ -74,6 +74,7 @@ export class DashboardTaskComponent implements OnInit {
   tasksMap: Map<string, Task[]> = new Map<string, Task[]>();
 
   id: number | undefined;
+  data: any;
   @Input()
   projectDetails: ProjectDetails | undefined;
 
@@ -127,7 +128,7 @@ export class DashboardTaskComponent implements OnInit {
         taskId: taskId,
         employees: this.projectDetails?.employees,
       },
-      height: '650px',
+      // height: '500px',
       width: '900px',
     });
 

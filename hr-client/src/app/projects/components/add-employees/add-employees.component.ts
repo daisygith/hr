@@ -17,6 +17,7 @@ import {
   MatDialog,
   MatDialogActions,
   MatDialogClose,
+  MatDialogContent,
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
@@ -41,7 +42,9 @@ import { MatIcon } from '@angular/material/icon';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProjectService } from '../../services/project.service';
 import { ProjectManagementService } from '../../services/project-management.service';
-import { ProjectDetails } from '../../models/projectDetails';
+import { map } from 'rxjs';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-add-employees',
@@ -66,6 +69,9 @@ import { ProjectDetails } from '../../models/projectDetails';
     MatDialogActions,
     MatIcon,
     MatPaginator,
+    MatDialogContent,
+    MatFormField,
+    MatInput,
   ],
   templateUrl: './add-employees.component.html',
   styleUrl: './add-employees.component.scss',
@@ -82,8 +88,6 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<ManageEmployee>([]);
   displayedColumns = ['select', 'name'];
   selection = new SelectionModel<ManageEmployee>(true, []);
-
-  projectDetails: ProjectDetails | undefined;
 
   readonly dialog = inject(MatDialog);
 
@@ -107,25 +111,23 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
   }
 
   getManageEmployee(): void {
-    this._employeeService.getManageEmployee().subscribe((employees) => {
-      console.log(employees);
-      console.log(this.data.employees);
-      const ar = this.data.employees;
-      // this.dataSource.data = employees.filter(
-      //   (item) => item.id !== this.data.employees[item.id],
-      // );
-      // employees.forEach((item) => {
-      //   this.data.employees.filter((em) => em !== item).map((e) => employees);
-      // });
-      const arrayFiltered = employees.filter((item) => {
-        return ar.every((f) => {
-          return f.id !== item.id;
-        });
+    const ar = this.data.employees;
+    console.log(ar);
+    this._employeeService
+      .getManageEmployee()
+      .pipe(
+        map((employees: ManageEmployee[]) => {
+          return employees.filter((item) => {
+            return ar.every((f) => {
+              return f.id !== item.id;
+            });
+          });
+        }),
+      )
+      .subscribe((em) => {
+        this.dataSource.data = em;
+        console.log(em);
       });
-
-      this.dataSource.data = arrayFiltered;
-      this._cdr.detectChanges();
-    });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -148,6 +150,11 @@ export class AddEmployeesComponent implements OnInit, AfterViewInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   saveData() {
