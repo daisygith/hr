@@ -151,7 +151,7 @@ export class AddTaskComponent implements OnInit {
     if (this.isNew) {
       this._projectService.addTask(this.addTaskGroup.getRawValue()).subscribe({
         next: (data) => {
-          this.dialogRef.close();
+          // this.dialogRef.close();
           this.addTaskGroup.patchValue(data);
           this.notification.successMethod(
             'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
@@ -170,7 +170,7 @@ export class AddTaskComponent implements OnInit {
         .updateTaskById(this.addTaskGroup.getRawValue())
         .subscribe({
           next: (data) => {
-            this.dialogRef.close();
+            // this.dialogRef.close();
             this.task = data;
             this.addTaskGroup.patchValue(data);
             this.notification.successMethod(

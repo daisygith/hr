@@ -13,6 +13,7 @@ public class TaskMapper {
                 .status(task.getStatus())
                 .employeeId(task.getEmployee() != null ? task.getEmployee().getId() : null)
                 .employeeName(task.getEmployee() != null ? task.getEmployee().getName() : null)
+                .employeeImage(task.getEmployee() != null ? task.getEmployee().getImage(): null)
                 .estimatedWorkTime(task.getEstimatedWorkTime())
                 .estimatedTaskTimeEnd(task.getEstimatedTaskTimeEnd())
                 .startDate(task.getStartDate())

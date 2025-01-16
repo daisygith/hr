@@ -44,14 +44,37 @@ app-dashboard-task {
     background-color: var(--border-app-element);
   }
 
-  .description-task {
-    height: 66px;
+  .description-task.top {
+    //height: 66px;
     border-bottom: 1px solid var(--border-app-element);
   }
 
+  .description-task.bottom {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    margin: 8px 0 8px 0;
+  }
+
+  .task-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .task-employeeName {
+    display: flex;
+    align-items: center;
+  }
+
+  span.task-description {
+    font-size: 12px;
+  }
+
   .button-action {
-    padding: 2px 0 0 0;
-    text-align: right;
+    //padding: 2px 0 0 0;
+    //text-align: right;
   }
 
   button#button-delete {

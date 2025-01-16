@@ -4,6 +4,8 @@ export interface Task {
   status: string;
   description: string;
   employeeId: number;
+  employeeName: string;
+  employeeImage: string;
   projectId: number;
   estimatedWorkTime: string;
   estimatedTaskTimeEnd: string;

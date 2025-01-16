@@ -28,6 +28,8 @@ public class TaskDto {
 
     private String employeeName;
 
+    private String employeeImage;
+
     private String estimatedWorkTime;
 
     private String estimatedTaskTimeEnd;
