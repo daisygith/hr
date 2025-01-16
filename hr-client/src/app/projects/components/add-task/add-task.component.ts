@@ -122,7 +122,7 @@ export class AddTaskComponent implements OnInit {
     this.addTaskGroup = this._fb.group({
       id: new FormControl(null),
       name: new FormControl(null, [Validators.required]),
-      status: new FormControl(null, [Validators.required]),
+      status: new FormControl(null, []),
       description: new FormControl(null, [Validators.required]),
       employeeId: new FormControl(null),
       projectId: new FormControl(this.data.projectId),
@@ -132,6 +132,9 @@ export class AddTaskComponent implements OnInit {
       priorityStatus: new FormControl(null, [Validators.required]),
       typeTask: new FormControl(null, [Validators.required]),
     });
+    if (!this.isNew) {
+      this.addTaskGroup.get('status')?.addValidators([Validators.required]);
+    }
   }
 
   getTaskById(projectId: number, taskId: number) {
@@ -148,6 +151,7 @@ export class AddTaskComponent implements OnInit {
     if (this.isNew) {
       this._projectService.addTask(this.addTaskGroup.getRawValue()).subscribe({
         next: (data) => {
+          this.dialogRef.close();
           this.addTaskGroup.patchValue(data);
           this.notification.successMethod(
             'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
@@ -166,6 +170,7 @@ export class AddTaskComponent implements OnInit {
         .updateTaskById(this.addTaskGroup.getRawValue())
         .subscribe({
           next: (data) => {
+            this.dialogRef.close();
             this.task = data;
             this.addTaskGroup.patchValue(data);
             this.notification.successMethod(

@@ -11,7 +11,8 @@ public class TaskMapper {
                 .name(task.getName())
                 .description(task.getDescription())
                 .status(task.getStatus())
-                .employeeId(task.getEmployeeId())
+                .employeeId(task.getEmployee() != null ? task.getEmployee().getId() : null)
+                .employeeName(task.getEmployee() != null ? task.getEmployee().getName() : null)
                 .estimatedWorkTime(task.getEstimatedWorkTime())
                 .estimatedTaskTimeEnd(task.getEstimatedTaskTimeEnd())
                 .startDate(task.getStartDate())
@@ -28,7 +29,6 @@ public class TaskMapper {
                 .name(taskDto.getName())
                 .description(taskDto.getDescription())
                 .status(taskDto.getStatus())
-                .employeeId(taskDto.getEmployeeId())
                 .estimatedWorkTime(taskDto.getEstimatedWorkTime())
                 .estimatedTaskTimeEnd(taskDto.getEstimatedTaskTimeEnd())
                 .startDate(taskDto.getStartDate())
@@ -38,4 +38,6 @@ public class TaskMapper {
 
         return task;
     }
+
+
 }

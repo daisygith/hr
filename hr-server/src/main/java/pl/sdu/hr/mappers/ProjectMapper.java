@@ -11,12 +11,6 @@ public class ProjectMapper {
         ProjectDto projectDto = ProjectDto.builder()
                 .id(project.getId())
                 .name(project.getName())
-                .task(project.getTask() != null ?
-                        project.getTask()
-                                .stream()
-                                .map(TaskMapper::mapTaskToTaskDto)
-                                .collect(Collectors.toList())
-                        : null)
                 .build();
 
         return projectDto;
@@ -27,12 +21,6 @@ public class ProjectMapper {
         ProjectDto projectDto = ProjectDto.builder()
                 .id(project.getId())
                 .name(project.getName())
-                .task(project.getTask() != null ?
-                        project.getTask()
-                                .stream()
-                                .map(TaskMapper::mapTaskToTaskDto)
-                                .collect(Collectors.toList())
-                        : null)
                 .employees(project.getProjectEmployees() != null ?
                         project.getProjectEmployees()
                                 .stream()
@@ -48,12 +36,6 @@ public class ProjectMapper {
         Project project = Project.builder()
                 .id(projectDto.getId())
                 .name(projectDto.getName())
-                .task(projectDto.getTask() != null ?
-                        projectDto.getTask()
-                                .stream()
-                                .map(TaskMapper::mapTaskDtoToTask)
-                                .collect(Collectors.toList())
-                        : null)
                 .build();
 
         return project;

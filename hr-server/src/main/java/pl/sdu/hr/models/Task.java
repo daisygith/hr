@@ -31,8 +31,6 @@ public class Task {
 
     private String description;
 
-    private Long employeeId;
-
     private String estimatedWorkTime;
 
     private String estimatedTaskTimeEnd;
@@ -52,9 +50,8 @@ public class Task {
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "employee_id", nullable = false)
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
 }

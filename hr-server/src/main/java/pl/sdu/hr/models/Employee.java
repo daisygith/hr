@@ -61,7 +61,7 @@ public class Employee {
             inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Project> projectEmployees = new ArrayList<>();
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> task = new ArrayList<>();
+//    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Task> task = new ArrayList<>();
 
 }

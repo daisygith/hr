@@ -25,8 +25,8 @@ public class Project {
     @Size(max = 50)
     private String name;
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, orphanRemoval = true )
-    private List<Task> task = new ArrayList<>();
+//    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, orphanRemoval = true )
+//    private List<Task> task = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(  name = "project_employees",

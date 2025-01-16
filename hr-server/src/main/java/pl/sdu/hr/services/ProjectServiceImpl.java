@@ -87,10 +87,11 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public TaskDto createTask(TaskDto taskDto, Long projectId) {
         Project project = projectRepository.findById(projectId).orElseThrow();
-
+        Employee employee = taskDto.getEmployeeId() != null ? employeeRepository.findById(taskDto.getEmployeeId()).orElseThrow() : null;
         Task task = TaskMapper.mapTaskDtoToTask(taskDto);
         task.setStatus(ETaskStatus.NEW);
         task.setProject(project);
+        task.setEmployee(employee);
 
         taskRepository.save(task);
 
@@ -129,10 +130,17 @@ public class ProjectServiceImpl implements ProjectService {
     @Transactional
     @Override
     public TaskDto updateTask(TaskDto taskDto, Long projectId) {
-        Project project = projectRepository.findById(projectId).orElseThrow();
-
-        Task task = TaskMapper.mapTaskDtoToTask(taskDto);
-        task.setProject(project);
+        Employee employee = taskDto.getEmployeeId() != null ? employeeRepository.findById(taskDto.getEmployeeId()).orElseThrow() : null;
+//        Task task = TaskMapper.mapTaskDtoToTask(taskDto, employee);
+        Task task = taskRepository.findById(taskDto.getId()).orElseThrow();
+        task.setEmployee(employee);
+        task.setName(taskDto.getName());
+        task.setStatus(taskDto.getStatus());
+        task.setEstimatedTaskTimeEnd(taskDto.getEstimatedTaskTimeEnd());
+        task.setEstimatedWorkTime(taskDto.getEstimatedWorkTime());
+        task.setPriorityStatus(taskDto.getPriorityStatus());
+        task.setStartDate(taskDto.getStartDate());
+        task.setTypeTask(taskDto.getTypeTask());
 
         taskRepository.save(task);
 

@@ -18,7 +18,5 @@ public class ProjectDto {
 
     private String name;
 
-    private List<TaskDto> task = new ArrayList<>();
-
     private List<EmployeeDto> employees = new ArrayList<>();
 }
