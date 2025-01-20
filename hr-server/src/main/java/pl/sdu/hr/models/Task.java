@@ -37,6 +37,8 @@ public class Task {
 
     private LocalDateTime startDate;
 
+    private String comment;
+
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private EPriorityStatus priorityStatus;

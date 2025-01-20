@@ -142,6 +142,7 @@ public class ProjectServiceImpl implements ProjectService {
         task.setPriorityStatus(taskDto.getPriorityStatus());
         task.setStartDate(taskDto.getStartDate());
         task.setTypeTask(taskDto.getTypeTask());
+        task.setComment(taskDto.getComment());
 
         taskRepository.save(task);
 

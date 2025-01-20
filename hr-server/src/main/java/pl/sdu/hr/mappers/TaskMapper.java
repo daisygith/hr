@@ -19,6 +19,7 @@ public class TaskMapper {
                 .startDate(task.getStartDate())
                 .priorityStatus(task.getPriorityStatus())
                 .typeTask(task.getTypeTask())
+                .comment(task.getComment())
                 .build();
 
         return taskDto;
@@ -35,6 +36,7 @@ public class TaskMapper {
                 .startDate(taskDto.getStartDate())
                 .priorityStatus(taskDto.getPriorityStatus())
                 .typeTask(taskDto.getTypeTask())
+                .comment(taskDto.getComment())
                 .build();
 
         return task;

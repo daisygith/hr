@@ -40,5 +40,7 @@ public class TaskDto {
 
     private ETypeTask typeTask;
 
+    private String comment;
+
     private ProjectDto project;
 }
