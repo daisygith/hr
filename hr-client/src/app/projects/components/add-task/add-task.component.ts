@@ -87,6 +87,8 @@ export class AddTaskComponent implements OnInit {
   public addTaskGroup!: FormGroup;
 
   isNew: boolean = false;
+  isEdit: boolean = false;
+
   id!: number | undefined;
   taskId: number | undefined;
 
@@ -170,22 +172,6 @@ export class AddTaskComponent implements OnInit {
             this.addTaskGroup.patchValue(value);
           },
         });
-      // this._projectService.addTask(this.addTaskGroup.getRawValue()).subscribe({
-      //   next: (data) => {
-      //     // this.dialogRef.close();
-      //     this.addTaskGroup.patchValue(data);
-      //     this.notification.successMethod(
-      //       'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-      //     );
-      //     this._projectManagementService.refreshTasks();
-      //     this._router.navigateByUrl(`/projects/${this.project?.id}`);
-      //   },
-      //   error: (err) => {
-      //     this.notification.errorMethod(
-      //       'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-      //     );
-      //   },
-      // });
     } else {
       this._projectService
         .updateTaskById(this.addTaskGroup.getRawValue())
@@ -209,5 +195,13 @@ export class AddTaskComponent implements OnInit {
     }
     this._projectManagementService.refreshTasks();
     this._router.navigateByUrl(`/projects/${this.id}`);
+  }
+
+  public get isReadOnly(): boolean {
+    return !this.isNew && !this.isEdit;
+  }
+
+  public toggleEdit() {
+    this.isEdit = !this.isEdit;
   }
 }

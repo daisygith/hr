@@ -63,19 +63,9 @@ export class ManageProjectComponent implements OnInit {
     }
     this._projectService.getProjectById(projectId).subscribe((data) => {
       this.projectDetails = data;
-      // this.addProjectGroup.patchValue(data);
     });
   }
 
-  // openDialogTask() {
-  //   const dialogRef = this.dialog.open(AddTaskComponent, {
-  //     data: { projectId: this.id, employees: this.projectDetails?.employees },
-  //     // height: '650px',
-  //     width: '900px',
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe((result) => {});
-  // }
   openNewTask(projectId: number | undefined) {
     if (!this._authService.hasRole(this.canAddEmployeeRoles)) {
       return;

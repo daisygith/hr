@@ -128,26 +128,13 @@ app-add-task {
     padding: 20px 0 10px 0;
   }
 
-  //button#button-close {
-  //  margin: 0 0 0 0;
-  //  min-width: 0;
-  //  padding: 0 14px 0 14px;
-  //  color: var(--main-color);
-  //}
+  .elements-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-  //button#button-save {
-  //  border-radius: 10px;
-  //  background-color: var(--border-app-element);
-  //  border: 1px solid var(--positive-element);
-  //  color: var(--positive-element);
-  //}
-
-  //button#button-close:hover {
-  //  background-color: var(--border-app-element);
-  //}
-  //
-  //button#button-save:hover {
-  //  background-color: var(--positive-element);
-  //  color: var(--main-color-text);
-  //}
+  .mat-mdc-unelevated-button > .mat-icon {
+    left: 8px;
+  }
 }
