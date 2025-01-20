@@ -84,7 +84,7 @@ export class DashboardTaskComponent implements OnInit {
   projectDetails: ProjectDetails | undefined;
 
   ngOnInit(): void {
-    this.id = +this._activeRoute.snapshot.params['projectId'];
+    this.id = this._activeRoute.parent?.snapshot.params['projectId'];
     this._activeRoute.params.subscribe((params) => {
       if (this.id !== +params['projectId']) {
         this.id = +params['projectId'];

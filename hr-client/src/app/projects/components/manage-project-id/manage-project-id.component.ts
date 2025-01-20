@@ -33,6 +33,7 @@ import {
   MatTableDataSource,
 } from '@angular/material/table';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
+import { AddEmployeesComponent } from '../add-employees/add-employees.component';
 
 @Component({
   selector: 'app-manage-project-id',
@@ -128,17 +129,17 @@ export class ManageProjectIdComponent implements OnInit {
       });
   }
 
-  // openDialogEmployees() {
-  //   const dialogRef = this.dialog.open(AddEmployeesComponent, {
-  //     data: { projectId: this.id, employees: this.projectDetails?.employees },
-  //     // height: '600px',
-  //     width: '500px',
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     console.log(result);
-  //   });
-  // }
+  openDialogEmployees() {
+    const dialogRef = this.dialog.open(AddEmployeesComponent, {
+      data: { projectId: this.id, employees: this.projectDetails?.employees },
+      // height: '600px',
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
+  }
 
   openDialogDelete(
     employeeId: number | undefined,

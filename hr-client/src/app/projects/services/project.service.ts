@@ -15,7 +15,7 @@ export class ProjectService {
     return this._http.get<ProjectsList[]>(`${this._apiUrl}`);
   }
 
-  getProjectById(projectId: number): Observable<ProjectDetails> {
+  getProjectById(projectId: number | undefined): Observable<ProjectDetails> {
     return this._http.get<ProjectDetails>(`${this._apiUrl}/${projectId}`);
   }
 
@@ -60,7 +60,10 @@ export class ProjectService {
     return this._http.get<Task[]>(`${this._apiUrl}/${projectId}/tasks`);
   }
 
-  getTaskById(projectId: number, taskId: number | undefined): Observable<Task> {
+  getTaskById(
+    projectId: number | undefined,
+    taskId: number | undefined,
+  ): Observable<Task> {
     return this._http.get<Task>(`${this._apiUrl}/${projectId}/tasks/${taskId}`);
   }
 

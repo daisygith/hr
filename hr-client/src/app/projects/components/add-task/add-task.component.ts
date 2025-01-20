@@ -38,6 +38,9 @@ import { Task } from '../../models/task';
 import { ProjectManagementService } from '../../services/project-management.service';
 import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
+import { ProjectDetails } from '../../models/projectDetails';
+import { ManageEmployee } from '../../../employee/models/manageEmmployee';
+import { iif, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',
@@ -84,17 +87,19 @@ export class AddTaskComponent implements OnInit {
   public addTaskGroup!: FormGroup;
 
   isNew: boolean = false;
-  id: number | undefined;
+  id!: number | undefined;
   taskId: number | undefined;
 
   task: Task | undefined;
   project: ProjectsList | undefined;
+  projectDetails!: ProjectDetails | undefined;
 
   ngOnInit(): void {
-    this.id = this._activeRoute.snapshot.params['projectId'];
+    this.id = this._activeRoute.parent?.snapshot.params['projectId'];
     this.taskId = this._activeRoute.snapshot.params['taskId'];
     this.isNew = !this.taskId;
     this.buildForm();
+    this.getProjectById(this.id);
 
     if (this.id && this.taskId) {
       this.getTaskById(this.id, this.taskId);
@@ -102,13 +107,20 @@ export class AddTaskComponent implements OnInit {
     console.log(this.id);
   }
 
-  // public employeeArr = this.data.employees;
+  public employeeArr: ManageEmployee[] | undefined = [];
 
   public statusOption: string[] = ['NEW', 'WORK_IN_PROGRESS', 'DONE'];
 
   public priorityOption: string[] = ['NORMAL', 'HIGH', 'LOW'];
 
   public typeTaskOption: string[] = ['NORMAL', 'FAULT'];
+
+  getProjectById(projectId: number | undefined): void {
+    this._projectService.getProjectById(projectId).subscribe((data) => {
+      this.projectDetails = data;
+      this.employeeArr = this.projectDetails.employees;
+    });
+  }
 
   public buildForm() {
     this.addTaskGroup = this._fb.group({
@@ -117,7 +129,7 @@ export class AddTaskComponent implements OnInit {
       status: new FormControl(null, []),
       description: new FormControl(null, [Validators.required]),
       employeeId: new FormControl(null),
-      projectId: new FormControl(this.project?.id),
+      projectId: new FormControl(this.id),
       estimatedWorkTime: new FormControl(null, [Validators.required]),
       estimatedTaskTimeEnd: new FormControl(null, [Validators.required]),
       startDate: new Date(),
@@ -141,23 +153,39 @@ export class AddTaskComponent implements OnInit {
     if (this.addTaskGroup.invalid) {
       return;
     }
+    const formData = this.addTaskGroup.getRawValue();
     if (this.isNew) {
-      this._projectService.addTask(this.addTaskGroup.getRawValue()).subscribe({
-        next: (data) => {
-          // this.dialogRef.close();
-          this.addTaskGroup.patchValue(data);
-          this.notification.successMethod(
-            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
-          );
-          this._projectManagementService.refreshTasks();
-          this._router.navigateByUrl(`/projects/${this.project?.id}`);
-        },
-        error: (err) => {
-          this.notification.errorMethod(
-            'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
-          );
-        },
-      });
+      iif(
+        () => this.isNew,
+        this._projectService.addTask(formData),
+        of(formData),
+      )
+        .pipe(
+          switchMap((data) =>
+            this._projectService.getTaskById(this.id, data?.id),
+          ),
+        )
+        .subscribe({
+          next: (value) => {
+            this.addTaskGroup.patchValue(value);
+          },
+        });
+      // this._projectService.addTask(this.addTaskGroup.getRawValue()).subscribe({
+      //   next: (data) => {
+      //     // this.dialogRef.close();
+      //     this.addTaskGroup.patchValue(data);
+      //     this.notification.successMethod(
+      //       'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
+      //     );
+      //     this._projectManagementService.refreshTasks();
+      //     this._router.navigateByUrl(`/projects/${this.project?.id}`);
+      //   },
+      //   error: (err) => {
+      //     this.notification.errorMethod(
+      //       'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.INVALID',
+      //     );
+      //   },
+      // });
     } else {
       this._projectService
         .updateTaskById(this.addTaskGroup.getRawValue())
@@ -170,7 +198,7 @@ export class AddTaskComponent implements OnInit {
               'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
             );
             this._projectManagementService.refreshTasks();
-            this._router.navigateByUrl(`/projects/${this.project?.id}`);
+            this._router.navigateByUrl(`/projects/${this.id}`);
           },
           error: (err) => {
             this.notification.errorMethod(
@@ -179,5 +207,7 @@ export class AddTaskComponent implements OnInit {
           },
         });
     }
+    this._projectManagementService.refreshTasks();
+    this._router.navigateByUrl(`/projects/${this.id}`);
   }
 }
