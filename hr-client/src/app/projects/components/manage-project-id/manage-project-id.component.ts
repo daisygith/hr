@@ -18,7 +18,6 @@ import {
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
-import { AddEmployeesComponent } from '../add-employees/add-employees.component';
 import { ProjectDetails } from '../../models/projectDetails';
 import {
   MatCell,
@@ -129,17 +128,17 @@ export class ManageProjectIdComponent implements OnInit {
       });
   }
 
-  openDialogEmployees() {
-    const dialogRef = this.dialog.open(AddEmployeesComponent, {
-      data: { projectId: this.id, employees: this.projectDetails?.employees },
-      // height: '600px',
-      width: '500px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
-  }
+  // openDialogEmployees() {
+  //   const dialogRef = this.dialog.open(AddEmployeesComponent, {
+  //     data: { projectId: this.id, employees: this.projectDetails?.employees },
+  //     // height: '600px',
+  //     width: '500px',
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log(result);
+  //   });
+  // }
 
   openDialogDelete(
     employeeId: number | undefined,

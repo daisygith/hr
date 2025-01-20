@@ -1,20 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
   inject,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import {
@@ -28,7 +19,7 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
-import { NgForOf, NgIf } from '@angular/common';
+import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
 import {
   MatDatepicker,
   MatDatepickerInput,
@@ -36,22 +27,24 @@ import {
 } from '@angular/material/datepicker';
 import { ProjectService } from '../../services/project.service';
 import { NotificationService } from '../../../shared/services/notification.service';
-import { Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { ProjectsList } from '../../models/projectsList';
 import { Task } from '../../models/task';
 import { ProjectManagementService } from '../../services/project-management.service';
-import { ManageEmployee } from '../../../employee/models/manageEmmployee';
+import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
+import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
   imports: [
     MatButton,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
     TranslateModule,
-    MatDialogClose,
     MatIcon,
     ReactiveFormsModule,
     MatFormField,
@@ -65,6 +58,12 @@ import { ManageEmployee } from '../../../employee/models/manageEmmployee';
     MatFormFieldModule,
     MatInputModule,
     NgIf,
+    ImageTokenPipe,
+    MatMiniFabButton,
+    NgOptimizedImage,
+    HasRoleDirective,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss',
@@ -78,39 +77,32 @@ export class AddTaskComponent implements OnInit {
   private _projectManagementService: ProjectManagementService = inject(
     ProjectManagementService,
   );
+  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
 
   public notification: NotificationService = inject(NotificationService);
 
   public addTaskGroup!: FormGroup;
 
   isNew: boolean = false;
+  id: number | undefined;
+  taskId: number | undefined;
 
-  task!: Task;
-  project!: ProjectsList;
-
-  readonly dialogRef = inject(MatDialogRef<AddTaskComponent>);
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+  task: Task | undefined;
+  project: ProjectsList | undefined;
 
   ngOnInit(): void {
+    this.id = this._activeRoute.snapshot.params['projectId'];
+    this.taskId = this._activeRoute.snapshot.params['taskId'];
+    this.isNew = !this.taskId;
     this.buildForm();
-    if (this.data.projectId && this.data.taskId) {
-      this.getTaskById(this.data.projectId, this.data.taskId);
+
+    if (this.id && this.taskId) {
+      this.getTaskById(this.id, this.taskId);
     }
-    this.isNew = !this.data.taskId;
+    console.log(this.id);
   }
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: {
-      projectId: number;
-      taskId: number;
-      employees: ManageEmployee[];
-    },
-  ) {}
-
-  public employeeArr = this.data.employees;
+  // public employeeArr = this.data.employees;
 
   public statusOption: string[] = ['NEW', 'WORK_IN_PROGRESS', 'DONE'];
 
@@ -125,19 +117,20 @@ export class AddTaskComponent implements OnInit {
       status: new FormControl(null, []),
       description: new FormControl(null, [Validators.required]),
       employeeId: new FormControl(null),
-      projectId: new FormControl(this.data.projectId),
+      projectId: new FormControl(this.project?.id),
       estimatedWorkTime: new FormControl(null, [Validators.required]),
       estimatedTaskTimeEnd: new FormControl(null, [Validators.required]),
       startDate: new Date(),
       priorityStatus: new FormControl(null, [Validators.required]),
       typeTask: new FormControl(null, [Validators.required]),
+      comment: new FormControl(null),
     });
     if (!this.isNew) {
       this.addTaskGroup.get('status')?.addValidators([Validators.required]);
     }
   }
 
-  getTaskById(projectId: number, taskId: number) {
+  getTaskById(projectId: number, taskId: number | undefined) {
     this._projectService.getTaskById(projectId, taskId).subscribe((el) => {
       this.task = el;
       this.addTaskGroup.patchValue(el);
@@ -157,7 +150,7 @@ export class AddTaskComponent implements OnInit {
             'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
           );
           this._projectManagementService.refreshTasks();
-          this._router.navigateByUrl(`/projects/${this.project.id}`);
+          this._router.navigateByUrl(`/projects/${this.project?.id}`);
         },
         error: (err) => {
           this.notification.errorMethod(
@@ -177,7 +170,7 @@ export class AddTaskComponent implements OnInit {
               'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK_UPDATE',
             );
             this._projectManagementService.refreshTasks();
-            this._router.navigateByUrl(`/projects/${this.project.id}`);
+            this._router.navigateByUrl(`/projects/${this.project?.id}`);
           },
           error: (err) => {
             this.notification.errorMethod(

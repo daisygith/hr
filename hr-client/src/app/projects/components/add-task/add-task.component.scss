@@ -1,19 +1,55 @@
 app-add-task {
-  .add-task-title {
+  width: 100%;
+  .add-task {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    flex-direction: column;
   }
   .add-task-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    margin: 16px 16px 0 16px;
+  }
+
+  .add-task-content.title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 10px 0;
+  }
+
+  .add-task-icon {
+    color: var(--button-app-color);
+    border: 1px solid var(--background-element);
+    background-color: var(--main-color-text);
+    border-radius: 14px;
+    margin: 0 8px 0 0;
+  }
+  .add-task-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .line1 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  .add-task-content.list {
+    border: 1px solid var(--border-app-element);
+    border-radius: 10px;
+    border-bottom: none;
+    min-height: 50vh;
+    height: auto;
+    background-color: var(--main-color-text);
+    padding: 20px;
   }
 
   .add-task-title {
     font-size: 12px;
     font-weight: 600;
-    padding: 20px 8px 0 0;
+    padding: 20px 0 10px 0;
   }
 
   .mdc-text-field__input {
@@ -65,9 +101,25 @@ app-add-task {
   input#input-employee,
   input#input-estimatedWorkTime,
   input#input-estimatedTaskTimeEnd,
-  input#input-startDate {
+  input#input-startDate,
+  input#input-comment {
     padding: 8px 0 0 0;
     font-family: "Inter", sans-serif;
+  }
+
+  .address-personal {
+    margin: 0 0 30px 0;
+  }
+
+  .button-save {
+    display: block;
+    float: right;
+  }
+
+  button#button-save {
+    background-color: var(--positive-element);
+    color: var(--main-color-text);
+    border-radius: 10px;
   }
 
   .input-title {
@@ -76,34 +128,26 @@ app-add-task {
     padding: 20px 0 10px 0;
   }
 
-  button#button-close {
-    margin: 0 0 0 0;
-    min-width: 0;
-    padding: 0 14px 0 14px;
-    color: var(--main-color);
-  }
+  //button#button-close {
+  //  margin: 0 0 0 0;
+  //  min-width: 0;
+  //  padding: 0 14px 0 14px;
+  //  color: var(--main-color);
+  //}
 
-  button#button-save {
-    border-radius: 10px;
-    background-color: var(--border-app-element);
-    border: 1px solid var(--positive-element);
-    color: var(--positive-element);
-  }
+  //button#button-save {
+  //  border-radius: 10px;
+  //  background-color: var(--border-app-element);
+  //  border: 1px solid var(--positive-element);
+  //  color: var(--positive-element);
+  //}
 
-  button#button-close:hover {
-    background-color: var(--border-app-element);
-  }
-
-  button#button-save:hover {
-    background-color: var(--positive-element);
-    color: var(--main-color-text);
-  }
-
-  .mat-mdc-button > .mat-icon {
-    margin-right: unset;
-  }
-
-  h2 {
-    font-family: "Inter", sans-serif !important;
-  }
+  //button#button-close:hover {
+  //  background-color: var(--border-app-element);
+  //}
+  //
+  //button#button-save:hover {
+  //  background-color: var(--positive-element);
+  //  color: var(--main-color-text);
+  //}
 }

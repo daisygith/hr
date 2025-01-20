@@ -136,6 +136,7 @@ public class ProjectServiceImpl implements ProjectService {
         task.setEmployee(employee);
         task.setName(taskDto.getName());
         task.setStatus(taskDto.getStatus());
+        task.setDescription(taskDto.getDescription());
         task.setEstimatedTaskTimeEnd(taskDto.getEstimatedTaskTimeEnd());
         task.setEstimatedWorkTime(taskDto.getEstimatedWorkTime());
         task.setPriorityStatus(taskDto.getPriorityStatus());

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ProjectOutletComponent } from './components/project-outlet/project-outlet.component';
 
 export const projectRoutes: Routes = [
   {
@@ -17,9 +18,29 @@ export const projectRoutes: Routes = [
   },
   {
     path: ':projectId',
-    loadComponent: () =>
-      import('./components/manage-project/manage-project.component').then(
-        (m) => m.ManageProjectComponent,
-      ),
+    component: ProjectOutletComponent,
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./components/manage-project/manage-project.component').then(
+            (m) => m.ManageProjectComponent,
+          ),
+      },
+      {
+        path: 'tasks/new',
+        loadComponent: () =>
+          import('./components/add-task/add-task.component').then(
+            (m) => m.AddTaskComponent,
+          ),
+      },
+      {
+        path: 'tasks/:taskId',
+        loadComponent: () =>
+          import('./components/add-task/add-task.component').then(
+            (m) => m.AddTaskComponent,
+          ),
+      },
+    ],
   },
 ];

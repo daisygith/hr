@@ -6,7 +6,10 @@
   <div class="task-table">
     <div class="task-table-title">{{ "ADD_TASK.STATUS.NEW" | translate }}</div>
     <ng-container *ngFor="let task of tasksMap.get('NEW')">
-      <div class="task-table-content new" (click)="openDialogEdit(task.id)">
+      <div
+        class="task-table-content new"
+        (click)="openTask(projectDetails?.id, task)"
+      >
         <div class="description-task top">
           <div class="task-info">
             <span>{{ task.name }}</span>
@@ -46,10 +49,7 @@
       {{ "ADD_TASK.STATUS.WORK_IN_PROGRESS" | translate }}
     </div>
     <ng-container *ngFor="let task of tasksMap.get('WORK_IN_PROGRESS')">
-      <div
-        class="task-table-content workInProgress"
-        (click)="openDialogEdit(task.id)"
-      >
+      <div class="task-table-content workInProgress">
         <div class="description-task top">
           <div class="task-info">
             <span>{{ task.name }}</span>
@@ -87,7 +87,7 @@
   <div class="task-table">
     <div class="task-table-title">{{ "ADD_TASK.STATUS.DONE" | translate }}</div>
     <ng-container *ngFor="let task of tasksMap.get('DONE')">
-      <div class="task-table-content done" (click)="openDialogEdit(task.id)">
+      <div class="task-table-content done">
         <div class="description-task top">
           <div class="task-info">
             <span>{{ task.name }}</span>

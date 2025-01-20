@@ -34,7 +34,6 @@ import { MatMiniFabButton } from '@angular/material/button';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../../shared/services/notification.service';
-import { AddTaskComponent } from '../add-task/add-task.component';
 import { ProjectManagementService } from '../../services/project-management.service';
 import { ProjectDetails } from '../../models/projectDetails';
 
@@ -126,19 +125,23 @@ export class DashboardTaskComponent implements OnInit {
     });
   }
 
-  openDialogEdit(taskId: number) {
-    // e.stopPropagation();
-    const dialogRef = this.dialog.open(AddTaskComponent, {
-      data: {
-        projectId: this.id,
-        taskId: taskId,
-        employees: this.projectDetails?.employees,
-      },
-      width: '900px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {});
+  openTask(projectId: number | undefined, taskId: Task) {
+    this._router.navigate([`/projects/${this.id}/tasks/${taskId.id}`]);
   }
+
+  // openDialogEdit(taskId: number) {
+  //   // e.stopPropagation();
+  //   const dialogRef = this.dialog.open(AddTaskComponent, {
+  //     data: {
+  //       projectId: this.id,
+  //       taskId: taskId,
+  //       employees: this.projectDetails?.employees,
+  //     },
+  //     width: '900px',
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe((result) => {});
+  // }
 
   deleteTaskById(projectId: number | undefined, taskId: Task): void {
     this._projectService.deleteTaskById(this.id, taskId.id).subscribe(

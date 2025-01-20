@@ -12,4 +12,5 @@ export interface Task {
   startDate: Date;
   priorityStatus: string;
   typeTask: string;
+  comment: string;
 }
