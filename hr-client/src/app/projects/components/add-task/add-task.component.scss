@@ -95,6 +95,9 @@ app-add-task {
   .mat-mdc-icon-button .mat-icon {
     top: 0;
   }
+  .mdc-text-field--filled.mdc-text-field--disabled {
+    background-color: var(--mdc-filled-text-field-disabled-container-color);
+  }
 
   input#input-name,
   input#input-description,

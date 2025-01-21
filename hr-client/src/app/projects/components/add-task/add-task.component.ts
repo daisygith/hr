@@ -96,6 +96,10 @@ export class AddTaskComponent implements OnInit {
   project: ProjectsList | undefined;
   projectDetails!: ProjectDetails | undefined;
 
+  public get isReadOnly(): boolean {
+    return !this.isNew && !this.isEdit;
+  }
+
   ngOnInit(): void {
     this.id = this._activeRoute.parent?.snapshot.params['projectId'];
     this.taskId = this._activeRoute.snapshot.params['taskId'];
@@ -151,6 +155,10 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
+  public toggleEdit() {
+    this.isEdit = !this.isEdit;
+  }
+
   saveData() {
     if (this.addTaskGroup.invalid) {
       return;
@@ -195,13 +203,5 @@ export class AddTaskComponent implements OnInit {
     }
     this._projectManagementService.refreshTasks();
     this._router.navigateByUrl(`/projects/${this.id}`);
-  }
-
-  public get isReadOnly(): boolean {
-    return !this.isNew && !this.isEdit;
-  }
-
-  public toggleEdit() {
-    this.isEdit = !this.isEdit;
   }
 }

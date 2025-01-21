@@ -21,7 +21,6 @@
   </div>
 
   <div class="add-task-content list" [formGroup]="addTaskGroup">
-    <!--    todo dodać przycisk edycji formularza-->
     <!--    todo zmienic teskty-->
     <div class="elements-title">
       <div class="title-task">
@@ -91,6 +90,7 @@
               [disabled]="isReadOnly"
             >
               <mat-option
+                [disabled]="isReadOnly"
                 *ngFor="let employee of employeeArr"
                 [value]="employee.id"
               >
@@ -129,6 +129,7 @@
                 [disabled]="isReadOnly"
               >
                 <mat-option
+                  [disabled]="isReadOnly"
                   *ngFor="let status of statusOption"
                   [value]="status"
                 >
@@ -171,6 +172,7 @@
             <mat-datepicker-toggle
               matIconSuffix
               [for]="picker"
+              [disabled]="isReadOnly"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -187,6 +189,7 @@
               [disabled]="isReadOnly"
             >
               <mat-option
+                [disabled]="isReadOnly"
                 *ngFor="let priority of priorityOption"
                 [value]="priority"
               >
@@ -200,7 +203,12 @@
             {{ "ADD_TASK.TYPE_OF_TASK_TITLE" | translate }}
           </div>
           <mat-form-field class="input-full-width">
-            <mat-select type="text" is="status" formControlName="typeTask">
+            <mat-select
+              type="text"
+              is="status"
+              formControlName="typeTask"
+              [disabled]="isReadOnly"
+            >
               <mat-option
                 [disabled]="isReadOnly"
                 *ngFor="let typeTask of typeTaskOption"
