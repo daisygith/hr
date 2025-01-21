@@ -76,6 +76,8 @@
     "START_DATE": "Start date",
     "TITLE1": "Task: {{value}}",
     "TITLE2": "Add new task",
+    "TITLE_TASK1": "Data of task",
+    "TITLE_TASK2": "To change task details, edit and save from here",
     "TYPE_OF_TASK": {
       "NORMAL": "Normal",
       "FAULT": "Fault"

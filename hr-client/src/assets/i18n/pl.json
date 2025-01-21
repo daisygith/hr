@@ -76,6 +76,8 @@
     "START_DATE": "Data założenia zadania",
     "TITLE1": "Zadanie: {{value}}",
     "TITLE2": "Dodaj nowe zadanie",
+    "TITLE_TASK1": "Dane zadania",
+    "TITLE_TASK2": "Aby zmienić dane zadania, edytuj i zapisz je tutaj",
     "TYPE_OF_TASK": {
       "NORMAL": "Normalne",
       "FAULT": "Błąd"
