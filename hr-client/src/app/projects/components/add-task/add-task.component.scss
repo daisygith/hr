@@ -38,8 +38,7 @@ app-add-task {
 
   .add-task-content.list {
     border: 1px solid var(--border-app-element);
-    border-radius: 10px;
-    border-bottom: none;
+    border-radius: 20px;
     min-height: 50vh;
     height: auto;
     background-color: var(--main-color-text);
@@ -95,8 +94,9 @@ app-add-task {
   .mat-mdc-icon-button .mat-icon {
     top: 0;
   }
-  .mdc-text-field--filled.mdc-text-field--disabled {
-    background-color: var(--mdc-filled-text-field-disabled-container-color);
+
+  .mdc-text-field--disabled {
+    border-radius: 10px;
   }
 
   input#input-name,

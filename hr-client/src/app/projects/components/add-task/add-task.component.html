@@ -58,7 +58,6 @@
               formControlName="name"
               [placeholder]="'ADD_TASK.NAME_OF_TASK' | translate"
               id="input-name"
-              [readonly]="isReadOnly"
             />
           </mat-form-field>
         </div>
@@ -74,7 +73,6 @@
               formControlName="description"
               [placeholder]="'ADD_TASK.DESCRIPTION' | translate"
               id="input-description"
-              [readonly]="isReadOnly"
             />
           </mat-form-field>
         </div>
@@ -87,10 +85,8 @@
               type="text"
               is="employeeId"
               formControlName="employeeId"
-              [disabled]="isReadOnly"
             >
               <mat-option
-                [disabled]="isReadOnly"
                 *ngFor="let employee of employeeArr"
                 [value]="employee.id"
               >
@@ -111,7 +107,6 @@
               formControlName="estimatedWorkTime"
               [placeholder]="'ADD_TASK.ESTIMATED_WORK_TIME' | translate"
               id="input-estimatedWorkTime"
-              [readonly]="isReadOnly"
             />
           </mat-form-field>
         </div>
@@ -122,14 +117,8 @@
               {{ "ADD_TASK.STATUS_TITLE" | translate }}
             </div>
             <mat-form-field class="input-full-width">
-              <mat-select
-                type="text"
-                is="status"
-                formControlName="status"
-                [disabled]="isReadOnly"
-              >
+              <mat-select type="text" is="status" formControlName="status">
                 <mat-option
-                  [disabled]="isReadOnly"
                   *ngFor="let status of statusOption"
                   [value]="status"
                 >
@@ -153,7 +142,6 @@
               formControlName="estimatedTaskTimeEnd"
               [placeholder]="'ADD_TASK.ESTIMATED_TASK_TIME_END' | translate"
               id="input-estimatedTaskTimeEnd"
-              [readonly]="isReadOnly"
             />
           </mat-form-field>
         </div>
@@ -167,12 +155,10 @@
               [matDatepicker]="picker"
               formControlName="startDate"
               id="input-startDate"
-              [readonly]="isReadOnly"
             />
             <mat-datepicker-toggle
               matIconSuffix
               [for]="picker"
-              [disabled]="isReadOnly"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -186,10 +172,8 @@
               type="text"
               is="status"
               formControlName="priorityStatus"
-              [disabled]="isReadOnly"
             >
               <mat-option
-                [disabled]="isReadOnly"
                 *ngFor="let priority of priorityOption"
                 [value]="priority"
               >
@@ -203,14 +187,8 @@
             {{ "ADD_TASK.TYPE_OF_TASK_TITLE" | translate }}
           </div>
           <mat-form-field class="input-full-width">
-            <mat-select
-              type="text"
-              is="status"
-              formControlName="typeTask"
-              [disabled]="isReadOnly"
-            >
+            <mat-select type="text" is="status" formControlName="typeTask">
               <mat-option
-                [disabled]="isReadOnly"
                 *ngFor="let typeTask of typeTaskOption"
                 [value]="typeTask"
               >
@@ -233,7 +211,6 @@
           formControlName="comment"
           [placeholder]="'ADD_EMPLOYEE.PERSONAL_DETAILS.ADDRESS' | translate"
           id="input-comment"
-          [readonly]="isReadOnly"
         />
       </mat-form-field>
     </div>

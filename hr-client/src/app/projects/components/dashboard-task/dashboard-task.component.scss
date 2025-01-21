@@ -19,6 +19,16 @@ app-dashboard-task {
     gap: 8px;
   }
 
+  .task-status {
+    position: absolute;
+    background-color: red;
+    z-index: 1;
+    height: 100%;
+    width: 6px;
+    left: 0;
+    top: 0;
+  }
+
   .task-table-title {
     font-size: 18px;
     font-weight: 600;
@@ -30,7 +40,7 @@ app-dashboard-task {
 
   .task-table-content {
     height: 90px;
-    //position: relative;
+    position: relative;
     overflow: hidden;
     margin: 10px auto;
     padding: 14px;
@@ -61,6 +71,15 @@ app-dashboard-task {
   .task-info {
     display: flex;
     flex-direction: column;
+  }
+  .task-info-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  mat-icon#icon-priority {
+    color: var(--priority-status-high);
   }
 
   .task-employeeName {

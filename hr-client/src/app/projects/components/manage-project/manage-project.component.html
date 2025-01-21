@@ -12,18 +12,6 @@
         </div>
       </div>
     </div>
-    <div class="manage-project-content title right">
-      <div class="button-add" *hasRole="canAddEmployeeRoles">
-        <button
-          mat-flat-button
-          id="add-task-button"
-          (click)="openNewTask(this.id)"
-        >
-          <mat-icon>add</mat-icon>
-          {{ "ADD_TASK.BUTTON.ADD_TASK" | translate }}
-        </button>
-      </div>
-    </div>
   </div>
   <div class="manage-project-content list">
     <div class="list-tabs">

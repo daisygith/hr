@@ -96,10 +96,6 @@ export class AddTaskComponent implements OnInit {
   project: ProjectsList | undefined;
   projectDetails!: ProjectDetails | undefined;
 
-  public get isReadOnly(): boolean {
-    return !this.isNew && !this.isEdit;
-  }
-
   ngOnInit(): void {
     this.id = this._activeRoute.parent?.snapshot.params['projectId'];
     this.taskId = this._activeRoute.snapshot.params['taskId'];
@@ -145,6 +141,7 @@ export class AddTaskComponent implements OnInit {
     });
     if (!this.isNew) {
       this.addTaskGroup.get('status')?.addValidators([Validators.required]);
+      this.addTaskGroup.disable();
     }
   }
 
@@ -157,6 +154,11 @@ export class AddTaskComponent implements OnInit {
 
   public toggleEdit() {
     this.isEdit = !this.isEdit;
+    if (this.isEdit) {
+      this.addTaskGroup.enable();
+    } else {
+      this.addTaskGroup.disable();
+    }
   }
 
   saveData() {

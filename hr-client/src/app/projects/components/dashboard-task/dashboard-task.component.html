@@ -1,18 +1,39 @@
 <div class="list-toolbar">
   <div class="list-title">{{ "ADD_TASK.MANAGE_TASKS" | translate }}</div>
+  <div class="button-add" *hasRole="canAddTaskRoles">
+    <button mat-flat-button id="add-task-button" (click)="openNewTask(this.id)">
+      <mat-icon>add</mat-icon>
+      {{ "ADD_TASK.BUTTON.ADD_TASK" | translate }}
+    </button>
+  </div>
 </div>
 
 <div class="dashboard-task-content">
   <div class="task-table">
     <div class="task-table-title">{{ "ADD_TASK.STATUS.NEW" | translate }}</div>
+
     <ng-container *ngFor="let task of tasksMap.get('NEW')">
       <div
         class="task-table-content new"
         (click)="openTask(projectDetails?.id, task)"
       >
+        <div *ngIf="task.typeTask === 'FAULT'; then fault"></div>
+        <ng-template #fault>
+          <div class="task-status" matTooltip="FAULT"></div>
+        </ng-template>
         <div class="description-task top">
           <div class="task-info">
-            <span>{{ task.name }}</span>
+            <div class="task-info-name">
+              <span>{{ task.name }}</span>
+              <div *ngIf="task.priorityStatus === 'HIGH'; then priority"></div>
+              <ng-template #priority>
+                <mat-icon
+                  id="icon-priority"
+                  matTooltip="Task of priority status - HIGH !"
+                  >priority_high</mat-icon
+                >
+              </ng-template>
+            </div>
             <span class="task-description">{{ task.description }}</span>
           </div>
         </div>
@@ -52,9 +73,24 @@
         class="task-table-content workInProgress"
         (click)="openTask(projectDetails?.id, task)"
       >
+        <div *ngIf="task.typeTask === 'FAULT'; then fault"></div>
+        <ng-template #fault>
+          <div class="task-status" matTooltip="FAULT"></div>
+        </ng-template>
         <div class="description-task top">
           <div class="task-info">
-            <span>{{ task.name }}</span>
+            <div class="task-info-name">
+              <span>{{ task.name }}</span>
+              <div *ngIf="task.priorityStatus === 'HIGH'; then priority"></div>
+              <ng-template #priority>
+                <!--                todo dodac tłumaczenia-->
+                <mat-icon
+                  id="icon-priority"
+                  matTooltip="Task of priority status - HIGH !"
+                  >priority_high</mat-icon
+                >
+              </ng-template>
+            </div>
             <span class="task-description">{{ task.description }}</span>
           </div>
         </div>
@@ -92,9 +128,23 @@
         class="task-table-content done"
         (click)="openTask(projectDetails?.id, task)"
       >
+        <div *ngIf="task.typeTask === 'FAULT'; then fault"></div>
+        <ng-template #fault>
+          <div class="task-status" matTooltip="FAULT"></div>
+        </ng-template>
         <div class="description-task top">
           <div class="task-info">
-            <span>{{ task.name }}</span>
+            <div class="task-info-name">
+              <span>{{ task.name }}</span>
+              <div *ngIf="task.priorityStatus === 'HIGH'; then priority"></div>
+              <ng-template #priority>
+                <mat-icon
+                  id="icon-priority"
+                  matTooltip="Task of priority status - HIGH !"
+                  >priority_high</mat-icon
+                >
+              </ng-template>
+            </div>
             <span class="task-description">{{ task.description }}</span>
           </div>
         </div>

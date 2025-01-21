@@ -26,16 +26,20 @@ import {
   DatePipe,
   LowerCasePipe,
   NgForOf,
+  NgIf,
   NgOptimizedImage,
 } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
-import { MatMiniFabButton } from '@angular/material/button';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { ProjectManagementService } from '../../services/project-management.service';
 import { ProjectDetails } from '../../models/projectDetails';
+import { Role } from '../../../auth/models/role';
+import { AuthService } from '../../../auth/services/auth.service';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-dashboard-task',
@@ -60,6 +64,9 @@ import { ProjectDetails } from '../../models/projectDetails';
     MatIcon,
     MatMiniFabButton,
     NgOptimizedImage,
+    MatButton,
+    NgIf,
+    MatTooltip,
   ],
   templateUrl: './dashboard-task.component.html',
   styleUrl: './dashboard-task.component.scss',
@@ -68,6 +75,7 @@ import { ProjectDetails } from '../../models/projectDetails';
 export class DashboardTaskComponent implements OnInit {
   private _projectService: ProjectService = inject(ProjectService);
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  private _authService = inject(AuthService);
   private _router = inject(Router);
   private _projectManagementService: ProjectManagementService = inject(
     ProjectManagementService,
@@ -79,6 +87,8 @@ export class DashboardTaskComponent implements OnInit {
   tasksMap: Map<string, Task[]> = new Map<string, Task[]>();
 
   id: number | undefined;
+
+  public canAddTaskRoles = [Role.MODERATOR, Role.ADMIN];
 
   @Input()
   projectDetails: ProjectDetails | undefined;
@@ -129,19 +139,12 @@ export class DashboardTaskComponent implements OnInit {
     this._router.navigate([`/projects/${this.id}/tasks/${taskId.id}`]);
   }
 
-  // openDialogEdit(taskId: number) {
-  //   // e.stopPropagation();
-  //   const dialogRef = this.dialog.open(AddTaskComponent, {
-  //     data: {
-  //       projectId: this.id,
-  //       taskId: taskId,
-  //       employees: this.projectDetails?.employees,
-  //     },
-  //     width: '900px',
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe((result) => {});
-  // }
+  openNewTask(projectId: number | undefined) {
+    if (!this._authService.hasRole(this.canAddTaskRoles)) {
+      return;
+    }
+    this._router.navigateByUrl(`/projects/${projectId}/tasks/new`);
+  }
 
   deleteTaskById(projectId: number | undefined, taskId: Task): void {
     this._projectService.deleteTaskById(this.id, taskId.id).subscribe(
