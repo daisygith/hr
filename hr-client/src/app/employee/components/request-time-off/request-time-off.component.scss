@@ -1,49 +1,4 @@
 app-request-time-off {
-  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: transparent;
-    border: 1px solid var(--border-app-element);
-    border-radius: 10px;
-  }
-
-  .mdc-line-ripple::before,
-  .mdc-line-ripple::after {
-    content: none;
-  }
-
-  .mat-mdc-form-field-bottom-align::before {
-    content: none;
-  }
-
-  input#input-filter {
-    margin: 0 0 0 30px;
-    padding: 8px 0 0 0;
-  }
-
-  mat-icon#filter-icon {
-    left: -18px;
-    position: absolute;
-    padding: 8px 0 0 14px;
-    color: var(--border-app-element);
-  }
-
-  .mdc-text-field--filled {
-    height: 40px;
-  }
-
-  .mat-mdc-row .mat-mdc-cell {
-    cursor: pointer;
-  }
-
-  .mat-mdc-row:hover .mat-mdc-cell {
-    background-color: var(--background-element);
-  }
-
-  th.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details,
-  td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-details.mat-column-details {
-    padding-right: 0;
-    width: 136px;
-  }
-
   .mat-mdc-mini-fab {
     background-color: transparent;
   }

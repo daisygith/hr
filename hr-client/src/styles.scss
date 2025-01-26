@@ -1,26 +1,4 @@
-@use "@angular/material" as mat;
-
-@include mat.core();
-
-$my-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-    ),
-    typography: (
-      plain-family: Inter,
-      brand-family: Open Sans,
-      bold-weight: 900,
-      medium-weight: 500,
-      regular-weight: 300,
-    ),
-  )
-);
-
-html {
-  @include mat.all-component-themes($my-theme);
-}
+@use "./assets/scss/material";
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -147,12 +125,10 @@ mat-icon#request-icon {
 }
 
 tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
-  //background-color: var(--border-app-element) !important;
   height: 36px !important;
 }
 
 //add-employee, edit-user
-
 .bottom {
   margin: 0;
   background-color: var(--main-color-text);
@@ -246,6 +222,7 @@ button#button-remove {
 .info {
   font-size: 12px;
 }
+
 .mat-mdc-form-field-bottom-align::before {
   content: none;
 }
@@ -294,4 +271,62 @@ button#language-button {
   display: flex;
   gap: 4px;
   align-items: center;
+}
+
+.list-tabs {
+  padding: 0 20px 0 20px;
+}
+
+.list-toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 10px 0;
+}
+
+input#input-filter {
+  margin: 0 0 0 30px;
+  padding: 8px 0 0 0;
+}
+
+mat-icon#filter-icon {
+  left: -18px;
+  position: absolute;
+  padding: 8px 0 0 14px;
+  color: var(--border-app-element);
+}
+
+.mdc-text-field--filled {
+  height: 40px;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: var(--background-element);
+}
+
+button#button-details,
+button#button-more {
+  color: var(--main-color);
+  border: 1px solid var(--border-app-element);
+  border-radius: 10px;
+}
+
+button#button-details {
+  width: 40px;
+}
+
+button#button-more {
+  padding-block: 0;
+  padding-inline: 0;
+  min-width: 28px;
+
+  mat-icon.mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color {
+    margin: 0 2px 0 0;
+  }
 }

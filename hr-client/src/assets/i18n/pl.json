@@ -54,6 +54,7 @@
       "ADD_TASK": "Dodaj zadanie",
       "SAVE": "Zapisz"
     },
+    "COMMENT": "Komentarz",
     "EMPLOYEE": "Pracownik",
     "ESTIMATED_WORK_TIME": "Szacowany czas pracy",
     "ESTIMATED_TASK_TIME_END": "Przewidywany czas zakońćzenia zadania",

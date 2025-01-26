@@ -75,18 +75,28 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <div class="input-title">
+            {{ "MANAGE_USER.ROLE" | translate }}
+          </div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Assignee</mat-label>
+            <input
+              type="text"
+              matInput
+              [matAutocomplete]="auto"
+              formControlName="employeeId"
+            />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              @for (option of filteredOptions | async; track option) {
+                <mat-option [value]="option.id">{{ option.name }}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
         </div>
       </div>
       <div class="save-changes">
         <div class="button-save">
-          <button
-            mat-stroked-button
-            routerLink="/employee"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            id="button-save"
-            (click)="saveData()"
-          >
+          <button mat-stroked-button id="button-save" (click)="saveData()">
             {{
               "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate
             }}

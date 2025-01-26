@@ -54,6 +54,7 @@
       "ADD_TASK": "Add task",
       "SAVE": "Save"
     },
+    "COMMENT": "Comment",
     "EMPLOYEE": "Employee",
     "ESTIMATED_WORK_TIME": "Estimated work time",
     "ESTIMATED_TASK_TIME_END": "Estimated task time end",

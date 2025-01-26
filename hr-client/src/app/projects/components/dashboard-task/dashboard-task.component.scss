@@ -16,7 +16,7 @@ app-dashboard-task {
   .dashboard-task-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
+    gap: 16px;
   }
 
   .task-status {
