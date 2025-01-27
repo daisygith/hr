@@ -37,9 +37,6 @@
             </div>
             <div class="button">
               <div class="button-update">
-                <!--                <button mat-stroked-button id="button-update">-->
-                <!--                  {{ "USER.CHANGE_PROFILE.BUTTON.UPDATE" | translate }}-->
-                <!--                </button>-->
                 <app-file-upload (onUploadSuccess)="onUploadImage($event)" />
               </div>
               <div class="button-remove">
@@ -86,7 +83,6 @@
             <div class="input-title">
               {{ "USER.PERSONAL_DETAILS.STAFF_ID" | translate }}
             </div>
-            <!--            TODO nie przyjmuje formControlName -> jak przekazać istniejacy staffId?-->
             <mat-form-field class="input-full-width">
               <input
                 matInput

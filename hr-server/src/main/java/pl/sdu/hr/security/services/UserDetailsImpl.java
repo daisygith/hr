@@ -1,21 +1,22 @@
 package pl.sdu.hr.security.services;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import pl.sdu.hr.models.User;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import pl.sdu.hr.models.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
 
   private Long id;
+
+  private Long employeeId;
 
   private String username;
 
@@ -27,8 +28,9 @@ public class UserDetailsImpl implements UserDetails {
   private Collection<? extends GrantedAuthority> authorities;
 
   public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities) {
+      Collection<? extends GrantedAuthority> authorities, Long employeeId) {
     this.id = id;
+    this.employeeId = employeeId;
     this.username = username;
     this.email = email;
     this.password = password;
@@ -45,7 +47,9 @@ public class UserDetailsImpl implements UserDetails {
         user.getUsername(), 
         user.getEmail(),
         user.getPassword(), 
-        authorities);
+        authorities,
+            user.getEmployee() != null ? user.getEmployee().getId() : null
+    );
   }
 
   @Override
@@ -53,8 +57,13 @@ public class UserDetailsImpl implements UserDetails {
     return authorities;
   }
 
+
   public Long getId() {
     return id;
+  }
+
+  public Long getEmployeeId() {
+    return employeeId;
   }
 
   public String getEmail() {

@@ -33,6 +33,9 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
 import { Role } from '../../../auth/models/role';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 import { MatChip } from '@angular/material/chips';
+import { AuthService } from '../../../auth/services/auth.service';
+import { ManageEmployee } from '../../models/manageEmmployee';
+import { ApplyPurePipe } from '../../../shared/pipes/apply-pure.pipe';
 
 @Component({
   selector: 'app-request-time-off',
@@ -63,6 +66,7 @@ import { MatChip } from '@angular/material/chips';
     HasRoleDirective,
     LowerCasePipe,
     MatChip,
+    ApplyPurePipe,
   ],
   templateUrl: './request-time-off.component.html',
   styleUrl: './request-time-off.component.scss',
@@ -73,6 +77,7 @@ export class RequestTimeOffComponent implements OnInit {
   public canEditByUserStatusRequest = [Role.USER];
   public notification: NotificationService = inject(NotificationService);
   private _employeeService: EmployeeService = inject(EmployeeService);
+  private _authService = inject(AuthService);
   readonly dialog = inject(MatDialog);
 
   dataSource = new MatTableDataSource<RequestTimeOff>([]);
@@ -159,4 +164,11 @@ export class RequestTimeOffComponent implements OnInit {
       },
     });
   }
+
+  canUserDeleteRequest = (employee: ManageEmployee): boolean => {
+    return (
+      // this._authService.hasRole(this.canEditByUserStatusRequest) ||
+      employee.id === this._authService.user?.employeeId
+    );
+  };
 }

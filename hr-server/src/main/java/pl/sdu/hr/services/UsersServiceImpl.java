@@ -2,6 +2,7 @@ package pl.sdu.hr.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdu.hr.mappers.UsersMapper;
@@ -9,7 +10,6 @@ import pl.sdu.hr.models.Employee;
 import pl.sdu.hr.models.User;
 import pl.sdu.hr.payload.dto.UsersDto;
 import pl.sdu.hr.repository.EmployeeRepository;
-import pl.sdu.hr.repository.RoleRepository;
 import pl.sdu.hr.repository.UsersRepository;
 
 import java.util.ArrayList;
@@ -23,10 +23,10 @@ public class UsersServiceImpl implements UsersService{
     UsersRepository usersRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    EmployeeRepository employeeRepository;
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    PasswordEncoder encoder;
 
     @Override
     public List<UsersDto> findAllUsers(){
@@ -55,10 +55,12 @@ public class UsersServiceImpl implements UsersService{
     @Override
     public UsersDto createUser(UsersDto userDto) {
         User user = UsersMapper.mapUserDtoToUser(userDto);
+        user.setPassword(encoder.encode("TestPassword2025"));
         usersRepository.save(user);
         if (userDto.getEmployeeId() != null) {
             Employee employee = employeeRepository.findById(userDto.getEmployeeId()).orElseThrow();
             employee.setUser(user);
+            employeeRepository.save(employee);
         }
 
         UsersDto usersDto = UsersMapper.mapUserToUserDto(user);

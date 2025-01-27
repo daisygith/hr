@@ -38,6 +38,7 @@ export class AuthService {
           username: response.username,
           email: response.email,
           roles: response.roles,
+          employeeId: response.employeeId,
         };
         localStorage.setItem('user', JSON.stringify(this._user));
         this.isLoggedIn = true;

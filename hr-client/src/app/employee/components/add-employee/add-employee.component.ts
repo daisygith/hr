@@ -1,10 +1,5 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
-import {
-  ActivatedRoute,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -41,8 +36,6 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
     ReactiveFormsModule,
     NgForOf,
     NgIf,
-    RouterLink,
-    RouterLinkActive,
     FileUploadComponent,
     ImageTokenPipe,
   ],
@@ -88,7 +81,7 @@ export class AddEmployeeComponent implements OnInit {
     this.addEmployeeForm = this._fb.group({
       id: new FormControl(''),
       name: new FormControl('', [Validators.required]),
-      staffId: new FormControl('', [Validators.required]),
+      staffId: new FormControl({ disabled: true, value: '' }, []),
       phone: new FormControl('', [Validators.required]),
       position: new FormControl('', [Validators.required]),
       department: new FormControl('', [Validators.required]),

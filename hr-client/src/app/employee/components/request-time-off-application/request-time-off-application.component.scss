@@ -102,6 +102,11 @@ app-request-time-off-application {
     .mat-date-range-input-container {
       width: 400px;
       height: 40px;
+      align-items: flex-start;
+    }
+
+    .mat-date-range-input-wrapper {
+      height: 28px;
     }
 
     tbody.mat-calendar-body {

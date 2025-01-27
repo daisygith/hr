@@ -190,14 +190,7 @@
       </div>
       <div class="save-changes">
         <div class="button-save">
-          <button
-            mat-stroked-button
-            routerLink="/employee"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            id="button-save"
-            (click)="saveData()"
-          >
+          <button mat-stroked-button id="button-save" (click)="saveData()">
             {{
               "ADD_EMPLOYEE.PERSONAL_DETAILS.BUTTON.SAVE_CHANGES" | translate
             }}
