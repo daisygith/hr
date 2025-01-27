@@ -48,37 +48,14 @@
     border-radius: 10px;
   }
 
-  input#input-name,
-  input#input-description,
-  input#input-employee,
-  input#input-estimatedWorkTime,
-  input#input-estimatedTaskTimeEnd,
-  input#input-startDate,
-  input#input-comment,
-  input#password,
-  input#username,
-  input#confirmPassword,
-  input#email,
-  input#input-name-department,
-  input#input-name-personal,
-  input#input-staffId-personal,
-  input#input-email-personal,
-  input#input-gender-personal,
-  input#input-destination-personal,
-  input#input-phone-personal,
-  input#input-address-personal,
-  input#reason-input,
-  input#leaveType-inputReadonly,
-  input#name-inputReadonly,
-  input#reason-inputReadonly,
-  input#input-name,
-  input#input-description,
-  input#input-employee,
-  input#input-estimatedWorkTime,
-  input#input-estimatedTaskTimeEnd,
-  input#input-currentPassword,
-  input#input-newPassword {
+  input {
     padding: 8px 0 0 0;
     font-family: "Inter", sans-serif;
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
   }
 }

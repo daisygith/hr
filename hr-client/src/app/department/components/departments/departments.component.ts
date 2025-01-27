@@ -1,6 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
-import { ManageEmployeeComponent } from '../../../employee/components/manage-employee/manage-employee.component';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
@@ -12,8 +10,6 @@ import { DepartmentsListComponent } from '../departments-list/departments-list.c
   selector: 'app-departments',
   standalone: true,
   imports: [
-    HasRoleDirective,
-    ManageEmployeeComponent,
     MatButton,
     MatIcon,
     MatTab,

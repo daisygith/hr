@@ -4,15 +4,13 @@ import {
   Router,
   RouterLink,
   RouterLinkActive,
-  RouterOutlet,
 } from '@angular/router';
 import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
-import { ShellComponent } from '../../../shell/components/shell/shell.component';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   FormBuilder,
@@ -31,7 +29,6 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
   selector: 'app-add-employee',
   standalone: true,
   imports: [
-    RouterOutlet,
     NgOptimizedImage,
     MatButton,
     MatIcon,
@@ -40,8 +37,6 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
     MatInputModule,
     MatSelect,
     MatOption,
-    MatIconButton,
-    ShellComponent,
     TranslateModule,
     ReactiveFormsModule,
     NgForOf,

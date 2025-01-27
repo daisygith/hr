@@ -19,5 +19,7 @@ public class UsersDto {
 
     private String username;
 
+    private Long employeeId;
+
     private Set<RoleDto> roles = new HashSet<>();
 }

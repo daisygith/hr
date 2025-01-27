@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { DepartmentsListComponent } from '../../../department/components/departments-list/departments-list.component';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
@@ -11,7 +10,6 @@ import { ProjectsListComponent } from '../projects-list/projects-list.component'
   selector: 'app-projects',
   standalone: true,
   imports: [
-    DepartmentsListComponent,
     MatButton,
     MatIcon,
     MatTab,

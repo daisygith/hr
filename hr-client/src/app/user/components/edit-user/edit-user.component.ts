@@ -1,13 +1,11 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { NgForOf, NgOptimizedImage } from '@angular/common';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { ShellComponent } from '../../../shell/components/shell/shell.component';
 import {
   FormBuilder,
   FormControl,
@@ -26,7 +24,6 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
   selector: 'app-edit-user',
   standalone: true,
   imports: [
-    RouterOutlet,
     NgOptimizedImage,
     MatButton,
     MatIcon,
@@ -35,8 +32,6 @@ import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
     MatInputModule,
     MatSelect,
     MatOption,
-    MatIconButton,
-    ShellComponent,
     TranslateModule,
     ReactiveFormsModule,
     NgForOf,

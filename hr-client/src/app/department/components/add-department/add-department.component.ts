@@ -11,9 +11,7 @@ import { MatButton } from '@angular/material/button';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { MatOption } from '@angular/material/autocomplete';
-import { MatSelect } from '@angular/material/select';
-import { NgForOf, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { DepartmentService } from '../../services/department.service';
@@ -29,9 +27,6 @@ import { NotificationService } from '../../../shared/services/notification.servi
     MatFormField,
     MatIcon,
     MatInput,
-    MatOption,
-    MatSelect,
-    NgForOf,
     NgIf,
     ReactiveFormsModule,
     RouterLink,
@@ -93,7 +88,6 @@ export class AddDepartmentComponent implements OnInit {
             this.notification.successMethod(
               'ADD_EMPLOYEE.CHANGE_PROFILE.INFO.OK',
             );
-            // this._router.navigateByUrl(`/departments/${data.id}`);
           },
           error: (err) => {
             this.notification.errorMethod(

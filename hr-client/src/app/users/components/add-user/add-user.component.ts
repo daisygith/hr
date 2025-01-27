@@ -23,7 +23,6 @@ import { NotificationService } from '../../../shared/services/notification.servi
 import { UsersService } from '../../services/users.service';
 import { Role } from '../../model/role';
 import { UserList } from '../../model/user-list';
-import { EmployeeService } from '../../../employee/services/employee.service';
 import { ManageEmployee } from '../../../employee/models/manageEmmployee';
 import { map, Observable, startWith } from 'rxjs';
 
@@ -59,18 +58,17 @@ export class AddUserComponent implements OnInit {
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _fb: FormBuilder = inject(FormBuilder);
   private _usersService = inject(UsersService);
-  private _employeeService = inject(EmployeeService);
 
   public addUserForm!: FormGroup;
   public employees: ManageEmployee[] = [];
   filteredOptions: Observable<ManageEmployee[]> | undefined;
 
   ngOnInit(): void {
+    this.employees = this._activeRoute.snapshot.data['employees'];
     this.id = this._activeRoute.snapshot.params['userId'];
     this.isNew = !this.id;
     this.buildForm();
     this.getUserById(this.id);
-    this.getEmployees();
   }
 
   public roles: Role[] = [
@@ -87,6 +85,16 @@ export class AddUserComponent implements OnInit {
       roles: new FormControl(null, [Validators.required]),
       employeeId: new FormControl(null),
     });
+
+    this.filteredOptions = this.addUserForm
+      .get('employeeId')
+      ?.valueChanges.pipe(
+        startWith(''),
+        map((value) => {
+          const name = typeof value === 'string' ? value : value?.name;
+          return name ? this._filter(name as string) : this.employees.slice();
+        }),
+      );
   }
 
   getUserById(userId: number | undefined): void {
@@ -96,25 +104,6 @@ export class AddUserComponent implements OnInit {
     this._usersService.getUserById(userId).subscribe((data) => {
       this._patchForm(data);
       console.log(data);
-    });
-  }
-
-  getEmployees() {
-    this._employeeService.getManageEmployee().subscribe({
-      next: (value) => {
-        this.employees = value;
-        this.filteredOptions = this.addUserForm
-          .get('employeeId')
-          ?.valueChanges.pipe(
-            startWith(''),
-            map((value) => {
-              const name = typeof value === 'string' ? value : value?.name;
-              return name
-                ? this._filter(name as string)
-                : this.employees.slice();
-            }),
-          );
-      },
     });
   }
 

@@ -68,8 +68,9 @@ public class  EmployeeServiceImpl implements EmployeeService {
     @Transactional
     @Override
     public EmployeeDto update(EmployeeDto employeeDto) {
-
+        Employee originalEmployee = employeeRepository.findById(employeeDto.getId()).orElseThrow();
         Employee employee = EmployeeMapper.mapEmployeeDtoToEmployee(employeeDto);
+        employee.setUser(originalEmployee.getUser());
 
         employeeRepository.save(employee);
 

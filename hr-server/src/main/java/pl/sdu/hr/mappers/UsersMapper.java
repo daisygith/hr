@@ -14,6 +14,7 @@ public class UsersMapper {
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .roles(user.getRoles().stream().map(UsersMapper::mapRoleToRoleDto).collect(Collectors.toSet()))
+                .employeeId(user.getEmployee() != null ? user.getEmployee().getId() : null)
                 .build();
 
         return userDto;

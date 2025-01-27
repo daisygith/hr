@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProjectsList } from '../../models/projectsList';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectService } from '../../services/project.service';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   FormBuilder,
   FormControl,
@@ -17,7 +17,6 @@ import {
 } from '@angular/forms';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
 import { NotificationService } from '../../../shared/services/notification.service';
-import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 import { ProjectDetails } from '../../models/projectDetails';
 import {
   MatCell,
@@ -46,9 +45,6 @@ import { AddEmployeesComponent } from '../add-employees/add-employees.component'
     FormsModule,
     MatButton,
     ReactiveFormsModule,
-    RouterLink,
-    RouterLinkActive,
-    HasRoleDirective,
     MatTable,
     MatCell,
     MatCellDef,

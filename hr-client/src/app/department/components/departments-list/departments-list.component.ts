@@ -16,7 +16,6 @@ import { DepartmentsList } from '../../models/departmentsList';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgOptimizedImage } from '@angular/common';
 import { MatInput } from '@angular/material/input';
 import { DepartmentService } from '../../services/department.service';
 import { AuthService } from '../../../auth/services/auth.service';
@@ -40,7 +39,6 @@ import { MatDialog } from '@angular/material/dialog';
     MatIcon,
     TranslateModule,
     MatTable,
-    NgOptimizedImage,
     MatCell,
     MatCellDef,
     MatHeaderCell,

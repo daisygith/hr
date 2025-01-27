@@ -7,28 +7,10 @@ import {
 } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell,
-  MatHeaderCellDef,
-  MatHeaderRow,
-  MatHeaderRowDef,
-  MatRow,
-  MatRowDef,
-  MatTable,
-} from '@angular/material/table';
 import { Task } from '../../models/task';
 import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
-import {
-  DatePipe,
-  LowerCasePipe,
-  NgForOf,
-  NgIf,
-  NgOptimizedImage,
-} from '@angular/common';
+import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
@@ -47,20 +29,8 @@ import { MatTooltip } from '@angular/material/tooltip';
   imports: [
     HasRoleDirective,
     ImageTokenPipe,
-    LowerCasePipe,
-    MatCell,
-    MatCellDef,
     TranslateModule,
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatHeaderCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatRow,
-    MatRowDef,
     NgForOf,
-    DatePipe,
     MatIcon,
     MatMiniFabButton,
     NgOptimizedImage,

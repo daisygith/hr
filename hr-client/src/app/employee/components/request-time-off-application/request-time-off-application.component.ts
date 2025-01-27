@@ -13,7 +13,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
-import { DatePipe, NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import {
   ActivatedRoute,
   Router,
@@ -65,7 +65,6 @@ export const MY_FORMATS = {
     MatSelect,
     NgForOf,
     NgIf,
-    NgOptimizedImage,
     ReactiveFormsModule,
     RouterLink,
     RouterLinkActive,
@@ -73,7 +72,6 @@ export const MY_FORMATS = {
     MatFormFieldModule,
     MatDatepickerModule,
     MatCard,
-    DatePipe,
     HasRoleDirective,
   ],
   providers: [

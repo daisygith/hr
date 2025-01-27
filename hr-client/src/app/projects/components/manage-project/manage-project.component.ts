@@ -1,11 +1,8 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
-import { ManageEmployeeComponent } from '../../../employee/components/manage-employee/manage-employee.component';
-import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { TranslateModule } from '@ngx-translate/core';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DashboardTaskComponent } from '../dashboard-task/dashboard-task.component';
@@ -16,14 +13,9 @@ import { ProjectDetails } from '../../models/projectDetails';
   selector: 'app-manage-project',
   standalone: true,
   imports: [
-    HasRoleDirective,
-    ManageEmployeeComponent,
-    MatButton,
     MatIcon,
     MatTab,
     TranslateModule,
-    RouterLink,
-    RouterLinkActive,
     MatTabGroup,
     MatTabLabel,
     DashboardTaskComponent,

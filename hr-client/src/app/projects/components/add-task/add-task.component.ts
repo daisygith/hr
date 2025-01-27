@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIcon } from '@angular/material/icon';
 import {
@@ -19,7 +19,7 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
-import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import {
   MatDatepicker,
   MatDatepickerInput,
@@ -27,17 +27,10 @@ import {
 } from '@angular/material/datepicker';
 import { ProjectService } from '../../services/project.service';
 import { NotificationService } from '../../../shared/services/notification.service';
-import {
-  ActivatedRoute,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsList } from '../../models/projectsList';
 import { Task } from '../../models/task';
 import { ProjectManagementService } from '../../services/project-management.service';
-import { ImageTokenPipe } from '../../../shared/pipes/image-token.pipe';
-import { HasRoleDirective } from '../../../auth/directive/has-role.directive';
 import { ProjectDetails } from '../../models/projectDetails';
 import { ManageEmployee } from '../../../employee/models/manageEmmployee';
 import { iif, of, switchMap } from 'rxjs';
@@ -61,12 +54,6 @@ import { iif, of, switchMap } from 'rxjs';
     MatFormFieldModule,
     MatInputModule,
     NgIf,
-    ImageTokenPipe,
-    MatMiniFabButton,
-    NgOptimizedImage,
-    HasRoleDirective,
-    RouterLink,
-    RouterLinkActive,
   ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss',

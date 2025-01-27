@@ -29,9 +29,6 @@ public class Employee {
     private String name;
 
     @NotNull
-    private Long staffId;
-
-    @NotNull
     @Size(max = 9)
     private String phone;
 
@@ -61,7 +58,7 @@ public class Employee {
             inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Project> projectEmployees = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Task> task = new ArrayList<>();
-
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
+    @JoinColumn(name = "staff_id", referencedColumnName = "id")
+    private User user;
 }

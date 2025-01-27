@@ -18,7 +18,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { RequestTimeOff } from '../../models/requestTimeOff';
 import {
-  AsyncPipe,
   DatePipe,
   LowerCasePipe,
   NgIf,
@@ -52,7 +51,6 @@ import { MatChip } from '@angular/material/chips';
     MatCellDef,
     MatIcon,
     TranslateModule,
-    AsyncPipe,
     DatePipe,
     RouterLinkActive,
     RouterLink,

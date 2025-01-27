@@ -1,7 +1,5 @@
 import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { InputComponent } from '../../../shared/components/input/input.component';
-import { MatFormField } from '@angular/material/form-field';
-import { MatOption, MatSelect } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgForOf } from '@angular/common';
@@ -15,9 +13,6 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
   imports: [
     InputComponent,
     InputComponent,
-    MatFormField,
-    MatSelect,
-    MatOption,
     ReactiveFormsModule,
     TranslateModule,
     NgForOf,

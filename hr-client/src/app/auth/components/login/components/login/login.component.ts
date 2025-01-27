@@ -22,7 +22,7 @@ import {
   MatSuffix,
 } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { MatInput, MatLabel } from '@angular/material/input';
+import { MatInput } from '@angular/material/input';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { AuthService } from '../../../../services/auth.service';
@@ -39,7 +39,6 @@ import { NotificationService } from '../../../../../shared/services/notification
     MatFormField,
     MatIcon,
     MatInput,
-    MatLabel,
     MatIconButton,
     MatSuffix,
     RouterLink,

@@ -15,7 +15,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { ProjectsList } from '../../models/projectsList';
 import { ProjectService } from '../../services/project.service';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-project',
@@ -29,7 +28,6 @@ import { NgIf } from '@angular/common';
     RouterLink,
     TranslateModule,
     RouterLinkActive,
-    NgIf,
   ],
   templateUrl: './add-project.component.html',
   styleUrl: './add-project.component.scss',

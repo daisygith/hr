@@ -12,17 +12,12 @@ import {
   MatTable,
   MatTableDataSource,
 } from '@angular/material/table';
-import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmployeeService } from '../../services/employee.service';
 import { ManageEmployee } from '../../models/manageEmmployee';
-import {
-  AsyncPipe,
-  LowerCasePipe,
-  NgIf,
-  NgOptimizedImage,
-} from '@angular/common';
+import { LowerCasePipe, NgOptimizedImage } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationComponent } from '../../../shared/components/dialog-animation/dialog-animation.component';
@@ -43,7 +38,6 @@ import { MatChip } from '@angular/material/chips';
     MatColumnDef,
     MatHeaderCell,
     MatCell,
-    MatButton,
     MatHeaderRow,
     MatRow,
     MatRowDef,
@@ -52,7 +46,6 @@ import { MatChip } from '@angular/material/chips';
     MatCellDef,
     MatIcon,
     TranslateModule,
-    AsyncPipe,
     MatMiniFabButton,
     RouterLink,
     RouterLinkActive,
@@ -61,7 +54,6 @@ import { MatChip } from '@angular/material/chips';
     NgOptimizedImage,
     ImageTokenPipe,
     HasRoleDirective,
-    NgIf,
     LowerCasePipe,
     MatChip,
   ],

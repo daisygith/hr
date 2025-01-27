@@ -6,7 +6,6 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
@@ -16,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-file-upload',
   standalone: true,
-  imports: [NgIf, NgSwitch, NgSwitchCase, TranslateModule],
+  imports: [TranslateModule],
   templateUrl: './file-upload.component.html',
   styleUrl: './file-upload.component.scss',
   encapsulation: ViewEncapsulation.None,

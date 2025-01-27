@@ -21,8 +21,8 @@ import {
   MatSuffix,
 } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { MatInput, MatLabel } from '@angular/material/input';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { MatInput } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { passwordMismatchDirective } from '../../../../../shared/password-mismatch.directive';
 import { AuthService } from '../../../../services/auth.service';
@@ -39,11 +39,8 @@ import { NotificationService } from '../../../../../shared/services/notification
     MatFormField,
     MatIcon,
     MatInput,
-    MatLabel,
     MatIconButton,
     MatSuffix,
-    RouterLink,
-    RouterLinkActive,
     MatMenu,
     MatMenuItem,
     MatMenuTrigger,

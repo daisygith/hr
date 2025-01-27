@@ -47,6 +47,9 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
+  @OneToOne(mappedBy = "user")
+  private Employee employee;
+
   public User(String username, String email, String password) {
     this.username = username;
     this.email = email;
