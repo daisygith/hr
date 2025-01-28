@@ -68,5 +68,4 @@ HR APP was created by **[Sylwia](https://github.com/daisygith)**.
 ### **Sample screenshots** ###
 
 #### *Registration/login website* #####
-![image](https://github.com/user-attachments/assets/6d4bf01c-7ea4-4878-aa48-adaaa1b38373) ![image](https://github.com/user-attachments/assets/93ae4702-8c4d-4e28-9e61-754cc25ccf92)
 
