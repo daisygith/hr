@@ -26,7 +26,6 @@ public class ProfileMapper {
         Profile profile = Profile.builder()
                 .id(profileDto.getId())
                 .name(profileDto.getName())
-                .staffId(profileDto.getStaffId())
                 .email(profileDto.getEmail())
                 .gender(profileDto.getGender())
                 .destination(profileDto.getDestination())
