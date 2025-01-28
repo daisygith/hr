@@ -68,19 +68,19 @@ HR APP was created by **[Sylwia](https://github.com/daisygith)**.
 
 ### **Sample screenshots** ###
 
-#### *Registration/login site* #####
+#### *Registration/login* #####
 <img src="hr-client/src/assets/image/registration.PNG" width="150" height="200" alt="register-screen"/> <img src="hr-client/src/assets/image/login.PNG" width="150" height="200" alt="login-screen"/>
 
-#### *Manage employees and requests time off site* #####
+#### *Manage employees and requests time off* #####
 <img src="hr-client/src/assets/image/manage_employees.PNG" width="350" height="200" alt="register-screen"/> <img src="hr-client/src/assets/image/manage_request.PNG" width="350" height="200" alt="login-screen"/>
 
-#### *Manage users site* #####
+#### *Manage users* #####
 <img src="hr-client/src/assets/image/manage_users.PNG" width="350" height="200" alt="login-screen"/>
 
-#### *Manage projects site* #####
+#### *Manage projects* #####
 <img src="hr-client/src/assets/image/manage_projects.PNG" width="350" height="200" alt="login-screen"/>
 
-#### *Manage projects by Id site* #####
+#### *Manage projects by Id* #####
 <img src="hr-client/src/assets/image/manage_projects_byid.PNG" width="350" height="200" alt="login-screen"/> <img src="hr-client/src/assets/image/manage_projects_byid_2.PNG" width="350" height="200" alt="login-screen"/> <img src="hr-client/src/assets/image/manage_projects_byid_3.PNG" width="350" height="200" alt="login-screen"/>
 
 #### *Task* #####
