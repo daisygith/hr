@@ -62,11 +62,42 @@ To install HR Application, follow these steps:
 5. Start the project: **`npm start`**
 
 
+## **Configure Database in docker** ##
+In terminal go to `cd hr-server`
+and run `docker compose up`
+
+## **Configure Spring Datasource, JPA, App properties** ##
+Open `src/main/resources/application.properties`
+- For MySQL
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/hr-app?useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=user
+spring.datasource.password=password
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.hibernate.ddl-auto=update
+
+# App Properties
+app.jwtSecret= ======================HrApp=Spring===========================
+app.jwtExpirationMs=86400000
+
+# application.properties
+file.upload-dir=local_folder_path
+
+spring.servlet.multipart.max-file-size=2MB
+spring.servlet.multipart.max-request-size=2MB
+```
+## Run Spring Boot application
+```
+mvn spring-boot:run
+```
+
+
 ## **Authors**
 
 HR APP was created by **[Sylwia](https://github.com/daisygith)**.
 
-### **Sample screenshots** ###
+## **Sample screenshots** ##
 
 #### *Registration/login* #####
 <img src="hr-client/src/assets/image/registration.PNG" width="150" height="200" alt="register-screen"/> <img src="hr-client/src/assets/image/login.PNG" width="150" height="200" alt="login-screen"/>
