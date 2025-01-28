@@ -24,6 +24,7 @@ This project is useful to manage users, employees and project for company.
 
 
 - [x] This application can use in two languages Polish and English.
+- [x] when saving the creation of new / changed data, a notification is displayed
 
 ### **Examples possibly tasks to add this project**
 - [ ] Add sorting to tables 
@@ -67,7 +68,28 @@ HR APP was created by **[Sylwia](https://github.com/daisygith)**.
 
 ### **Sample screenshots** ###
 
-#### *Registration/login website* #####
+#### *Registration/login site* #####
+<img src="hr-client/src/assets/image/registration.PNG" width="100" height="200" alt="register-screen"/>
+<img src="hr-client/src/assets/image/login.PNG" width="100" height="200" alt="login-screen"/>
 
-![login.PNG](hr-client/src/assets/image/login.PNG)
-<img src="hr-client/src/assets/image/login.PNG" width="100" height="100"/>
+#### *Manage employees and requests time off site* #####
+<img src="hr-client/src/assets/image/manage_employees.PNG" width="300" height="200" alt="register-screen"/>
+<img src="hr-client/src/assets/image/manage_request.PNG" width="300" height="200" alt="login-screen"/>
+
+#### *Manage users site* #####
+<img src="hr-client/src/assets/image/manage_users.PNG" width="300" height="200" alt="login-screen"/>
+
+#### *Manage projects site* #####
+<img src="hr-client/src/assets/image/manage_projects.PNG" width="300" height="200" alt="login-screen"/>
+
+#### *Manage projects by Id site* #####
+<img src="hr-client/src/assets/image/manage_projects_byid.PNG" width="300" height="200" alt="login-screen"/>
+<img src="hr-client/src/assets/image/manage_projects_byid_2.PNG" width="300" height="200" alt="login-screen"/>
+<img src="hr-client/src/assets/image/manage_projects_byid_3.PNG" width="300" height="200" alt="login-screen"/>
+
+#### *Task* #####
+<img src="hr-client/src/assets/image/task_fault.png" width="100" height="50" alt="login-screen"/>
+<img src="hr-client/src/assets/image/task_priority.png" width="100" height="50" alt="login-screen"/>
+
+#### *Notification* #####
+<img src="hr-client/src/assets/image/notification.PNG" width="100" height="50" alt="login-screen"/>
