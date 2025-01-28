@@ -69,12 +69,10 @@ HR APP was created by **[Sylwia](https://github.com/daisygith)**.
 ### **Sample screenshots** ###
 
 #### *Registration/login site* #####
-<img src="hr-client/src/assets/image/registration.PNG" width="100" height="200" alt="register-screen"/>
-<img src="hr-client/src/assets/image/login.PNG" width="100" height="200" alt="login-screen"/>
+<img src="hr-client/src/assets/image/registration.PNG" width="100" height="200" alt="register-screen"/> <img src="hr-client/src/assets/image/login.PNG" width="100" height="200" alt="login-screen"/>
 
 #### *Manage employees and requests time off site* #####
-<img src="hr-client/src/assets/image/manage_employees.PNG" width="300" height="200" alt="register-screen"/>
-<img src="hr-client/src/assets/image/manage_request.PNG" width="300" height="200" alt="login-screen"/>
+<img src="hr-client/src/assets/image/manage_employees.PNG" width="300" height="200" alt="register-screen"/> <img src="hr-client/src/assets/image/manage_request.PNG" width="300" height="200" alt="login-screen"/>
 
 #### *Manage users site* #####
 <img src="hr-client/src/assets/image/manage_users.PNG" width="300" height="200" alt="login-screen"/>
