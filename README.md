@@ -87,4 +87,4 @@ HR APP was created by **[Sylwia](https://github.com/daisygith)**.
 <img src="hr-client/src/assets/image/task_fault.png" width="100" height="50" alt="login-screen"/> <img src="hr-client/src/assets/image/task_priority.png" width="100" height="50" alt="login-screen"/>
 
 #### *Notification* #####
-<img src="hr-client/src/assets/image/notification.PNG" width="200" height="50" alt="login-screen"/>
+<img src="hr-client/src/assets/image/notification.PNG" width="300" height="50" alt="login-screen"/>
