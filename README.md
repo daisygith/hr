@@ -11,7 +11,7 @@ Created this project was purpose main learned Angular and TypeScript.
 This project is useful to manage users, employees and project for company.
 - [x] App has login/logout and registration site 
 - [x] Create users with a specific role [ADMIN, USER etc]. 
-- If our user has Admin role we can:
+- If our user has Admin role, can:
 - [x] manage employees [add, update, delete employee]
 - [x] manage department [add, update, delete]
 - [x] manage project [add, update, delete]
